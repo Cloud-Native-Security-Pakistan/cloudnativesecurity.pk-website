@@ -13,32 +13,183 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Courier New', 'Monaco', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
         }
         
         .container {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
         }
         
-        h1 {
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .main-heading {
             font-size: 4rem;
             font-weight: 700;
+            color: #00ff00;
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            animation: fadeIn 1s ease-in;
+            animation: glitch 3s infinite, fadeIn 2s ease-in;
+            letter-spacing: 0.1em;
+        }
+        
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px #00ff00,
+                    0 0 20px #00ff00,
+                    0 0 30px #00ff00;
+            }
+            25% {
+                text-shadow: 
+                    -2px 0 #ff00ff,
+                    2px 0 #00ffff,
+                    0 0 10px #00ff00;
+            }
+            50% {
+                text-shadow: 
+                    2px 0 #ff00ff,
+                    -2px 0 #00ffff,
+                    0 0 10px #00ff00;
+            }
         }
         
         .subtitle {
             font-size: 1.5rem;
+            color: #00ff00;
+            margin-bottom: 3rem;
             opacity: 0.9;
-            animation: fadeIn 1.5s ease-in;
+            text-shadow: 0 0 10px #00ff00;
+            animation: fadeIn 2.5s ease-in;
+        }
+        
+        .cta-section {
+            margin-top: 4rem;
+            animation: fadeIn 3s ease-in;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #00ff00;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            color: #0a0a0a;
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .cta-button:hover::before {
+            left: 0;
+        }
+        
+        .coming-soon {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #555;
+            font-size: 0.9rem;
+            animation: fadeIn 3.5s ease-in;
+        }
+        
+        .footer strong {
+            color: #00ff00;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            margin-left: 5px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
         
         @keyframes fadeIn {
@@ -53,20 +204,41 @@
         }
         
         @media (max-width: 768px) {
-            h1 {
+            .main-heading {
                 font-size: 2.5rem;
             }
             .subtitle {
                 font-size: 1.2rem;
             }
+            .logo {
+                font-size: 1.8rem;
+            }
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="grid"></div>
     <div class="container">
-        <h1>Hello Pakistan</h1>
-        <p class="subtitle">Cloud Native Security Pakistan</p>
+        <div class="logo">CNSP</div>
+        <p class="tagline">Cloud Native Security Pakistan</p>
+        
+        <h1 class="main-heading">Hello Pakistan<span class="cursor">_</span></h1>
+        <p class="subtitle">Building Secure Cloud Native Communities</p>
+        
+        <div class="cta-section">
+            <p class="coming-soon">Website Coming Soon</p>
+            <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" target="_blank" rel="noopener noreferrer" class="cta-button">
+                Join Our WhatsApp Community
+            </a>
+        </div>
+        
+        <div class="footer">
+            <strong>Cloud Native Security Pakistan</strong> has created this website
+        </div>
     </div>
 </body>
 </html>
-
