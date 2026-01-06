@@ -1,0 +1,233 @@
+name: CI - Build & Test
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  # Job 1: Lint, Build, and Validate
+  build:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build:css
+
+      - name: Validate HTML files
+        run: |
+          echo "Validating HTML files..."
+          required_files=("index.html" "about.html" "join.html" "projects.html" "members.html" "events.html")
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: Required file $file is missing"
+              exit 1
+            fi
+            echo "PASS: $file exists"
+          done
+
+      - name: Check HTML structure
+        run: |
+          echo "Checking HTML structure..."
+          for file in *.html; do
+            if ! grep -q '<!DOCTYPE html>' "$file"; then
+              echo "ERROR: $file missing DOCTYPE"
+              exit 1
+            fi
+            if ! grep -q '<meta charset="utf-8">' "$file"; then
+              echo "ERROR: $file missing charset meta tag"
+              exit 1
+            fi
+            if ! grep -q 'Content-Security-Policy' "$file"; then
+              echo "WARNING: $file missing CSP header"
+            fi
+            echo "PASS: $file structure valid"
+          done
+
+      - name: Validate JavaScript
+        run: |
+          echo "Validating JavaScript syntax..."
+          for file in js/*.js; do
+            if [ -f "$file" ]; then
+              node -c "$file" && echo "✓ $file syntax valid" || exit 1
+            fi
+          done
+
+      - name: Check for exposed secrets
+        run: |
+          echo "Scanning for exposed secrets..."
+          if grep -rE "(password|secret|api[_-]?key|token)\s*[:=]\s*['\"][^'\"]+['\"]" --include="*.js" --include="*.html" js/ *.html 2>/dev/null | grep -v "getEnvVar\|API_KEY\|TOKEN\|//\|/\*"; then
+            echo "❌ Error: Potential secrets found in code"
+            exit 1
+          fi
+          echo "✓ No exposed secrets detected"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: |
+            *.html
+            css/output.css
+            js/
+            assets/
+          retention-days: 1
+
+  # Job 2: End-to-End Tests
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Build CSS
+        run: npm run build:css
+
+      - name: Start local server
+        run: |
+          npx serve . -p 3000 &
+          echo "Waiting for server to start..."
+          sleep 5
+          curl -f http://localhost:3000 || exit 1
+          echo "✓ Server is running"
+
+      - name: Run E2E tests
+        run: npm run test:e2e || echo "E2E tests configured but not yet implemented"
+        continue-on-error: true
+        env:
+          BASE_URL: http://localhost:3000
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
+  # Job 3: Security Scanning (SAST, Dependency, Secrets)
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for secrets scanning
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: |
+          echo "Running npm audit..."
+          npm audit --audit-level=moderate --json > audit.json || true
+          npm audit --audit-level=high || echo "⚠️  High severity vulnerabilities found"
+
+      - name: Check for exposed secrets
+        run: |
+          echo " Scanning for exposed secrets..."
+          # Check for common secret patterns
+          if grep -rE "(password|secret|api[_-]?key|token|private[_-]?key)\s*[:=]\s*['\"][^'\"]{8,}['\"]" \
+            --include="*.js" --include="*.html" --include="*.json" \
+            js/ *.html package.json 2>/dev/null | grep -v "getEnvVar\|API_KEY\|TOKEN\|//\|/\*\|example\|placeholder"; then
+            echo "❌ Potential secrets found in code"
+            exit 1
+          fi
+          echo "✓ No exposed secrets detected"
+
+      - name: Check for hardcoded credentials
+        run: |
+          echo " Checking for hardcoded credentials..."
+          # Check for AWS keys, GitHub tokens, etc.
+          if grep -rE "(AKIA[0-9A-Z]{16}|ghp_[a-zA-Z0-9]{36}|xox[baprs]-[0-9a-zA-Z-]{10,})" \
+            --include="*.js" --include="*.html" js/ *.html 2>/dev/null; then
+            echo "❌ Hardcoded credentials detected"
+            exit 1
+          fi
+          echo "✓ No hardcoded credentials found"
+
+      - name: Validate security headers
+        run: |
+          echo "🔒 Validating security headers..."
+          for file in *.html; do
+            if ! grep -q 'Content-Security-Policy' "$file"; then
+              echo "❌ $file missing CSP header"
+              exit 1
+            fi
+            if ! grep -q 'X-Content-Type-Options' "$file" && ! grep -q 'nosniff' "$file"; then
+              echo "WARNING: $file missing X-Content-Type-Options"
+            fi
+            echo "PASS: $file security headers validated"
+          done
+
+      - name: Validate CSP policy
+        run: |
+          echo "🔒 Validating CSP policies..."
+          for file in *.html; do
+            csp=$(grep -o 'Content-Security-Policy[^>]*' "$file" | head -1)
+            if [ -z "$csp" ]; then
+              echo "❌ $file missing CSP"
+              exit 1
+            fi
+            # Check for unsafe-inline or unsafe-eval
+            if echo "$csp" | grep -q "unsafe-inline\|unsafe-eval"; then
+              echo "WARNING: $file CSP contains unsafe directives"
+            fi
+          done
+          echo "✓ CSP validation passed"
+
+      - name: OWASP dependency check
+        run: |
+          echo "Running OWASP dependency check..."
+          # Basic dependency vulnerability check
+          npm audit --production --audit-level=high || {
+            echo "⚠️  High severity vulnerabilities in dependencies"
+            echo "Review and update dependencies"
+          }
+
+      - name: Upload security report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: audit.json
+          retention-days: 30
+

@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-push checks..."
+
+# Run security audit
+echo "Running security audit..."
+npm run security:audit || {
+  echo "WARNING: Security audit found issues. Review and fix before pushing."
+  exit 1
+}
+
+# Validate build
+echo "Validating build..."
+npm run build:css
+test -f css/output.css || {
+  echo "ERROR: CSS build failed"
+  exit 1
+}
+
+echo "Pre-push checks passed!"
+

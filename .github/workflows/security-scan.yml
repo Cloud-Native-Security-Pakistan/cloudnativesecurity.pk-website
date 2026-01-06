@@ -1,0 +1,77 @@
+name: Security Scan (Deep)
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  schedule:
+    # Run weekly security scan
+    - cron: '0 0 * * 0'
+
+jobs:
+  security-scan:
+    name: Deep Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks (Secrets Scanning)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Trivy (Vulnerability Scanner)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Check for dependency vulnerabilities
+        run: |
+          npm ci
+          npm audit --audit-level=high --json > npm-audit.json || true
+          
+          # Check for critical vulnerabilities
+          if jq -e '.vulnerabilities | length > 0' npm-audit.json > /dev/null 2>&1; then
+            echo "WARNING:  Vulnerabilities found in dependencies"
+            jq '.vulnerabilities | keys[]' npm-audit.json
+          fi
+
+      - name: Validate security best practices
+        run: |
+          echo "Validating security best practices..."
+          
+          # Check for HTTPS only
+          for file in *.html; do
+            if grep -q 'http://' "$file" | grep -v 'https://'; then
+              echo "WARNING:  Warning: $file contains HTTP links (should use HTTPS)"
+            fi
+          done
+          
+          # Check for external scripts without integrity
+          for file in *.html; do
+            scripts=$(grep -o '<script[^>]*src="http[^"]*"' "$file" || true)
+            if [ -n "$scripts" ]; then
+              echo "$scripts" | while read -r script; do
+                if ! echo "$script" | grep -q 'integrity='; then
+                  echo "WARNING:  Warning: External script without integrity hash in $file"
+                fi
+              done
+            fi
+          done
+          
+          echo "Security best practices check completed"
+
