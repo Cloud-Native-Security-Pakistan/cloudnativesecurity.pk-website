@@ -10,6 +10,8 @@ Cloud Native Security Pakistan is a community focused on cloud native security p
 
 Visit us at [cloudnativesecurity.pk](https://cloudnativesecurity.pk)
 
+HTTPS is automatically handled by Cloudflare.
+
 ## License
 
 MIT License
