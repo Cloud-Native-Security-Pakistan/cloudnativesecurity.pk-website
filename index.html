@@ -4,7 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
-    <title>Cloud Native Security Pakistan</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Cloud Native Security Pakistan | DevSecOps Community Pakistan</title>
+    <meta name="title" content="Cloud Native Security Pakistan | DevSecOps Community Pakistan">
+    <meta name="description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, Kubernetes security, and CNCF projects in Pakistan. Connect with security professionals and developers.">
+    <meta name="keywords" content="cloud native security, DevSecOps, Kubernetes security, CNCF, cloud security Pakistan, container security, microservices security, Pakistan tech community, cloud native computing, security best practices">
+    <meta name="author" content="Cloud Native Security Pakistan">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://cloudnativesecurity.pk">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cloudnativesecurity.pk">
+    <meta property="og:title" content="Cloud Native Security Pakistan | DevSecOps Community">
+    <meta property="og:description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, and CNCF projects in Pakistan.">
+    <meta property="og:site_name" content="Cloud Native Security Pakistan">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cloudnativesecurity.pk">
+    <meta property="twitter:title" content="Cloud Native Security Pakistan | DevSecOps Community">
+    <meta property="twitter:description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, and CNCF projects in Pakistan.">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#00ff00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CNSP">
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PK">
+    <meta name="geo.placename" content="Pakistan">
+    <meta name="ICBM" content="30.3753, 69.3451">
     <style>
         * {
             margin: 0;
@@ -117,6 +152,14 @@
             animation: fadeIn 3s ease-in;
         }
         
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
         .cta-button {
             display: inline-block;
             padding: 1.2rem 3rem;
@@ -154,6 +197,22 @@
         
         .cta-button:hover::before {
             left: 0;
+        }
+        
+        .cta-button.secondary {
+            border-color: #666;
+            color: #888;
+            box-shadow: 0 0 20px rgba(102, 102, 102, 0.2);
+        }
+        
+        .cta-button.secondary:hover {
+            border-color: #00ff00;
+            color: #00ff00;
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+        }
+        
+        .cta-button.secondary::before {
+            background: #00ff00;
         }
         
         .coming-soon {
@@ -217,6 +276,10 @@
                 padding: 1rem 2rem;
                 font-size: 1rem;
             }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -231,9 +294,14 @@
         
         <div class="cta-section">
             <p class="coming-soon">Website Coming Soon</p>
-            <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" target="_blank" rel="noopener noreferrer" class="cta-button">
-                Join Our WhatsApp Community
-            </a>
+            <div class="cta-buttons">
+                <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" target="_blank" rel="noopener noreferrer" class="cta-button">
+                    Join Our WhatsApp Community
+                </a>
+                <a href="https://community.cncf.io/cloud-native-security-pakistan/" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
+                    CNCF Bevy Chapter
+                </a>
+            </div>
         </div>
         
         <div class="footer">
