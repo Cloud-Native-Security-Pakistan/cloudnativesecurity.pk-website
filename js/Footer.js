@@ -47,6 +47,15 @@ export class Footer {
                     </div>
                     <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-500">
                         <p>&copy; ${new Date().getFullYear()} Cloud Native Security Pakistan. All rights reserved.</p>
+                        <p class="mt-2">
+                            Made with <span class="text-red-500">♥</span> by 
+                            <a href="https://github.com/farhanashrafdev" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="text-green-500 hover:text-green-400 transition-colors font-mono">
+                                farhanashrafdev
+                            </a>
+                        </p>
                     </div>
                 </div>
             </footer>

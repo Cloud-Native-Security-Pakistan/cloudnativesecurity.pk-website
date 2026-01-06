@@ -3,314 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
-    
-    <!-- Primary Meta Tags -->
-    <title>Cloud Native Security Pakistan | DevSecOps Community Pakistan</title>
-    <meta name="title" content="Cloud Native Security Pakistan | DevSecOps Community Pakistan">
-    <meta name="description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, Kubernetes security, and CNCF projects in Pakistan. Connect with security professionals and developers.">
-    <meta name="keywords" content="cloud native security, DevSecOps, Kubernetes security, CNCF, cloud security Pakistan, container security, microservices security, Pakistan tech community, cloud native computing, security best practices">
-    <meta name="author" content="Cloud Native Security Pakistan">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    <link rel="canonical" href="https://cloudnativesecurity.pk">
-    
-    <!-- Favicon -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+    <title>Cloud Native Security Pakistan | DevSecOps Community</title>
     <link rel="icon" type="image/png" href="/logo.png">
-    <link rel="apple-touch-icon" href="/logo.png">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cloudnativesecurity.pk">
-    <meta property="og:title" content="Cloud Native Security Pakistan | DevSecOps Community">
-    <meta property="og:description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, and CNCF projects in Pakistan.">
-    <meta property="og:site_name" content="Cloud Native Security Pakistan">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://cloudnativesecurity.pk">
-    <meta property="twitter:title" content="Cloud Native Security Pakistan | DevSecOps Community">
-    <meta property="twitter:description" content="Join Cloud Native Security Pakistan - A community focused on cloud native security, DevSecOps, and CNCF projects in Pakistan.">
-    
-    <!-- Additional SEO -->
-    <meta name="theme-color" content="#00ff00">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="CNSP">
-    
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="PK">
-    <meta name="geo.placename" content="Pakistan">
-    <meta name="ICBM" content="30.3753, 69.3451">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Courier New', 'Monaco', monospace;
-            background: #0a0a0a;
-            color: #00ff00;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        .grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        body { font-family: 'Courier New', monospace; background: #0a0a0a; color: #00ff00; }
+        .grid-bg {
             background-image: 
                 linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
-            z-index: 0;
-            pointer-events: none;
         }
-        
-        .container {
-            text-align: center;
-            padding: 3rem 2rem;
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            width: 100%;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #00ff00;
-            text-shadow: 
-                0 0 10px #00ff00,
-                0 0 20px #00ff00;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.1em;
-            animation: fadeIn 1s ease-in;
-        }
-        
-        .tagline {
-            font-size: 1.1rem;
-            color: #888;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            animation: fadeIn 1.5s ease-in;
-        }
-        
-        .main-heading {
-            font-size: 4rem;
-            font-weight: 700;
-            color: #00ff00;
-            text-shadow: 
-                0 0 10px #00ff00,
-                0 0 20px #00ff00,
-                0 0 30px #00ff00;
-            margin-bottom: 1rem;
-            animation: glitch 3s infinite, fadeIn 2s ease-in;
-            letter-spacing: 0.1em;
-        }
-        
         @keyframes glitch {
-            0%, 100% {
-                text-shadow: 
-                    0 0 10px #00ff00,
-                    0 0 20px #00ff00,
-                    0 0 30px #00ff00;
-            }
-            25% {
-                text-shadow: 
-                    -2px 0 #ff00ff,
-                    2px 0 #00ffff,
-                    0 0 10px #00ff00;
-            }
-            50% {
-                text-shadow: 
-                    2px 0 #ff00ff,
-                    -2px 0 #00ffff,
-                    0 0 10px #00ff00;
-            }
+            0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+            25% { text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff; }
+            50% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
         }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            color: #00ff00;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            text-shadow: 0 0 10px #00ff00;
-            animation: fadeIn 2.5s ease-in;
-        }
-        
-        .cta-section {
-            margin-top: 4rem;
-            animation: fadeIn 3s ease-in;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: transparent;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #00ff00;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .cta-button:hover {
-            color: #0a0a0a;
-            box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
-            transform: translateY(-3px);
-        }
-        
-        .cta-button:hover::before {
-            left: 0;
-        }
-        
-        .cta-button.secondary {
-            border-color: #666;
-            color: #888;
-            box-shadow: 0 0 20px rgba(102, 102, 102, 0.2);
-        }
-        
-        .cta-button.secondary:hover {
-            border-color: #00ff00;
-            color: #00ff00;
-            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
-        }
-        
-        .cta-button.secondary::before {
-            background: #00ff00;
-        }
-        
-        .coming-soon {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.9rem;
-        }
-        
-        .footer {
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #555;
-            font-size: 0.9rem;
-            animation: fadeIn 3.5s ease-in;
-        }
-        
-        .footer strong {
-            color: #00ff00;
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #00ff00;
-            animation: blink 1s infinite;
-            margin-left: 5px;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .main-heading {
-                font-size: 2.5rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            .logo {
-                font-size: 1.8rem;
-            }
-            .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+        .glitch-text { animation: glitch 3s infinite; }
     </style>
 </head>
-<body>
-    <div class="grid"></div>
-    <div class="container">
-        <div class="logo">CNSP</div>
-        <p class="tagline">Cloud Native Security Pakistan</p>
-        
-        <h1 class="main-heading">Hello Pakistan<span class="cursor">_</span></h1>
-        <p class="subtitle">Building Secure Cloud Native Communities</p>
-        
-        <div class="cta-section">
-            <p class="coming-soon">Website Coming Soon</p>
-            <div class="cta-buttons">
-                <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" target="_blank" rel="noopener noreferrer" class="cta-button">
-                    Join Our WhatsApp Community
+<body class="min-h-screen flex flex-col grid-bg">
+    <div id="navbar"></div>
+    
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-20 text-center">
+            <h1 class="text-6xl md:text-7xl font-bold text-green-500 mb-6 font-mono glitch-text">
+                Hello Pakistan<span class="animate-pulse">_</span>
+            </h1>
+            <p class="text-2xl text-gray-400 mb-8 font-mono">Building Secure Cloud Native Communities</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="px-8 py-4 bg-green-500/20 hover:bg-green-500 text-green-500 hover:text-black font-mono rounded border border-green-500 transition-all duration-300">
+                    Join WhatsApp Community
                 </a>
-                <a href="https://community.cncf.io/cloud-native-security-pakistan/" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
+                <a href="https://community.cncf.io/cloud-native-security-pakistan/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="px-8 py-4 bg-transparent hover:bg-green-500/20 text-green-500 font-mono rounded border border-green-500 transition-all duration-300">
                     CNCF Bevy Chapter
                 </a>
             </div>
-        </div>
-        
-        <div class="footer">
-            <strong>Cloud Native Security Pakistan</strong> has created this website
-        </div>
-    </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="container mx-auto px-4 py-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-green-500 mb-8 text-center font-mono">Our Mission</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Cloud-Native Security</h3>
+                        <p class="text-gray-400 text-sm">Building secure, scalable cloud-native applications using CNCF technologies</p>
+                    </div>
+                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Open Source</h3>
+                        <p class="text-gray-400 text-sm">Promoting and contributing to open source security tools and projects</p>
+                    </div>
+                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Community</h3>
+                        <p class="text-gray-400 text-sm">Fostering collaboration and knowledge sharing among security professionals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="container mx-auto px-4 py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-green-500 mb-8 font-mono">Explore</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="events.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
+                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Events</h3>
+                        <p class="text-gray-400">Join our workshops, meetups, and conferences</p>
+                    </a>
+                    <a href="members.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
+                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Members</h3>
+                        <p class="text-gray-400">Connect with 257+ security professionals</p>
+                    </a>
+                    <a href="projects.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
+                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Projects</h3>
+                        <p class="text-gray-400">Explore our open-source initiatives</p>
+                    </a>
+                    <a href="join.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
+                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Join Us</h3>
+                        <p class="text-gray-400">Become part of our community</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { Navbar } from './js/Navbar.js';
+        import { Footer } from './js/Footer.js';
+        new Navbar().init();
+        new Footer().init();
+    </script>
 </body>
 </html>

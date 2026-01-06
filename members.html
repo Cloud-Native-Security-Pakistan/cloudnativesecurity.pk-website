@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://api.github.com https://sheets.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://sheets.googleapis.com;">
+    <title>Members - Cloud Native Security Pakistan</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #0a0a0a; color: #00ff00; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col grid-bg">
+    <div id="navbar"></div>
+    
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-green-500 mb-4 font-mono">Find Members</h1>
+            <p class="text-gray-400 text-lg">Connect with 257+ security professionals</p>
+        </header>
+
+        <div id="filter-panel"></div>
+
+        <div id="members-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="loading" class="col-span-full text-center py-12">
+                <div class="inline-block animate-pulse text-green-500 font-mono">Loading members...</div>
+            </div>
+        </div>
+
+        <div id="error" class="hidden col-span-full text-center py-12">
+            <p class="text-red-500 font-mono">Failed to load members. Please try again later.</p>
+        </div>
+
+        <div id="no-results" class="hidden col-span-full text-center py-12">
+            <p class="text-gray-400 font-mono">No members found matching your filters.</p>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { MemberCard } from './js/MemberCard.js';
+        import { FilterPanel } from './js/FilterPanel.js';
+        import { Navbar } from './js/Navbar.js';
+        import { Footer } from './js/Footer.js';
+
+        // Initialize components
+        new Navbar().init();
+        new Footer().init();
+
+        let allMembers = [];
+        let filteredMembers = [];
+
+        // Load members from multiple sources
+        async function loadMembers() {
+            const container = document.getElementById('members-container');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const noResults = document.getElementById('no-results');
+
+            try {
+                // In production, merge data from:
+                // 1. Google Sheets API (read-only)
+                // 2. GitHub JSON repository
+                // For now, using sample data
+                allMembers = [
+                    {
+                        name: 'Farhan Ashraf',
+                        username: 'farhanashrafdev',
+                        location: 'Lahore, Pakistan',
+                        team: 'admin',
+                        interests: ['Kubernetes', 'DevSecOps', 'Cloud Security'],
+                        github: 'farhanashrafdev',
+                        linkedin: 'https://linkedin.com/in/farhanashrafdev',
+                        twitter: 'farhanashrafdev'
+                    }
+                    // Add more members from API sources
+                ];
+
+                filteredMembers = [...allMembers];
+                displayMembers();
+
+                loading.classList.add('hidden');
+            } catch (err) {
+                console.error('Error loading members:', err);
+                loading.classList.add('hidden');
+                error.classList.remove('hidden');
+            }
+        }
+
+        function displayMembers() {
+            const container = document.getElementById('members-container');
+            const noResults = document.getElementById('no-results');
+            const loading = document.getElementById('loading');
+
+            loading.classList.add('hidden');
+
+            if (filteredMembers.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            container.innerHTML = filteredMembers.map(member => {
+                const card = new MemberCard(member);
+                return card.render();
+            }).join('');
+        }
+
+        function handleFilterChange(filters) {
+            filteredMembers = allMembers.filter(member => {
+                const cityMatch = !filters.city || member.location?.toLowerCase().includes(filters.city.toLowerCase());
+                const teamMatch = !filters.team || member.team?.toLowerCase() === filters.team.toLowerCase();
+                const skillMatch = !filters.skill || member.interests?.some(skill => 
+                    skill.toLowerCase().includes(filters.skill.toLowerCase())
+                );
+                return cityMatch && teamMatch && skillMatch;
+            });
+            displayMembers();
+        }
+
+        // Initialize filter panel
+        const filterPanel = new FilterPanel(handleFilterChange);
+        filterPanel.init();
+
+        // Load members
+        loadMembers();
+    </script>
+</body>
+</html>
+
