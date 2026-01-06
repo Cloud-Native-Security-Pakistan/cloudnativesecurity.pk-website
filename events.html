@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com;">
+    <title>Events - Cloud Native Security Pakistan</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #0a0a0a; color: #00ff00; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col grid-bg">
+    <div id="navbar"></div>
+    
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-green-500 mb-4 font-mono">Upcoming Events</h1>
+            <p class="text-gray-400 text-lg">Join us for workshops, meetups, and conferences on cloud native security</p>
+        </header>
+
+        <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="loading" class="col-span-full text-center py-12">
+                <div class="inline-block animate-pulse text-green-500 font-mono">Loading events...</div>
+            </div>
+        </div>
+
+        <div id="error" class="hidden col-span-full text-center py-12">
+            <p class="text-red-500 font-mono">Failed to load events. Please try again later.</p>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { EventCard } from './js/EventCard.js';
+        import { Navbar } from './js/Navbar.js';
+        import { Footer } from './js/Footer.js';
+
+        // Initialize components
+        new Navbar().init();
+        new Footer().init();
+
+        // Load events
+        async function loadEvents() {
+            const container = document.getElementById('events-container');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+
+            try {
+                // In production, this would fetch from DynamoDB API
+                // For now, using static JSON
+                const response = await fetch('./data/events.json');
+                if (!response.ok) throw new Error('Failed to fetch events');
+                
+                const events = await response.json();
+                
+                loading.classList.add('hidden');
+                
+                if (events.length === 0) {
+                    container.innerHTML = '<p class="col-span-full text-center text-gray-400 font-mono">No upcoming events. Check back soon!</p>';
+                    return;
+                }
+
+                container.innerHTML = events.map(event => {
+                    const card = new EventCard(event);
+                    return card.render();
+                }).join('');
+
+                // Lazy load images
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.src = img.dataset.src || img.src;
+                                img.classList.remove('lazy-load');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('img.lazy-load').forEach(img => {
+                        imageObserver.observe(img);
+                    });
+                }
+            } catch (err) {
+                console.error('Error loading events:', err);
+                loading.classList.add('hidden');
+                error.classList.remove('hidden');
+            }
+        }
+
+        loadEvents();
+    </script>
+</body>
+</html>
+

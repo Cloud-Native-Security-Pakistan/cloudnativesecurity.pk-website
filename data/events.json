@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "title": "Cloud Native Security Workshop",
+        "date": "2024-12-15",
+        "city": "Lahore",
+        "type": "Workshop",
+        "description": "Hands-on workshop on Kubernetes security, container scanning, and DevSecOps practices.",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+        "link": "https://community.cncf.io/cloud-native-security-pakistan/"
+    },
+    {
+        "id": "2",
+        "title": "CNCF Projects Deep Dive",
+        "date": "2024-12-20",
+        "city": "Karachi",
+        "type": "Meetup",
+        "description": "Exploring CNCF projects: Falco, OPA, and Prometheus for security monitoring.",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+        "link": "https://community.cncf.io/cloud-native-security-pakistan/"
+    },
+    {
+        "id": "3",
+        "title": "DevSecOps Best Practices",
+        "date": "2025-01-10",
+        "city": "Islamabad",
+        "type": "Conference",
+        "description": "Learn about implementing security in CI/CD pipelines and cloud-native environments.",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+        "link": "https://community.cncf.io/cloud-native-security-pakistan/"
+    }
+]
+
