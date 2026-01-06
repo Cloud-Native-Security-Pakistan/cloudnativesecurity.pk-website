@@ -2,15 +2,15 @@
 
 Official website for Cloud Native Security Pakistan, hosted on GitHub Pages.
 
-## 🚀 Features
+## Features
 
-- **Static Site**: Fast, secure, and SEO-friendly
-- **Interactive Member Map**: Powered by OpenStreetMap/Leaflet
-- **Dynamic Content**: Integrates with Google Sheets (members) and AWS DynamoDB (events)
-- **Modern Design**: Tailwind CSS with responsive, mobile-first layout
-- **Security First**: DOMPurify sanitization, CSP headers, HTTPS-only
+- Static site hosted on GitHub Pages
+- Interactive member map
+- Events listing
+- Modern, responsive design
+- Easy to contribute
 
-## 📁 Structure
+## Structure
 
 ```
 cloudnativesecurity.pk-website/
@@ -27,39 +27,27 @@ cloudnativesecurity.pk-website/
 └── package.json     # Dependencies
 ```
 
-## 🛠️ Setup
+## Setup
 
-1. **Install Dependencies**:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. **Build Tailwind CSS**:
+2. Build CSS:
    ```bash
    npm run build:css
    ```
 
-3. **Development**:
+3. Run locally:
    ```bash
    npm run dev
-   # Site will be available at http://localhost:3000
    ```
+   Open http://localhost:3000 in your browser
 
-4. **Run E2E Tests**:
-   ```bash
-   npm run test:e2e
-   # Or with UI:
-   npm run test:e2e:ui
-   ```
+## Deployment
 
-## 🚀 Deployment
-
-### Automatic Deployment (Recommended)
-
-The site automatically deploys to GitHub Pages when:
-- ✅ Code is pushed to `main` branch
-- ✅ All CI checks pass (build, tests, security)
-- ✅ E2E tests pass
+The site automatically deploys to GitHub Pages when code is pushed to `main` branch.
 
 **Setup GitHub Pages:**
 1. Go to repository Settings → Pages
@@ -69,37 +57,22 @@ The site automatically deploys to GitHub Pages when:
 
 The site will be available at: `https://cloudnativesecurity.pk`
 
-### Manual Deployment
+## Contributing
 
-1. Push to `main` branch
-2. GitHub Actions will automatically:
-   - Run CI checks
-   - Build the site
-   - Deploy to GitHub Pages
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## 🔐 Environment Variables
+Quick steps:
+1. Fork the repo
+2. Make your changes
+3. Test locally with `npm run dev`
+4. Open a Pull Request
 
-Copy `.env.example` to `.env` and configure:
+## Data Sources
 
-- `GOOGLE_SHEETS_API_KEY`: Read-only API key for Google Sheets
-- `GOOGLE_SHEETS_ID`: Google Sheets ID for member data
-- `AWS_API_ENDPOINT`: Read-only API endpoint for events (DynamoDB)
-- `MAPBOX_TOKEN` (optional): For Mapbox GL if not using Leaflet
+- Members: Google Sheets API + GitHub JSON
+- Events: AWS DynamoDB API
 
-## 📊 Data Sources
-
-- **Members**: Google Sheets API + GitHub JSON from `becoming-a-member/membersmap/`
-- **Events**: AWS DynamoDB read-only API + S3 image URLs
-
-## 🔒 Security
-
-- All external data sanitized with DOMPurify
-- Content Security Policy (CSP) headers
-- HTTPS-only enforcement
-- No secrets in client-side code
-- Lazy loading for maps and images
-
-## 📝 License
+## License
 
 MIT License - see LICENSE file for details
 

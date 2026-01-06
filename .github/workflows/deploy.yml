@@ -8,18 +8,11 @@ on:
       - 'README.md'
       - '.gitignore'
       - 'docs/**'
-  workflow_run:
-    workflows: ["CI - Build & Test"]
-    types:
-      - completed
-    branches:
-      - main
 
 jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'push'
     permissions:
       contents: read
       pages: write

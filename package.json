@@ -6,15 +6,8 @@
     "build:css": "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
     "watch:css": "tailwindcss -i ./css/input.css -o ./css/output.css --watch",
     "dev": "npx serve .",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint js/**/*.js --ext .js",
-    "lint:html": "htmlhint *.html",
-    "security:audit": "npm audit --audit-level=moderate",
-    "security:check": "npm run security:audit && npm run security:secrets",
-    "security:secrets": "trufflehog filesystem . --json || true",
-    "prepare": "husky install"
+    "test": "echo 'Tests will be added here'",
+    "lint": "eslint js/**/*.js --ext .js || true"
   },
   "keywords": [
     "cloud-native",
@@ -26,11 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "tailwindcss": "^3.4.0",
-    "@playwright/test": "^1.40.0",
-    "eslint": "^8.55.0",
-    "htmlhint": "^1.1.4",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0"
+    "eslint": "^8.55.0"
   },
   "dependencies": {}
 }

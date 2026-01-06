@@ -12,14 +12,6 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-      - "security"
-    # Group security updates
-    groups:
-      security-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "security"
 
   # Enable Dependabot for GitHub Actions
   - package-ecosystem: "github-actions"
