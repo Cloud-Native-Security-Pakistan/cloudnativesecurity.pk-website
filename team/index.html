@@ -20,7 +20,7 @@
     <meta property="og:title" content="Meet the Team - Cloud Native Security Pakistan">
     <meta property="og:description"
         content="Meet the passionate organizers behind CNSPK - driving cloud-native security excellence across Pakistan.">
-    <meta property="og:url" content="https://cloudnativesecurity.pk/team.html">
+    <meta property="og:url" content="https://cloudnativesecurity.pk/team">
     <meta property="og:site_name" content="Cloud Native Security Pakistan">
 
     <!-- Twitter Card -->
@@ -29,8 +29,20 @@
     <meta name="twitter:description"
         content="Meet the passionate organizers behind CNSPK - driving cloud-native security excellence across Pakistan.">
 
-    <link rel="icon" type="image/png" href="/logo.png">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/team.html">
+    <!-- Favicon -->
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="canonical" href="https://cloudnativesecurity.pk/team">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -143,9 +155,9 @@
     <div id="footer"></div>
 
     <script type="module">
-        import { Navbar } from './js/Navbar.js';
-        import { Footer } from './js/Footer.js';
-        import { fetchData, sanitize } from './js/utils.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Footer } from '../js/Footer.js';
+        import { fetchData, sanitize } from '../js/utils.js';
 
         // Initialize components
         new Navbar().init();
@@ -214,7 +226,7 @@
             const error = document.getElementById('error');
 
             try {
-                const team = await fetchData('./data/team.json');
+                const team = await fetchData('../data/team.json');
                 loading.classList.add('hidden');
 
                 if (!team || team.length === 0) {

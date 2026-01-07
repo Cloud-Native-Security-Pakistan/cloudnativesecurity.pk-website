@@ -7,7 +7,15 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
     <title>Events - CNSPK</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
     <link
@@ -122,10 +130,10 @@
     <div id="footer"></div>
 
     <script type="module">
-        import { EventCard } from './js/EventCard.js';
-        import { Navbar } from './js/Navbar.js';
-        import { Footer } from './js/Footer.js';
-        import { fetchData, domReady } from './js/utils.js';
+        import { EventCard } from '../js/EventCard.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Footer } from '../js/Footer.js';
+        import { fetchData, domReady } from '../js/utils.js';
 
         new Navbar().init();
         new Footer().init();
@@ -136,7 +144,7 @@
             const error = document.getElementById('error');
 
             try {
-                const events = await fetchData('./data/events.json');
+                const events = await fetchData('../data/events.json');
                 loading.classList.add('hidden');
 
                 if (!events || events.length === 0) {

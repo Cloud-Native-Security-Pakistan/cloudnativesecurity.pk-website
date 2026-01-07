@@ -14,8 +14,20 @@
     <meta name="keywords"
         content="CNSPK projects, open source Pakistan, cloud security projects, CNCF contributions, GitHub Pakistan, cloud native tools">
 
-    <link rel="icon" type="image/png" href="/logo.png">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/projects.html">
+    <!-- Favicon -->
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="canonical" href="https://cloudnativesecurity.pk/projects">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
@@ -138,7 +150,7 @@
                         class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-green-700 transition-all">
                         View All Projects
                     </a>
-                    <a href="join.html"
+                    <a href="/join"
                         class="px-8 py-4 glass-panel text-gray-200 font-semibold rounded-lg hover:bg-white/5 transition-all">
                         Join to Contribute
                     </a>
@@ -150,8 +162,8 @@
     <div id="footer"></div>
 
     <script type="module">
-        import { Navbar } from './js/Navbar.js';
-        import { Footer } from './js/Footer.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Footer } from '../js/Footer.js';
         new Navbar().init();
         new Footer().init();
     </script>

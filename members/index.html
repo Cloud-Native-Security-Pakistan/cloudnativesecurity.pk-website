@@ -7,7 +7,15 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://api.github.com https://sheets.googleapis.com https://unpkg.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: https://*.openstreetmap.org https://cartodb-basemaps-a.global.ssl.fastly.net; connect-src 'self' https://api.github.com https://sheets.googleapis.com;">
     <title>Members - Cloud Native Security Pakistan</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -125,11 +133,11 @@
     </main>
 
     <script type="module">
-        import { MemberCard } from './js/MemberCard.js';
-        import { FilterPanel } from './js/FilterPanel.js';
-        import { Navbar } from './js/Navbar.js';
-        import { Map } from './js/Map.js';
-        import { fetchData, domReady } from './js/utils.js';
+        import { MemberCard } from '../js/MemberCard.js';
+        import { FilterPanel } from '../js/FilterPanel.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Map } from '../js/Map.js';
+        import { fetchData, domReady } from '../js/utils.js';
 
         // Initialize Nav (No footer on this dashboard view)
         new Navbar().init();
@@ -149,7 +157,7 @@
                 mapInstance.init();
 
                 // Fetch Data
-                allMembers = await fetchData('./data/members.json');
+                allMembers = await fetchData('../data/members.json');
                 loading.classList.add('hidden');
 
                 if (!allMembers || allMembers.length === 0) {

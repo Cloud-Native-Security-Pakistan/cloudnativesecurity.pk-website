@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://github.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
     <title>Join Us - Cloud Native Security Pakistan</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Courier New', monospace; background: #0a0a0a; color: #00ff00; }
@@ -125,8 +133,8 @@
     <div id="footer"></div>
 
     <script type="module">
-        import { Navbar } from './js/Navbar.js';
-        import { Footer } from './js/Footer.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Footer } from '../js/Footer.js';
         new Navbar().init();
         new Footer().init();
     </script>
