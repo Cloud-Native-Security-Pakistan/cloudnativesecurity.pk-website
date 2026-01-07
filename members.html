@@ -78,179 +78,163 @@
     </style>
 </head>
 
-<body class="h-screen flex flex-col grid-bg overflow-hidden">
-    <!-- Navbar Container -->
-    <div id="navbar" class="z-50 shrink-0"></div>
+<body class="min-h-screen flex flex-col antialiased h-screen overflow-hidden">
+    <div id="navbar"></div>
 
-    <main class="flex-grow flex flex-col-reverse md:flex-row h-full overflow-hidden relative">
+    <main class="flex-grow flex flex-col h-full pt-20">
+        <div class="flex-grow flex flex-col md:flex-row h-full overflow-hidden">
 
-        <!-- Left Panel: Members List & Filters -->
-        <section
-            class="w-full md:w-1/3 lg:w-2/5 flex flex-col h-1/2 md:h-full border-r border-green-500/20 bg-black/80 backdrop-blur-sm z-20">
+            <!-- Sidebar (List + Filters) -->
+            <div
+                class="w-full md:w-5/12 lg:w-4/12 flex flex-col h-full glass-panel border-r border-white/5 relative z-10">
+                <div class="p-6 border-b border-white/5">
+                    <h1 class="text-2xl font-bold text-white mb-2">Member Directory</h1>
+                    <p class="text-xs text-gray-500 mb-6">Connect with security professionals across
+                        Pakistan.</p>
 
-            <!-- Filters Header -->
-            <div class="p-6 border-b border-green-500/20 shrink-0">
-                <header class="mb-6">
+                    <div id="filter-panel"></div>
+                </div>
 
-                    <body class="min-h-screen flex flex-col antialiased h-screen overflow-hidden">
-                        <div id="navbar"></div>
+                <div id="members-list-scroll" class="flex-grow overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                    <div id="loading" class="text-center py-12">
+                        <div
+                            class="w-8 h-8 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mx-auto mb-4">
+                        </div>
+                        <span class="text-gray-500 text-sm">Scanning database...</span>
+                    </div>
 
-                        <main class="flex-grow flex flex-col h-full pt-20">
-                            <div class="flex-grow flex flex-col md:flex-row h-full overflow-hidden">
+                    <div id="members-container" class="space-y-4"></div>
 
-                                <!-- Sidebar (List + Filters) -->
-                                <div
-                                    class="w-full md:w-5/12 lg:w-4/12 flex flex-col h-full glass-panel border-r border-white/5 relative z-10">
-                                    <div class="p-6 border-b border-white/5">
-                                        <h1 class="text-2xl font-bold text-white mb-2">Member Directory</h1>
-                                        <p class="text-xs text-gray-500 mb-6">Connect with security professionals across
-                                            Pakistan.</p>
+                    <div id="no-results" class="hidden text-center py-12 text-gray-500">
+                        No members found matching your filters.
+                    </div>
+                </div>
+            </div>
 
-                                        <div id="filter-panel"></div>
-                                    </div>
+            <!-- Map Area -->
+            <div class="hidden md:block w-full md:w-7/12 lg:w-8/12 min-h-screen relative bg-dark-900">
+                <div id="map" class="w-full h-full z-0"></div>
 
-                                    <div id="members-list-scroll"
-                                        class="flex-grow overflow-y-auto p-6 space-y-4 custom-scrollbar">
-                                        <div id="loading" class="text-center py-12">
-                                            <div
-                                                class="w-8 h-8 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mx-auto mb-4">
-                                            </div>
-                                            <span class="text-gray-500 text-sm">Scanning database...</span>
-                                        </div>
+                <!-- Map Overlay Gradient -->
+                <div
+                    class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark-900 to-transparent pointer-events-none z-[400]">
+                </div>
+            </div>
 
-                                        <div id="members-container" class="space-y-4"></div>
+        </div>
+    </main>
 
-                                        <div id="no-results" class="hidden text-center py-12 text-gray-500">
-                                            No members found matching your filters.
-                                        </div>
-                                    </div>
-                                </div>
+    <script type="module">
+        import { MemberCard } from './js/MemberCard.js';
+        import { FilterPanel } from './js/FilterPanel.js';
+        import { Navbar } from './js/Navbar.js';
+        import { Map } from './js/Map.js';
+        import { fetchData, domReady } from './js/utils.js';
 
-                                <!-- Map Area -->
-                                <div
-                                    class="hidden md:block w-full md:w-7/12 lg:w-8/12 min-h-screen relative bg-dark-900">
-                                    <div id="map" class="w-full h-full z-0"></div>
+        // Initialize Nav (No footer on this dashboard view)
+        new Navbar().init();
 
-                                    <!-- Map Overlay Gradient -->
-                                    <div
-                                        class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark-900 to-transparent pointer-events-none z-[400]">
-                                    </div>
-                                </div>
+        let allMembers = [];
+        let mapInstance = null;
 
-                            </div>
-                        </main>
+        // Load members
+        async function loadMembers() {
+            const container = document.getElementById('members-container');
+            const loading = document.getElementById('loading');
+            const noResults = document.getElementById('no-results');
 
-                        <script type="module">
-                            import { MemberCard } from './js/MemberCard.js';
-                            import { FilterPanel } from './js/FilterPanel.js';
-                            import { Navbar } from './js/Navbar.js';
-                            import { Map } from './js/Map.js';
-                            import { fetchData, domReady } from './js/utils.js';
+            try {
+                // Initialize Map
+                mapInstance = new Map('map');
+                mapInstance.init();
 
-                            // Initialize Nav (No footer on this dashboard view)
-                            new Navbar().init();
+                // Fetch Data
+                allMembers = await fetchData('./data/members.json');
+                loading.classList.add('hidden');
 
-                            let allMembers = [];
-                            let mapInstance = null;
+                if (!allMembers || allMembers.length === 0) {
+                    // Handle empty
+                    return;
+                }
 
-                            // Load members
-                            async function loadMembers() {
-                                const container = document.getElementById('members-container');
-                                const loading = document.getElementById('loading');
-                                const noResults = document.getElementById('no-results');
+                // Initial Render
+                renderMembers(allMembers);
+                mapInstance.updateMarkers(allMembers);
 
-                                try {
-                                    // Initialize Map
-                                    mapInstance = new Map('map');
-                                    mapInstance.init();
+                // Initialize Filters
+                new FilterPanel((filters) => {
+                    const filtered = allMembers.filter(member => {
+                        const cityMatch = !filters.city || member.location?.toLowerCase().includes(filters.city.toLowerCase());
+                        const teamMatch = !filters.team || member.team?.toLowerCase() === filters.team.toLowerCase();
+                        const skillMatch = !filters.skill || member.interests?.some(i => i.toLowerCase().includes(filters.skill.toLowerCase()));
+                        return cityMatch && teamMatch && skillMatch;
+                    });
 
-                                    // Fetch Data
-                                    allMembers = await fetchData('./data/members.json');
-                                    loading.classList.add('hidden');
+                    renderMembers(filtered);
+                    mapInstance.updateMarkers(filtered);
+                }).render();
 
-                                    if (!allMembers || allMembers.length === 0) {
-                                        // Handle empty
-                                        return;
-                                    }
+                // Re-render filter panel to inject into DOM (since FilterPanel.render returns string)
+                // We need to slightly adjust how FilterPanel is used or manually inject it
+                const filterPanel = new FilterPanel((filters) => {
+                    const filtered = allMembers.filter(member => {
+                        const cityMatch = !filters.city || member.location?.toLowerCase().includes(filters.city.toLowerCase());
+                        const teamMatch = !filters.team || member.team?.toLowerCase() === filters.team.toLowerCase();
+                        const skillMatch = !filters.skill || member.interests?.some(i => i.toLowerCase().includes(filters.skill.toLowerCase()));
+                        return cityMatch && teamMatch && skillMatch;
+                    });
+                    renderMembers(filtered);
+                    mapInstance.updateMarkers(filtered);
+                });
 
-                                    // Initial Render
-                                    renderMembers(allMembers);
-                                    mapInstance.updateMarkers(allMembers);
+                document.getElementById('filter-panel').innerHTML = filterPanel.render();
+                filterPanel.setupEventListeners();
 
-                                    // Initialize Filters
-                                    new FilterPanel((filters) => {
-                                        const filtered = allMembers.filter(member => {
-                                            const cityMatch = !filters.city || member.location?.toLowerCase().includes(filters.city.toLowerCase());
-                                            const teamMatch = !filters.team || member.team?.toLowerCase() === filters.team.toLowerCase();
-                                            const skillMatch = !filters.skill || member.interests?.some(i => i.toLowerCase().includes(filters.skill.toLowerCase()));
-                                            return cityMatch && teamMatch && skillMatch;
-                                        });
+                // Update counts
+                updateCount(allMembers.length);
 
-                                        renderMembers(filtered);
-                                        mapInstance.updateMarkers(filtered);
-                                    }).render();
+            } catch (err) {
+                console.error('Error loading members:', err);
+                loading.innerHTML = '<p class="text-red-500">CONNECTION LOST</p>';
+            }
+        }
 
-                                    // Re-render filter panel to inject into DOM (since FilterPanel.render returns string)
-                                    // We need to slightly adjust how FilterPanel is used or manually inject it
-                                    const filterPanel = new FilterPanel((filters) => {
-                                        const filtered = allMembers.filter(member => {
-                                            const cityMatch = !filters.city || member.location?.toLowerCase().includes(filters.city.toLowerCase());
-                                            const teamMatch = !filters.team || member.team?.toLowerCase() === filters.team.toLowerCase();
-                                            const skillMatch = !filters.skill || member.interests?.some(i => i.toLowerCase().includes(filters.skill.toLowerCase()));
-                                            return cityMatch && teamMatch && skillMatch;
-                                        });
-                                        renderMembers(filtered);
-                                        mapInstance.updateMarkers(filtered);
-                                    });
+        function renderMembers(members) {
+            const container = document.getElementById('members-container');
+            const noResults = document.getElementById('no-results');
 
-                                    document.getElementById('filter-panel').innerHTML = filterPanel.render();
-                                    filterPanel.setupEventListeners();
+            if (members.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                updateCount(0);
+                return;
+            }
 
-                                    // Update counts
-                                    updateCount(allMembers.length);
+            noResults.classList.add('hidden');
+            container.innerHTML = members.map(member => {
+                // Add click handler for map flyTo
+                // We add a data attribute to handle interaction
+                return new MemberCard(member).render().replace('<article', `<article onclick="window.dispatchEvent(new CustomEvent('member-click', {detail: {lat: ${member.lat}, lng: ${member.lng}}}))" class="cursor-pointer`);
+            }).join('');
 
-                                } catch (err) {
-                                    console.error('Error loading members:', err);
-                                    loading.innerHTML = '<p class="text-red-500">CONNECTION LOST</p>';
-                                }
-                            }
+            // Add event listener for member clicks
+            window.addEventListener('member-click', (e) => {
+                if (e.detail.lat && e.detail.lng) {
+                    mapInstance.flyTo(e.detail.lat, e.detail.lng);
+                    // On mobile, maybe switch tab?
+                }
+            });
 
-                            function renderMembers(members) {
-                                const container = document.getElementById('members-container');
-                                const noResults = document.getElementById('no-results');
+            updateCount(members.length);
+        }
 
-                                if (members.length === 0) {
-                                    container.innerHTML = '';
-                                    noResults.classList.remove('hidden');
-                                    updateCount(0);
-                                    return;
-                                }
+        function updateCount(count) {
+            const el = document.getElementById('member-count');
+            if (el) el.textContent = count;
+        }
 
-                                noResults.classList.add('hidden');
-                                container.innerHTML = members.map(member => {
-                                    // Add click handler for map flyTo
-                                    // We add a data attribute to handle interaction
-                                    return new MemberCard(member).render().replace('<article', `<article onclick="window.dispatchEvent(new CustomEvent('member-click', {detail: {lat: ${member.lat}, lng: ${member.lng}}}))" class="cursor-pointer`);
-                                }).join('');
-
-                                // Add event listener for member clicks
-                                window.addEventListener('member-click', (e) => {
-                                    if (e.detail.lat && e.detail.lng) {
-                                        mapInstance.flyTo(e.detail.lat, e.detail.lng);
-                                        // On mobile, maybe switch tab?
-                                    }
-                                });
-
-                                updateCount(members.length);
-                            }
-
-                            function updateCount(count) {
-                                const el = document.getElementById('member-count');
-                                if (el) el.textContent = count;
-                            }
-
-                            domReady(loadMembers);
-                        </script>
-                    </body>
+        domReady(loadMembers);
+    </script>
+</body>
 
 </html>
