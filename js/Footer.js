@@ -10,7 +10,7 @@ export class Footer {
                     <div class="flex flex-col md:flex-row justify-between items-start gap-12">
                         <!-- Brand & Desc -->
                         <div class="text-center md:text-left max-w-sm">
-                             <a href="index.html" class="inline-flex items-center gap-3 mb-6 group">
+                             <a href="/" class="inline-flex items-center gap-3 mb-6 group">
                                 <div class="w-8 h-8 bg-brand-500/10 rounded flex items-center justify-center border border-brand-500/20 group-hover:border-brand-500 transition-colors">
                                     <span class="text-brand-500 font-mono font-bold">CN</span>
                                 </div>

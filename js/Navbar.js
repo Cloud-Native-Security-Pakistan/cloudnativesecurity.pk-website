@@ -23,7 +23,7 @@ export class Navbar {
         const navHtml = `
             <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-nav" id="main-nav">
                 <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-                    <a href="index.html" class="flex items-center gap-3 group">
+                    <a href="/" class="flex items-center gap-3 group">
                         <div class="w-10 h-10 bg-brand-500/20 rounded flex items-center justify-center border border-brand-500/30 group-hover:border-brand-500 transition-colors">
                             <span class="text-brand-500 font-mono font-bold text-xl">CN</span>
                         </div>
@@ -40,7 +40,7 @@ export class Navbar {
 
             if (item.isCta) {
                 return `
-                                    <a href="${item.path.replace(/^\//, '')}" 
+                                    <a href="${item.path}" 
                                        class="px-5 py-2.5 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors">
                                         ${item.name}
                                     </a>
@@ -48,7 +48,7 @@ export class Navbar {
             }
 
             return `
-                                <a href="${item.path.replace(/^\//, '')}" 
+                                <a href="${item.path}" 
                                    class="text-sm font-medium transition-colors ${isActive ? 'text-brand-500' : 'text-gray-400 hover:text-white'}">
                                     ${item.name}
                                 </a>
@@ -65,7 +65,7 @@ export class Navbar {
 
                 <div class="md:hidden hidden absolute top-20 left-0 w-full glass-nav border-t border-white/5 p-6 flex flex-col gap-4" id="mobile-menu">
                      ${this.navItems.map(item => `
-                        <a href="${item.path.replace(/^\//, '')}" 
+                        <a href="${item.path}" 
                            class="block text-lg font-medium py-2 ${item.isCta ? 'text-brand-500' : 'text-gray-300 hover:text-white'}">
                             ${item.name}
                         </a>
