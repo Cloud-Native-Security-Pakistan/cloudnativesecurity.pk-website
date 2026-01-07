@@ -15,7 +15,7 @@ export class Footer {
                                     <span class="text-brand-500 font-mono font-bold">CN</span>
                                 </div>
                                 <span class="font-bold text-gray-100 group-hover:text-white transition-colors">
-                                    Cloud Native Security
+                                    Cloud Native Security Pakistan
                                 </span>
                             </a>
                             <p class="text-sm font-light leading-relaxed text-gray-400 mb-6">

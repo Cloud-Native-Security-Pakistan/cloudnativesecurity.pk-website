@@ -28,7 +28,7 @@ export class Navbar {
                             <span class="text-brand-500 font-mono font-bold text-xl">CN</span>
                         </div>
                         <span class="font-bold text-lg tracking-tight text-gray-100 group-hover:text-white transition-colors">
-                            Cloud Native <span class="text-brand-500">Security</span>
+                            Cloud Native <span class="text-brand-500">Security</span> Pakistan
                         </span>
                     </a>
 
