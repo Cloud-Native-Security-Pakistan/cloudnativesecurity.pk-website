@@ -122,10 +122,10 @@
     <div id="footer"></div>
 
     <script type="module">
-        import { EventCard } from './js/EventCard.js';
-        import { Navbar } from './js/Navbar.js';
-        import { Footer } from './js/Footer.js';
-        import { fetchData, domReady } from './js/utils.js';
+        import { EventCard } from '../js/EventCard.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Footer } from '../js/Footer.js';
+        import { fetchData, domReady } from '../js/utils.js';
 
         new Navbar().init();
         new Footer().init();
@@ -136,7 +136,7 @@
             const error = document.getElementById('error');
 
             try {
-                const events = await fetchData('./data/events.json');
+                const events = await fetchData('../data/events.json');
                 loading.classList.add('hidden');
 
                 if (!events || events.length === 0) {

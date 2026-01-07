@@ -2,11 +2,11 @@ export class Navbar {
     constructor() {
         this.navItems = [
             { name: 'Home', path: '/' },
-            { name: 'Members', path: '/members.html' },
-            { name: 'Events', path: '/events.html' },
-            { name: 'Team', path: '/team.html' },
-            { name: 'Projects', path: '/projects.html' },
-            { name: 'Join Us', path: '/join.html', isCta: true }
+            { name: 'Members', path: '/members' },
+            { name: 'Events', path: '/events' },
+            { name: 'Team', path: '/team' },
+            { name: 'Projects', path: '/projects' },
+            { name: 'Join Us', path: '/join', isCta: true }
         ];
     }
 

@@ -125,11 +125,11 @@
     </main>
 
     <script type="module">
-        import { MemberCard } from './js/MemberCard.js';
-        import { FilterPanel } from './js/FilterPanel.js';
-        import { Navbar } from './js/Navbar.js';
-        import { Map } from './js/Map.js';
-        import { fetchData, domReady } from './js/utils.js';
+        import { MemberCard } from '../js/MemberCard.js';
+        import { FilterPanel } from '../js/FilterPanel.js';
+        import { Navbar } from '../js/Navbar.js';
+        import { Map } from '../js/Map.js';
+        import { fetchData, domReady } from '../js/utils.js';
 
         // Initialize Nav (No footer on this dashboard view)
         new Navbar().init();
@@ -149,7 +149,7 @@
                 mapInstance.init();
 
                 // Fetch Data
-                allMembers = await fetchData('./data/members.json');
+                allMembers = await fetchData('../data/members.json');
                 loading.classList.add('hidden');
 
                 if (!allMembers || allMembers.length === 0) {
