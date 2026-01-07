@@ -1,0 +1,75 @@
+import { domReady } from './utils.js';
+
+export class Map {
+    constructor(elementId) {
+        this.elementId = elementId;
+        this.map = null;
+        this.markers = [];
+        this.tileLayer = null;
+    }
+
+    init() {
+        if (!document.getElementById(this.elementId)) return;
+
+        // Pakistan coordinates
+        this.map = L.map(this.elementId).setView([30.3753, 69.3451], 5);
+
+        // Dark Matter tiles by CartoDB
+        this.tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(this.map);
+
+        // Fix issue where map might not render correctly if container was hidden
+        setTimeout(() => {
+            this.map.invalidateSize();
+        }, 100);
+    }
+
+    /**
+     * Update markers on the map
+     * @param {Array} members 
+     */
+    updateMarkers(members) {
+        // Clear existing markers
+        this.markers.forEach(marker => this.map.removeLayer(marker));
+        this.markers = [];
+
+        // Custom Icon
+        const icon = L.divIcon({
+            className: 'custom-div-icon',
+            html: `<div style='background-color: #00ff00; width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 10px #00ff00; border: 2px solid #000;'></div>`,
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+        });
+
+        members.forEach(member => {
+            if (member.lat && member.lng) {
+                const marker = L.marker([member.lat, member.lng], { icon: icon })
+                    .bindPopup(`
+                        <div class="font-mono text-center">
+                            <strong class="text-green-600 block mb-1">${member.name}</strong>
+                            <span class="text-xs text-gray-600">@${member.username}</span><br/>
+                            <a href="#member-${member.username}" onclick="document.getElementById('member-${member.username}').scrollIntoView({behavior: 'smooth', block: 'center'})" class="text-xs text-blue-500 hover:underline mt-1 inline-block">View Card</a>
+                        </div>
+                    `)
+                    .addTo(this.map);
+
+                this.markers.push(marker);
+            }
+        });
+    }
+
+    /**
+     * Fly to a specific location
+     * @param {number} lat 
+     * @param {number} lng 
+     * @param {number} zoom 
+     */
+    flyTo(lat, lng, zoom = 10) {
+        if (this.map) {
+            this.map.flyTo([lat, lng], zoom);
+        }
+    }
+}

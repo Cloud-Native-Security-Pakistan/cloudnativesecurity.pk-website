@@ -1,96 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
-    <title>Cloud Native Security Pakistan | DevSecOps Community</title>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+
+    <!-- SEO Meta Tags -->
+    <title>Cloud Native Security Pakistan | CNSPK - DevSecOps Community</title>
+    <meta name="description"
+        content="Join Pakistan's largest community of DevSecOps engineers, security researchers, and cloud practitioners. Learn cloud-native security, attend meetups, and connect with experts across Lahore, Islamabad, and Karachi.">
+    <meta name="keywords"
+        content="cloud native security, DevSecOps Pakistan, CNCF Pakistan, Kubernetes security, cloud security, cybersecurity Pakistan, CNSPK, container security, Lahore tech community">
+    <meta name="author" content="Cloud Native Security Pakistan">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cloud Native Security Pakistan - Secure the Cloud Native Future">
+    <meta property="og:description"
+        content="Pakistan's first CNCF Security Chapter. Join 250+ members learning DevSecOps, cloud-native security, and building secure infrastructure.">
+    <meta property="og:url" content="https://cloudnativesecurity.pk/">
+    <meta property="og:site_name" content="Cloud Native Security Pakistan">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cloud Native Security Pakistan - CNSPK">
+    <meta name="twitter:description"
+        content="Join Pakistan's largest DevSecOps and cloud-native security community. 250+ members, 12+ events, 3 major cities.">
+
     <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="canonical" href="https://cloudnativesecurity.pk/">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981', // Emerald 500
+                            600: '#059669',
+                            900: '#064e3b',
+                        },
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#171717',
+                            glass: 'rgba(23, 23, 23, 0.7)',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #10b981 0deg, #064e3b 160deg, #0a0a0a 360deg)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Courier New', monospace; background: #0a0a0a; color: #00ff00; }
-        .grid-bg {
-            background-image: 
-                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
         }
-        @keyframes glitch {
-            0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
-            25% { text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff; }
-            50% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        .glitch-text { animation: glitch 3s infinite; }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero-orb {
+            position: absolute;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col grid-bg">
+
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-500/30 selection:text-brand-500">
+
+    <!-- Navbar Placeholder -->
     <div id="navbar"></div>
-    
+
     <main class="flex-grow">
         <!-- Hero Section -->
-        <section class="container mx-auto px-4 py-20 text-center">
-            <h1 class="text-6xl md:text-7xl font-bold text-green-500 mb-6 font-mono glitch-text">
-                Hello Pakistan<span class="animate-pulse">_</span>
-            </h1>
-            <p class="text-2xl text-gray-400 mb-8 font-mono">Building Secure Cloud Native Communities</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="px-8 py-4 bg-green-500/20 hover:bg-green-500 text-green-500 hover:text-black font-mono rounded border border-green-500 transition-all duration-300">
-                    Join WhatsApp Community
-                </a>
-                <a href="https://community.cncf.io/cloud-native-security-pakistan/" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="px-8 py-4 bg-transparent hover:bg-green-500/20 text-green-500 font-mono rounded border border-green-500 transition-all duration-300">
-                    CNCF Bevy Chapter
-                </a>
-            </div>
-        </section>
+        <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+            <!-- Background Elements -->
+            <div class="hero-orb w-[800px] h-[800px] top-[-20%] left-[-10%] animate-pulse"
+                style="animation-duration: 4s;"></div>
+            <div class="hero-orb w-[600px] h-[600px] bottom-[-10%] right-[-5%] animate-pulse"
+                style="animation-duration: 6s; animation-delay: 1s;"></div>
 
-        <!-- Mission Section -->
-        <section class="container mx-auto px-4 py-16">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-green-500 mb-8 text-center font-mono">Our Mission</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Cloud-Native Security</h3>
-                        <p class="text-gray-400 text-sm">Building secure, scalable cloud-native applications using CNCF technologies</p>
-                    </div>
-                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Open Source</h3>
-                        <p class="text-gray-400 text-sm">Promoting and contributing to open source security tools and projects</p>
-                    </div>
-                    <div class="bg-gray-900 border border-green-500/20 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-green-500 mb-3 font-mono">Community</h3>
-                        <p class="text-gray-400 text-sm">Fostering collaboration and knowledge sharing among security professionals</p>
-                    </div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 hover:border-brand-500/50 transition-colors">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    <span class="text-sm font-mono text-gray-300">The 1st CNCF Security Chapter in Pakistan</span>
+                </div>
+
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight leading-none text-white text-glow">
+                    Secure the <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-cyan-500">Cloud
+                        Native</span> Future
+                </h1>
+
+                <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    Join Pakistan's largest community of DevSecOps engineers, security researchers, and cloud
+                    practitioners.
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                    <a href="join.html"
+                        class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-semibold transition-all hover:scale-105 shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)]">
+                        Become a Member
+                    </a>
+                    <a href="events.html"
+                        class="px-8 py-4 glass-panel hover:bg-white/5 text-gray-200 rounded-lg font-semibold transition-all hover:border-brand-500/50">
+                        Explore Events
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Quick Links -->
-        <section class="container mx-auto px-4 py-16">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-green-500 mb-8 font-mono">Explore</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <a href="events.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
-                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Events</h3>
-                        <p class="text-gray-400">Join our workshops, meetups, and conferences</p>
-                    </a>
-                    <a href="members.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
-                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Members</h3>
-                        <p class="text-gray-400">Connect with 257+ security professionals</p>
-                    </a>
-                    <a href="projects.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
-                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Projects</h3>
-                        <p class="text-gray-400">Explore our open-source initiatives</p>
-                    </a>
-                    <a href="join.html" class="bg-gray-900 border border-green-500/20 p-8 rounded-lg hover:border-green-500 transition-all duration-300 block">
-                        <h3 class="text-2xl font-bold text-green-500 mb-3 font-mono">Join Us</h3>
-                        <p class="text-gray-400">Become part of our community</p>
-                    </a>
+        <!-- Stats Section (Glass Strip) -->
+        <section class="border-y border-white/5 bg-white/[0.02]">
+            <div class="container mx-auto px-6 py-16">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2 font-mono">250+</div>
+                        <div class="text-gray-500 text-sm uppercase tracking-wider">Members</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2 font-mono">12+</div>
+                        <div class="text-gray-500 text-sm uppercase tracking-wider">Events Hosted</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2 font-mono">3</div>
+                        <div class="text-gray-500 text-sm uppercase tracking-wider">Major Cities</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2 font-mono">100%</div>
+                        <div class="text-gray-500 text-sm uppercase tracking-wider">Community Driven</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -101,8 +174,10 @@
     <script type="module">
         import { Navbar } from './js/Navbar.js';
         import { Footer } from './js/Footer.js';
+
         new Navbar().init();
         new Footer().init();
     </script>
 </body>
+
 </html>

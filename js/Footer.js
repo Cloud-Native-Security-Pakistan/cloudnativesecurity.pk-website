@@ -1,72 +1,67 @@
-// Footer Component
 export class Footer {
-    constructor() {
-        this.socialLinks = [
-            { name: 'CNCF Bevy', url: 'https://community.cncf.io/cloud-native-security-pakistan/', icon: '🌐' },
-            { name: 'WhatsApp', url: 'https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo', icon: '💬' },
-            { name: 'LinkedIn', url: 'https://www.linkedin.com/company/cloud-native-security-pakistan', icon: '💼' },
-            { name: 'Twitter', url: 'https://twitter.com/cnspk', icon: '🐦' },
-            { name: 'GitHub', url: 'https://github.com/Cloud-Native-Security-Pakistan', icon: '💻' }
-        ];
+    init() {
+        this.render();
     }
 
     render() {
-        return `
-            <footer class="bg-black border-t border-green-500/20 mt-auto" role="contentinfo">
-                <div class="container mx-auto px-4 py-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div>
-                            <h3 class="text-green-500 font-mono font-bold text-lg mb-4">CNSP</h3>
-                            <p class="text-gray-400 text-sm">
-                                Cloud Native Security Pakistan - Building secure cloud native communities in Pakistan.
+        const footerHtml = `
+            <footer class="border-t border-white/5 bg-black text-gray-400 py-12 mt-20 relative z-10 glass-panel border-x-0 border-b-0 rounded-none">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                        <!-- Brand & Desc -->
+                        <div class="text-center md:text-left max-w-sm">
+                             <a href="index.html" class="inline-flex items-center gap-3 mb-6 group">
+                                <div class="w-8 h-8 bg-brand-500/10 rounded flex items-center justify-center border border-brand-500/20 group-hover:border-brand-500 transition-colors">
+                                    <span class="text-brand-500 font-mono font-bold">CN</span>
+                                </div>
+                                <span class="font-bold text-gray-100 group-hover:text-white transition-colors">
+                                    Cloud Native Security
+                                </span>
+                            </a>
+                            <p class="text-sm font-light leading-relaxed text-gray-400 mb-6">
+                                Open source community dedicated to securing the cloud native ecosystem in Pakistan. Join us to learn, share, and grow.
                             </p>
+                            <div class="flex gap-4 justify-center md:justify-start">
+                                <a href="mailto:hi@cloudnativesecurity.pk" class="text-sm border border-white/10 px-4 py-2 rounded-full hover:bg-white/5 hover:text-white transition-colors">
+                                    hi@cloudnativesecurity.pk
+                                </a>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-green-500 font-mono mb-4">Quick Links</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><a href="about.html" class="text-gray-400 hover:text-green-500 transition-colors">About Us</a></li>
-                                <li><a href="events.html" class="text-gray-400 hover:text-green-500 transition-colors">Events</a></li>
-                                <li><a href="members.html" class="text-gray-400 hover:text-green-500 transition-colors">Members</a></li>
-                                <li><a href="join.html" class="text-gray-400 hover:text-green-500 transition-colors">Join Us</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-green-500 font-mono mb-4">Connect</h4>
-                            <div class="flex flex-wrap gap-3">
-                                ${this.socialLinks.map(link => `
-                                    <a href="${link.url}" 
-                                       target="_blank" 
-                                       rel="noopener noreferrer"
-                                       class="text-gray-400 hover:text-green-500 transition-colors"
-                                       aria-label="${link.name}">
-                                        ${link.icon}
-                                    </a>
-                                `).join('')}
+                        
+                        <!-- Links -->
+                        <div class="flex gap-12 text-sm">
+                            <div>
+                                <h4 class="text-white font-semibold mb-4">Community</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="join.html" class="hover:text-brand-500 transition-colors">Join Us</a></li>
+                                    <li><a href="members.html" class="hover:text-brand-500 transition-colors">Members Directory</a></li>
+                                    <li><a href="events.html" class="hover:text-brand-500 transition-colors">Events & Meetups</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-4">Connect</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="https://community.cncf.io/cloud-native-security-pakistan/" target="_blank" class="hover:text-brand-500 transition-colors">CNCF Chapter</a></li>
+                                    <li><a href="https://twitter.com/cnscpk" target="_blank" class="hover:text-brand-500 transition-colors">Twitter / X</a></li>
+                                    <li><a href="https://linkedin.com/company/cloudnativesecurity-pk" target="_blank" class="hover:text-brand-500 transition-colors">LinkedIn</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-500">
-                        <p>&copy; ${new Date().getFullYear()} Cloud Native Security Pakistan. All rights reserved.</p>
-                        <p class="mt-2">
-                            Made with <span class="text-red-500">♥</span> by 
-                            <a href="https://github.com/farhanashrafdev" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="text-green-500 hover:text-green-400 transition-colors font-mono">
-                                farhanashrafdev
-                            </a>
+                    
+                    <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+                        <p>&copy; ${new Date().getFullYear()} Cloud Native Security Pakistan.</p>
+                        <p class="font-mono">
+                            Made with <span class="text-brand-500">♥</span> by 
+                            <a href="https://github.com/farhanashrafdev" target="_blank" class="hover:text-brand-500 transition-colors">farhanashrafdev</a>
                         </p>
                     </div>
                 </div>
             </footer>
         `;
-    }
 
-    init() {
-        const footerContainer = document.getElementById('footer');
-        if (footerContainer) {
-            footerContainer.innerHTML = this.render();
-        }
+        const el = document.getElementById('footer');
+        if (el) el.innerHTML = footerHtml;
     }
 }
 
