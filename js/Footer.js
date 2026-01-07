@@ -33,9 +33,9 @@ export class Footer {
                             <div>
                                 <h4 class="text-white font-semibold mb-4">Community</h4>
                                 <ul class="space-y-2">
-                                    <li><a href="/join" class="hover:text-brand-500 transition-colors">Join Us</a></li>
-                                    <li><a href="/members" class="hover:text-brand-500 transition-colors">Members Directory</a></li>
-                                    <li><a href="/events" class="hover:text-brand-500 transition-colors">Events & Meetups</a></li>
+                                    <li><a href="/join/index.html" class="hover:text-brand-500 transition-colors">Join Us</a></li>
+                                    <li><a href="/members/index.html" class="hover:text-brand-500 transition-colors">Members Directory</a></li>
+                                    <li><a href="/events/index.html" class="hover:text-brand-500 transition-colors">Events & Meetups</a></li>
                                 </ul>
                             </div>
                             <div>
