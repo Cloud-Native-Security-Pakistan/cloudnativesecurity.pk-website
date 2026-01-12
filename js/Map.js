@@ -51,7 +51,7 @@ export class Map {
                         <div class="font-mono text-center">
                             <strong class="text-green-600 block mb-1">${member.name}</strong>
                             <span class="text-xs text-gray-600">@${member.username}</span><br/>
-                            <a href="#member-${member.username}" onclick="document.getElementById('member-${member.username}').scrollIntoView({behavior: 'smooth', block: 'center'})" class="text-xs text-blue-500 hover:underline mt-1 inline-block">View Card</a>
+                            <a href="#member-${member.username}" data-view-card="${member.username}" class="text-xs text-blue-500 hover:underline mt-1 inline-block view-card-link">View Card</a>
                         </div>
                     `)
                     .addTo(this.map);
@@ -61,6 +61,27 @@ export class Map {
                 this.markers.push(marker);
             }
         });
+
+        // Set up event delegation for View Card links (only once)
+        if (!this._viewCardListenerSet) {
+            this._viewCardListenerSet = true;
+            document.getElementById(this.elementId).addEventListener('click', (e) => {
+                const link = e.target.closest('[data-view-card]');
+                if (link) {
+                    e.preventDefault();
+                    const username = link.dataset.viewCard;
+                    const memberCard = document.getElementById(`member-${username}`);
+                    if (memberCard) {
+                        memberCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // Highlight the card briefly
+                        memberCard.classList.add('ring-2', 'ring-green-500');
+                        setTimeout(() => {
+                            memberCard.classList.remove('ring-2', 'ring-green-500');
+                        }, 2000);
+                    }
+                }
+            });
+        }
     }
 
     /**
