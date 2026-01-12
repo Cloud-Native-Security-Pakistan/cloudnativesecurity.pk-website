@@ -56,9 +56,22 @@ export class Map {
                     `)
                     .addTo(this.map);
 
+                // Store username for later lookup
+                marker._username = member.username;
                 this.markers.push(marker);
             }
         });
+    }
+
+    /**
+     * Open popup for a specific member by username
+     * @param {string} username 
+     */
+    openPopupByUsername(username) {
+        const marker = this.markers.find(m => m._username === username);
+        if (marker) {
+            marker.openPopup();
+        }
     }
 
     /**

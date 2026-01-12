@@ -145,6 +145,9 @@
         let allMembers = [];
         let mapInstance = null;
 
+        // Set up event listeners once (outside render to avoid duplicates)
+        let isListenerSet = false;
+
         // Load members
         async function loadMembers() {
             const container = document.getElementById('members-container');
@@ -220,18 +223,44 @@
 
             noResults.classList.add('hidden');
             container.innerHTML = members.map(member => {
-                // Add click handler for map flyTo
-                // We add a data attribute to handle interaction
-                return new MemberCard(member).render().replace('<article', `<article onclick="window.dispatchEvent(new CustomEvent('member-click', {detail: {lat: ${member.lat}, lng: ${member.lng}}}))" class="cursor-pointer`);
+                // Add data attributes for click handling
+                return new MemberCard(member).render().replace(
+                    '<article',
+                    `<article data-lat="${member.lat}" data-lng="${member.lng}" data-username="${member.username}" class="cursor-pointer`
+                );
             }).join('');
 
-            // Add event listener for member clicks
-            window.addEventListener('member-click', (e) => {
-                if (e.detail.lat && e.detail.lng) {
-                    mapInstance.flyTo(e.detail.lat, e.detail.lng);
-                    // On mobile, maybe switch tab?
-                }
-            });
+            // Set up event listeners once
+            if (!isListenerSet) {
+                isListenerSet = true;
+
+                // Handle single click - fly to map
+                container.addEventListener('click', (e) => {
+                    const card = e.target.closest('article[data-lat]');
+                    if (card && mapInstance) {
+                        const lat = parseFloat(card.dataset.lat);
+                        const lng = parseFloat(card.dataset.lng);
+                        if (lat && lng) {
+                            mapInstance.flyTo(lat, lng, 12);
+                        }
+                    }
+                });
+
+                // Handle double click - open marker popup
+                container.addEventListener('dblclick', (e) => {
+                    const card = e.target.closest('article[data-username]');
+                    if (card && mapInstance) {
+                        const username = card.dataset.username;
+                        const lat = parseFloat(card.dataset.lat);
+                        const lng = parseFloat(card.dataset.lng);
+                        if (lat && lng) {
+                            mapInstance.flyTo(lat, lng, 14);
+                            // Find and open the marker popup
+                            mapInstance.openPopupByUsername(username);
+                        }
+                    }
+                });
+            }
 
             updateCount(members.length);
         }
