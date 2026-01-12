@@ -224,9 +224,14 @@
             noResults.classList.add('hidden');
             container.innerHTML = members.map(member => {
                 // Add data attributes for click handling
-                return new MemberCard(member).render().replace(
-                    '<article',
-                    `<article data-lat="${member.lat}" data-lng="${member.lng}" data-username="${member.username}" class="cursor-pointer`
+                const cardHtml = new MemberCard(member).render();
+                // Add data attributes to the article - the id is already set by MemberCard
+                return cardHtml.replace(
+                    '<article ',
+                    `<article data-lat="${member.lat}" data-lng="${member.lng}" data-username="${member.username}" `
+                ).replace(
+                    'class="glass-panel',
+                    'class="cursor-pointer glass-panel'
                 );
             }).join('');
 
@@ -234,29 +239,19 @@
             if (!isListenerSet) {
                 isListenerSet = true;
 
-                // Handle single click - fly to map
+                // Handle click - fly to map AND open popup
                 container.addEventListener('click', (e) => {
                     const card = e.target.closest('article[data-lat]');
-                    if (card && mapInstance) {
-                        const lat = parseFloat(card.dataset.lat);
-                        const lng = parseFloat(card.dataset.lng);
-                        if (lat && lng) {
-                            mapInstance.flyTo(lat, lng, 12);
-                        }
-                    }
-                });
-
-                // Handle double click - open marker popup
-                container.addEventListener('dblclick', (e) => {
-                    const card = e.target.closest('article[data-username]');
                     if (card && mapInstance) {
                         const username = card.dataset.username;
                         const lat = parseFloat(card.dataset.lat);
                         const lng = parseFloat(card.dataset.lng);
                         if (lat && lng) {
-                            mapInstance.flyTo(lat, lng, 14);
-                            // Find and open the marker popup
-                            mapInstance.openPopupByUsername(username);
+                            mapInstance.flyTo(lat, lng, 12);
+                            // Open the marker popup after a small delay for fly animation
+                            setTimeout(() => {
+                                mapInstance.openPopupByUsername(username);
+                            }, 800);
                         }
                     }
                 });
