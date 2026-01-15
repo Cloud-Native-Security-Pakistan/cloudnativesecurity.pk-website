@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "Kubernetes Security Deep Dive: From Zero to Production",
+        "description": "Learn how to secure your Kubernetes clusters from the ground up. We cover RBAC, Network Policies, Pod Security Standards, and runtime security with hands-on demos.",
+        "date": "2025-12-15",
+        "duration": "45 min",
+        "type": "recorded",
+        "topic": "Kubernetes Security",
+        "recordingUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "registrationUrl": null,
+        "thumbnail": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80",
+        "speaker": {
+            "name": "Muhammad Farhan Ashraf",
+            "role": "DevSecOps Engineer",
+            "company": "SystemsLTD",
+            "image": "https://avatars.githubusercontent.com/u/35392263",
+            "linkedin": "https://www.linkedin.com/in/farhanashrafdev/",
+            "twitter": "https://twitter.com/mriceflame"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Container Image Security: Building Secure Pipelines",
+        "description": "Master the art of securing container images. From base image selection to vulnerability scanning, signing, and secure CI/CD pipelines with Trivy and Cosign.",
+        "date": "2025-11-20",
+        "duration": "50 min",
+        "type": "recorded",
+        "topic": "Container Security",
+        "recordingUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "registrationUrl": null,
+        "thumbnail": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+        "speaker": {
+            "name": "Syed Naqvi",
+            "role": "Security Project Manager",
+            "company": "Securiti.ai",
+            "image": "https://avatars.githubusercontent.com/u/12345678",
+            "linkedin": "https://LinkedIn.com/in/syedalizain033",
+            "twitter": "https://twitter.com/Syedalizain033"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Cloud Native Secrets Management",
+        "description": "Explore best practices for managing secrets in cloud-native environments. We'll cover HashiCorp Vault, Kubernetes secrets, External Secrets Operator, and SOPS.",
+        "date": "2025-10-05",
+        "duration": "40 min",
+        "type": "recorded",
+        "topic": "Secrets Management",
+        "recordingUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "registrationUrl": null,
+        "thumbnail": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+        "speaker": {
+            "name": "Sharjeel Yunus",
+            "role": "Web and Graphics Lead",
+            "company": "Ensemble Technologies",
+            "image": "https://avatars.githubusercontent.com/u/87654321",
+            "linkedin": "https://www.linkedin.com/in/sharjeel-yunus/",
+            "twitter": "https://twitter.com/sharjeelyunus"
+        }
+    },
+    {
+        "id": 4,
+        "title": "Zero Trust Architecture in Kubernetes",
+        "description": "Implementing Zero Trust security models in Kubernetes with service mesh, mTLS, and identity-based access control using Istio and SPIFFE/SPIRE.",
+        "date": "2026-01-25",
+        "duration": "55 min",
+        "type": "upcoming",
+        "topic": "Zero Trust",
+        "recordingUrl": null,
+        "registrationUrl": "https://community.cncf.io/events/details/cncf-cloud-native-security-pakistan-presents-zero-trust-architecture/",
+        "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+        "speaker": {
+            "name": "Muhammad Abdullah",
+            "role": "Software Engineer & Community Leader",
+            "company": "Manafa",
+            "image": "https://avatars.githubusercontent.com/u/11223344",
+            "linkedin": "https://www.linkedin.com/in/muhammad-abdullah-software-engineer-pk/",
+            "twitter": null
+        }
+    },
+    {
+        "id": 5,
+        "title": "Securing the Software Supply Chain",
+        "description": "Deep dive into software supply chain security with SLSA, Sigstore, in-toto, and SBOMs. Protect your builds from compromised dependencies and malicious code.",
+        "date": "2026-02-10",
+        "duration": "60 min",
+        "type": "upcoming",
+        "topic": "Supply Chain Security",
+        "recordingUrl": null,
+        "registrationUrl": "https://community.cncf.io/events/details/cncf-cloud-native-security-pakistan-presents-supply-chain-security/",
+        "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+        "speaker": {
+            "name": "Hasnaat Iftikhar",
+            "role": "FullStack Developer & Designer",
+            "company": "Webling",
+            "image": "https://avatars.githubusercontent.com/u/55667788",
+            "linkedin": "https://www.linkedin.com/in/hasnaat-iftikhar/",
+            "twitter": "https://twitter.com/HasnaatIftikha1"
+        }
+    }
+]
