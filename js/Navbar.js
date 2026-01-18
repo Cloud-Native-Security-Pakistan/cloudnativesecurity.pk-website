@@ -4,6 +4,7 @@ export class Navbar {
             { name: 'Home', path: '/' },
             { name: 'Members', path: '/members/index.html' },
             { name: 'Events', path: '/events/index.html' },
+            { name: 'Sessions', path: '/sessions/index.html' },
             { name: 'Team', path: '/team/index.html' },
             { name: 'Projects', path: '/projects/index.html' },
             { name: 'Join Us', path: '/join/index.html', isCta: true }
