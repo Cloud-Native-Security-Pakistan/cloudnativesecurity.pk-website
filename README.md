@@ -4,42 +4,46 @@
 
 ## 🚀 Overview
 
-This repository hosts the static frontend for the CNSPK community website. It is designed to be hosted on **GitHub Pages** with dynamic client-side fetching for members and events.
+This repository hosts the static frontend for the CNSPK community website. It is designed to be hosted on **GitHub Pages** with a modern, "app-like" experience using clean URLs and dynamic client-side fetching.
 
 ### Features
-- **Interactive Map**: Visualize the community distribution across Pakistan using Leaflet.js with custom dark-mode tiles.
-- **Dynamic Events**: Fetches recent community events (from `data/events.json` or compatible API) and displays them in a responsive grid.
+- **Interactive Map**: Visualize the community distribution across Pakistan using Leaflet.js (`/members/`).
+- **Dynamic Events**: Fetches recent community events and displays them in a responsive grid (`/events/`).
+- **Sessions Hub**: A dedicated platform for online talks, featuring AI-generated summaries, transcripts, and premium video player experiences (`/sessions/`).
+- **Clean URLs**: Modern URL structure (e.g., `/sessions/view/?id=1`) for a professional look.
 - **Member Directory**: Filterable list of members with a split-view dashboard layout.
 - **Cyber Aesthetic**: Custom Tailwind CSS design system with glitch effects, glowing text, and glassmorphism.
 
 ## 🛠 Tech Stack
 
 - **Core**: HTML5, Modern JavaScript (ES6+ Modules)
-- **Styling**: Tailwind CSS (CDN for dev / CLI for prod) + Custom CSS
+- **Styling**: Tailwind CSS v4 (Custom Glitch/Neon Theme)
 - **Map**: Leaflet.js + CartoDB Dark Matter Tiles
 - **Security**: DOMPurify for XSS protection, strict CSP headers
-- **Data**: JSON-based data store (`data/`) ready for API integration
+- **CI/CD**: GitHub Actions for minimal testing and build checks
 
 ## 📂 Project Structure
 
 ```
 cnsp-website/
 ├── assets/          # Static assets (logos, placeholders)
-├── css/            # Custom styles (if any beyond Tailwind)
-├── data/           # Data store
-│   ├── events.json   # Real event data (CNCF source)
-│   └── members.json  # Member directory data
-├── js/             # Modular components
-│   ├── EventCard.js    # Event display component
-│   ├── FilterPanel.js  # Member filtering logic
-│   ├── Map.js          # Leaflet map integration
-│   ├── MemberCard.js   # Member display component
-│   ├── Navbar.js       # Responsive navigation
-│   └── utils.js        # Data fetching & sanitization helpers
-├── events.html     # Events page
-├── index.html      # Landing page
-├── members.html    # Interactive map dashboard
-└── README.md       # Documentation
+├── css/             # Custom styles and Tailwind input
+├── data/            # JSON Data Store
+│   ├── events.json    # Community events
+│   ├── members.json   # Member directory
+│   ├── sessions.json  # Online sessions & AI transcripts
+│   └── team.json      # Core team members
+├── js/              # Modular Components
+│   ├── EventCard.js     # Event display component
+│   ├── SessionCard.js   # Session list item component
+│   ├── SessionDetail.js # Full session view with AI features
+│   ├── Navbar.js        # Responsive navigation
+│   └── ...
+├── events/          # Events page (index.html)
+├── members/         # Members map dashboard
+├── sessions/        # Sessions hub
+│   ├── view/          # Individual session detail view
+└── README.md        # Documentation
 ```
 
 ## ⚡ Quick Start
@@ -51,22 +55,44 @@ cnsp-website/
    ```
 
 2. **Run locally**:
-   Since this is a modern module-based static site, you need a local server to avoid CORS issues with ES6 modules.
+   You need a local server to handle ES6 modules and routing.
    ```bash
-   # Python 3
-   python -m http.server 8000
+   # Using Python 3
+   python -m http.server 3000
    
-   # Node.js (http-server)
-   npx http-server .
+   # Using Node.js
+   npx serve .
    ```
 
 3. **Open in Browser**:
-   Navigate to `http://localhost:8000`.
+   Navigate to `http://localhost:3000`.
 
 ## 🤝 Contributing
 
-1. **Add yourself**: Edit `data/members.json` and submit a PR.
-2. **Submit an Event**: Open an issue or update `data/events.json`.
+We welcome contributions from the community!
+
+### How to Contribute
+
+1.  **Fork** the repository.
+2.  **Create a branch** for your feature or fix (`git checkout -b feature/amazing-feature`).
+3.  **Commit** your changes.
+4.  **Push** to your branch.
+5.  **Open a Pull Request** to the `main` branch.
+
+### 🧪 CI/CD Checks
+
+We have an automated pipeline set up to ensure code quality. When you open a Pull Request, the following checks will run:
+
+-   **Linting**: Checks for JavaScript errors and code style issues.
+-   **Build**: Verifies that the CSS builds correctly with Tailwind.
+-   **Tests**: Runs basic integrity tests.
+
+**✅ Your PR must pass these checks to be merged.** If a check fails, click on "Details" next to the failure to see what went wrong.
+
+### Common Tasks
+-   **Add yourself as a member**: Edit `data/members.json`.
+-   **Submit an Event**: Update `data/events.json`.
+-   **Fix a bug**: Submit a PR with the fix and description.
 
 ## 🔒 Security
 
