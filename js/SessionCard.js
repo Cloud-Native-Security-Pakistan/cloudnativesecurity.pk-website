@@ -90,30 +90,22 @@ export class SessionCard {
                         </span>
                     </div>
 
-                    <div class="mt-auto pt-4 border-t border-white/5 flex gap-3">
+                    <div class="mt-auto pt-4 border-t border-white/5">
                         ${isUpcoming ? `
                             <a href="${sanitize(registrationUrl)}" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="flex-1 text-center px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition-all">
-                                Register Now
+                               class="w-full text-center block px-4 py-3 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/20">
+                                Register Now →
                             </a>
                         ` : `
                             <a href="${sanitize(recordingUrl)}" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="flex-1 text-center px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition-all">
-                                Watch Recording
+                               class="w-full text-center block px-4 py-3 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/20">
+                                ▶ Watch Recording
                             </a>
                         `}
-                        <a href="/sessions/trophy/?id=${id}" 
-                           class="px-4 py-2.5 border border-white/10 hover:border-brand-500/50 hover:bg-white/5 text-gray-300 text-sm font-medium rounded-lg transition-all flex items-center gap-2"
-                           title="View Speaker Trophy">
-                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M5 2h14v2H5zm0 4h14v2H5zM5 8h14v6c0 1.1-.9 2-2 2h-4v2h3v2H8v-2h3v-2H7c-1.1 0-2-.9-2-2V8zm2 2v4h10v-4H7z"/>
-                            </svg>
-                            <span>Trophy</span>
-                        </a>
                     </div>
                 </div>
             </article>
