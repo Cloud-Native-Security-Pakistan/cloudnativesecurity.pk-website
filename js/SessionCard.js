@@ -99,9 +99,7 @@ export class SessionCard {
                                 Register Now →
                             </a>
                         ` : `
-                            <a href="${sanitize(recordingUrl)}" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
+                            <a href="/sessions/view/?id=${id}" 
                                class="w-full text-center block px-4 py-3 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/20">
                                 ▶ Watch Recording
                             </a>
