@@ -2,7 +2,7 @@
  * Utility functions for CNSPK Website
  */
 
-// Simple robust logger
+// Simple robust logger for CNSPK
 const log = {
     info: (...args) => console.log('[CNSPK]', ...args),
     error: (...args) => console.error('[CNSPK]', ...args),
