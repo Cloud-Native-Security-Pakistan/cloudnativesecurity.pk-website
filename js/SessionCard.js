@@ -20,8 +20,14 @@ export class SessionCard {
             day: 'numeric'
         });
 
+        // For recorded sessions, entire card is clickable
+        // For upcoming, only the Register button is clickable (external link)
+        const cardLink = isUpcoming ? null : `/sessions/view/?id=${id}`;
+        const wrapperTag = cardLink ? 'a' : 'div';
+        const wrapperAttrs = cardLink ? `href="${cardLink}"` : '';
+
         return `
-            <article class="glass-panel rounded-xl overflow-hidden group hover:border-brand-500/30 transition-all duration-300 flex flex-col h-full hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)]" data-session-id="${id}">
+            <${wrapperTag} ${wrapperAttrs} class="block glass-panel rounded-xl overflow-hidden group hover:border-brand-500/30 transition-all duration-300 flex flex-col h-full hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)] cursor-pointer" data-session-id="${id}">
                 <!-- Thumbnail Container -->
                 <div class="relative h-48 overflow-hidden">
                     <img src="${sanitize(thumbnail)}" 
@@ -99,14 +105,13 @@ export class SessionCard {
                                 Register Now →
                             </a>
                         ` : `
-                            <a href="/sessions/view/?id=${id}" 
-                               class="w-full text-center block px-4 py-3 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/20">
+                            <span class="w-full text-center block px-4 py-3 bg-gradient-to-r from-brand-600 to-brand-500 group-hover:from-brand-500 group-hover:to-brand-400 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/20">
                                 ▶ Watch Recording
-                            </a>
+                            </span>
                         `}
                     </div>
                 </div>
-            </article>
+            </${wrapperTag}>
         `;
     }
 }
