@@ -18,9 +18,8 @@
   "author": "Cloud Native Security Pakistan",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.4.0",
-    "eslint": "^8.55.0"
+    "tailwindcss": "^4.1.18",
+    "eslint": "^9.39.2"
   },
   "dependencies": {}
 }
-
