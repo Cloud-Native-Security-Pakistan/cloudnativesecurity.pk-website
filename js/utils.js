@@ -35,7 +35,7 @@ export function sanitize(dirty) {
     if (!dirty) return '';
     // Check if DOMPurify is loaded globally (from CDN in index.html)
     if (window.DOMPurify) {
-        return window.DOMPurify.sanitize(dirty, { 
+        return window.DOMPurify.sanitize(dirty, {
             ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'span', 'div', 'ul', 'li'],
             ALLOWED_ATTR: ['href', 'target', 'class', 'rel']
         });
@@ -59,4 +59,22 @@ export function domReady(fn) {
     } else {
         document.addEventListener('DOMContentLoaded', fn);
     }
+}
+
+/**
+ * Debounce function to limit the rate at which a function can fire.
+ * @param {Function} func - The function to debounce.
+ * @param {number} wait - The delay in milliseconds.
+ * @returns {Function} - The debounced function.
+ */
+export function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
