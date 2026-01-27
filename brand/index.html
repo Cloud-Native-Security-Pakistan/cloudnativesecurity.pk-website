@@ -6,14 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Cloud Native Security Pakistan brand guidelines and logo assets. Download official logos and learn how to use our brand.">
+    <!-- Anti-scraping meta tags -->
+    <meta name="robots" content="noarchive, noimageindex">
+    <meta http-equiv="X-Robots-Tag" content="noarchive">
     <title>Brand - Cloud Native Security Pakistan</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Anti-scraping styles -->
+    <style>
+        /* Disable text selection */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Honeypot - invisible to humans, visible to bots */
+        .ohnohoney {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
+        }
+    </style>
 </head>
 
-<body>
+<body class="no-select" oncontextmenu="return false;">
+    <!-- Honeypot for bots - invisible to users -->
+    <div class="ohnohoney">
+        <a href="/admin">Admin</a>
+        <a href="/members">Members List</a>
+        <input type="email" name="email" tabindex="-1" autocomplete="off">
+    </div>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -319,6 +349,46 @@
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
+
+        // Anti-scraping protection
+        // Disable keyboard shortcuts (Ctrl+U, Ctrl+S, Ctrl+Shift+I, F12)
+        document.addEventListener('keydown', function (e) {
+            // Ctrl+U (view source)
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+S (save)
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (dev tools)
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            // F12 (dev tools)
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+C (inspect element)
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag on images
+        document.querySelectorAll('img').forEach(img => {
+            img.setAttribute('draggable', 'false');
+            img.addEventListener('dragstart', e => e.preventDefault());
+        });
+
+        // Console warning for scrapers
+        console.log('%c⚠️ STOP!', 'color: red; font-size: 50px; font-weight: bold;');
+        console.log('%cThis browser feature is intended for developers. If someone told you to copy-paste something here, it is a scam.', 'font-size: 16px;');
     </script>
 </body>
 
