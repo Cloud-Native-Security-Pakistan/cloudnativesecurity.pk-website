@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-dark: #050a14;
+  --color-cyber-blue: #00f0ff;
+  --color-cyber-green: #00ff9d;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+
+  --animate-scan: scan 4s linear infinite;
+  --animate-type: type 3s steps(40, end);
+
+  @keyframes scan {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    100% {
+      background-position: 0% 100%;
+    }
+  }
+}
+
+body {
+  @apply bg-slate-950 text-slate-50 font-sans selection:bg-cyan-500/30 selection:text-cyan-200;
+  background-color: #050a14;
+  background-image: radial-gradient(circle at 50% 0%, #003366 0%, transparent 70%);
+  min-height: 100vh;
+}
