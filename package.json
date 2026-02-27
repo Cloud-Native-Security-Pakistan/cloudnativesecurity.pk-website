@@ -1,32 +1,26 @@
 {
-  "name": "temp_site",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "cnspk-website",
+  "version": "1.0.0",
+  "description": "Cloud Native Security Pakistan official website",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+    "dev": "npx serve .",
+    "test": "echo 'Tests will be added here'",
+    "lint": "eslint js/**/*.js || true"
   },
-  "dependencies": {
-    "framer-motion": "^12.29.2",
-    "lucide-react": "^0.563.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
-  },
+  "keywords": [
+    "cloud-native",
+    "security",
+    "cncf",
+    "pakistan"
+  ],
+  "author": "Cloud Native Security Pakistan",
+  "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.5",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
     "tailwindcss": "^4.1.18",
-    "vite": "^7.2.4"
-  }
+    "@tailwindcss/cli": "^4.0.0",
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {}
 }
