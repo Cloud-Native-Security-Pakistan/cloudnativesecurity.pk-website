@@ -50,7 +50,7 @@ const Home = () => {
                         </p>
 
                         <div className="flex flex-wrap gap-6">
-                            <a href="https://github.com/cloud-native-security-pakistan" className="group relative px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] flex items-center gap-3 overflow-hidden">
+                            <a href="https://github.com/cloud-native-security-pakistan" className="group relative px-8 py-4 bg-cyan-500 hover:bg-cyan-300 text-slate-950 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_40px_rgba(0,240,255,0.8)] flex items-center gap-3 overflow-hidden scale-100 hover:scale-105">
                                 <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></span>
                                 <Shield className="w-5 h-5 relative z-10" />
                                 <span className="relative z-10 font-mono uppercase tracking-wider text-sm">Join the Force</span>
