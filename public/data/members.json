@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "name": "Alex R.",
+        "role": "DevSecOps Engineer",
+        "city": "Lahore",
+        "coordinates": [
+            74.3587,
+            31.5204
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Sarah O.",
+        "role": "Cloud Architect",
+        "city": "Karachi",
+        "coordinates": [
+            67.0011,
+            24.8607
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Zainullah K.",
+        "role": "Security Analyst",
+        "city": "Islamabad",
+        "coordinates": [
+            73.0479,
+            33.6844
+        ]
+    },
+    {
+        "id": "4",
+        "name": "Usman F.",
+        "role": "Platform Engineer",
+        "city": "Faisalabad",
+        "coordinates": [
+            73.0850,
+            31.4187
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Hamza S.",
+        "role": "Student / Enthusiast",
+        "city": "Peshawar",
+        "coordinates": [
+            71.5249,
+            34.0151
+        ]
+    }
+]

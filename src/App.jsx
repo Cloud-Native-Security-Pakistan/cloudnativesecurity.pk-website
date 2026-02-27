@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import BrandPage from './pages/BrandPage';
+import MembersMap from './pages/MembersMap';
 import Placeholder from './pages/Placeholder';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/brand" element={<BrandPage />} />
+            <Route path="/members" element={<MembersMap />} />
             <Route path="/team" element={<Placeholder title="Team" />} />
             <Route path="/events" element={<Placeholder title="Events" />} />
           </Routes>
