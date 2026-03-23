@@ -7,6 +7,7 @@ export class Navbar {
             { name: 'Sessions', path: '/sessions/' },
             { name: 'Team', path: '/team/' },
             { name: 'Projects', path: '/projects/' },
+            { name: 'Hire Experts', path: '/consultants/' },
             { name: 'Join Us', path: '/join/', isCta: true }
         ];
     }
