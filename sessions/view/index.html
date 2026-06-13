@@ -1,121 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com https://avatars.githubusercontent.com https://ui-avatars.com https://www.youtube.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube.com;">
 
-    <!-- Dynamic SEO -->
-    <title>Session View - Cloud Native Security Pakistan</title>
-    <meta name="description" content="Watch cloud-native security sessions.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com https://avatars.githubusercontent.com https://ui-avatars.com https://www.youtube.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://community.cncf.io https://avatars.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto: https://docs.google.com; frame-src https://www.youtube.com;">
+
+    <!-- Dynamic SEO — updated by JS on load -->
+    <title>Session — CNSPK · Cloud Native Security Pakistan</title>
+    <meta name="description" content="Watch cloud-native security sessions from CNSPK speakers.">
+    <meta name="theme-color" content="#0F1115">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" id="og-title" content="Session View - CNSPK">
-    <meta property="og:description" id="og-description" content="Watch cloud-native security sessions.">
+    <meta property="og:title" id="og-title" content="Session — CNSPK">
+    <meta property="og:description" id="og-description" content="Watch cloud-native security sessions from CNSPK speakers.">
+    <meta property="og:url" content="https://cloudnativesecurity.pk/sessions/view/">
+    <meta property="og:site_name" content="Cloud Native Security Pakistan">
+    <meta property="og:image" content="https://cloudnativesecurity.pk/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Session — CNSPK">
+    <meta name="twitter:description" content="Watch cloud-native security sessions from CNSPK speakers.">
+    <meta name="twitter:image" content="https://cloudnativesecurity.pk/logo.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
     <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="canonical" href="https://cloudnativesecurity.pk/sessions/view/">
+
+    <!-- Performance: preconnect to font + CDN origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Design tokens first -->
+    <link rel="stylesheet" href="/css/tokens.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            900: '#064e3b',
-                        },
-                        dark: {
-                            900: '#0a0a0a',
-                            800: '#171717',
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js" integrity="sha384-cwS6YdhLI7XS60eoDiC+egV0qHp8zI+Cms46R0nbn8JrmoAzV9uFL60etMZhAnSu" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
     <style>
-        body {
-            background-color: #050505;
-            color: #e5e5e5;
+        /* ==========================================================
+           Session detail · Electric register · page-specific styles
+           Shared primitives come from /css/tokens.css.
+        ========================================================== */
+
+        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+        /* ---- Detail header area ----------------------------- */
+        .session-header {
+            padding: 120px 0 48px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 40%, rgba(199, 255, 62, 0.05) 0%, transparent 60%),
+                var(--carbon);
+        }
+        .session-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(199, 255, 62, 0.04) 1px, transparent 0);
+            background-size: 48px 48px;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+        }
+        .session-header .wrap { position: relative; z-index: 2; }
+
+        /* ---- Back link -------------------------------------- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 24px;
+            transition: color var(--dur-hover) var(--ease);
+        }
+        .back-link:hover { color: var(--lime); }
+        .back-link svg { width: 16px; height: 16px; }
+
+        /* ---- Session content area --------------------------- */
+        .session-content {
+            padding: 48px 0 96px;
+            background: var(--carbon);
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* ---- Loading state ---------------------------------- */
+        .loading-state {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .loading-state .spinner {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--lime);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-state span {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--steel);
         }
 
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* ---- Error state ------------------------------------ */
+        .error-state {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-box {
+            text-align: center;
+            padding: 48px;
+            border: 1px solid var(--slate);
+            background: var(--charcoal);
+            border-radius: var(--r-lg);
+            max-width: 480px;
+            width: 100%;
+        }
+        .error-box .icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(244, 63, 94, 0.1);
+            margin-bottom: 20px;
+        }
+        .error-box .icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            color: var(--breach);
+        }
+        .error-box h2 {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 22px;
+            color: var(--bone);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .error-box p {
+            font-size: 15px;
+            color: var(--steel);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        .error-box .btn-primary { font-size: 14px; padding: 14px 24px; }
+
+        /* ---- Responsive ------------------------------------- */
+        @media (max-width: 768px) {
+            .session-header { padding: 88px 0 36px; }
+            .session-content { padding: 32px 0 64px; }
+            .wrap { padding: 0 20px; }
         }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col antialiased selection:bg-brand-500/30 selection:text-brand-500">
+<body>
+
+    <!-- ===== Navbar (mounted via /js/Navbar.js) ===== -->
     <div id="navbar"></div>
 
-    <main class="flex-grow pt-24">
-        <div id="session-container" class="container mx-auto px-6">
-            <!-- Loading State -->
-            <div id="loading" class="min-h-[50vh] flex items-center justify-center">
-                <div class="flex flex-col items-center gap-4">
-                    <div class="w-12 h-12 border-2 border-brand-500 border-t-transparent rounded-full animate-spin">
-                    </div>
-                    <span class="text-gray-500 font-mono text-sm">Loading session details...</span>
-                </div>
-            </div>
-        </div>
+    <main>
 
-        <div id="error" class="hidden min-h-[50vh] flex items-center justify-center container mx-auto px-6">
-            <div class="text-center p-8 border border-white/5 bg-white/[0.02] rounded-xl w-full max-w-lg">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 mb-4">
-                    <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        <!-- ===== Header with eyebrow + back nav ===== -->
+        <section class="session-header">
+            <div class="wrap">
+                <a href="/sessions/" class="back-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
-                </div>
-                <h2 class="text-xl font-bold text-white mb-2">Session Not Found</h2>
-                <p class="text-gray-400 mb-6">The session you are looking for might have been removed or does not exist.
-                </p>
-                <a href="/sessions/"
-                    class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-lg transition-all">
-                    Browse All Sessions
+                    All Sessions
                 </a>
+                <div class="section-eyebrow">// session / detail</div>
             </div>
-        </div>
+        </section>
+
+        <!-- ===== Session content (rendered by SessionDetail.js) ===== -->
+        <section class="session-content">
+            <div class="wrap">
+                <div id="session-container">
+                    <!-- Loading State -->
+                    <div id="loading" class="loading-state">
+                        <div class="spinner"></div>
+                        <span>Loading session details...</span>
+                    </div>
+                </div>
+
+                <div id="error" class="hidden error-state">
+                    <div class="error-box">
+                        <div class="icon-wrap">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <h2>Session not found</h2>
+                        <p>The session you are looking for might have been removed or does not exist.</p>
+                        <a href="/sessions/" class="btn-primary">
+                            Browse Sessions
+                            <span style="font-family:var(--font-mono);">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- ===== Footer (mounted via /js/Footer.js) ===== -->
     <div id="footer"></div>
 
     <script type="module">
@@ -151,12 +267,12 @@
                     return;
                 }
 
-                // Update Meta
-                document.title = `${session.title} - CNSPK Session`;
+                // Update page meta dynamically
+                document.title = `${session.title} — CNSPK Session`;
                 document.getElementById('og-title').content = session.title;
                 document.getElementById('og-description').content = session.summary || session.description;
 
-                // Render
+                // Render the session detail component
                 const detail = new SessionDetail(session);
                 loading.classList.add('hidden');
                 container.innerHTML = detail.render();
