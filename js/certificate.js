@@ -122,36 +122,61 @@ function bindForm() {
     });
 }
 
+async function renderCanvas() {
+    await (document.fonts && document.fonts.ready);
+    return html2canvas($('cert'), {
+        scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false,
+        width: 1123, height: 794, windowWidth: 1123, windowHeight: 794,
+    });
+}
+
+function safeName() {
+    return ($('c-name').textContent || 'certificate').replace(/[^A-Za-z0-9]+/g, '-');
+}
+
 function bindDownloads() {
     $('dl-png').addEventListener('click', async () => {
-        const cert = $('cert');
         const btn = $('dl-png');
         btn.disabled = true;
         const prev = btn.textContent;
         btn.textContent = 'Rendering…';
         try {
-            await (document.fonts && document.fonts.ready);
-            const canvas = await html2canvas(cert, {
-                scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false,
-                width: 1123, height: 794, windowWidth: 1123, windowHeight: 794,
-            });
-            const name = ($('c-name').textContent || 'certificate').replace(/[^A-Za-z0-9]+/g, '-');
+            const canvas = await renderCanvas();
             canvas.toBlob((blob) => {
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob);
-                a.download = `TechRise-Quetta-Certificate-${name}.png`;
+                a.download = `TechRise-Quetta-Certificate-${safeName()}.png`;
                 a.click();
                 setTimeout(() => URL.revokeObjectURL(a.href), 1000);
             }, 'image/png');
         } catch (err) {
-            setMsg('PNG export failed — try "Print / Save as PDF" instead.', 'err');
+            setMsg('PNG export failed — please try again.', 'err');
         } finally {
             btn.disabled = false;
             btn.textContent = prev;
         }
     });
 
-    $('dl-print').addEventListener('click', () => window.print());
+    $('dl-pdf').addEventListener('click', async () => {
+        const btn = $('dl-pdf');
+        btn.disabled = true;
+        const prev = btn.textContent;
+        btn.textContent = 'Rendering…';
+        try {
+            // Same html2canvas render as the PNG, embedded 1:1 into a PDF page → identical output.
+            const canvas = await renderCanvas();
+            const img = canvas.toDataURL('image/png');
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [canvas.width, canvas.height] });
+            pdf.addImage(img, 'PNG', 0, 0, canvas.width, canvas.height, undefined, 'FAST');
+            pdf.save(`TechRise-Quetta-Certificate-${safeName()}.pdf`);
+        } catch (err) {
+            setMsg('PDF export failed — please try again.', 'err');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = prev;
+        }
+    });
 }
 
 window.addEventListener('resize', fitCert);
