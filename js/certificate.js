@@ -124,10 +124,28 @@ function bindForm() {
 
 async function renderCanvas() {
     await (document.fonts && document.fonts.ready);
-    return html2canvas($('cert'), {
-        scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false,
-        width: 1123, height: 794, windowWidth: 1123, windowHeight: 794,
-    });
+    const scaler = $('cert-scaler');
+    // html2canvas mis-captures elements under a CSS transform: scale() (mobile preview).
+    // Reset to natural 1:1 size for the capture, then restore the responsive fit.
+    const prevTransform = scaler.style.transform;
+    const prevHeight = scaler.style.height;
+    scaler.style.transform = 'none';
+    scaler.style.height = 'auto';
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    try {
+        return await html2canvas($('cert'), {
+            scale: 2,
+            backgroundColor: '#ffffff',
+            useCORS: true,
+            logging: false,
+            scrollX: 0,
+            scrollY: 0,
+        });
+    } finally {
+        scaler.style.transform = prevTransform;
+        scaler.style.height = prevHeight;
+        fitCert();
+    }
 }
 
 function safeName() {
