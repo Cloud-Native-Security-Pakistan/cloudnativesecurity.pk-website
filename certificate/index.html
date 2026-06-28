@@ -90,7 +90,11 @@
         .cert .tick.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
         .cert .tick.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
         .cert header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .cert .logo { height: 54px; }
+        .cert .brand-lockup { display: flex; align-items: center; gap: 14px; }
+        .cert .logo-mark { height: 56px; width: auto; }
+        .cert .brand-words { line-height: 1.05; }
+        .cert .brand-words .bw-1 { font-family: var(--font-display); font-style: italic; font-weight: 800; font-size: 19px; color: #0F1115; letter-spacing: -0.01em; }
+        .cert .brand-words .bw-2 { font-family: var(--font-display); font-style: italic; font-weight: 800; font-size: 19px; color: #0F1115; letter-spacing: -0.01em; }
         .cert .meta { text-align: right; font-family: var(--font-mono); }
         .cert .meta-1 { font-size: 11px; letter-spacing: .12em; color: #0F1115; font-weight: 700; }
         .cert .meta-2 { font-size: 11px; letter-spacing: .12em; color: #6B7280; margin-top: 4px; }
@@ -179,7 +183,13 @@
                                 <span class="tick tl"></span><span class="tick tr"></span>
                                 <span class="tick bl"></span><span class="tick br"></span>
                                 <header>
-                                    <img class="logo" src="/brand/assets/cnspk-logo-black.png" alt="CNSPK">
+                                    <div class="brand-lockup">
+                                        <img class="logo-mark" src="/brand/assets/cnspk-mark-black.png" alt="CNSPK shield">
+                                        <div class="brand-words">
+                                            <div class="bw-1">Cloud Native Security</div>
+                                            <div class="bw-2">Pakistan</div>
+                                        </div>
+                                    </div>
                                     <div class="meta">
                                         <div class="meta-1">EST. 2024 · CNSPK</div>
                                         <div class="meta-2">QUETTA · BALOCHISTAN</div>
