@@ -81,6 +81,8 @@
 
         /* ===== The certificate (white) ===== */
         .cert { width: 1123px; height: 794px; background: #FFFFFF; position: relative; overflow: hidden; font-family: var(--font-body); color: #0F1115; }
+        /* Force backgrounds (rules, kubectl pill, lime accents) to render in print, even if "Background graphics" is off */
+        .cert, .cert * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         .cert::before { content: ""; position: absolute; inset: 0; background: #F4F1EA; opacity: .35; }
         .cert .frame { position: absolute; inset: 46px; border: 2px solid #0F1115; padding: 40px 54px; display: flex; flex-direction: column; }
         .cert .frame::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(15,17,21,.22); pointer-events: none; }
