@@ -156,7 +156,7 @@ Three options, the answer is delay:
 
 - **(a) Launch with the new website** spreads attention thin. The rebrand needs the spotlight.
 - **(c) Skip Discord** contradicts the brand strategy and caps our ceiling. WhatsApp can't host the searchable, threaded, role-gated home Ahmed and future open-source contributors will need.
-- **(b) 90-day delay** is the responsible path. Site ships first, the new identity lands with the existing 280+, and we use the 90 days to recruit moderators, define structure, stand up bots.
+- **(b) 90-day delay** is the responsible path. Site ships first, the new identity lands with the existing 1,000+, and we use the 90 days to recruit moderators, define structure, stand up bots.
 
 ### Five preconditions before opening
 1. **Five named moderators**, recruited from existing Members or Contributors, each in a different time-of-day. Volunteer, written charter.
@@ -208,7 +208,7 @@ No automation. The cadence is the system.
 
 ## 8. The anti-list — what we don't do
 
-We're a 280+ chapter, not a SaaS funnel. Off-limits, even when they look like "engagement boosts":
+We're a 1,000+ chapter, not a SaaS funnel. Off-limits, even when they look like "engagement boosts":
 
 - **No auto-DMs.** Not on join, not on event. DMs from the org account are reserved for safety and admin escalation.
 - **No drip-email funnels.** If we send email, it's a single human-edited monthly note, opt-in, one-click unsubscribe. We don't have one yet; we don't need one yet.
@@ -319,7 +319,7 @@ Coming soon. The deep technical home: threaded, searchable, channel-organised. G
 
 ### Data the join page needs
 
-- Member count — verified at **280+** against the official CNCF group page (ocgroups.dev/cncf/group/sxcyqt9). Use "280+" until the next audit; do not invent a more precise figure.
+- Member count — verified at **1,000+** against the official CNCF group page (ocgroups.dev/cncf/group/sxcyqt9). Use "1,000+" until the next audit; do not invent a more precise figure.
 - WhatsApp invite URL — `https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo`. Stored as a constant or in `data/channels.json`.
 - CNCF chapter URL — `https://community.cncf.io/cloud-native-security-pakistan/`.
 - GitHub join repo URL — `https://github.com/Cloud-Native-Security-Pakistan/becoming-a-member`.
@@ -346,8 +346,8 @@ Links to `/join/`. Not WhatsApp. Not GitHub. Not the CNCF chapter. Single canoni
 - No member testimonials.
 - No sponsor logos.
 - No fictional event or city counts.
-- The number is ~280+. The chapter is CNCF-affiliated. Both are true. Anything else needs a `TODO:` and a question to the strategist before it ships.
+- The number is ~1,000+. The chapter is CNCF-affiliated. Both are true. Anything else needs a `TODO:` and a question to the strategist before it ships.
 
 ---
 
-*The doorways are real. The voice is the brand. The 280+ is the only number we use until the next audit. **kubectl apply -f pakistan.yaml**.*
+*The doorways are real. The voice is the brand. The 1,000+ is the only number we use until the next audit. **kubectl apply -f pakistan.yaml**.*
