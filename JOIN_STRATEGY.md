@@ -346,7 +346,7 @@ Links to `/join/`. Not WhatsApp. Not GitHub. Not the CNCF chapter. Single canoni
 - No member testimonials.
 - No sponsor logos.
 - No fictional event or city counts.
-- The number is ~1,000+. The chapter is CNCF-affiliated. Both are true. Anything else needs a `TODO:` and a question to the strategist before it ships.
+- The number is 1,000+. The chapter is CNCF-affiliated. Both are true. Anything else needs a `TODO:` and a question to the strategist before it ships.
 
 ---
 
