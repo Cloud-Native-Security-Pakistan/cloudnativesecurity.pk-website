@@ -1,6 +1,6 @@
 # CNSPK Join Strategy
 
-> CNSPK has ~280+ members, a CNCF affiliation, a working WhatsApp room, and a GitHub org that gates membership behind an issue template. That last part is the bottleneck. This document replaces the one-size-fits-all funnel with five honest doorways, ordered by friction.
+> CNSPK has 1,000+ members, a CNCF affiliation, a working WhatsApp room, and a GitHub org that gates membership behind an issue template. That last part is the bottleneck. This document replaces the one-size-fits-all funnel with five honest doorways, ordered by friction.
 
 Voice: confident, technical, warm, anti-friction. *Defense in depth. Hospitality on top.*
 
@@ -99,7 +99,7 @@ Homepage `Join →`, navbar `Join`, about page CTA, footer CTA, event-page chips
 ### Hero (first 5 seconds)
 - Eyebrow (mono lime): `// JOIN.SH`
 - Display headline (italic caps): **PICK YOUR DOOR. NO GATEKEEPING.**
-- Subhead: 280+ practitioners. CNCF-affiliated. Built and run from Lahore, Karachi, Islamabad — and wherever your `kubectl` points.
+- Subhead: 1,000+ practitioners. CNCF-affiliated. Built and run from Lahore, Karachi, Islamabad — and wherever your `kubectl` points.
 - Roman Urdu accent: *bharosa* — earned, not asked for.
 - Two CTAs above the fold: `Tap into WhatsApp →` (primary) and `Browse upcoming sessions →` (secondary).
 
@@ -231,14 +231,14 @@ We're a 280+ chapter, not a SaaS funnel. Off-limits, even when they look like "e
 > *PICK YOUR DOOR.*
 > *NO GATEKEEPING.*
 >
-> 280+ practitioners. CNCF-affiliated. Built and run from Lahore, Karachi, Islamabad — and wherever your `kubectl` points. Walk in through whichever door fits today. *Bharosa* is earned, not asked for.
+> 1,000+ practitioners. CNCF-affiliated. Built and run from Lahore, Karachi, Islamabad — and wherever your `kubectl` points. Walk in through whichever door fits today. *Bharosa* is earned, not asked for.
 >
 > `[ Tap into WhatsApp → ]   [ Browse upcoming sessions → ]`
 
 ### Five doorway cards
 
 **1. Tap In — WhatsApp**
-The casual room. ~250 members, daily chatter, weekly questions. Mute any time. No DMs from strangers — ask in the room first.
+The casual room. 1,000+ members, daily chatter, weekly questions. Mute any time. No DMs from strangers — ask in the room first.
 `Join WhatsApp →`
 
 **2. RSVP a Session — CNCF Chapter**
@@ -267,7 +267,7 @@ Coming soon. The deep technical home: threaded, searchable, channel-organised. G
 
 ### WhatsApp first message (pinned)
 
-> *Asalaam-o-alaikum.* Welcome to **CNSPK** — Cloud Native Security Pakistan. We're ~280+ practitioners running cloud-native security in Pakistani teams.
+> *Asalaam-o-alaikum.* Welcome to **CNSPK** — Cloud Native Security Pakistan. We're 1,000+ practitioners running cloud-native security in Pakistani teams.
 >
 > House rules:
 > • On-topic: tech, CVEs, your own jobs (not vendor pitches), chai.
