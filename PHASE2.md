@@ -64,7 +64,7 @@ Checked on 3 November 2026. This extends `REDESIGN.md`.
   - Credits (organiser-reported): 6 speakers, 3 panelists, 1 moderator.
   - Farhan Ashraf's talk title is verified.
   - 175 registrations (organiser registration export), capacity 500 (CNCF listing).
-- **Copilot Dev Days (9 May 2026):** more than 150 attendees (organiser-reported) and 367 registrations, 351 approved (Luma export).
+- **Copilot Dev Days (9 May 2026):** more than 150 attendees (organiser-reported) and 367 registrations, 351 approved (Luma export). *Corrected in Phase 3 to 386 registrations, 377 approved; see [PHASE3.md](PHASE3.md).*
 - **The Final Patch (28 Dec 2025):** 55 registrations, invite-only (organiser export).
 - **#cTENcf Birthday Bash Lahore (23 Aug 2025):**
   - GitHub credited as sponsor and GDGoC LGU as community partner, from the event graphics.
