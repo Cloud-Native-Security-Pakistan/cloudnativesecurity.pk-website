@@ -127,6 +127,98 @@
         }
         .tab-btn .count { opacity: 0.6; margin-left: 6px; }
 
+        /* ---- Search + filter controls (talks-style archive) ---- */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            align-items: center;
+            margin-bottom: var(--space-8);
+        }
+        .controls__search {
+            flex: 1 1 280px;
+            position: relative;
+            min-width: 240px;
+        }
+        .controls__search svg {
+            position: absolute;
+            left: 14px; top: 50%;
+            transform: translateY(-50%);
+            width: 16px; height: 16px;
+            color: var(--steel);
+            pointer-events: none;
+        }
+        .controls__search input {
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--bone);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: var(--r-pill);
+            padding: 12px 16px 12px 40px;
+            transition: border-color var(--dur-hover) var(--ease),
+                        box-shadow var(--dur-hover) var(--ease);
+        }
+        .controls__search input::placeholder { color: var(--steel); }
+        .controls__search input:focus {
+            outline: none;
+            border-color: var(--lime);
+            box-shadow: 0 0 0 3px rgba(199, 255, 62, 0.12);
+        }
+        .controls__selects { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+        .controls__select { position: relative; }
+        .controls__select select {
+            appearance: none;
+            -webkit-appearance: none;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--bone-2);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: var(--r-pill);
+            padding: 11px 36px 11px 16px;
+            cursor: pointer;
+            transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
+        }
+        .controls__select select:hover { border-color: var(--steel); color: var(--bone); }
+        .controls__select select:focus { outline: none; border-color: var(--lime); color: var(--bone); }
+        .controls__select::after {
+            content: '▾';
+            position: absolute;
+            right: 14px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--steel);
+            font-size: 11px;
+            pointer-events: none;
+        }
+        .controls__reset {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--steel);
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--r-pill);
+            padding: 11px 14px;
+            cursor: pointer;
+            transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
+        }
+        .controls__reset:hover { color: var(--breach); border-color: rgba(244, 63, 94, 0.4); }
+
+        .result-count {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--steel);
+            margin-bottom: var(--space-6);
+        }
+        .result-count strong { color: var(--lime); font-weight: 600; }
+
         /* ---- Grid ---- */
         .events-grid {
             display: grid;
@@ -268,6 +360,50 @@
                 </button>
             </div>
 
+            <!-- Search + facet filters (dynamic; populated from events.json) -->
+            <div class="controls" role="search">
+                <div class="controls__search">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <label for="event-search" class="sr-only">Search events</label>
+                    <input id="event-search" type="search" autocomplete="off"
+                        placeholder="Search events, topics, cities…" />
+                </div>
+
+                <div class="controls__selects">
+                    <span class="controls__select">
+                        <label for="filter-type" class="sr-only">Filter by type</label>
+                        <select id="filter-type" data-facet="type">
+                            <option value="all">All types</option>
+                        </select>
+                    </span>
+                    <span class="controls__select">
+                        <label for="filter-topic" class="sr-only">Filter by topic</label>
+                        <select id="filter-topic" data-facet="topic">
+                            <option value="all">All topics</option>
+                        </select>
+                    </span>
+                    <span class="controls__select">
+                        <label for="filter-city" class="sr-only">Filter by city</label>
+                        <select id="filter-city" data-facet="city">
+                            <option value="all">All cities</option>
+                        </select>
+                    </span>
+                    <span class="controls__select">
+                        <label for="filter-year" class="sr-only">Filter by year</label>
+                        <select id="filter-year" data-facet="year">
+                            <option value="all">All years</option>
+                        </select>
+                    </span>
+                    <button type="button" id="filter-reset" class="controls__reset hidden">Clear</button>
+                </div>
+            </div>
+
+            <!-- Live result count (talks-style) -->
+            <p class="result-count" id="result-count" aria-live="polite"></p>
+
             <!-- Events Grid (EventCard rendering owned by the components stream — do not restyle card internals here) -->
             <div id="events-container" class="events-grid" role="tabpanel" aria-labelledby="tab-upcoming">
                 <!-- Loading State -->
@@ -313,20 +449,31 @@
         import { EventCard } from '../js/EventCard.js';
         import { Navbar } from '../js/Navbar.js';
         import { Footer } from '../js/Footer.js';
-        import { fetchData, domReady } from '../js/utils.js';
+        import { fetchData, domReady, debounce } from '../js/utils.js';
 
         new Navbar().init();
         new Footer().init();
 
-        // --- Preserved data-loading state (unchanged contract) ---
+        // --- State ---
         let allEvents = [];
-        let activeFilter = 'upcoming';
+        let activeFilter = 'upcoming';         // upcoming | past (tab)
+        const facet = { type: 'all', topic: 'all', city: 'all', year: 'all' };
+        let query = '';
 
         // date >= today => upcoming, otherwise past
         function isUpcoming(event) {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             return new Date(event.date) >= today;
+        }
+
+        function cityOf(event) {
+            return event.location ? String(event.location).split(',')[0].trim() : '';
+        }
+
+        function yearOf(event) {
+            const d = new Date(event.date);
+            return isNaN(d.getTime()) ? '' : String(d.getFullYear());
         }
 
         async function loadEvents() {
@@ -350,15 +497,53 @@
                 // Preserved sort logic: newest first by date.
                 allEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+                populateFacets();
                 updateCounts();
-                renderEvents();
                 setupTabs();
+                setupControls();
+                renderEvents();
 
             } catch (err) {
                 console.error('Events Error:', err);
                 loading.classList.add('hidden');
                 error.classList.remove('hidden');
             }
+        }
+
+        // Build the type/topic/city/year dropdowns from the real data only.
+        function populateFacets() {
+            const types = new Set();
+            const topics = new Set();
+            const cities = new Set();
+            const years = new Set();
+
+            allEvents.forEach((e) => {
+                if (e.type) types.add(String(e.type).trim());
+                (Array.isArray(e.topicTags) ? e.topicTags : []).forEach((t) => {
+                    if (typeof t === 'string' && t.trim()) topics.add(t.trim());
+                });
+                const c = cityOf(e);
+                if (c) cities.add(c);
+                const y = yearOf(e);
+                if (y) years.add(y);
+            });
+
+            fillSelect('filter-type', [...types].sort((a, b) => a.localeCompare(b)));
+            fillSelect('filter-topic', [...topics].sort((a, b) => a.localeCompare(b)));
+            fillSelect('filter-city', [...cities].sort((a, b) => a.localeCompare(b)));
+            fillSelect('filter-year', [...years].sort((a, b) => b.localeCompare(a))); // newest year first
+        }
+
+        // Options are appended via textContent, so values are inherently escaped.
+        function fillSelect(id, values) {
+            const select = document.getElementById(id);
+            if (!select) return;
+            values.forEach((v) => {
+                const opt = document.createElement('option');
+                opt.value = v;
+                opt.textContent = v;
+                select.appendChild(opt);
+            });
         }
 
         function updateCounts() {
@@ -368,21 +553,60 @@
             document.getElementById('count-past').textContent = `(${past})`;
         }
 
-        function renderEvents() {
-            const container = document.getElementById('events-container');
+        // Apply tab + facets + search together.
+        function getFiltered() {
+            const q = query.trim().toLowerCase();
 
-            // Filter the already-sorted list by the active tab.
-            let filtered = allEvents.filter(e => activeFilter === 'upcoming' ? isUpcoming(e) : !isUpcoming(e));
+            let list = allEvents.filter((e) => {
+                // tab
+                if (activeFilter === 'upcoming' ? !isUpcoming(e) : isUpcoming(e)) return false;
+                // facets
+                if (facet.type !== 'all' && String(e.type).trim() !== facet.type) return false;
+                if (facet.city !== 'all' && cityOf(e) !== facet.city) return false;
+                if (facet.year !== 'all' && yearOf(e) !== facet.year) return false;
+                if (facet.topic !== 'all') {
+                    // Compare trimmed tags: facet option values are built from
+                    // trimmed strings in populateFacets(), so a tag like " Kubernetes "
+                    // must be trimmed here to match its generated option.
+                    const tags = (Array.isArray(e.topicTags) ? e.topicTags : [])
+                        .filter((t) => typeof t === 'string')
+                        .map((t) => t.trim());
+                    if (!tags.includes(facet.topic)) return false;
+                }
+                // search
+                if (q) {
+                    const haystack = [
+                        e.title,
+                        e.description,
+                        e.location,
+                        e.type,
+                        ...(Array.isArray(e.topicTags) ? e.topicTags : []),
+                    ].filter(Boolean).join(' ').toLowerCase();
+                    if (!haystack.includes(q)) return false;
+                }
+                return true;
+            });
 
             // Upcoming reads best soonest-first; past stays newest-first (preserved order).
-            if (activeFilter === 'upcoming') {
-                filtered = filtered.slice().reverse();
-            }
+            if (activeFilter === 'upcoming') list = list.slice().reverse();
+            return list;
+        }
+
+        function renderEvents() {
+            const container = document.getElementById('events-container');
+            const filtered = getFiltered();
+
+            updateResultCount(filtered.length);
+            toggleReset();
 
             if (filtered.length === 0) {
-                const msg = activeFilter === 'upcoming'
-                    ? 'No upcoming events right now — check the Past tab or propose one below.'
-                    : 'No past events on record yet.';
+                const anyFacet = query || facet.type !== 'all' || facet.topic !== 'all'
+                    || facet.city !== 'all' || facet.year !== 'all';
+                const msg = anyFacet
+                    ? 'No events match these filters. Try clearing the search or choosing different options.'
+                    : (activeFilter === 'upcoming'
+                        ? 'No upcoming events right now — check the Past tab or propose one below.'
+                        : 'No past events on record yet.');
                 container.innerHTML = `
                     <div class="state-panel">
                         <p class="state-empty">${msg}</p>
@@ -392,23 +616,64 @@
             }
 
             // EventCard render preserved exactly — card owns its own markup + images.
-            container.innerHTML = filtered.map(event => {
-                const card = new EventCard(event);
-                return card.render();
-            }).join('');
+            container.innerHTML = filtered.map((event) => new EventCard(event).render()).join('');
+        }
+
+        function updateResultCount(n) {
+            const el = document.getElementById('result-count');
+            if (el) el.innerHTML = `<strong>${n}</strong> ${n === 1 ? 'event' : 'events'}`;
+        }
+
+        function toggleReset() {
+            const anyFacet = query || facet.type !== 'all' || facet.topic !== 'all'
+                || facet.city !== 'all' || facet.year !== 'all';
+            document.getElementById('filter-reset').classList.toggle('hidden', !anyFacet);
         }
 
         function setupTabs() {
             const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => {
+            buttons.forEach((btn) => {
                 btn.addEventListener('click', () => {
-                    buttons.forEach(b => b.setAttribute('aria-selected', 'false'));
+                    buttons.forEach((b) => b.setAttribute('aria-selected', 'false'));
                     btn.setAttribute('aria-selected', 'true');
                     document.getElementById('events-container')
                         .setAttribute('aria-labelledby', btn.id);
                     activeFilter = btn.dataset.filter;
                     renderEvents();
                 });
+            });
+        }
+
+        function setupControls() {
+            const search = document.getElementById('event-search');
+
+            // Seed state from whatever is already in the controls. The search box
+            // is live during the fetch, so a user can type (or the browser can
+            // restore a value) before this runs; capture it so the first render
+            // reflects it instead of silently ignoring it.
+            query = search.value || '';
+            document.querySelectorAll('[data-facet]').forEach((s) => {
+                if (s.value && s.value !== 'all') facet[s.dataset.facet] = s.value;
+            });
+
+            search.addEventListener('input', debounce((e) => {
+                query = e.target.value;
+                renderEvents();
+            }, 150));
+
+            document.querySelectorAll('[data-facet]').forEach((select) => {
+                select.addEventListener('change', (e) => {
+                    facet[e.target.dataset.facet] = e.target.value;
+                    renderEvents();
+                });
+            });
+
+            document.getElementById('filter-reset').addEventListener('click', () => {
+                query = '';
+                facet.type = facet.topic = facet.city = facet.year = 'all';
+                search.value = '';
+                document.querySelectorAll('[data-facet]').forEach((s) => { s.value = 'all'; });
+                renderEvents();
             });
         }
 
