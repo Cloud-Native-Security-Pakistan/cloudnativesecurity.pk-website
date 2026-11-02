@@ -1,0 +1,124 @@
+[
+  {
+    "id": "github",
+    "name": "GitHub",
+    "kind": "sponsor",
+    "url": "https://github.com",
+    "relationship": "Listed as a sponsor of the CNSPK group on CNCF Open Community Groups. Gold sponsor of Open Source Connect Pakistan 2026. Listed sponsor of Networking Friday and DevSecOps for All (2025). CNSPK organisers hosted the Lahore edition of GitHub Copilot Dev Days in May 2026.",
+    "evidence": [
+      { "label": "CNCF group sponsors", "url": "https://community.cncf.io/cloud-native-security-pakistan/" },
+      { "label": "Open Source Connect Pakistan sponsors", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/u5t3fkn" }
+    ]
+  },
+  {
+    "id": "mlh",
+    "name": "Major League Hacking",
+    "kind": "collaborator",
+    "url": "https://www.mlh.com",
+    "relationship": "Listed Hacktoberfest Hack Day Lahore 2026, organised by CNSPK, and ran its submissions and prize categories.",
+    "evidence": [{ "label": "MLH event page", "url": "https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan" }]
+  },
+  {
+    "id": "hacktoberfest",
+    "name": "Hacktoberfest",
+    "kind": "programme",
+    "url": "https://hacktoberfest.com",
+    "relationship": "CNSPK has run Hacktoberfest events in Lahore in 2025 and 2026.",
+    "evidence": [
+      { "label": "Hacktoberfest Lahore 2025", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/6s9j4j6" },
+      { "label": "Hack Day Lahore 2026", "url": "https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan" }
+    ]
+  },
+  {
+    "id": "aws-community-pakistan",
+    "name": "AWS Community Pakistan",
+    "kind": "collaborator",
+    "url": "https://awscommunity.pk",
+    "relationship": "Co-ran the Islamabad meetup in May 2024 and the ITCN Asia 2026 session in Lahore.",
+    "evidence": [
+      { "label": "Islamabad meetup 2024", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/mdrbgwr" },
+      { "label": "ITCN Asia 2026 session", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/ngpuhhz" }
+    ]
+  },
+  {
+    "id": "aws-ug-faisalabad",
+    "name": "AWS User Group Faisalabad",
+    "kind": "collaborator",
+    "url": null,
+    "relationship": "Co-ran Cloud Native Security Connect in Faisalabad, February 2026.",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/aagawjd" }]
+  },
+  {
+    "id": "itcn-asia",
+    "name": "ITCN Asia",
+    "kind": "programme",
+    "url": "https://itcnasia.com",
+    "relationship": "CNSPK presented a session at ITCN Asia 2026, Expo Centre Lahore.",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/ngpuhhz" }]
+  },
+  {
+    "id": "cyberfest-lahore",
+    "name": "CyberFest Lahore",
+    "kind": "programme",
+    "url": null,
+    "relationship": "CNSPK ran the session “DevSecOps for All” at CyberFest Lahore 2025.",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/gm944hf" }]
+  },
+  {
+    "id": "systems-limited",
+    "name": "Systems Limited",
+    "kind": "venue",
+    "url": "https://www.systemsltd.com",
+    "relationship": "Venue host for #cTENcf Birthday Bash Lahore (2025) and Open Source Connect Pakistan (2026).",
+    "evidence": [
+      { "label": "#cTENcf Birthday Bash", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/az4njv6" },
+      { "label": "Open Source Connect Pakistan", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/u5t3fkn" }
+    ]
+  },
+  {
+    "id": "softoo",
+    "name": "SOFTOO",
+    "kind": "venue",
+    "url": null,
+    "relationship": "Hosted the Islamabad meetup in May 2024.",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/mdrbgwr" }]
+  },
+  {
+    "id": "lgu",
+    "name": "Lahore Garrison University",
+    "kind": "venue",
+    "url": null,
+    "relationship": "Campus venue for DevSecOps for All (May 2025), Hacktoberfest Lahore 2025, and Opensource Connect Lahore (October 2025).",
+    "evidence": [
+      { "label": "Hacktoberfest Lahore 2025", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/6s9j4j6" },
+      { "label": "Opensource Connect Lahore", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/c6y24p8" }
+    ]
+  },
+  {
+    "id": "bahria-lahore",
+    "name": "Bahria University Lahore Campus",
+    "kind": "venue",
+    "url": null,
+    "relationship": "Campus venue for Security Fusion (2024) and KubeSecure (2025).",
+    "evidence": [
+      { "label": "Security Fusion", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/65ube2c" },
+      { "label": "KubeSecure", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/e68dyn8" }
+    ]
+  },
+  {
+    "id": "comsats-lahore",
+    "name": "COMSATS University Lahore",
+    "kind": "venue",
+    "url": null,
+    "relationship": "Campus venue for The Art of Recon (December 2024).",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/heks6xg" }]
+  },
+  {
+    "id": "bnu",
+    "name": "Beaconhouse National University",
+    "kind": "venue",
+    "url": null,
+    "relationship": "Campus venue for Decoding Cloud Native Security (November 2024).",
+    "evidence": [{ "label": "CNCF event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/mm3ezun" }]
+  }
+]
