@@ -64,6 +64,7 @@ for (const e of c.events) {
     if (!m) continue;
     if (m.status === 'verified' && !m.source.url) err(`${at}.${k}: verified figures need a public source URL`);
     if (k === 'attendance' && m.value === c.site.attendance.averagePerEvent && m.status !== 'verified') err(`${at}.attendance: equals the organisation-wide average; do not copy the average onto events`);
+    if (k === 'attendance' && /certificate|registration|form response|rsvp/i.test(m.metric ?? '')) err(`${at}.attendance: "${m.metric}" is not attendance; record it under registrations unless check-in evidence exists`);
   }
   if (e.capacity && e.attendance && e.attendance.value > e.capacity.value) warn(`${at}: attendance exceeds capacity`);
   // People

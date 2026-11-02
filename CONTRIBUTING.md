@@ -36,8 +36,10 @@ Hand-written pages (`join/`, `members/`, `certificate/`, `consultants/`, `code-o
 These keep the site credible. Reviewers will ask for changes that break them.
 
 1. **Every fact needs a public source.** Add it to the event's `sources` array. If there is no public source, set `"provenance": "organizer-reported"` and say where the information came from.
-2. **Never invent numbers.** No estimated attendance, member counts, or reach. Capacity on a registration page is not attendance.
-3. **Document gaps instead of filling them.** Add missing items to the event's `gaps` array; the page shows them as "Not documented yet".
+2. **Never invent numbers.** An organiser estimate is allowed only with `"status": "estimated"` and its source. Capacity, registrations, and certificates are not attendance.
+3. **Document gaps instead of filling them.** Leave unknown fields `null` or empty; the event page lists them as "Not documented yet" automatically.
+
+Step-by-step instructions for events, people, photos, sources, and evidence levels are in [docs/CONTENT-GUIDE.md](docs/CONTENT-GUIDE.md).
 4. **Photos need consent, alt text, and a credit.** Add a 1600px JPEG and an 800px copy named `*-800.jpg` under `images/events/<slug>/`, with `width`, `height`, and `alt` in the data. Strip location metadata before committing.
 5. **Name partners by their exact role**: sponsor, collaborator, programme, or venue host, with an evidence link.
 6. **Do not imply CNCF endorsement.** CNSPK is listed on CNCF Open Community Groups; that is the only claim we make.

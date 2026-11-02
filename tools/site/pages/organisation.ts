@@ -286,7 +286,7 @@ ${pageHead({
       <div><dt>Community partnerships</dt><dd>${s.byRelationship['community-partnership']}</dd></div>
       <div><dt>Speaker participation</dt><dd>${s.byRelationship['speaker-participation']}</dd></div>
       <div><dt>Verified attendance on record</dt><dd>${s.verifiedAttendance.events ? `${s.verifiedAttendance.total.toLocaleString('en-US')} across ${s.verifiedAttendance.events} events` : 'None yet'}</dd></div>
-      <div><dt>Registrations on record</dt><dd>${s.registrations.total.toLocaleString('en-US')} across ${s.registrations.events} events</dd></div>
+      <div><dt>Registrations on record (summed per event, not unique people)</dt><dd>${s.registrations.total.toLocaleString('en-US')} across ${s.registrations.events} events</dd></div>
     </dl>
   </div>
 </section>
