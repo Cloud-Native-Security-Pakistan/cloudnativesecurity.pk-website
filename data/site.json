@@ -31,7 +31,8 @@
     "label": "Estimated attendees",
     "provenance": "organizer-reported",
     "reportedOn": "2026-11-02",
-    "note": "Organiser estimate of about 200 participants per event on average. Exact per-event attendance is not recorded."
+    "note": "Community events have welcomed approximately 200 participants on average, based on organiser estimates. Historical attendance records are being consolidated.",
+    "basis": "Founder-supplied organisation-level estimate of average participation per event. Not a per-event figure and not multiplied into a lifetime total."
   },
   "channels": [
     {

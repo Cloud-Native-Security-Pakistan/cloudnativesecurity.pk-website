@@ -4,20 +4,30 @@
     "slug": "hacktoberfest-hack-day-lahore-2026",
     "title": "Hacktoberfest Hack Day Lahore 2026",
     "date": "2026-10-24",
-    "startTime": null,
-    "endTime": "18:45",
+    "startTime": "10:00",
+    "endTime": "18:00",
     "location": "Lahore, Pakistan",
     "city": "Lahore",
-    "venue": null,
+    "venue": "Your Work Studio",
     "type": "Hackathon",
     "format": "In person",
     "description": "A one-day Hacktoberfest hackathon in Lahore, organised by CNSPK and listed by Major League Hacking. Teams built open-source AI projects and submitted them to MLH prize categories.",
     "summary": "A one-day build event run by CNSPK as part of Hacktoberfest 2026, listed on Major League Hacking under the theme “AI for Everyone”. Students and developers worked in teams on open-source and open-weight AI projects, and submissions were judged in two MLH prize categories: Best Open-Source AI Project (DigitalOcean) and Best Use of Gemma 4 (Google DeepMind).",
-    "topics": ["Open Source", "AI", "Hacktoberfest", "Cloud Native", "DevSecOps"],
-    "organizers": ["cnspk"],
-    "collaborators": ["mlh", "hacktoberfest"],
+    "topics": [
+      "Open Source",
+      "AI",
+      "Hacktoberfest",
+      "Cloud Native",
+      "DevSecOps"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "mlh",
+      "hacktoberfest"
+    ],
     "sponsors": [],
-    "speakers": [],
     "agenda": [],
     "outcomes": [
       {
@@ -29,6 +39,11 @@
         "value": "27",
         "label": "project repositories mirrored to the CNSPK GitHub organisation",
         "source": "https://github.com/Cloud-Native-Security-Pakistan?q=&type=fork"
+      },
+      {
+        "value": "BayanAI",
+        "label": "Best Open-Source AI Project (organiser-reported winner)",
+        "source": "https://github.com/Monam1083/BayanAI-"
       }
     ],
     "projectsRef": "hack-day-2026",
@@ -49,14 +64,53 @@
     "registrationUrl": null,
     "link": "https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan",
     "sources": [
-      { "label": "Major League Hacking event page", "url": "https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan" }
+      {
+        "label": "Major League Hacking event page",
+        "url": "https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan"
+      },
+      {
+        "label": "CNSPK organiser records: venue, hours, participant estimate, and winner",
+        "ref": "Supplied by the organisers, 2 November 2026"
+      }
     ],
     "provenance": "verified",
-    "gaps": [
-      "Venue is not published on the MLH page.",
-      "Winning projects are not yet recorded here.",
-      "No event photographs supplied yet."
-    ]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": {
+      "value": 50,
+      "qualifier": "about",
+      "status": "estimated",
+      "metric": "participants",
+      "source": {
+        "label": "CNSPK organiser records: organiser estimate",
+        "ref": "Supplied by the organisers, 2 November 2026"
+      },
+      "note": "Estimate, not a check-in count."
+    },
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "organizer-reported",
+      "time": "organizer-reported"
+    },
+    "notes": [
+      "MLH lists submissions closing at 6:45 pm; the organisers report event hours of 10 am to 6 pm.",
+      "The MLH submission gallery is not publicly viewable, so winners are organiser-reported."
+    ],
+    "winners": [
+      {
+        "project": "BayanAI",
+        "repository": "Monam1083/BayanAI-",
+        "url": "https://github.com/Monam1083/BayanAI-",
+        "prize": "Best Open-Source AI Project",
+        "status": "organizer-reported"
+      }
+    ],
+    "venueHost": "your-work-studio"
   },
   {
     "id": 17,
@@ -72,17 +126,16 @@
     "format": "In person",
     "description": "A Hacktoberfest session at the University of Lahore, including the talk “Open Source: AI for Everyone!” by Farhan Ashraf of CNSPK.",
     "summary": "A Hacktoberfest 2026 gathering at the University of Lahore for students taking their first steps into open source. Farhan Ashraf presented “Open Source: AI for Everyone!”, a practical introduction to building with AI tools in open-source projects.",
-    "topics": ["Hacktoberfest", "Open Source", "AI"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Hacktoberfest",
+      "Open Source",
+      "AI"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
-    "speakers": [
-      {
-        "name": "Farhan Ashraf",
-        "talk": "Open Source: AI for Everyone!",
-        "url": "https://www.farhanashraf.si/talks/openai-for-everyone-hacktoberfest-uol-2026"
-      }
-    ],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -142,13 +195,124 @@
     "registrationUrl": null,
     "link": "https://www.farhanashraf.si/talks/openai-for-everyone-hacktoberfest-uol-2026",
     "sources": [
-      { "label": "Speaker archive entry (Farhan Ashraf)", "url": "https://www.farhanashraf.si/talks/openai-for-everyone-hacktoberfest-uol-2026" }
+      {
+        "label": "Speaker archive entry (Farhan Ashraf)",
+        "url": "https://www.farhanashraf.si/talks/openai-for-everyone-hacktoberfest-uol-2026"
+      }
     ],
     "provenance": "organizer-reported",
-    "gaps": [
-      "No public event listing found. Details come from the speaker's own archive.",
-      "Confirm whether this is a separate event from the Hacktoberfest Hack Day on 24 October 2026.",
-      "Photographer credit not recorded."
+    "relationship": "organized",
+    "relationshipStatus": "organizer-reported",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "speaker",
+        "talk": "Open Source: AI for Everyone!",
+        "url": "https://www.farhanashraf.si/talks/openai-for-everyone-hacktoberfest-uol-2026",
+        "status": "verified"
+      }
+    ],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "organizer-reported",
+      "time": "unknown"
+    },
+    "notes": [
+      "Separate from Hacktoberfest Hack Day Lahore on 24 October 2026.",
+      "The talk title matches the slide shown in the event photos."
+    ],
+    "venueHost": "university-of-lahore"
+  },
+  {
+    "id": 21,
+    "slug": "github-copilot-dev-days-lahore-september-2026",
+    "title": "GitHub Copilot Dev Days Lahore (September 2026)",
+    "date": "2026-09-12",
+    "startTime": null,
+    "endTime": null,
+    "location": "Lahore, Pakistan",
+    "city": "Lahore",
+    "venue": "Systems Limited",
+    "type": "Workshop",
+    "format": "In person",
+    "description": "The Lahore edition of GitHub’s autumn 2026 Dev Days series: hands-on workshops on GitHub Copilot in the Copilot app and CLI.",
+    "summary": "A second Lahore edition of GitHub Copilot Dev Days, part of GitHub’s global series running 1 September to 31 October 2026. Hands-on sessions focused on real workflows with GitHub Copilot in the Copilot app and the CLI. Registration on Luma sold out.",
+    "topics": [
+      "GitHub Copilot",
+      "AI",
+      "Developer Tools"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "github"
+    ],
+    "sponsors": [],
+    "venueHost": "systems-limited",
+    "people": [
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "host",
+        "talk": null,
+        "url": null,
+        "status": "verified"
+      },
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "speaker",
+        "talk": "GitHub Copilot: Your AI Companion for Every Workflow",
+        "url": "https://www.farhanashraf.si/talks/github-copilot-dev-days-ai-companion-2026",
+        "status": "verified"
+      }
+    ],
+    "agenda": [],
+    "outcomes": [],
+    "projectsRef": null,
+    "resources": [
+      {
+        "label": "Dev Days event code of conduct",
+        "url": "https://github.com/github/dev-days/blob/main/EVENT_CODE_OF_CONDUCT.md",
+        "kind": "policy"
+      }
+    ],
+    "photos": [],
+    "image": "",
+    "registrationUrl": null,
+    "link": "https://luma.com/tg794p0v",
+    "sources": [
+      {
+        "label": "Luma event page (host, sold out)",
+        "url": "https://luma.com/tg794p0v"
+      },
+      {
+        "label": "Speaker archive (farhanashraf.si) (date and venue)",
+        "url": "https://www.farhanashraf.si/talks/github-copilot-dev-days-ai-companion-2026"
+      }
+    ],
+    "provenance": "verified",
+    "relationship": "organized",
+    "relationshipStatus": "organizer-reported",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "organizer-reported",
+      "venue": "organizer-reported",
+      "time": "unknown"
+    },
+    "notes": [
+      "Separate from the May 2026 edition. The Luma page shows the address only to registered guests."
     ]
   },
   {
@@ -165,39 +329,250 @@
     "format": "In person",
     "description": "A community conference for open-source contributors, maintainers, and students, hosted by CNSPK at Systems Limited, Lahore, with GitHub as Gold sponsor.",
     "summary": "CNSPK's largest gathering of 2026: an afternoon of talks and discussion on open-source contribution, maintainership, cloud-native projects, and developer tooling. The call for speakers ran on Sessionize from 25 to 27 August 2026 and explicitly excluded sales pitches. GitHub sponsored the event at Gold level.",
-    "topics": ["Open Source", "Cloud Native", "Kubernetes", "DevSecOps", "Platform Engineering", "AI Infrastructure"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Open Source",
+      "Cloud Native",
+      "Kubernetes",
+      "DevSecOps",
+      "Platform Engineering",
+      "AI Infrastructure"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
-    "sponsors": [{ "partner": "github", "tier": "Gold" }],
-    "venueHost": "systems-limited",
-    "speakers": [
+    "sponsors": [
       {
-        "name": "Farhan Ashraf",
+        "partner": "github",
+        "tier": "Gold"
+      }
+    ],
+    "venueHost": "systems-limited",
+    "agenda": [],
+    "outcomes": [],
+    "projectsRef": null,
+    "resources": [
+      {
+        "label": "Call for speakers (closed)",
+        "url": "https://sessionize.com/ossconnectpk/",
+        "kind": "cfp"
+      }
+    ],
+    "photos": [],
+    "image": "",
+    "registrationUrl": null,
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/u5t3fkn",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/u5t3fkn"
+      },
+      {
+        "label": "Sessionize call for speakers",
+        "url": "https://sessionize.com/ossconnectpk/"
+      },
+      {
+        "label": "CNSPK organiser records: speaker, panel, and moderator line-up",
+        "ref": "Supplied by the organisers, 2 November 2026"
+      }
+    ],
+    "provenance": "verified",
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": {
+      "value": 175,
+      "status": "organizer-reported",
+      "source": {
+        "label": "CNSPK organiser records: registration form export (unique email addresses)",
+        "ref": "Newsletter/DAtabasee/source_files/Opensource connect.html"
+      },
+      "note": "Registrations between 24 and 27 August 2026."
+    },
+    "capacity": {
+      "value": 500,
+      "status": "verified",
+      "source": {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/u5t3fkn"
+      }
+    },
+    "people": [
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "speaker",
         "talk": "From Consumer to Contributor: Finding Your Place in Open Source",
-        "url": "https://www.farhanashraf.si/talks/open-source-connect-from-consumer-to-contributor-2026"
+        "url": "https://www.farhanashraf.si/talks/open-source-connect-from-consumer-to-contributor-2026",
+        "status": "verified"
+      },
+      {
+        "person": "abdul-raheem",
+        "name": null,
+        "role": "speaker",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "saad-aslam",
+        "name": null,
+        "role": "speaker",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "muhammad-mahad",
+        "name": null,
+        "role": "speaker",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "rabbia-arshad",
+        "name": null,
+        "role": "speaker",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "sumama-zaeem",
+        "name": null,
+        "role": "speaker",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "warda-liaqat",
+        "name": null,
+        "role": "panelist",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "taskeen-fatima",
+        "name": null,
+        "role": "panelist",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "adil-shehzad",
+        "name": null,
+        "role": "panelist",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "alishba-arshad",
+        "name": null,
+        "role": "moderator",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      }
+    ],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified",
+      "people": "organizer-reported"
+    },
+    "notes": [
+      "Session titles and running order for speakers other than Farhan Ashraf are not yet confirmed."
+    ]
+  },
+  {
+    "id": 20,
+    "slug": "techrise-quetta-2026",
+    "title": "TechRise Quetta: GitHub & CNCF Awareness Day",
+    "date": "2026-06-22",
+    "startTime": null,
+    "endTime": null,
+    "location": "Quetta, Pakistan",
+    "city": "Quetta",
+    "venue": "University of Balochistan",
+    "type": "Conference",
+    "format": "In person",
+    "description": "A security-focused awareness day in Quetta on GitHub and the CNCF ecosystem, hosted by CNSPK with Tech Fest Balochistan.",
+    "summary": "An awareness day at the University of Balochistan introducing students to GitHub, open source, and the CNCF ecosystem, hosted by Cloud Native Security Pakistan with Tech Fest Balochistan. Attendees received certificates of attendance signed by the CNSPK organiser.",
+    "topics": [
+      "Open Source",
+      "Cloud Native",
+      "Security",
+      "CNCF"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "tech-fest-balochistan"
+    ],
+    "sponsors": [],
+    "people": [
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "organizer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
       }
     ],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
-    "resources": [
-      { "label": "Call for speakers (closed)", "url": "https://sessionize.com/ossconnectpk/", "kind": "cfp" }
-    ],
+    "resources": [],
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/u5t3fkn",
+    "link": null,
     "sources": [
-      { "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/u5t3fkn" },
-      { "label": "Sessionize call for speakers", "url": "https://sessionize.com/ossconnectpk/" }
+      {
+        "label": "CNSPK organiser records: certificate of attendance template and issued certificates",
+        "ref": "certificates/techrise quetta (certificate template and 164 generated certificates)"
+      }
     ],
-    "provenance": "verified",
-    "gaps": ["Full speaker list and agenda not yet recorded.", "No event photographs supplied yet.", "Attendance not recorded. The CNCF page lists capacity (500), not attendance."]
+    "provenance": "organizer-reported",
+    "relationship": "co-organized",
+    "relationshipStatus": "organizer-reported",
+    "attendance": {
+      "value": 164,
+      "qualifier": null,
+      "status": "organizer-reported",
+      "metric": "certificates of attendance issued",
+      "source": {
+        "label": "CNSPK organiser records: generated attendance certificates",
+        "ref": "certificates/techrise quetta (164 certificates)"
+      }
+    },
+    "registrations": null,
+    "capacity": null,
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "organizer-reported",
+      "venue": "organizer-reported",
+      "time": "unknown"
+    },
+    "notes": [
+      "No public event listing found yet. Distinct from Balochistan Tech Connect on 11 April 2026."
+    ],
+    "venueHost": "university-of-balochistan"
   },
   {
     "id": 15,
-    "slug": "github-copilot-dev-days-lahore-2026",
-    "title": "GitHub Copilot Dev Days Lahore",
+    "slug": "github-copilot-dev-days-lahore-may-2026",
+    "title": "GitHub Copilot Dev Days Lahore (May 2026)",
     "date": "2026-05-09",
     "startTime": null,
     "endTime": null,
@@ -208,29 +583,107 @@
     "format": "In person",
     "description": "A hands-on, demo-driven day on AI-assisted development with GitHub Copilot, part of GitHub's global Copilot Dev Days series, hosted by CNSPK organisers.",
     "summary": "The Lahore edition of GitHub Copilot Dev Days, a global series of community-led events. Hosted by Farhan Ashraf, Haroon Sohail, and Taskeen Fatima. The call for speakers required every session to include a live demo and real GitHub workflows, and rejected slide-only talks and product pitches.",
-    "topics": ["GitHub Copilot", "AI", "Developer Tools", "DevSecOps"],
-    "organizers": ["cnspk"],
-    "collaborators": ["github"],
+    "topics": [
+      "GitHub Copilot",
+      "AI",
+      "Developer Tools",
+      "DevSecOps"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "github"
+    ],
     "sponsors": [],
-    "speakers": [],
-    "hosts": ["Farhan Ashraf", "Haroon Sohail", "Taskeen Fatima"],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
     "resources": [
-      { "label": "Call for speakers (closed)", "url": "https://sessionize.com/github-copilot-dev-days-lahore", "kind": "cfp" },
-      { "label": "GitHub Copilot Dev Days content repository", "url": "https://github.com/github/GitHub-Copilot-Dev-Days", "kind": "repository" }
+      {
+        "label": "Call for speakers (closed)",
+        "url": "https://sessionize.com/github-copilot-dev-days-lahore",
+        "kind": "cfp"
+      },
+      {
+        "label": "GitHub Copilot Dev Days content repository",
+        "url": "https://github.com/github/GitHub-Copilot-Dev-Days",
+        "kind": "repository"
+      }
     ],
     "photos": [],
     "image": "",
     "registrationUrl": null,
     "link": "https://luma.com/l41torw1",
     "sources": [
-      { "label": "Luma event page (hosts)", "url": "https://luma.com/l41torw1" },
-      { "label": "Sessionize call for speakers (date)", "url": "https://sessionize.com/github-copilot-dev-days-lahore" }
+      {
+        "label": "Luma event page (hosts)",
+        "url": "https://luma.com/l41torw1"
+      },
+      {
+        "label": "Sessionize call for speakers (date)",
+        "url": "https://sessionize.com/github-copilot-dev-days-lahore"
+      }
     ],
     "provenance": "verified",
-    "gaps": ["Venue is only shown to registered attendees and is not recorded.", "Speaker list not yet recorded.", "No event photographs supplied yet."]
+    "relationship": "organized",
+    "relationshipStatus": "organizer-reported",
+    "attendance": {
+      "value": 150,
+      "qualifier": "more than",
+      "status": "organizer-reported",
+      "metric": "attendees",
+      "source": {
+        "label": "CNSPK organiser records",
+        "ref": "Supplied by the organisers, 2 November 2026"
+      }
+    },
+    "registrations": {
+      "value": 367,
+      "status": "organizer-reported",
+      "source": {
+        "label": "CNSPK organiser records: Luma guest export (unique email addresses; 351 approved)",
+        "ref": "Newsletter/DAtabasee/source_files/github copilot dev days .html"
+      },
+      "note": "351 of 367 registrations were approved."
+    },
+    "capacity": null,
+    "people": [
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "host",
+        "talk": null,
+        "url": null,
+        "status": "verified"
+      },
+      {
+        "person": "haroon-sohail",
+        "name": null,
+        "role": "host",
+        "talk": null,
+        "url": null,
+        "status": "verified"
+      },
+      {
+        "person": "taskeen-fatima",
+        "name": null,
+        "role": "host",
+        "talk": null,
+        "url": null,
+        "status": "verified"
+      }
+    ],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "unknown",
+      "time": "unknown"
+    },
+    "notes": [
+      "Local edition of GitHub’s global Copilot Dev Days programme, hosted on Luma by CNSPK organisers."
+    ]
   },
   {
     "id": 14,
@@ -246,11 +699,15 @@
     "format": "In person",
     "description": "CNSPK's first event in Quetta, on cloud-native security practice for Balochistan's technology community.",
     "summary": "CNSPK's first listed event in Balochistan. The session looked at how cloud-native security practice applies to organisations in Quetta and the wider province, with time for questions and networking.",
-    "topics": ["Cloud Security", "Cloud Native"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Cloud Security",
+      "Cloud Native"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -258,10 +715,30 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/tp9f5vj",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/tp9f5vj" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/tp9f5vj",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/tp9f5vj"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Host institution, speakers, and attendance not recorded.", "The CNCF listing shows a one-hour time slot that may be a placeholder, so no time is published here."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "unknown"
+    },
+    "notes": [
+      "The CNCF listing shows a one-hour time slot that may be a placeholder, so no time is published here."
+    ]
   },
   {
     "id": 13,
@@ -277,11 +754,18 @@
     "format": "In person",
     "description": "A community meetup in Faisalabad on integrating security into cloud-native architectures, run with AWS User Group Faisalabad.",
     "summary": "CNSPK's first meetup in Faisalabad, run with AWS User Group Faisalabad. Practitioners and students discussed how to build security into cloud-native architectures, followed by open networking.",
-    "topics": ["Cloud Security", "Cloud Native", "AWS"],
-    "organizers": ["cnspk"],
-    "collaborators": ["aws-ug-faisalabad"],
+    "topics": [
+      "Cloud Security",
+      "Cloud Native",
+      "AWS"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "aws-ug-faisalabad"
+    ],
     "sponsors": [],
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -289,10 +773,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/aagawjd",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/aagawjd" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/aagawjd",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/aagawjd"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "co-organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 12,
@@ -308,11 +810,18 @@
     "format": "In person",
     "description": "A prompt engineering session at ITCN Asia 2026, presented by CNSPK with AWS Community Pakistan.",
     "summary": "A session on prompt engineering, presented by CNSPK with AWS Community Pakistan during ITCN Asia 2026 at Expo Centre Lahore. Haroon Sohail, a software engineer at Manafa, led the session.",
-    "topics": ["AI", "Prompt Engineering"],
-    "organizers": ["cnspk"],
-    "collaborators": ["aws-community-pakistan", "itcn-asia"],
+    "topics": [
+      "AI",
+      "Prompt Engineering"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "aws-community-pakistan",
+      "itcn-asia"
+    ],
     "sponsors": [],
-    "speakers": [{ "name": "Haroon Sohail", "talk": "Words that Build Intelligence", "url": null }],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -320,10 +829,37 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/ngpuhhz",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/ngpuhhz" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/ngpuhhz",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/ngpuhhz"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Slides or recording not linked."]
+    "relationship": "co-organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [
+      {
+        "person": null,
+        "name": "Haroon Sohail",
+        "role": "speaker",
+        "talk": "Words that Build Intelligence",
+        "url": null,
+        "status": "verified"
+      }
+    ],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 11,
@@ -339,11 +875,15 @@
     "format": "In person",
     "description": "Year-end meetup reviewing the cloud-native security developments of 2025 and planning the community's 2026.",
     "summary": "The community's year-end meetup. Members reviewed the cloud-native security developments of 2025, the patches and practices that mattered for teams in Pakistan, and plans for 2026.",
-    "topics": ["Cloud Security", "Community"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Cloud Security",
+      "Community"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -351,10 +891,36 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/594akh6",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/594akh6" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/594akh6",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/594akh6"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": {
+      "value": 55,
+      "status": "organizer-reported",
+      "source": {
+        "label": "CNSPK organiser records: registration form export (unique email addresses)",
+        "ref": "Newsletter/DAtabasee/source_files/The Wrap Up.html"
+      },
+      "note": "Invite-only event; registrations were shortlisted."
+    },
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 10,
@@ -370,12 +936,17 @@
     "format": "In person",
     "description": "An afternoon of talks and lightning sessions on open-source contribution, held at Lahore Garrison University.",
     "summary": "The first Open Source Connect, held the same day as Hacktoberfest Lahore 2025. Talks and lightning sessions covered how to start contributing, how to stay active in projects, and how open source is shaping cloud and AI.",
-    "topics": ["Open Source", "Cloud Native", "AI"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Open Source",
+      "Cloud Native",
+      "AI"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
     "venueHost": "lgu",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -383,10 +954,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/c6y24p8",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/c6y24p8" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/c6y24p8",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/c6y24p8"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 9,
@@ -402,12 +991,20 @@
     "format": "In person",
     "description": "Hands-on Hacktoberfest contributions to cloud-native security projects, with sessions on container security, DevSecOps, and secure coding.",
     "summary": "A Hacktoberfest morning for students and developers to make open-source contributions while learning to build and secure cloud-native applications. Sessions covered container security, DevSecOps, cloud-native tooling, and secure coding.",
-    "topics": ["Hacktoberfest", "Open Source", "Container Security", "DevSecOps"],
-    "organizers": ["cnspk"],
-    "collaborators": ["hacktoberfest"],
+    "topics": [
+      "Hacktoberfest",
+      "Open Source",
+      "Container Security",
+      "DevSecOps"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "hacktoberfest"
+    ],
     "sponsors": [],
     "venueHost": "lgu",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -415,10 +1012,32 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/6s9j4j6",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/6s9j4j6" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/6s9j4j6",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/6s9j4j6"
+      },
+      {
+        "label": "MLH Hacktoberfest event listing (host: Farhan Ashraf, Cloud Native Security Lahore)",
+        "url": "https://events.mlh.io/events/13169-hacktoberfest-2025-in-lahore"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Contribution counts and attendance not recorded."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 8,
@@ -434,12 +1053,24 @@
     "format": "In person",
     "description": "Lahore's celebration of ten years of Kubernetes and CNCF, part of the global #cTENcf series.",
     "summary": "Lahore's part of the global #cTENcf celebrations marking ten years of Kubernetes and CNCF. Lightning talks, interactive sessions, and CNCF's Party in a Box swag, hosted at Systems Limited.",
-    "topics": ["Kubernetes", "CNCF", "Community"],
-    "organizers": ["cnspk"],
-    "collaborators": [],
-    "sponsors": [],
+    "topics": [
+      "Kubernetes",
+      "CNCF",
+      "Community"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "gdgoc-lgu"
+    ],
+    "sponsors": [
+      {
+        "partner": "github",
+        "tier": null
+      }
+    ],
     "venueHost": "systems-limited",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -447,10 +1078,191 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/az4njv6",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/az4njv6" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/az4njv6",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/az4njv6"
+      },
+      {
+        "label": "CNSPK event graphics: \"Our Sponsor & Venue Partner: GitHub | Systems\" and cover crediting GDGoC LGU",
+        "ref": "branding/CNSP Branding Assets (Main Cover.png, Venue Announcement.png, Team Post and Volunteer Post graphics)"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [
+      {
+        "person": "abdul-raheem",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "abdur-rehman-shafqat",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "armghan-bin-zahid",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "farhan-ashraf",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "haroon-sohail",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "huzaifa-nawaz",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "muhammad-manan",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "shahzaneer-ahmad",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "sharjeel-yunus",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "taskeen-fatima",
+        "name": null,
+        "role": "organizing-team",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "abdullah-maqsood",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "alishba-arshad",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "areeb-fatima",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "arooj-fatima",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "barera-zubair",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "rubaila-jawad",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "saher-iqbal",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "shamin-gul-khan",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      },
+      {
+        "person": "younas-awan",
+        "name": null,
+        "role": "volunteer",
+        "talk": null,
+        "url": null,
+        "status": "organizer-reported"
+      }
+    ],
+    "poster": {
+      "src": "/images/events/ctencf-birthday-bash-lahore-2025/poster.jpg",
+      "width": 1200,
+      "height": 1200,
+      "alt": "CNCF Birthday Bash Lahore venue announcement: Systems Limited, Saturday 23 August, 11:00 am to 3:00 pm.",
+      "credit": "CNSPK event graphics"
+    },
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 7,
@@ -466,12 +1278,16 @@
     "format": "In person",
     "description": "The first Cloud Native Security Lahore monthly meetup, on the basics of cloud-native security and the challenges specific to Pakistan.",
     "summary": "The first of a planned monthly meetup series in Lahore. A guest speaker covered the basics of cloud-native security and the challenges and opportunities specific to Pakistan, followed by open discussion.",
-    "topics": ["Cloud Security", "Kubernetes"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Cloud Security",
+      "Kubernetes"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
     "venueHost": "bahria-lahore",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -479,10 +1295,31 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/e68dyn8",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/e68dyn8" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/e68dyn8",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/e68dyn8"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["The guest speaker is not named on the listing.", "The listed time slot (04:30 to 23:30) looks like a placeholder, so no time is published here."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "unknown"
+    },
+    "notes": [
+      "The guest speaker is not named on the listing.",
+      "The listed time slot (04:30 to 23:30) looks like a placeholder, so no time is published here."
+    ]
   },
   {
     "id": 6,
@@ -498,12 +1335,23 @@
     "format": "In person",
     "description": "A beginner-friendly session at CyberFest Lahore on breaking into DevSecOps with open-source tools.",
     "summary": "A one-hour session at CyberFest Lahore for students. It covered how modern teams build secure-by-design systems and how beginners can start contributing to open-source security tooling.",
-    "topics": ["DevSecOps", "Open Source"],
-    "organizers": ["cnspk"],
-    "collaborators": ["cyberfest-lahore"],
-    "sponsors": [{ "partner": "github", "tier": null }],
+    "topics": [
+      "DevSecOps",
+      "Open Source"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "cyberfest-lahore"
+    ],
+    "sponsors": [
+      {
+        "partner": "github",
+        "tier": null
+      }
+    ],
     "venueHost": "lgu",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -511,10 +1359,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/gm944hf",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/gm944hf" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/gm944hf",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/gm944hf"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speaker not named on the listing."]
+    "relationship": "community-partnership",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 5,
@@ -530,11 +1396,21 @@
     "format": "In person",
     "description": "An evening networking meetup for students and professionals working in cloud security and DevSecOps.",
     "summary": "An evening meetup organised in response to member feedback, mixing short discussions on cloud security and DevSecOps with time to meet other practitioners.",
-    "topics": ["Community", "Cloud Security", "DevSecOps"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Community",
+      "Cloud Security",
+      "DevSecOps"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
-    "sponsors": [{ "partner": "github", "tier": null }],
-    "speakers": [],
+    "sponsors": [
+      {
+        "partner": "github",
+        "tier": null
+      }
+    ],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -542,10 +1418,88 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/r5zc5h9",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/r5zc5h9" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/r5zc5h9",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/r5zc5h9"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
+  },
+  {
+    "id": 19,
+    "slug": "cloudsec-fusion-ai-driven-defense-2025",
+    "title": "CloudSec Fusion: AI-Driven Defense",
+    "date": "2025-02-06",
+    "startTime": "10:30",
+    "endTime": "14:30",
+    "location": "Lahore, Pakistan",
+    "city": "Lahore",
+    "venue": null,
+    "type": "Meetup",
+    "format": "In person",
+    "description": "Sessions and demos on how AI-driven tools help predict, detect, and respond to threats in cloud environments.",
+    "summary": "A CNSPK event on AI in cloud security: sessions, hands-on demos, and case studies on using AI-driven tooling to predict, detect, and mitigate threats in cloud-native environments, from analytics to automated response.",
+    "topics": [
+      "Cloud Security",
+      "AI",
+      "Security"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [],
+    "sponsors": [],
+    "people": [],
+    "agenda": [],
+    "outcomes": [],
+    "projectsRef": null,
+    "resources": [],
+    "photos": [],
+    "image": "",
+    "registrationUrl": null,
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/7sp5w34",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/7sp5w34"
+      },
+      {
+        "label": "Speaker archive (farhanashraf.si)",
+        "url": "https://www.farhanashraf.si/talks/cloudsec-fusion-ai-driven-defense-bahria-2024"
+      }
+    ],
+    "provenance": "verified",
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "poster": null,
+    "conflicts": [
+      "Date and venue conflict: the CNCF listing says 6 February 2025 with venue \"TBD\"; the speaker archive lists CloudSec Fusion at Bahria University Lahore on 27 February 2024. The CNCF date is shown until confirmed."
+    ],
+    "fieldStatus": {
+      "date": "conflict",
+      "venue": "unknown",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 4,
@@ -561,12 +1515,17 @@
     "format": "In person",
     "description": "Reconnaissance for cloud-native security: OSINT, Google dorking, Shodan, and Nmap applied to containerised and serverless systems.",
     "summary": "A session on the role of reconnaissance in defending cloud-native systems. It walked through how security practitioners use OSINT, Google dorking, Shodan, and Nmap to find weaknesses in containerised, serverless, and microservice architectures before attackers do.",
-    "topics": ["Security", "Reconnaissance", "Cloud Native"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Security",
+      "Reconnaissance",
+      "Cloud Native"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
     "venueHost": "comsats-lahore",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -574,10 +1533,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/heks6xg",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/heks6xg" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/heks6xg",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/heks6xg"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speaker not named on the listing."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 3,
@@ -593,12 +1570,16 @@
     "format": "In person",
     "description": "An introductory session on securing cloud-native environments and DevSecOps strategy.",
     "summary": "An interactive introduction to securing cloud-native environments, with practical guidance on fitting security into DevSecOps workflows.",
-    "topics": ["Cloud Security", "DevSecOps"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Cloud Security",
+      "DevSecOps"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
     "venueHost": "bnu",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -606,10 +1587,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/mm3ezun",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/mm3ezun" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/mm3ezun",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/mm3ezun"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speaker not named on the listing."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 2,
@@ -625,12 +1624,16 @@
     "format": "In person",
     "description": "A campus session on Kubernetes and how it automates deploying, scaling, and monitoring containerised applications.",
     "summary": "A campus session introducing Kubernetes: how it automates deploying, updating, scaling, and monitoring containerised applications, and why that matters for securing them.",
-    "topics": ["Kubernetes", "Cloud Native"],
-    "organizers": ["cnspk"],
+    "topics": [
+      "Kubernetes",
+      "Cloud Native"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
     "collaborators": [],
     "sponsors": [],
     "venueHost": "bahria-lahore",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -638,10 +1641,28 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/65ube2c",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/65ube2c" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/65ube2c",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/65ube2c"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speaker not named on the listing."]
+    "relationship": "organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   },
   {
     "id": 1,
@@ -657,12 +1678,19 @@
     "format": "In person",
     "description": "CNSPK's first meetup in Islamabad, run with AWS Community Pakistan and hosted by SOFTOO.",
     "summary": "CNSPK's first meetup in Islamabad and its earliest event on record. It was run with AWS Community Pakistan and hosted by SOFTOO, as a networking evening for cloud and security practitioners.",
-    "topics": ["Cloud Security", "AWS", "Community"],
-    "organizers": ["cnspk"],
-    "collaborators": ["aws-community-pakistan"],
+    "topics": [
+      "Cloud Security",
+      "AWS",
+      "Community"
+    ],
+    "organizers": [
+      "cnspk"
+    ],
+    "collaborators": [
+      "aws-community-pakistan"
+    ],
     "sponsors": [],
     "venueHost": "softoo",
-    "speakers": [],
     "agenda": [],
     "outcomes": [],
     "projectsRef": null,
@@ -670,9 +1698,27 @@
     "photos": [],
     "image": "",
     "registrationUrl": null,
-    "link": "https://community.cncf.io/cncf/group/sxcyqt9/event/mdrbgwr",
-    "sources": [{ "label": "CNCF community event page", "url": "https://community.cncf.io/cncf/group/sxcyqt9/event/mdrbgwr" }],
+    "link": "https://ocgroups.dev/cncf/group/sxcyqt9/event/mdrbgwr",
+    "sources": [
+      {
+        "label": "CNCF community event page",
+        "url": "https://ocgroups.dev/cncf/group/sxcyqt9/event/mdrbgwr"
+      }
+    ],
     "provenance": "verified",
-    "gaps": ["Speakers and attendance not recorded."]
+    "relationship": "co-organized",
+    "relationshipStatus": "verified",
+    "attendance": null,
+    "registrations": null,
+    "capacity": null,
+    "people": [],
+    "poster": null,
+    "conflicts": [],
+    "fieldStatus": {
+      "date": "verified",
+      "venue": "verified",
+      "time": "verified"
+    },
+    "notes": []
   }
 ]

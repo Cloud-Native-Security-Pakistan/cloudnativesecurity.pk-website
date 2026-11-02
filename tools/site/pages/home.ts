@@ -1,16 +1,15 @@
 import { html, ext, type SafeHtml } from '../html.ts';
-import { type Content, stats, shortDate, FOCUS_AREAS, eventsForArea, estimatedAttendees } from '../content.ts';
+import { type Content, stats, shortDate, FOCUS_AREAS, eventsForArea, cnspkEvents } from '../content.ts';
 import { sectionHead, btn, arrowLink, figures, eventUrl, ledger, band, tags, photo, ARROW } from '../components.ts';
 import type { PageMeta } from '../layout.ts';
 
 export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtml } {
   const s = stats(c);
   const upcoming = c.events.filter((e) => e.date >= today).reverse();
-  const recent = c.events.filter((e) => e.date < today).slice(0, 6);
+  const recent = cnspkEvents(c).filter((e) => e.date < today).slice(0, 6);
   const hackDay = c.events.find((e) => e.slug === 'hacktoberfest-hack-day-lahore-2026');
   const photoEvent = c.events.find((e) => e.photos.length > 0);
   const firstYear = s.firstEvent.date.slice(0, 4);
-  const attendees = estimatedAttendees(c);
   const showcase = c.projects.hackDay2026.projects.filter((p) => p.description).slice(0, 6);
 
   const routes = [
@@ -36,7 +35,7 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
       <p class="hero__note">Listed on ${ext(c.site.cncf.url, 'CNCF Open Community Groups')} since ${c.site.founded.label}.</p>
     </div>
     <div class="log" aria-labelledby="log-title">
-      <div class="log__bar"><span id="log-title">field-log · recent events</span><span>${s.eventCount} on record</span></div>
+      <div class="log__bar"><span id="log-title">field-log · recent events</span><span>${s.eventCount} CNSPK events</span></div>
       <ol class="log__list">${recent.map(
         (e) => html`<li class="log__item"><a href="${eventUrl(e)}"><span class="log__date"><time datetime="${e.date}">${e.date}</time></span><span class="log__title">${e.title}</span><span class="log__where">${e.city} · ${e.type.toLowerCase()}</span></a></li>`,
       )}</ol>
@@ -47,15 +46,15 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
 
 <section class="section--tight" aria-labelledby="impact-strip">
   <div class="container stack">
-    <p class="impact-strip" id="impact-strip"><strong>${s.eventCount} Events</strong><span aria-hidden="true">|</span><strong>${attendees} Estimated Attendees</strong><span aria-hidden="true">|</span><strong>Nationwide Community Impact</strong></p>
-    <p class="lede">Our community events have welcomed approximately ${c.site.attendance.averagePerEvent} participants per event on average, bringing together developers, security professionals, students, and open-source contributors across Pakistan.</p>
+    <p class="impact-strip" id="impact-strip"><strong>${s.eventCount} Events</strong><span aria-hidden="true">|</span><strong>~${c.site.attendance.averagePerEvent} Participants per Event</strong><span aria-hidden="true">|</span><strong>${s.cities.length} Cities</strong></p>
+    <p class="lede">Community events have welcomed approximately ${c.site.attendance.averagePerEvent} participants on average, based on organiser estimates. Historical attendance records are being consolidated.</p>
     ${figures([
-      { value: String(s.eventCount), label: 'events on record since ' + shortDate(s.firstEvent.date).replace(/^\d+ /, ''), source: { label: 'event archive', url: '/events/' } },
-      { value: attendees, label: 'estimated attendees', note: `Organiser estimate: about ${c.site.attendance.averagePerEvent} per event` },
+      { value: String(s.eventCount), label: 'events organised or co-organised since ' + shortDate(s.firstEvent.date).replace(/^\d+ /, ''), source: { label: 'event archive', url: '/events/' } },
+      { value: `~${c.site.attendance.averagePerEvent}`, label: 'average participants per event', note: 'Organiser estimate, not a per-event count' },
       { value: String(s.cities.length), label: `cities: ${s.cities.join(', ')}`, source: { label: 'event archive', url: '/events/' } },
       { value: String(c.site.members.value), label: `members on the CNCF group (${shortDate(c.site.members.verifiedOn)})`, source: { label: 'CNCF listing', url: c.site.members.source } },
     ])}
-    <p class="note">Event, city, and member counts come from public listings. Attendance is an organiser estimate; exact per-event numbers are not recorded. <a href="/impact/">How we count</a>.</p>
+    <p class="note">Event and city counts come from the event archive; membership from the CNCF listing. The average is an organiser estimate and is not multiplied into a total. <a href="/impact/#method">How we count</a>.</p>
   </div>
 </section>
 
@@ -134,7 +133,7 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
 <section class="section section--band" aria-labelledby="team-title">
   <div class="container">
     ${sectionHead({ kicker: 'Organisers', index: '06', id: 'team-title', title: 'Run by volunteers', lede: 'CNSPK has no paid staff. These organisers plan the events, find venues, and look after speakers.', action: arrowLink('/team/', 'Meet the organisers') })}
-    <ul class="tags">${c.team.map((m) => html`<li class="tag">${m.name}</li>`)}</ul>
+    <ul class="tags">${c.people.filter((p) => p.team && p.team.group !== 'volunteer').map((m) => html`<li class="tag">${m.name}</li>`)}</ul>
   </div>
 </section>
 
@@ -153,7 +152,7 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
       path: '/',
       isHome: true,
       title: 'CNSPK · Cloud Native Security Pakistan',
-      description: `Building Pakistan’s cloud-native security community: ${s.eventCount} events and ${attendees} estimated attendees since ${firstYear}, across ${s.cities.join(', ')}.`,
+      description: `Building Pakistan’s cloud-native security community: ${s.eventCount} events since ${firstYear} across ${s.cities.join(', ')}, with about ${c.site.attendance.averagePerEvent} participants per event on average (organiser estimate).`,
       jsonLd: [
         {
           '@context': 'https://schema.org',

@@ -66,6 +66,7 @@ export function initArchive(root = document) {
     const year = String(data.get('year') || 'all');
     const city = String(data.get('city') || 'all');
     const type = String(data.get('type') || 'all');
+    const rel = String(data.get('relationship') || 'all');
     let shown = 0;
     for (const el of items) {
       const ok =
@@ -73,7 +74,8 @@ export function initArchive(root = document) {
         (when === 'all' || el.dataset.status === when) &&
         (year === 'all' || el.dataset.year === year) &&
         (city === 'all' || el.dataset.city === city) &&
-        (type === 'all' || el.dataset.type === type);
+        (type === 'all' || el.dataset.type === type) &&
+        (rel === 'all' || el.dataset.relationship === rel);
       el.hidden = !ok;
       if (ok) shown += 1;
     }

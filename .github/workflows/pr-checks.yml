@@ -27,6 +27,9 @@ jobs:
     - name: Generated pages match data/
       run: npm run build:check
 
+    - name: Content validation
+      run: npm run validate
+
     - name: Content and output tests
       run: npm test
 

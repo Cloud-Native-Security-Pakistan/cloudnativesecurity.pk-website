@@ -1,5 +1,5 @@
 import { html, ext, type SafeHtml } from '../html.ts';
-import { type Content, shortDate } from '../content.ts';
+import { type Content, shortDate, speakerDirectory, personName } from '../content.ts';
 import { pageHead, sectionHead, btn, arrowLink, composeForm, avatar, eventUrl } from '../components.ts';
 import type { PageMeta } from '../layout.ts';
 
@@ -105,7 +105,7 @@ ${pageHead({
 
 /* ================================================================== CFP */
 export function cfp(c: Content): Page {
-  const speakers = c.events.flatMap((e) => e.speakers.map((s) => ({ ...s, event: e })));
+  const directory = speakerDirectory(c);
   const topics = [
     'Cloud-native security and DevSecOps',
     'Kubernetes and container security',
@@ -195,9 +195,9 @@ ${pageHead({
 
 <section class="section anchor-target" id="speakers" aria-labelledby="speakers-title">
   <div class="container">
-    ${sectionHead({ kicker: 'Speakers', index: '05', id: 'speakers-title', title: 'Past speakers', lede: 'Speakers named on public event listings. Most older listings do not name speakers, so this list is incomplete.' })}
-    <ul class="directory">${speakers.map(
-      (s) => html`<li class="directory__item"><span class="directory__name">${s.name}</span><span class="meta">${shortDate(s.event.date)}</span><span class="directory__desc">${s.url ? ext(s.url, `“${s.talk}”`, 'link') : html`“${s.talk}”`} at <a class="link" href="${eventUrl(s.event)}">${s.event.title}</a></span>${avatar(s.name)}</li>`,
+    ${sectionHead({ kicker: 'Speakers', index: '05', id: 'speakers-title', title: 'Past speakers', lede: `${directory.length} speakers, panelists, and moderators across CNSPK events. Older listings rarely name speakers, so this list is still growing.` })}
+    <ul class="speakers">${directory.map(
+      (s) => html`<li class="speaker">${avatar(s.name)}<div><p class="person__name">${s.name}</p><ul class="speaker__talks">${s.talks.map((t) => html`<li><span class="meta">${shortDate(t.event.date)} · ${t.role}</span> ${t.talk ? (t.url ? ext(t.url, `“${t.talk}”`, 'link') : html`“${t.talk}”`) : ''} <a class="link" href="${eventUrl(t.event)}">${t.event.title}</a></li>`)}</ul></div></li>`,
     )}</ul>
   </div>
 </section>`;
@@ -261,7 +261,7 @@ ${pageHead({
 
 /* ============================================================ Resources */
 export function resources(c: Content): Page {
-  const talks = c.events.flatMap((e) => e.speakers.filter((s) => s.url).map((s) => ({ ...s, event: e })));
+  const talks = c.events.flatMap((e) => e.people.filter((p) => p.url && p.talk).map((p) => ({ name: personName(c, p), talk: p.talk as string, url: p.url, event: e })));
   const body = html`
 ${pageHead({
   crumbs: [{ label: 'Home', href: '/' }, { label: 'Resources' }],
