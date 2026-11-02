@@ -26,6 +26,7 @@ export class Navbar {
         this.navItems = [
             { name: 'About', path: '/about/' },
             { name: 'Events', path: '/events/' },
+            { name: 'Impact', path: '/community-impact/' },
             { name: 'Sessions', path: '/sessions/' },
             { name: 'Members', path: '/members/' },
             { name: 'Team', path: '/team/' },
