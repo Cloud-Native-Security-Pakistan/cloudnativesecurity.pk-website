@@ -137,6 +137,7 @@ export class EventCard {
             }
             .cnspk-event-card__tag--city { background: rgba(199, 255, 62, 0.15); color: var(--lime); }
             .cnspk-event-card__tag--type { background: var(--slate); color: var(--bone-2); }
+            .cnspk-event-card__tag--topic { background: rgba(199, 255, 62, 0.12); color: var(--lime); }
 
             .cnspk-event-card__title {
                 font-family: var(--font-display);
@@ -220,7 +221,7 @@ export class EventCard {
     render() {
         this.injectStyles();
 
-        const { title, date, time, location, type, description, image, link } = this.event;
+        const { title, date, time, location, type, description, image, link, topicTags } = this.event;
 
         const safeTitle = sanitize(title);
         const safeDesc = sanitize(description);
@@ -232,6 +233,17 @@ export class EventCard {
 
         // City chip derived from the real location field ("Lahore, Pakistan" -> "Lahore").
         const city = location ? sanitize(String(location).split(',')[0].trim()) : '';
+
+        // Topic chips: same treatment as the Community Talks archive. Each tag is
+        // sanitized; non-string/empty values are dropped so a bad entry can never
+        // inject markup. Capped at 3 to keep the card balanced.
+        const topicChips = Array.isArray(topicTags)
+            ? topicTags
+                  .filter((t) => typeof t === 'string' && t.trim())
+                  .slice(0, 3)
+                  .map((t) => `<span class="cnspk-event-card__tag cnspk-event-card__tag--topic">${sanitize(t)}</span>`)
+                  .join('')
+            : '';
 
         const parsed = new Date(date);
         const validDate = !isNaN(parsed.getTime());
@@ -265,6 +277,7 @@ export class EventCard {
                     <div class="cnspk-event-card__tags">
                         ${city ? `<span class="cnspk-event-card__tag cnspk-event-card__tag--city">${city}</span>` : ''}
                         ${safeType ? `<span class="cnspk-event-card__tag cnspk-event-card__tag--type">${safeType}</span>` : ''}
+                        ${topicChips}
                     </div>
 
                     <h3 class="cnspk-event-card__title">${safeTitle}</h3>
