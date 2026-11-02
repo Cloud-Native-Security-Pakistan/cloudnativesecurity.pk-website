@@ -1,5 +1,5 @@
 import { html, ext, type SafeHtml } from '../html.ts';
-import { type Content, type Partner, stats, shortDate } from '../content.ts';
+import { type Content, type Partner, stats, shortDate, estimatedAttendees } from '../content.ts';
 import { pageHead, sectionHead, btn, arrowLink, composeForm, avatar, eventUrl, figures, bar } from '../components.ts';
 import type { PageMeta } from '../layout.ts';
 
@@ -146,11 +146,11 @@ ${pageHead({
     ${sectionHead({ kicker: 'Audience', index: '01', id: 'audience-title', title: 'Who you reach' })}
     ${figures([
       { value: String(s.eventCount), label: 'events since ' + s.firstEvent.date.slice(0, 4), source: { label: 'event archive', url: '/events/' } },
-      { value: String(s.cities.length), label: s.cities.join(', '), source: { label: 'event archive', url: '/events/' } },
+      { value: estimatedAttendees(c), label: 'estimated attendees', note: `Organiser estimate: about ${c.site.attendance.averagePerEvent} per event` },
       { value: String(s.campusVenues), label: 'university campuses hosted events', source: { label: 'venue list', url: '#past' } },
       { value: String(c.site.members.value), label: 'members on the CNCF group', source: { label: 'CNCF listing', url: c.site.members.source } },
     ])}
-    <p class="note">Attendance has not been recorded consistently, so no attendance figures are quoted. Ask us for the numbers we do have for a specific event.</p>
+    <p class="note">Events take place in ${s.cities.join(', ')}. Attendance is an organiser estimate of about ${c.site.attendance.averagePerEvent} participants per event; ask us for the numbers we have for a specific event.</p>
   </div>
 </section>
 
@@ -237,7 +237,7 @@ ${pageHead({
     ${sectionHead({ kicker: 'Figures', index: '01', id: 'figures-title', title: 'By the numbers' })}
     ${figures([
       { value: String(s.eventCount), label: `events (${verified} with a public listing)`, source: { label: 'event archive', url: '/events/' } },
-      { value: String(s.cities.length), label: 'cities', source: { label: 'event archive', url: '/events/' } },
+      { value: estimatedAttendees(c), label: 'estimated attendees', note: `Organiser estimate: about ${c.site.attendance.averagePerEvent} per event` },
       { value: String(c.partners.length), label: 'organisations collaborated with', source: { label: 'partners', url: '/partners/#past' } },
       { value: '26', label: 'projects submitted at Hack Day Lahore 2026', source: { label: 'MLH', url: 'https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan' } },
     ])}
@@ -269,7 +269,7 @@ ${pageHead({
     <div>${sectionHead({ kicker: 'Not measured', index: '04', id: 'gaps-title', title: 'What we don’t measure yet' })}</div>
     <div class="prose">
       <ul>
-        <li><strong>Attendance.</strong> Not recorded consistently. CNCF listings show capacity, which is not attendance, so neither is published here.</li>
+        <li><strong>Attendance per event.</strong> Not recorded event by event. The ${estimatedAttendees(c)} total is an organiser estimate of about ${c.site.attendance.averagePerEvent} participants per event across ${s.eventCount} events. CNCF listings show capacity, which is not attendance.</li>
         <li><strong>Speakers.</strong> ${withSpeakers} of ${s.eventCount} events have named speakers or hosts on record.</li>
         <li><strong>Photos.</strong> ${withPhotos} of ${s.eventCount} events have published photos.</li>
         <li><strong>Community reach.</strong> ${c.site.members.value} people are members of the CNCF group (${shortDate(c.site.members.verifiedOn)}). WhatsApp, Discord, and LinkedIn totals are not verified.</li>
@@ -280,7 +280,7 @@ ${pageHead({
   </div>
 </section>`;
 
-  return { meta: { path: '/impact/', title: 'Impact', description: `CNSPK impact record: ${s.eventCount} events in ${s.cities.length} cities, collaborations, hackathon outcomes, and what has not been measured yet.` }, body };
+  return { meta: { path: '/impact/', title: 'Impact', description: `CNSPK impact record: ${s.eventCount} events, ${estimatedAttendees(c)} estimated attendees, ${s.cities.length} cities, collaborations, hackathon outcomes, and what has not been measured yet.` }, body };
 }
 
 /* ================================================================ Brand */
