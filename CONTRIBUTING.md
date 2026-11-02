@@ -1,53 +1,51 @@
-# Contributing to CNSPK Website
+# Contributing to cloudnativesecurity.pk
 
-Thank you for your interest in contributing! This guide will help you get started.
+Thanks for helping. Most pages on this site are generated from JSON files in `data/`, so the most useful contributions are usually a few lines of content with a source.
 
-## Quick Start
+## Quick start
 
-1. **Fork the repository**
-2. **Clone your fork**:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/cloudnativesecurity.pk-website.git
-   cd cloudnativesecurity.pk-website
-   ```
+```bash
+git clone https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website.git
+cd cloudnativesecurity.pk-website
+npm ci                 # Node 24 or newer
+npm run build          # regenerate pages from data/
+node tools/site/serve.ts   # preview at http://localhost:4321/
+npm run check          # type check, stale-page check, tests
+```
 
-3. **Make your changes**
-4. **Test locally**:
-   ```bash
-   npm install
-   npm run dev
-   ```
-   Open http://localhost:3000 in your browser
+Commit the regenerated HTML together with your data change. CI fails if the committed pages don't match `data/`.
 
-5. **Commit and push**:
-   ```bash
-   git add .
-   git commit -m "Your descriptive message"
-   git push origin main
-   ```
+## Where things live
 
-6. **Open a Pull Request** on GitHub
+| You want to change | Edit |
+| --- | --- |
+| An event (add, correct, add photos or speakers) | `data/events.json` |
+| Organisation facts, channels, member count | `data/site.json` |
+| Partners and their evidence links | `data/partners.json` |
+| Open-source projects | `data/projects.json` |
+| Organisers | `data/team.json` |
+| Page layout and copy | `tools/site/pages/*.ts` |
+| Shared components | `tools/site/components.ts` |
+| Header and footer | `js/chrome.js` |
+| Styles | `css/tokens.css` (tokens), `css/chrome.css`, `css/site.css` |
 
-That's it! We'll review your PR and merge it.
+Hand-written pages (`join/`, `members/`, `certificate/`, `consultants/`, `code-of-conduct/`) are edited directly and use the shared header through `js/Navbar.js`.
 
-## What Can You Contribute?
+## Content rules
 
-- Fix bugs
-- Add new features
-- Improve documentation
-- Update content
-- Fix typos
-- Improve design
-- Add new pages
+These keep the site credible. Reviewers will ask for changes that break them.
 
-## Code Style
+1. **Every fact needs a public source.** Add it to the event's `sources` array. If there is no public source, set `"provenance": "organizer-reported"` and say where the information came from.
+2. **Never invent numbers.** No estimated attendance, member counts, or reach. Capacity on a registration page is not attendance.
+3. **Document gaps instead of filling them.** Add missing items to the event's `gaps` array; the page shows them as "Not documented yet".
+4. **Photos need consent, alt text, and a credit.** Add a 1600px JPEG and an 800px copy named `*-800.jpg` under `images/events/<slug>/`, with `width`, `height`, and `alt` in the data. Strip location metadata before committing.
+5. **Name partners by their exact role**: sponsor, collaborator, programme, or venue host, with an evidence link.
+6. **Do not imply CNCF endorsement.** CNSPK is listed on CNCF Open Community Groups; that is the only claim we make.
 
-- Use simple, readable code
-- Add comments for complex logic
-- Follow existing patterns in the codebase
-- Keep it simple
+## Adding an event
 
-## Questions?
+Copy an existing entry in `data/events.json` and update every field. Required: a unique lowercase `slug`, `date` as `YYYY-MM-DD`, `type` (Meetup, Workshop, Conference, Hackathon, or Session), a `summary` of at least one full sentence, and at least one `sources` entry. Then run `npm run build` and check the new page under `/events/<slug>/`.
 
-Open an issue or ask in our community channels. We're happy to help!
+## Questions
 
+Open an issue or ask in Discord. Conduct concerns go to conduct@cloudnativesecurity.pk.

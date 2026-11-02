@@ -1,3 +1,5 @@
+> **Superseded (Nov 2026).** This brief describes the v2 rebrand. For current rules see [CONTRIBUTING.md](./CONTRIBUTING.md) and [REDESIGN.md](./REDESIGN.md). In particular, data shapes in `data/` have changed.
+
 # CNSPK Website v2 — Shared Agent Brief
 
 > **All sub-agents working on the website revamp must read this in full before touching any file.** This is the single source of truth for design tokens, voice, naming, and constraints.
