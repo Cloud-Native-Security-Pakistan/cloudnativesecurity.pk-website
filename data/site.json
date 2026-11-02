@@ -26,6 +26,13 @@
     "verifiedOn": "2026-11-02",
     "note": "Counts registered members of the CNCF group only. WhatsApp, Discord, and LinkedIn audiences are not included because no verified totals are available."
   },
+  "attendance": {
+    "averagePerEvent": 200,
+    "label": "Estimated attendees",
+    "provenance": "organizer-reported",
+    "reportedOn": "2026-11-02",
+    "note": "Organiser estimate of about 200 participants per event on average. Exact per-event attendance is not recorded."
+  },
   "channels": [
     {
       "id": "cncf",

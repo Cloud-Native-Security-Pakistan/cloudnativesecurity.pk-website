@@ -1,5 +1,5 @@
 import { html, ext, type SafeHtml } from '../html.ts';
-import { type Content, stats, shortDate, FOCUS_AREAS, eventsForArea } from '../content.ts';
+import { type Content, stats, shortDate, FOCUS_AREAS, eventsForArea, estimatedAttendees } from '../content.ts';
 import { sectionHead, btn, arrowLink, figures, eventUrl, ledger, band, tags, photo, ARROW } from '../components.ts';
 import type { PageMeta } from '../layout.ts';
 
@@ -9,8 +9,8 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
   const recent = c.events.filter((e) => e.date < today).slice(0, 6);
   const hackDay = c.events.find((e) => e.slug === 'hacktoberfest-hack-day-lahore-2026');
   const photoEvent = c.events.find((e) => e.photos.length > 0);
-  const cities = s.cities.join(', ').replace(/, ([^,]*)$/, ', and $1');
   const firstYear = s.firstEvent.date.slice(0, 4);
+  const attendees = estimatedAttendees(c);
   const showcase = c.projects.hackDay2026.projects.filter((p) => p.description).slice(0, 6);
 
   const routes = [
@@ -27,8 +27,8 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
   <div class="container hero__grid">
     <div class="hero__text">
       <p class="kicker">Cloud Native Security Pakistan · CNSPK</p>
-      <h1 class="display" id="hero-title">Pakistan’s engineers, building and securing cloud-native systems <em>in the open.</em></h1>
-      <p class="lede">CNSPK is a volunteer-run, not-for-profit technical community. Since ${firstYear} it has run ${s.eventCount} meetups, workshops, conferences, and hackathons in ${cities}, on Kubernetes, DevSecOps, open source, and AI security.</p>
+      <h1 class="display" id="hero-title">Building Pakistan’s <em>Cloud-Native Security</em> Community</h1>
+      <p class="lede">Bringing together developers, security professionals, students, and open-source contributors through community events, workshops, hackathons, and technical sessions across Pakistan.</p>
       <div class="actions">
         ${btn('/events/', 'See events')}
         ${btn('/join/', 'Join the community', 'ghost')}
@@ -45,15 +45,17 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
   </div>
 </section>
 
-<section class="section--tight" aria-label="Verified figures">
-  <div class="container">
+<section class="section--tight" aria-labelledby="impact-strip">
+  <div class="container stack">
+    <p class="impact-strip" id="impact-strip"><strong>${s.eventCount} Events</strong><span aria-hidden="true">|</span><strong>${attendees} Estimated Attendees</strong><span aria-hidden="true">|</span><strong>Nationwide Community Impact</strong></p>
+    <p class="lede">Our community events have welcomed approximately ${c.site.attendance.averagePerEvent} participants per event on average, bringing together developers, security professionals, students, and open-source contributors across Pakistan.</p>
     ${figures([
       { value: String(s.eventCount), label: 'events on record since ' + shortDate(s.firstEvent.date).replace(/^\d+ /, ''), source: { label: 'event archive', url: '/events/' } },
+      { value: attendees, label: 'estimated attendees', note: `Organiser estimate: about ${c.site.attendance.averagePerEvent} per event` },
       { value: String(s.cities.length), label: `cities: ${s.cities.join(', ')}`, source: { label: 'event archive', url: '/events/' } },
       { value: String(c.site.members.value), label: `members on the CNCF group (${shortDate(c.site.members.verifiedOn)})`, source: { label: 'CNCF listing', url: c.site.members.source } },
-      { value: '26', label: 'projects submitted at Hack Day Lahore 2026', source: { label: 'MLH', url: 'https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan' } },
     ])}
-    <p class="note">Attendance has not been recorded consistently, so this site does not publish attendance totals. <a href="/impact/">How we count</a>.</p>
+    <p class="note">Event, city, and member counts come from public listings. Attendance is an organiser estimate; exact per-event numbers are not recorded. <a href="/impact/">How we count</a>.</p>
   </div>
 </section>
 
@@ -151,7 +153,7 @@ export function home(c: Content, today: string): { meta: PageMeta; body: SafeHtm
       path: '/',
       isHome: true,
       title: 'CNSPK · Cloud Native Security Pakistan',
-      description: `A volunteer-run community for cloud-native security, open source, and DevSecOps in Pakistan. ${s.eventCount} events since ${firstYear} in ${s.cities.join(', ')}.`,
+      description: `Building Pakistan’s cloud-native security community: ${s.eventCount} events and ${attendees} estimated attendees since ${firstYear}, across ${s.cities.join(', ')}.`,
       jsonLd: [
         {
           '@context': 'https://schema.org',

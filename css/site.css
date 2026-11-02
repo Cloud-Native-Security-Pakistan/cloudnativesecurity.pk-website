@@ -645,3 +645,18 @@ a.repo:hover .repo__name { color: var(--lime); }
 .note a { color: var(--bone-2); text-decoration: underline; text-underline-offset: 3px; }
 
 .anchor-target { scroll-margin-top: calc(var(--header-h) + 24px); }
+
+/* Headline impact strip on the home page */
+.impact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+.impact-strip strong { font-weight: 700; }
+.impact-strip strong:first-child { color: var(--lime); }
+.impact-strip span { color: var(--slate-2); font-weight: 400; }

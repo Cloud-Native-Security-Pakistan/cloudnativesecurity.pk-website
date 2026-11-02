@@ -124,6 +124,7 @@ export interface Site {
   founded: { value: string; label: string; source: string; sourceLabel: string; verifiedOn: string };
   cncf: { statement: string; url: string; caveat: string; verifiedOn: string };
   members: { value: number; label: string; source: string; verifiedOn: string; note: string };
+  attendance: { averagePerEvent: number; label: string; provenance: Provenance; reportedOn: string; note: string };
   channels: Channel[];
   gaps: string[];
 }
@@ -275,4 +276,9 @@ export const FOCUS_AREAS = [
 
 export function eventsForArea(c: Content, match: readonly string[]): CommunityEvent[] {
   return c.events.filter((e) => e.topics.some((t) => match.includes(t)));
+}
+
+/** Organiser estimate: average per event × events on record, e.g. "3,600+". */
+export function estimatedAttendees(c: Content): string {
+  return `${(c.site.attendance.averagePerEvent * c.events.length).toLocaleString('en-US')}+`;
 }
