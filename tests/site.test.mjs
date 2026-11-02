@@ -20,7 +20,7 @@ const pages = generatedHtml.filter((f) => !isRedirect(f));
 const LEGACY = ['join/index.html', 'members/index.html', 'consultants/index.html', 'code-of-conduct/index.html', 'certificate/index.html'];
 
 /* ------------------------------------------------------------ content */
-test('every event has a slug, a valid date, and an https source', () => {
+test('every event has a slug, a valid date, a relationship, and sourced evidence', () => {
   const events = json('data/events.json');
   const slugs = new Set();
   for (const e of events) {
@@ -29,14 +29,18 @@ test('every event has a slug, a valid date, and an https source', () => {
     slugs.add(e.slug);
     assert.match(e.date, /^\d{4}-\d{2}-\d{2}$/);
     assert.ok(e.sources.length > 0, `${e.slug} has no source`);
-    for (const s of e.sources) assert.match(s.url, /^https:\/\//, `${e.slug} source must be https`);
+    for (const s of e.sources) {
+      assert.ok(s.url || s.ref, `${e.slug}: source needs a url or ref`);
+      if (s.url) assert.match(s.url, /^https:\/\//, `${e.slug} source must be https`);
+    }
     assert.ok(['verified', 'organizer-reported'].includes(e.provenance));
+    assert.ok(['organized', 'co-organized', 'community-partnership', 'speaker-participation'].includes(e.relationship), `${e.slug}: relationship`);
   }
 });
 
 test('event photos exist on disk with an 800px variant and alt text', () => {
   for (const e of json('data/events.json')) {
-    for (const p of e.photos) {
+    for (const p of [...e.photos, ...(e.poster ? [e.poster] : [])]) {
       assert.ok(existsSync(join(ROOT, p.src)), `missing ${p.src}`);
       assert.ok(existsSync(join(ROOT, p.src.replace(/\.jpg$/, '-800.jpg'))), `missing 800px variant of ${p.src}`);
       assert.ok(p.alt.length > 10, `weak alt text on ${p.src}`);
@@ -57,6 +61,39 @@ test('no placeholder, stock, or unverified claims ship', () => {
     const text = read(f);
     for (const [re, why] of banned) assert.ok(!re.test(text), `${f} contains ${why}`);
   }
+});
+
+test('attendance figures are never the organisation-wide average copied onto events', () => {
+  const site = json('data/site.json');
+  for (const e of json('data/events.json')) {
+    for (const k of ['attendance', 'registrations', 'capacity']) {
+      const m = e[k];
+      if (!m) continue;
+      assert.ok(['verified', 'organizer-reported', 'estimated'].includes(m.status), `${e.slug}.${k} status`);
+      assert.ok(m.source && (m.source.url || m.source.ref), `${e.slug}.${k} needs a source`);
+      if (m.status === 'verified') assert.ok(m.source.url, `${e.slug}.${k}: verified needs a public URL`);
+    }
+    if (e.attendance) assert.notEqual(e.attendance.value, site.attendance.averagePerEvent, `${e.slug}: copied the average`);
+  }
+});
+
+test('no page multiplies the average into a lifetime total', () => {
+  const site = json('data/site.json');
+  const n = json('data/events.json').length;
+  for (const total of [site.attendance.averagePerEvent * n, site.attendance.averagePerEvent * 18]) {
+    const s = total.toLocaleString('en-US');
+    for (const f of pages) assert.ok(!read(f).includes(`${s}+`), `${f} shows ${s}+`);
+  }
+});
+
+test('May and September Copilot Dev Days, and 17 and 24 Oct Hacktoberfest, are separate records', () => {
+  const slugs = json('data/events.json').map((e) => e.slug);
+  for (const s of ['github-copilot-dev-days-lahore-may-2026', 'github-copilot-dev-days-lahore-september-2026', 'hacktoberfest-lahore-2026-uol', 'hacktoberfest-hack-day-lahore-2026']) assert.ok(slugs.includes(s), s);
+});
+
+test('event people reference known people', () => {
+  const ids = new Set(json('data/people.json').map((p) => p.id));
+  for (const e of json('data/events.json')) for (const p of e.people) if (p.person) assert.ok(ids.has(p.person), `${e.slug}: ${p.person}`);
 });
 
 test('footer channels match data/site.json', () => {

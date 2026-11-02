@@ -23,7 +23,7 @@ Commit the regenerated HTML together with your data change. CI fails if the comm
 | Organisation facts, channels, member count | `data/site.json` |
 | Partners and their evidence links | `data/partners.json` |
 | Open-source projects | `data/projects.json` |
-| Organisers | `data/team.json` |
+| Organisers, volunteers, speakers | `data/people.json` |
 | Page layout and copy | `tools/site/pages/*.ts` |
 | Shared components | `tools/site/components.ts` |
 | Header and footer | `js/chrome.js` |
@@ -41,6 +41,16 @@ These keep the site credible. Reviewers will ask for changes that break them.
 4. **Photos need consent, alt text, and a credit.** Add a 1600px JPEG and an 800px copy named `*-800.jpg` under `images/events/<slug>/`, with `width`, `height`, and `alt` in the data. Strip location metadata before committing.
 5. **Name partners by their exact role**: sponsor, collaborator, programme, or venue host, with an evidence link.
 6. **Do not imply CNCF endorsement.** CNSPK is listed on CNCF Open Community Groups; that is the only claim we make.
+
+## Event fields that carry provenance
+
+- `relationship`: `organized`, `co-organized`, `community-partnership`, or `speaker-participation`. Only the first two count in headline numbers.
+- `attendance`, `registrations`, `capacity`: separate figures. Each needs `status` (`verified` requires a public URL, otherwise `organizer-reported` or `estimated`) and a `source`. Never copy the organisation-wide average onto an event.
+- `people`: credit people by id from `data/people.json` with a role and a status. Don't infer roles from posters.
+- `fieldStatus` and `conflicts`: say how the date, venue, time, and people are known, and record disagreements instead of picking a value.
+- `sources`: a public `url`, or a `ref` describing an organiser record. Never commit personal data from registration exports.
+
+Run `npm run validate` (add `-- --external` to check every link) before opening a pull request.
 
 ## Adding an event
 

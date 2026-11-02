@@ -20,7 +20,8 @@ import { btn } from './components.ts';
 import { home } from './pages/home.ts';
 import { eventsArchive, eventDetail } from './pages/events.ts';
 import { community, cfp, openSource, resources } from './pages/participate.ts';
-import { about, team, partners, impact, brand } from './pages/organisation.ts';
+import { about, team, partners, impact } from './pages/organisation.ts';
+import { brand } from './pages/brand.ts';
 
 const MANIFEST = join(ROOT, 'tools', 'site', 'manifest.json');
 
@@ -34,6 +35,7 @@ const REDIRECTS: [from: string, to: string, label: string][] = [
   ['/speakers/', '/cfp/#speakers', 'Speakers'],
   ['/wins/', '/impact/', 'Member wins'],
   ['/dispatch/', '/community/', 'The Dispatch'],
+  ['/events/github-copilot-dev-days-lahore-2026/', '/events/github-copilot-dev-days-lahore-may-2026/', 'This event page'],
 ];
 
 /** Hand-written pages kept as they are, listed so the sitemap includes them. */

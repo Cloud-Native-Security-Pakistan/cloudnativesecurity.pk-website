@@ -1,0 +1,365 @@
+[
+  {
+    "id": "farhan-ashraf",
+    "name": "Farhan Ashraf",
+    "city": "Lahore",
+    "profiles": {
+      "github": "https://github.com/farhanashrafdev",
+      "linkedin": "https://www.linkedin.com/in/farhanashrafdev/",
+      "website": "https://farhanashraf.dev/",
+      "cncf": "https://community.cncf.io/u/mjq5k4/"
+    },
+    "professionalTitle": "AISecOps Engineer, Systems Limited",
+    "team": {
+      "group": "core",
+      "role": "Organizer",
+      "roleStatus": "verified",
+      "roleSource": "Signatory on TechRise Quetta certificates (\"CNSPK Organizer\"); host on MLH and Luma listings",
+      "status": "active"
+    },
+    "bio": "AISecOps engineer working on AI and cloud-native security, and an open-source contributor."
+  },
+  {
+    "id": "taskeen-fatima",
+    "name": "Taskeen Fatima",
+    "city": "Lahore",
+    "profiles": {
+      "linkedin": "https://www.linkedin.com/in/taskeen-fatima-6590861b0",
+      "cncf": "https://community.cncf.io/u/m5j7w9/"
+    },
+    "team": {
+      "group": "organizing",
+      "role": "Operations Lead",
+      "roleStatus": "organizer-reported",
+      "roleSource": "data/team.json (previous site)",
+      "status": "active"
+    },
+    "bio": "Operations Lead ensuring smooth community events and member engagement."
+  },
+  {
+    "id": "haroon-sohail",
+    "name": "Haroon Sohail",
+    "city": null,
+    "profiles": {
+      "linkedin": "https://www.linkedin.com/in/h4roons/"
+    },
+    "professionalTitle": "Software Engineer, Manafa",
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "Listed on the previous site's team page; co-host of GitHub Copilot Dev Days Lahore (May 2026)",
+      "status": "active"
+    },
+    "bio": "Empowering SMEs at Manafa with scalable solutions. Former Arbisoft engineer and active mentor at Google Developer Groups on Campus Lahore Garrison University."
+  },
+  {
+    "id": "sharjeel-yunus",
+    "name": "Sharjeel Yunus",
+    "city": "Bahawalpur",
+    "profiles": {
+      "website": "https://www.sharjeelyunus.dev/",
+      "linkedin": "https://www.linkedin.com/in/sharjeel-yunus/",
+      "cncf": "https://community.cncf.io/u/mjm63e/"
+    },
+    "professionalTitle": "Senior Software Engineer, Ensemble Technologies",
+    "team": {
+      "group": "organizing",
+      "role": "Web and Graphics Lead",
+      "roleStatus": "organizer-reported",
+      "roleSource": "data/team.json (previous site)",
+      "status": "unknown"
+    },
+    "bio": "Senior Software Engineer and creative designer building beautiful web experiences."
+  },
+  {
+    "id": "syed-naqvi",
+    "name": "Syed Naqvi",
+    "city": "Islamabad",
+    "profiles": {
+      "linkedin": "https://LinkedIn.com/in/syedalizain033",
+      "cncf": "https://community.cncf.io/u/mgvg8e/"
+    },
+    "professionalTitle": "Security Project Manager, Securiti.ai",
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "Listed on the previous site's team page",
+      "status": "unknown"
+    },
+    "bio": "Security Project Manager specializing in cloud security and compliance frameworks."
+  },
+  {
+    "id": "hasnaat-iftikhar",
+    "name": "Hasnaat Iftikhar",
+    "city": "Lahore",
+    "profiles": {
+      "website": "https://hasnaat.work",
+      "linkedin": "https://www.linkedin.com/in/hasnaat-iftikhar/",
+      "cncf": "https://community.cncf.io/u/mm785x/"
+    },
+    "professionalTitle": "Full-stack Developer and Designer, Webling",
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "Listed on the previous site's team page",
+      "status": "unknown"
+    },
+    "bio": "Senior Front-End Developer crafting intuitive and performant user interfaces."
+  },
+  {
+    "id": "muhammad-abdullah",
+    "name": "Muhammad Abdullah",
+    "city": null,
+    "profiles": {
+      "linkedin": "https://www.linkedin.com/in/muhammad-abdullah-software-engineer-pk/"
+    },
+    "professionalTitle": "Software Engineer, Manafa",
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "Listed on the previous site's team page",
+      "status": "unknown"
+    },
+    "bio": "Software Engineer at Manafa building scalable fintech platforms with Nuxt 3, Vue 3, and React. Former GDSC LGU Chapter Lead who organized 15+ technical events and partnered with GitHub, Unity, and Google Play. Passionate about clean code, product thinking, and bridging academia with industry."
+  },
+  {
+    "id": "alishba-arshad",
+    "name": "Alishba Arshad",
+    "city": null,
+    "profiles": {
+      "linkedin": "https://www.linkedin.com/in/alishbaarshadd/"
+    },
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "Listed on the previous site's team page as a community contributor; volunteer announcement for #cTENcf Birthday Bash Lahore",
+      "status": "unknown"
+    },
+    "bio": "Passionate about cloud-native technologies and community building."
+  },
+  {
+    "id": "abdul-raheem",
+    "name": "Abdul Raheem",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "abdur-rehman-shafqat",
+    "name": "Abdur Rehman Shafqat",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "armghan-bin-zahid",
+    "name": "Armghan Bin Zahid",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "huzaifa-nawaz",
+    "name": "Huzaifa Nawaz",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "muhammad-manan",
+    "name": "Muhammad Manan",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "shahzaneer-ahmad",
+    "name": "Shahzaneer Ahmad",
+    "city": null,
+    "profiles": {},
+    "team": {
+      "group": "organizing",
+      "role": null,
+      "roleStatus": "needs-review",
+      "roleSource": "\"Meet the Team\" announcement for #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "abdullah-maqsood",
+    "name": "Abdullah Maqsood",
+    "city": "Lahore",
+    "profiles": {},
+    "affiliation": "GDGoC LGU",
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "areeb-fatima",
+    "name": "Areeb Fatima",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "arooj-fatima",
+    "name": "Arooj Fatima",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "barera-zubair",
+    "name": "Barera Zubair",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "rubaila-jawad",
+    "name": "Rubaila Jawad",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "saher-iqbal",
+    "name": "Saher Iqbal",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "shamin-gul-khan",
+    "name": "Shamin Gul Khan",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "younas-awan",
+    "name": "Younas Awan",
+    "city": "Lahore",
+    "profiles": {},
+    "team": {
+      "group": "volunteer",
+      "role": "Event volunteer",
+      "roleStatus": "organizer-reported",
+      "roleSource": "Volunteer announcement, #cTENcf Birthday Bash Lahore (2025)",
+      "status": "unknown"
+    }
+  },
+  {
+    "id": "saad-aslam",
+    "name": "Saad Aslam",
+    "city": null,
+    "profiles": {}
+  },
+  {
+    "id": "muhammad-mahad",
+    "name": "Muhammad Mahad",
+    "city": null,
+    "profiles": {}
+  },
+  {
+    "id": "rabbia-arshad",
+    "name": "Rabbia Arshad",
+    "city": null,
+    "profiles": {}
+  },
+  {
+    "id": "sumama-zaeem",
+    "name": "Sumama Zaeem",
+    "city": "Lahore",
+    "profiles": {},
+    "affiliation": "AWS User Group Lahore"
+  },
+  {
+    "id": "warda-liaqat",
+    "name": "Warda Liaqat",
+    "city": null,
+    "profiles": {}
+  },
+  {
+    "id": "adil-shehzad",
+    "name": "Adil Shehzad",
+    "city": null,
+    "profiles": {}
+  }
+]

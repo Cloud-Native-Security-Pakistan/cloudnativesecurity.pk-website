@@ -1,15 +1,28 @@
 /**
  * Content model and loaders. All site content lives in /data/*.json and is
  * validated here so a malformed entry fails the build, not the live site.
+ * tools/site/validate.ts runs deeper checks (links, conflicts, statistics).
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const ROOT = join(import.meta.dirname, '..', '..');
 
+/* ------------------------------------------------------------- types */
+/** How a single fact is known. */
+export type FactStatus = 'verified' | 'organizer-reported' | 'estimated' | 'conflict' | 'unknown';
 export type Provenance = 'verified' | 'organizer-reported';
 export type EventType = 'Meetup' | 'Workshop' | 'Conference' | 'Hackathon' | 'Session';
+/** CNSPK's relationship to an event. Only the first two count as CNSPK events. */
+export type Relationship = 'organized' | 'co-organized' | 'community-partnership' | 'speaker-participation';
+export type PersonRole = 'speaker' | 'panelist' | 'moderator' | 'host' | 'organizer' | 'organizing-team' | 'volunteer' | 'judge' | 'mentor';
 
+/** Evidence: a public URL, or a reference to a record held by the organisers. */
+export interface Source {
+  label: string;
+  url?: string;
+  ref?: string;
+}
 export interface Link {
   label: string;
   url: string;
@@ -21,10 +34,22 @@ export interface Photo {
   alt: string;
   credit: string | null;
 }
-export interface Speaker {
-  name: string;
-  talk: string;
+/** A counted figure with its provenance. */
+export interface Metric {
+  value: number;
+  qualifier?: 'about' | 'more than' | null;
+  status: 'verified' | 'organizer-reported' | 'estimated';
+  metric?: string;
+  source: Source;
+  note?: string;
+}
+export interface EventPerson {
+  person: string | null;
+  name: string | null;
+  role: PersonRole;
+  talk: string | null;
   url: string | null;
+  status: FactStatus;
 }
 export interface Outcome {
   value: string;
@@ -39,6 +64,13 @@ export interface Resource {
 export interface Sponsorship {
   partner: string;
   tier: string | null;
+}
+export interface Winner {
+  project: string;
+  repository: string;
+  url: string;
+  prize: string;
+  status: FactStatus;
 }
 export interface CommunityEvent {
   id: number;
@@ -59,19 +91,27 @@ export interface CommunityEvent {
   collaborators: string[];
   sponsors: Sponsorship[];
   venueHost?: string;
-  speakers: Speaker[];
-  hosts?: string[];
+  people: EventPerson[];
   agenda: { time: string; title: string; speaker?: string }[];
   outcomes: Outcome[];
+  winners?: Winner[];
   projectsRef: string | null;
   resources: Resource[];
   photos: Photo[];
+  poster: Photo | null;
   image: string;
   registrationUrl: string | null;
-  link: string;
-  sources: Link[];
+  link: string | null;
+  sources: Source[];
   provenance: Provenance;
-  gaps: string[];
+  relationship: Relationship;
+  relationshipStatus: FactStatus;
+  attendance: Metric | null;
+  registrations: Metric | null;
+  capacity: Metric | null;
+  fieldStatus: Partial<Record<'date' | 'venue' | 'time' | 'people', FactStatus>>;
+  conflicts: string[];
+  notes: string[];
 }
 export interface Partner {
   id: string;
@@ -79,17 +119,24 @@ export interface Partner {
   kind: 'sponsor' | 'collaborator' | 'programme' | 'venue';
   url: string | null;
   relationship: string;
-  evidence: Link[];
+  evidence: Source[];
 }
-export interface TeamMember {
-  id: number;
+export interface Person {
+  id: string;
   name: string;
-  role: string;
-  company: string;
-  location: string;
-  bio: string;
-  image: string | null;
-  social: Record<string, string>;
+  city: string | null;
+  bio?: string;
+  affiliation?: string;
+  professionalTitle?: string;
+  image?: string | null;
+  profiles: Record<string, string>;
+  team?: {
+    group: 'core' | 'organizing' | 'volunteer' | 'alumni';
+    role: string | null;
+    roleStatus: 'verified' | 'organizer-reported' | 'needs-review';
+    roleSource: string;
+    status: 'active' | 'alumni' | 'unknown';
+  };
 }
 export interface Repo {
   name: string;
@@ -129,14 +176,35 @@ export interface Site {
   gaps: string[];
 }
 
+/* ------------------------------------------------------------ loaders */
 function readJson<T>(rel: string): T {
   return JSON.parse(readFileSync(join(ROOT, rel), 'utf8')) as T;
 }
 
 const EVENT_TYPES = new Set<EventType>(['Meetup', 'Workshop', 'Conference', 'Hackathon', 'Session']);
+const RELATIONSHIPS = new Set<Relationship>(['organized', 'co-organized', 'community-partnership', 'speaker-participation']);
+const METRIC_STATUS = new Set(['verified', 'organizer-reported', 'estimated']);
 
 function assert(cond: unknown, msg: string): asserts cond {
   if (!cond) throw new Error(`Content error: ${msg}`);
+}
+
+export function isRealDate(iso: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return false;
+  const d = new Date(`${iso}T00:00:00Z`);
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === iso;
+}
+
+function checkSource(s: Source, where: string) {
+  assert(s.label && (s.url || s.ref), `${where}: a source needs a label and a url or ref`);
+  if (s.url) assert(/^https:\/\//.test(s.url), `${where}: source URL must be https (${s.url})`);
+}
+function checkMetric(m: Metric | null, where: string) {
+  if (!m) return;
+  assert(Number.isFinite(m.value) && m.value > 0, `${where}: metric value must be a positive number`);
+  assert(METRIC_STATUS.has(m.status), `${where}: metric status must be verified, organizer-reported, or estimated`);
+  checkSource(m.source, where);
+  if (m.status === 'verified') assert(m.source.url, `${where}: a verified figure needs a public URL`);
 }
 
 export interface Content {
@@ -144,7 +212,8 @@ export interface Content {
   events: CommunityEvent[];
   partners: Partner[];
   partnerById: Map<string, Partner>;
-  team: TeamMember[];
+  people: Person[];
+  personById: Map<string, Person>;
   projects: Projects;
 }
 
@@ -152,26 +221,68 @@ export function loadContent(): Content {
   const site = readJson<Site>('data/site.json');
   const events = readJson<CommunityEvent[]>('data/events.json');
   const partners = readJson<Partner[]>('data/partners.json');
-  const team = readJson<TeamMember[]>('data/team.json');
+  const people = readJson<Person[]>('data/people.json');
   const projects = readJson<Projects>('data/projects.json');
   const partnerById = new Map(partners.map((p) => [p.id, p]));
+  const personById = new Map(people.map((p) => [p.id, p]));
+  assert(personById.size === people.length, 'duplicate person id in data/people.json');
 
   const slugs = new Set<string>();
   for (const e of events) {
+    const at = `events/${e.slug}`;
     assert(/^[a-z0-9-]+$/.test(e.slug), `bad slug "${e.slug}"`);
     assert(!slugs.has(e.slug), `duplicate slug "${e.slug}"`);
     slugs.add(e.slug);
-    assert(/^\d{4}-\d{2}-\d{2}$/.test(e.date), `${e.slug}: date must be YYYY-MM-DD`);
-    assert(EVENT_TYPES.has(e.type), `${e.slug}: unknown type "${e.type}"`);
-    assert(e.sources.length > 0, `${e.slug}: every event needs at least one source`);
-    assert(e.summary.length > 40, `${e.slug}: summary too short`);
+    assert(isRealDate(e.date), `${at}: date must be a real YYYY-MM-DD date`);
+    assert(EVENT_TYPES.has(e.type), `${at}: unknown type "${e.type}"`);
+    assert(RELATIONSHIPS.has(e.relationship), `${at}: unknown relationship "${e.relationship}"`);
+    assert(e.sources.length > 0, `${at}: every event needs at least one source`);
+    e.sources.forEach((s) => checkSource(s, at));
+    assert(e.summary.length > 40, `${at}: summary too short`);
     for (const id of [...e.collaborators, ...e.sponsors.map((s) => s.partner), ...(e.venueHost ? [e.venueHost] : [])]) {
-      if (id !== 'cnspk') assert(partnerById.has(id), `${e.slug}: unknown partner "${id}"`);
+      assert(partnerById.has(id), `${at}: unknown partner "${id}"`);
     }
-    for (const p of e.photos) assert(p.alt.length > 10 && p.width > 0 && p.height > 0, `${e.slug}: photo needs alt text and dimensions`);
+    for (const p of e.people) {
+      assert(p.person || p.name, `${at}: each person needs a person id or a name`);
+      if (p.person) assert(personById.has(p.person), `${at}: unknown person "${p.person}"`);
+    }
+    for (const p of [...e.photos, ...(e.poster ? [e.poster] : [])]) assert(p.alt.length > 10 && p.width > 0 && p.height > 0, `${at}: images need alt text and dimensions`);
+    checkMetric(e.attendance, `${at}.attendance`);
+    checkMetric(e.registrations, `${at}.registrations`);
+    checkMetric(e.capacity, `${at}.capacity`);
   }
+  for (const p of partners) p.evidence.forEach((s) => checkSource(s, `partners/${p.id}`));
+  assert(site.attendance.averagePerEvent > 0, 'site.attendance.averagePerEvent must be set');
+
   events.sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
-  return { site, events, partners, partnerById, team, projects };
+  return { site, events, partners, partnerById, people, personById, projects };
+}
+
+/* -------------------------------------------------------- people helpers */
+export function personName(c: Content, p: EventPerson): string {
+  return p.person ? (c.personById.get(p.person) as Person).name : (p.name as string);
+}
+
+/** Speakers across all events, grouped by person, newest first. */
+export function speakerDirectory(c: Content) {
+  const map = new Map<string, { name: string; person?: Person; talks: { event: CommunityEvent; role: PersonRole; talk: string | null; url: string | null }[] }>();
+  for (const e of c.events) {
+    for (const p of e.people) {
+      if (!['speaker', 'panelist', 'moderator'].includes(p.role)) continue;
+      const name = personName(c, p);
+      const key = p.person ?? name;
+      if (!map.has(key)) map.set(key, { name, person: p.person ? c.personById.get(p.person) : undefined, talks: [] });
+      map.get(key)!.talks.push({ event: e, role: p.role, talk: p.talk, url: p.url });
+    }
+  }
+  return [...map.values()].sort((a, b) => b.talks.length - a.talks.length || a.name.localeCompare(b.name));
+}
+
+/** Events each person is credited on, for the organisers page. */
+export function contributionsOf(c: Content, personId: string): { event: CommunityEvent; roles: PersonRole[] }[] {
+  return c.events
+    .map((e) => ({ event: e, roles: [...new Set(e.people.filter((p) => p.person === personId).map((p) => p.role))] }))
+    .filter((x) => x.roles.length > 0);
 }
 
 /* ------------------------------------------------------------- dates */
@@ -208,41 +319,102 @@ export function timeRange(e: CommunityEvent): string | null {
   return `From ${f(e.startTime as string)} PKT`;
 }
 
-/* ---------------------------------------------------------- derived */
+/** "about 50 participants", "more than 150 attendees", "164 certificates of attendance issued" */
+export function formatMetric(m: Metric, fallbackNoun: string): string {
+  const q = m.qualifier ? `${m.qualifier} ` : '';
+  return `${q}${m.value.toLocaleString('en-US')} ${m.metric ?? fallbackNoun}`;
+}
+
+/* ----------------------------------------------------------- derived */
+export const RELATIONSHIP_LABEL: Record<Relationship, string> = {
+  organized: 'Organised by CNSPK',
+  'co-organized': 'Co-organised by CNSPK',
+  'community-partnership': 'Community partnership',
+  'speaker-participation': 'CNSPK speaker participation',
+};
+export const STATUS_LABEL: Record<FactStatus, string> = {
+  verified: 'Verified',
+  'organizer-reported': 'Organiser-reported',
+  estimated: 'Estimate',
+  conflict: 'Sources conflict',
+  unknown: 'Not yet confirmed',
+};
+
+/** Events organised or co-organised by CNSPK; the basis for headline counts. */
+export function cnspkEvents(c: Content): CommunityEvent[] {
+  return c.events.filter((e) => e.relationship === 'organized' || e.relationship === 'co-organized');
+}
+
 export function isUpcoming(e: CommunityEvent, today: string): boolean {
   return e.date >= today;
 }
 
+/** Optional record fields that are still empty, used for the contribution prompt. */
+export function missingFields(e: CommunityEvent): string[] {
+  const out: string[] = [];
+  if (!e.venue && !e.venueHost) out.push('venue');
+  if (!e.startTime && !e.endTime) out.push('time');
+  if (!e.people.some((p) => ['speaker', 'panelist', 'host', 'moderator'].includes(p.role))) out.push('speakers');
+  if (!e.photos.length && !e.poster) out.push('photos');
+  if (!e.attendance) out.push('attendance');
+  if (!e.resources.length && !e.outcomes.length) out.push('slides or recordings');
+  return out;
+}
+
 export interface Stats {
   eventCount: number;
+  allRecords: number;
+  byRelationship: Record<Relationship, number>;
   cities: string[];
   firstEvent: CommunityEvent;
   latestEvent: CommunityEvent;
-  venues: number;
   campusVenues: number;
   byYear: { year: string; count: number }[];
+  byType: { type: EventType; count: number }[];
+  byCity: { city: string; count: number }[];
+  /** Sum of attendance figures whose status is "verified". */
+  verifiedAttendance: { total: number; events: number };
+  /** Event-level figures that are organiser-reported or estimates, listed individually. */
+  reportedAttendance: CommunityEvent[];
+  registrations: { total: number; events: number };
+  withPhotos: number;
+  withSpeakers: number;
   collaboratorCount: number;
 }
 
+const CAMPUS = /univ|lgu|bnu|bahria|comsats/i;
+
 export function stats(c: Content): Stats {
-  const ev = c.events;
-  const cities = [...new Set(ev.map((e) => e.city))];
-  const venueIds = new Set(ev.map((e) => e.venueHost).filter(Boolean) as string[]);
-  const campus = [...venueIds].filter((id) => /univ|lgu|bnu|bahria|comsats/i.test(c.partnerById.get(id)?.name ?? id));
-  const years = new Map<string, number>();
-  for (const e of ev) years.set(e.date.slice(0, 4), (years.get(e.date.slice(0, 4)) ?? 0) + 1);
-  const collaborators = new Set(ev.flatMap((e) => [...e.collaborators, ...e.sponsors.map((s) => s.partner)]));
-  // University of Lahore hosted an event but has no partner record (organizer-reported).
-  const uolEvent = ev.some((e) => e.venue === 'University of Lahore');
+  const ev = cnspkEvents(c);
+  const asc = [...ev].sort((a, b) => a.date.localeCompare(b.date));
+  const count = <K extends string>(keys: K[]) => {
+    const m = new Map<K, number>();
+    for (const k of keys) m.set(k, (m.get(k) ?? 0) + 1);
+    return [...m.entries()];
+  };
+  const rel = { organized: 0, 'co-organized': 0, 'community-partnership': 0, 'speaker-participation': 0 } as Record<Relationship, number>;
+  for (const e of c.events) rel[e.relationship] += 1;
+  const venues = new Set(ev.map((e) => e.venueHost).filter(Boolean) as string[]);
+  const verified = ev.filter((e) => e.attendance?.status === 'verified');
+  const regs = ev.filter((e) => e.registrations);
+  const partnerIds = new Set(ev.flatMap((e) => [...e.collaborators, ...e.sponsors.map((s) => s.partner), ...(e.venueHost ? [e.venueHost] : [])]));
   return {
     eventCount: ev.length,
-    cities,
-    firstEvent: ev[ev.length - 1],
-    latestEvent: ev[0],
-    venues: new Set(ev.map((e) => e.venue).filter(Boolean)).size,
-    campusVenues: campus.length + (uolEvent ? 1 : 0),
-    byYear: [...years.entries()].sort().map(([year, count]) => ({ year, count })),
-    collaboratorCount: collaborators.size,
+    allRecords: c.events.length,
+    byRelationship: rel,
+    cities: [...new Set(asc.map((e) => e.city))],
+    firstEvent: asc[0],
+    latestEvent: asc[asc.length - 1],
+    campusVenues: [...venues].filter((id) => CAMPUS.test(c.partnerById.get(id)?.name ?? id)).length,
+    byYear: count(ev.map((e) => e.date.slice(0, 4))).sort().map(([year, n]) => ({ year, count: n })),
+    byType: count(ev.map((e) => e.type)).map(([type, n]) => ({ type, count: n })).sort((a, b) => b.count - a.count),
+    byCity: count(ev.map((e) => e.city)).map(([city, n]) => ({ city, count: n })).sort((a, b) => b.count - a.count),
+    verifiedAttendance: { total: verified.reduce((s, e) => s + (e.attendance as Metric).value, 0), events: verified.length },
+    reportedAttendance: ev.filter((e) => e.attendance && e.attendance.status !== 'verified'),
+    registrations: { total: regs.reduce((s, e) => s + (e.registrations as Metric).value, 0), events: regs.length },
+    withPhotos: ev.filter((e) => e.photos.length || e.poster).length,
+    withSpeakers: ev.filter((e) => e.people.some((p) => ['speaker', 'panelist', 'moderator', 'host'].includes(p.role))).length,
+    collaboratorCount: partnerIds.size,
   };
 }
 
@@ -275,10 +447,5 @@ export const FOCUS_AREAS = [
 ] as const;
 
 export function eventsForArea(c: Content, match: readonly string[]): CommunityEvent[] {
-  return c.events.filter((e) => e.topics.some((t) => match.includes(t)));
-}
-
-/** Organiser estimate: average per event × events on record, e.g. "3,600+". */
-export function estimatedAttendees(c: Content): string {
-  return `${(c.site.attendance.averagePerEvent * c.events.length).toLocaleString('en-US')}+`;
+  return cnspkEvents(c).filter((e) => e.topics.some((t) => match.includes(t)));
 }

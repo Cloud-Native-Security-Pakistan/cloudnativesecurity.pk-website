@@ -2,7 +2,7 @@
  * Reusable page components. Each returns SafeHtml.
  */
 import { html, ext, raw, safeUrl, initials, type Renderable, type SafeHtml } from './html.ts';
-import { type CommunityEvent, type Content, type Photo, shortDate, parts, timeRange } from './content.ts';
+import { type CommunityEvent, type Content, type Photo, type Source, type FactStatus, shortDate, parts, timeRange, missingFields, STATUS_LABEL, RELATIONSHIP_LABEL } from './content.ts';
 
 export const ARROW = raw('<span class="btn__arrow" aria-hidden="true">→</span>');
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -64,11 +64,11 @@ export function ledgerRow(e: CommunityEvent, today: string): SafeHtml {
   const { y, m, d } = parts(e.date);
   const status = e.date >= today ? 'upcoming' : 'past';
   const search = [e.title, e.summary, e.city, e.venue ?? '', e.type, ...e.topics].join(' ').toLowerCase();
-  return html`<li data-archive-item data-event-date="${e.date}" data-status="${status}" data-year="${y}" data-city="${e.city}" data-type="${e.type}" data-search="${search}">
+  return html`<li data-archive-item data-event-date="${e.date}" data-status="${status}" data-year="${y}" data-city="${e.city}" data-type="${e.type}" data-relationship="${e.relationship}" data-search="${search}">
   <a class="ledger__row" href="${eventUrl(e)}">
     <span class="ledger__date"><time datetime="${e.date}">${String(d).padStart(2, '0')} ${MONTHS[m - 1]}</time><small>${y}</small></span>
     <span><span class="ledger__title">${e.title}</span>${e.venue ? html`<span class="ledger__venue">${e.venue}</span>` : ''}</span>
-    <span class="ledger__where"><span class="tag">${e.city}</span><span class="tag">${e.type}</span>${status === 'upcoming' ? html`<span class="tag tag--lime" data-status-label>Upcoming</span>` : ''}</span>
+    <span class="ledger__where">${e.relationship !== 'organized' ? html`<span class="tag tag--quiet">${RELATIONSHIP_LABEL[e.relationship].replace(' by CNSPK', '')}</span>` : ''}<span class="tag">${e.city}</span><span class="tag">${e.type}</span>${status === 'upcoming' ? html`<span class="tag tag--lime" data-status-label>Upcoming</span>` : ''}</span>
     <span class="ledger__arrow" aria-hidden="true">→</span>
   </a>
 </li>`;
@@ -112,25 +112,38 @@ export function avatar(name: string, large = false): SafeHtml {
   return html`<span class="avatar${large ? ' avatar--lg' : ''}" aria-hidden="true">${initials(name)}</span>`;
 }
 
-export function eventFacts(e: CommunityEvent, c: Content): SafeHtml {
-  const venueHost = e.venueHost ? c.partnerById.get(e.venueHost)?.name : null;
-  const rows: [string, Renderable][] = [
-    ['Date', html`<time datetime="${e.date}">${shortDate(e.date)}</time>`],
-    ['Time', timeRange(e) ?? 'Not published'],
-    ['Venue', e.venue ?? venueHost ?? 'Not published'],
-    ['City', `${e.city}, Pakistan`],
-    ['Format', `${e.type} · ${e.format}`],
-  ];
-  return html`<dl class="facts">${rows.map(([k, v]) => html`<div><dt>${k}</dt><dd>${v}</dd></div>`)}</dl>`;
+export function statusChip(s: FactStatus | undefined): SafeHtml | string {
+  if (!s || s === 'verified') return '';
+  return html`<span class="fact-status fact-status--${s}">${STATUS_LABEL[s]}</span>`;
 }
 
-export function recordStatus(e: CommunityEvent): SafeHtml {
+export function eventFacts(e: CommunityEvent, c: Content): SafeHtml {
+  const venueHost = e.venueHost ? c.partnerById.get(e.venueHost)?.name : null;
+  const fs = e.fieldStatus;
+  const venue = e.venue ?? venueHost;
+  const time = timeRange(e);
+  const rows: [string, Renderable, FactStatus | undefined][] = [
+    ['Date', html`<time datetime="${e.date}">${shortDate(e.date)}</time>`, fs.date],
+    ['Time', time ?? html`<span class="muted">Not published</span>`, time ? fs.time : undefined],
+    ['Venue', venue ?? html`<span class="muted">Not published</span>`, venue ? fs.venue : undefined],
+    ['City', `${e.city}, Pakistan`, undefined],
+    ['Format', `${e.type} · ${e.format}`, undefined],
+    ['Relationship', RELATIONSHIP_LABEL[e.relationship], e.relationshipStatus],
+  ];
+  return html`<dl class="facts">${rows.map(([k, v, s]) => html`<div><dt>${k}</dt><dd>${v}${statusChip(s)}</dd></div>`)}</dl>`;
+}
+
+/** A source rendered as an external link, or as plain text when it is an internal record. */
+export function sourceItem(s: Source): SafeHtml {
+  return s.url ? ext(s.url, s.label) : html`<span>${s.label}</span> <span class="meta">(organiser record)</span>`;
+}
+
+export function contributePrompt(e: CommunityEvent): SafeHtml | string {
+  const missing = missingFields(e);
+  if (!missing.length) return '';
   const editUrl = 'https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/edit/main/data/events.json';
-  return html`<aside class="record" aria-labelledby="record-${e.slug}">
-  <h2 class="record__title" id="record-${e.slug}">Not documented yet</h2>
-  <ul>${e.gaps.map((g) => html`<li>${g}</li>`)}</ul>
-  <p>Were you there, or do you have photos, slides, or a recording? ${ext(editUrl, 'Edit the event record', 'link')} or email <a class="link" href="mailto:hi@cloudnativesecurity.pk?subject=${encodeURIComponent(`Event record: ${e.title}`)}">hi@cloudnativesecurity.pk</a>.</p>
-</aside>`;
+  const list = missing.length > 1 ? `${missing.slice(0, -1).join(', ')} or ${missing[missing.length - 1]}` : missing[0];
+  return html`<p class="contribute">Have the ${list} for this event? <a class="link" href="mailto:hi@cloudnativesecurity.pk?subject=${encodeURIComponent(`Event record: ${e.title}`)}">Send them to the organisers</a> or ${ext(editUrl, 'edit the record', 'link')}.</p>`;
 }
 
 export function band(opts: { title: Renderable; body: Renderable; actions: SafeHtml }): SafeHtml {
