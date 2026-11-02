@@ -499,9 +499,9 @@
 
                 populateFacets();
                 updateCounts();
-                renderEvents();
                 setupTabs();
                 setupControls();
+                renderEvents();
 
             } catch (err) {
                 console.error('Events Error:', err);
@@ -565,7 +565,12 @@
                 if (facet.city !== 'all' && cityOf(e) !== facet.city) return false;
                 if (facet.year !== 'all' && yearOf(e) !== facet.year) return false;
                 if (facet.topic !== 'all') {
-                    const tags = Array.isArray(e.topicTags) ? e.topicTags : [];
+                    // Compare trimmed tags: facet option values are built from
+                    // trimmed strings in populateFacets(), so a tag like " Kubernetes "
+                    // must be trimmed here to match its generated option.
+                    const tags = (Array.isArray(e.topicTags) ? e.topicTags : [])
+                        .filter((t) => typeof t === 'string')
+                        .map((t) => t.trim());
                     if (!tags.includes(facet.topic)) return false;
                 }
                 // search
@@ -641,6 +646,16 @@
 
         function setupControls() {
             const search = document.getElementById('event-search');
+
+            // Seed state from whatever is already in the controls. The search box
+            // is live during the fetch, so a user can type (or the browser can
+            // restore a value) before this runs; capture it so the first render
+            // reflects it instead of silently ignoring it.
+            query = search.value || '';
+            document.querySelectorAll('[data-facet]').forEach((s) => {
+                if (s.value && s.value !== 'all') facet[s.dataset.facet] = s.value;
+            });
+
             search.addEventListener('input', debounce((e) => {
                 query = e.target.value;
                 renderEvents();
