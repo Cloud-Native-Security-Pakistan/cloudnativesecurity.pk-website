@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-cnspk="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src &#39;self&#39; data:; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39; mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Open Source · CNSPK</title>
+<meta name="description" content="CNSPK community repositories and 25 projects built at Hacktoberfest Hack Day Lahore 2026, with a guide to making a first contribution.">
+<link rel="canonical" href="https://cloudnativesecurity.pk/open-source/">
+
+<meta name="theme-color" content="#0F1115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Native Security Pakistan">
+<meta property="og:title" content="Open Source · CNSPK">
+<meta property="og:description" content="CNSPK community repositories and 25 projects built at Hacktoberfest Hack Day Lahore 2026, with a guide to making a first contribution.">
+<meta property="og:url" content="https://cloudnativesecurity.pk/open-source/">
+<meta property="og:image" content="https://cloudnativesecurity.pk/brand/assets/og-default.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/brand/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap&amp;text=%DA%A9%D9%84%D8%A7%D8%A4%DA%88%20%D9%86%DB%8C%D9%B9%D9%88%20%D8%B3%DB%8C%DA%A9%DB%8C%D9%88%D8%B1%D9%B9%DB%8C%20%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/chrome.css">
+<link rel="stylesheet" href="/css/site.css">
+<script type="module" src="/js/site.js"></script>
+
+</head>
+<body>
+<a class="cx-skip" href="#main">Skip to content</a>
+<header class="cx-header" data-cx-header>
+  <div class="cx-container cx-header__bar">
+    <a class="cx-brand" href="/" aria-label="CNSPK, Cloud Native Security Pakistan, home">
+      <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+      <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+    </a>
+    <nav class="cx-nav" aria-label="Primary"><ul class="cx-nav__list"><li><a class="cx-nav__link" href="/events/">Events</a></li><li><a class="cx-nav__link" href="/community/">Community</a></li><li><a class="cx-nav__link" href="/open-source/" aria-current="page">Open Source</a></li><li><a class="cx-nav__link" href="/cfp/">Speak</a></li><li><a class="cx-nav__link" href="/impact/">Impact</a></li><li><a class="cx-nav__link" href="/partners/">Partners</a></li><li><a class="cx-nav__link" href="/about/">About</a></li></ul></nav>
+    <a class="cx-cta" href="/join/">Join CNSPK</a>
+    <button class="cx-menu-btn" type="button" aria-expanded="false" aria-controls="cx-menu" data-cx-menu-btn><svg class="cx-menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+  </div>
+  <div class="cx-menu" id="cx-menu" hidden data-cx-menu>
+    <nav class="cx-container" aria-label="Primary mobile"><ul class="cx-menu__list"><li><a class="cx-menu__link" href="/events/">Events<span>Meetups, hackathons, archive</span></a></li><li><a class="cx-menu__link" href="/community/">Community<span>Channels, volunteering, conduct</span></a></li><li><a class="cx-menu__link" href="/open-source/" aria-current="page">Open Source<span>Projects and contributors</span></a></li><li><a class="cx-menu__link" href="/cfp/">Speak<span>Propose a talk</span></a></li><li><a class="cx-menu__link" href="/impact/">Impact<span>Milestones and outcomes</span></a></li><li><a class="cx-menu__link" href="/partners/">Partners<span>Collaborate with CNSPK</span></a></li><li><a class="cx-menu__link" href="/about/">About<span>Mission, team, history</span></a></li></ul>
+      <a class="cx-cta" href="/join/">Join CNSPK</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<header class="page-head">
+  <div class="container page-head__inner">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li aria-current="page">Open Source</li></ol></nav>
+    <p class="kicker">Open source</p>
+    <h1 class="display">Projects, in the open</h1>
+    <p class="lede">The community’s own repositories, and the projects participants built at Hack Day Lahore 2026. Snapshot from GitHub on 2 Nov 2026.</p>
+    <div class="actions"><a class="btn btn--primary" href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub organisation <span class="btn__arrow" aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn--ghost" href="#start">How to contribute <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+    
+  </div>
+</header>
+<section class="section" aria-labelledby="repos-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">01</span>Maintained by CNSPK</p>
+    <h2 class="title" id="repos-title">Community repositories</h2>
+    
+  </div>
+  
+</div>
+    <ul class="grid grid--3"><li class="repo"><span class="repo__name">Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website</span><span class="repo__desc">Source for this website: static HTML, a small TypeScript build script, and JSON content files anyone can correct with a pull request.</span><span class="repo__foot"><span>HTML</span><a class="link" href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website" rel="noopener" target="_blank">Repository<span class="sr-only"> (opens in a new tab)</span></a></span><span><a class="arrow-link" href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/blob/main/CONTRIBUTING.md" rel="noopener" target="_blank">Start contributing<span class="sr-only"> (opens in a new tab)</span></a></span></li><li class="repo"><span class="repo__name">Cloud-Native-Security-Pakistan/hacktoberfest-lahore-2026-countdown</span><span class="repo__desc">Projector-first countdown built for Hacktoberfest Hack Day Lahore 2026.</span><span class="repo__foot"><span>TypeScript</span><a class="link" href="https://github.com/Cloud-Native-Security-Pakistan/hacktoberfest-lahore-2026-countdown" rel="noopener" target="_blank">Repository<span class="sr-only"> (opens in a new tab)</span></a></span></li><li class="repo"><span class="repo__name">Cloud-Native-Security-Pakistan/becoming-a-member</span><span class="repo__desc">Membership on GitHub: open the invitation issue, receive an invite to the CNSPK organisation, then add yourself to the member map.</span><span class="repo__foot"><span></span><a class="link" href="https://github.com/Cloud-Native-Security-Pakistan/becoming-a-member" rel="noopener" target="_blank">Repository<span class="sr-only"> (opens in a new tab)</span></a></span><span><a class="arrow-link" href="https://github.com/Cloud-Native-Security-Pakistan/becoming-a-member/issues/new?template=invite.yml" rel="noopener" target="_blank">Start contributing<span class="sr-only"> (opens in a new tab)</span></a></span></li></ul>
+  </div>
+</section>
+
+<section class="section section--band anchor-target" id="hack-day-2026" aria-labelledby="hackday-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">02</span>Showcase</p>
+    <h2 class="title" id="hackday-title">Built at Hack Day Lahore 2026 (25)</h2>
+    <p class="lede">Projects built by participants at Hacktoberfest Hack Day Lahore 2026. Each team owns its repository; CNSPK keeps a fork in its organisation as a record.</p>
+  </div>
+  <a class="arrow-link" href="/events/hacktoberfest-hack-day-lahore-2026/">Event record <span class="btn__arrow" aria-hidden="true">→</span></a>
+</div>
+    <div class="directory"><div class="directory__item"><a class="directory__name link" href="https://github.com/ABDULHANAN-123/DevsZee_" rel="noopener" target="_blank">DevsZee<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@ABDULHANAN-123</span><span class="directory__desc">No description provided by the team.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Abdulscode06/Printflow-by-Gravitech" rel="noopener" target="_blank">Printflow-by-Gravitech<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Abdulscode06</span><span class="directory__desc">No description provided by the team.</span><span class="meta">JavaScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/alikhann2360/RepoSherlock" rel="noopener" target="_blank">RepoSherlock<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@alikhann2360</span><span class="directory__desc">Ai agent to explain all artitecture etc of code files</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/codename-warhammer09/ozhuk-poetry" rel="noopener" target="_blank">ozhuk-poetry<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@codename-warhammer09</span><span class="directory__desc">HACKTOBERFEST 26&#39; submission: An open-source multimodal agent skill and learning engine for classical poetical scansion, web-retrieved examples, and literary analysis, powered by Gemma 4.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Developer-game/ai-operations-manager" rel="noopener" target="_blank">ai-operations-manager<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Developer-game</span><span class="directory__desc">AI Operations Manager - intelligent agentic platform for autonomous operations, incident management, and workflow automation</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/fa24-bscs-431-pixel/DocDecode" rel="noopener" target="_blank">DocDecode<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@fa24-bscs-431-pixel</span><span class="directory__desc">AI assistant that decodes official documents into plain words, deadlines and next steps. Built with Gemma 4, Gemini API and Streamlit.  Understand any official letter or report in seconds: summary, deadlines, legal scenarios and reminders, in your language.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Faseeh56/devszee_hacktoberfest_dnotifier" rel="noopener" target="_blank">devszee_hacktoberfest_dnotifier<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Faseeh56</span><span class="directory__desc">No description provided by the team.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/frontendfuel11/Hiryali" rel="noopener" target="_blank">Hiryali<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@frontendfuel11</span><span class="directory__desc">No description provided by the team.</span><span class="meta">JavaScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/hellohammadi/foundry" rel="noopener" target="_blank">foundry<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@hellohammadi</span><span class="directory__desc">Open-source AI agent team that helps founders discover their business potential — start a business or fix one. Built on DNotifier.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/iamusamaashfaq/wmp-clinicflow" rel="noopener" target="_blank">wmp-clinicflow<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@iamusamaashfaq</span><span class="directory__desc">No description provided by the team.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/JaVi080/caretrack_ai" rel="noopener" target="_blank">caretrack_ai<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@JaVi080</span><span class="directory__desc">No description provided by the team.</span><span class="meta"></span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/mabdullahch90-spec/repoguard-ai" rel="noopener" target="_blank">repoguard-ai<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@mabdullahch90-spec</span><span class="directory__desc">Autonomous Vulnerability &amp; Patch Agent — AI-powered security scanner</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/MaryamShahid121/accessibility-agents" rel="noopener" target="_blank">accessibility-agents<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@MaryamShahid121</span><span class="directory__desc">No description provided by the team.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Monam1083/BayanAI-" rel="noopener" target="_blank">BayanAI<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Monam1083</span><span class="directory__desc">Open-source AI project built at Hacktoberfest Hack Day Lahore 2026, using open models to solve real problems.</span><span class="meta">Dart</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/mshahid1214/Apna-khata" rel="noopener" target="_blank">Apna-khata<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@mshahid1214</span><span class="directory__desc">Mobile-first PWA that digitises mandi sale slips and bahi-khata ledgers for South Punjab’s fruit and cotton supply chain. Shared real-time records for farmers, arhtis, cold storage and transporters, with Urdu voice entry and AI document scanning.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Muaviatanveer/sentinental-twin" rel="noopener" target="_blank">sentinental-twin<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Muaviatanveer</span><span class="directory__desc">Autonomous AI Digital Twin for Container Infrastructure. What-If Simulation Powered by Gemma 4 Thinking Mode &amp; Deterministic Sandbox Verification.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/muhammadahmad00731/FoundersLens-Code" rel="noopener" target="_blank">FoundersLens-Code<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@muhammadahmad00731</span><span class="directory__desc">users give their ideas via intake form,which i ahve provided above. system or the 1st agent integrated with teh system will evaluate the main idea of teh user that eitehr it is scalable in the pakistani and gloobal market??? then the 2nd agent or the system itself will make the complete research work for that idea. and provide the final report</span><span class="meta"></span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/muhammadali382/neural-debate" rel="noopener" target="_blank">neural-debate<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@muhammadali382</span><span class="directory__desc">This repo is built for a project at Hacktoberfest.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Naqi-9/nexusmark-team-bits" rel="noopener" target="_blank">nexusmark-team-bits<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Naqi-9</span><span class="directory__desc">No description provided by the team.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/raheelhassangit/VeriFyra_AI" rel="noopener" target="_blank">VeriFyra_AI<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@raheelhassangit</span><span class="directory__desc">No description provided by the team.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/SAAD-HUB-DOTCOM/support_hackatone" rel="noopener" target="_blank">support_hackatone<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@SAAD-HUB-DOTCOM</span><span class="directory__desc">No description provided by the team.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/Sadeeed/budget-tracker-ai" rel="noopener" target="_blank">budget-tracker-ai<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@Sadeeed</span><span class="directory__desc">No description provided by the team.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/TAYYABA-NISA/CaseAnalysis" rel="noopener" target="_blank">CaseAnalysis<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@TAYYABA-NISA</span><span class="directory__desc">No description provided by the team.</span><span class="meta">Python</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/thehmfpk/kisanlens-ai" rel="noopener" target="_blank">kisanlens-ai<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@thehmfpk</span><span class="directory__desc">An open-source AI farming companion for Pakistan, featuring crop disease detection, smart irrigation, soil insights, weather risk analysis, Urdu voice assistance, and crop market intelligence.</span><span class="meta">TypeScript</span></div><div class="directory__item"><a class="directory__name link" href="https://github.com/zaeeeeeem/hukam" rel="noopener" target="_blank">hukam<span class="sr-only"> (opens in a new tab)</span></a><span class="meta">@zaeeeeeem</span><span class="directory__desc">Command your coding agents from WhatsApp. Gemma 4 routes text and voice notes, Superset runs Claude Code / Codex / OpenCode, DNotifier streams a live dashboard.</span><span class="meta">TypeScript</span></div></div>
+  </div>
+</section>
+
+<section class="section anchor-target" id="start" aria-labelledby="start-title">
+  <div class="container split">
+    <div><div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">03</span>Contribute</p>
+    <h2 class="title" id="start-title">How to contribute</h2>
+    
+  </div>
+  
+</div></div>
+    <div class="prose">
+      <p>The website is the easiest place to start. Pages are generated from JSON files in <code>data/</code>, so most fixes are a few lines of text.</p>
+      <ul>
+        <li>Add a missing speaker, photo, or slide link to an event in <code>data/events.json</code>. Include a public source.</li>
+        <li>Fix a typo or broken link anywhere on the site.</li>
+        <li>Improve accessibility or performance. Run <code>npm run check</code> before opening the pull request.</li>
+      </ul>
+      <p>Read <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/blob/main/CONTRIBUTING.md" rel="noopener" target="_blank">CONTRIBUTING.md<span class="sr-only"> (opens in a new tab)</span></a> first. Maintainers review pull requests, and changes ship to the live site when they are merged.</p>
+      <p><a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/graphs/contributors" rel="noopener" target="_blank">See who has contributed<span class="sr-only"> (opens in a new tab)</span></a></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="cx-footer">
+  <div class="cx-footer__heritage" aria-hidden="true"></div>
+  <div class="cx-container">
+    <div class="cx-footer__top">
+      <div class="cx-footer__about">
+        <a class="cx-brand" href="/" aria-label="CNSPK home">
+          <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+          <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+        </a>
+        <p>A volunteer-run, not-for-profit community for cloud-native security, open source, and DevSecOps in Pakistan.</p>
+        <p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
+      </div>
+      <div><h2 class="cx-footer__heading">Participate</h2><ul class="cx-footer__list"><li><a href="/events/">Upcoming and past events</a></li><li><a href="/join/">Join the community</a></li><li><a href="/community/#volunteer">Volunteer</a></li><li><a href="/cfp/">Propose a talk</a></li><li><a href="/open-source/">Contribute on GitHub</a></li></ul></div><div><h2 class="cx-footer__heading">Learn more</h2><ul class="cx-footer__list"><li><a href="/about/">About CNSPK</a></li><li><a href="/team/">Organisers</a></li><li><a href="/impact/">Impact</a></li><li><a href="/resources/">Resources</a></li><li><a href="/partners/">Partner with us</a></li><li><a href="/brand/">Brand assets</a></li><li><a href="/code-of-conduct/">Code of conduct</a></li></ul></div>
+      <div><h2 class="cx-footer__heading">Channels</h2><ul class="cx-footer__list"><li><a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://discord.gg/v7RQu6gvpJ" rel="noopener" target="_blank">Discord<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/company/cloud-native-security-pakistan" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.instagram.com/cloudnativesecuritypk" rel="noopener" target="_blank">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+    </div>
+    <div class="cx-footer__bottom">
+      <span>© 2026 Cloud Native Security Pakistan. Content is maintained in the open on <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website">GitHub</a>.</span>
+      <span>Spotted an error? <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/issues/new">Report a correction</a> or email <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

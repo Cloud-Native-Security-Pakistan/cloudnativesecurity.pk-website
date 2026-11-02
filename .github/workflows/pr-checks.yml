@@ -2,7 +2,6 @@ name: PR Checks
 
 on:
   pull_request:
-    branches: [ main ]
 
 jobs:
   test:
@@ -16,17 +15,20 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v7
       with:
-        node-version: '20'
+        node-version: '24'
+        cache: npm
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
-    - name: Lint Code
-      run: npm run lint
+    - name: Type check (tools/site)
+      run: npm run typecheck
 
-    - name: Build CSS
-      run: npm run build:css
+    - name: Generated pages match data/
+      run: npm run build:check
 
-    - name: Run Tests
-      # Currently creates a placeholder pass, but ensures the workflow exists for future tests
+    - name: Content and output tests
       run: npm test
+
+    - name: Lint legacy scripts
+      run: npm run lint

@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://cloudnativesecurity.pk/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/about/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/brand/</loc></url>
   <url><loc>https://cloudnativesecurity.pk/events/</loc></url>
-<url><loc>https://cloudnativesecurity.pk/community-impact/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/sessions/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/sessions/view/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/members/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/join/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/consultants/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/projects/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/team/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/hacktoberfest-hack-day-lahore-2026/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/hacktoberfest-lahore-2026-uol/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/open-source-connect-pakistan-2026/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/github-copilot-dev-days-lahore-2026/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/balochistan-tech-connect-2026/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/cloud-native-security-connect-faisalabad-2026/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/itcn-asia-2026-words-that-build-intelligence/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/the-final-patch-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/opensource-connect-lahore-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/hacktoberfest-lahore-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/ctencf-birthday-bash-lahore-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/kubesecure-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/devsecops-for-all-cyberfest-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/networking-friday-2025/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/art-of-recon-2024/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/decoding-cloud-native-security-2024/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/security-fusion-2024/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/events/cloud-native-security-meetup-islamabad-2024/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/community/</loc></url>
   <url><loc>https://cloudnativesecurity.pk/cfp/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/open-source/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/resources/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/about/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/team/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/partners/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/impact/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/brand/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/join/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/members/</loc></url>
+  <url><loc>https://cloudnativesecurity.pk/consultants/</loc></url>
   <url><loc>https://cloudnativesecurity.pk/code-of-conduct/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/dispatch/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/labs/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/speakers/</loc></url>
-  <url><loc>https://cloudnativesecurity.pk/wins/</loc></url>
 </urlset>

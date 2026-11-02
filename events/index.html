@@ -1,684 +1,253 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<!doctype html>
+<html lang="en" data-cnspk="site">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://community.cncf.io https://avatars.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto: https://docs.google.com;">
-    <title>Events - CNSPK</title>
-    <meta name="description"
-        content="CNSPK meetups, labs, and panels across Pakistan. Free entry, real demos, run by practitioners. Built. Tested. Pakistani.">
-    <meta name="theme-color" content="#0F1115">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src &#39;self&#39; data:; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39; mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Events · CNSPK</title>
+<meta name="description" content="18 CNSPK meetups, workshops, and hackathons in Lahore, Quetta, Faisalabad, Islamabad since 2024, with venues, partners, and public sources.">
+<link rel="canonical" href="https://cloudnativesecurity.pk/events/">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Events - Cloud Native Security Pakistan">
-    <meta property="og:description"
-        content="CNSPK meetups, labs, and panels across Pakistan. Free entry, real demos, run by practitioners.">
-    <meta property="og:url" content="https://cloudnativesecurity.pk/events/">
-    <meta property="og:site_name" content="Cloud Native Security Pakistan">
-    <meta property="og:image" content="https://cloudnativesecurity.pk/logo.png">
+<meta name="theme-color" content="#0F1115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Native Security Pakistan">
+<meta property="og:title" content="Events · CNSPK">
+<meta property="og:description" content="18 CNSPK meetups, workshops, and hackathons in Lahore, Quetta, Faisalabad, Islamabad since 2024, with venues, partners, and public sources.">
+<meta property="og:url" content="https://cloudnativesecurity.pk/events/">
+<meta property="og:image" content="https://cloudnativesecurity.pk/brand/assets/og-default.png">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Events - Cloud Native Security Pakistan">
-    <meta name="twitter:description"
-        content="CNSPK meetups, labs, and panels across Pakistan. Free entry, real demos, run by practitioners.">
-    <meta name="twitter:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/events/">
-
-    <!-- Performance: preconnect to font + CDN origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://images.unsplash.com">
-
-    <!-- Electric register design tokens — load first -->
-    <link rel="stylesheet" href="/css/tokens.css">
-
-    <!-- Existing stack: Tailwind + DOMPurify CDN (cards still depend on these) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js" integrity="sha384-cwS6YdhLI7XS60eoDiC+egV0qHp8zI+Cms46R0nbn8JrmoAzV9uFL60etMZhAnSu" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-
-    <style>
-        /* ==========================================================
-           Events · Electric register · page-specific styles
-           Tokens come from /css/tokens.css
-        ========================================================== */
-        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--space-8); }
-
-        /* ---- Page header ---- */
-        .page-head {
-            position: relative;
-            padding: var(--space-24) 0 var(--space-12);
-            overflow: hidden;
-            background:
-                radial-gradient(ellipse 70% 60% at 25% 10%, rgba(199, 255, 62, 0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 70% at 90% 60%, rgba(1, 65, 28, 0.30) 0%, transparent 60%),
-                var(--carbon);
-        }
-        .page-head::before {
-            content: '';
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(199, 255, 62, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(199, 255, 62, 0.04) 1px, transparent 1px);
-            background-size: 64px 64px;
-            pointer-events: none;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-        }
-        .page-head-inner { position: relative; z-index: 2; max-width: 920px; }
-        .page-head h1 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: clamp(44px, 8vw, 104px);
-            line-height: 0.92;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            color: var(--bone);
-            margin-bottom: var(--space-6);
-        }
-        .page-head h1 .accent { color: var(--lime); }
-        .page-head .lede {
-            font-size: 20px;
-            color: var(--bone-2);
-            max-width: 680px;
-            line-height: 1.55;
-        }
-        .page-head .lede strong { color: var(--lime); font-weight: 600; }
-
-        /* ---- Tabs ---- */
-        .tabs {
-            display: flex;
-            gap: var(--space-2);
-            flex-wrap: wrap;
-            margin: var(--space-10) 0 var(--space-8);
-        }
-        .tab-btn {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--steel);
-            padding: 10px 18px;
-            border: 1px solid var(--slate);
-            border-radius: var(--r-pill);
-            background: transparent;
-            cursor: pointer;
-            transition: color var(--dur-hover) var(--ease),
-                        border-color var(--dur-hover) var(--ease),
-                        background var(--dur-hover) var(--ease);
-        }
-        .tab-btn:hover { color: var(--bone); border-color: var(--steel); }
-        .tab-btn[aria-selected="true"] {
-            color: var(--lime);
-            border-color: rgba(199, 255, 62, 0.45);
-            background: rgba(199, 255, 62, 0.10);
-        }
-        .tab-btn .count { opacity: 0.6; margin-left: 6px; }
-
-        /* ---- Search + filter controls (talks-style archive) ---- */
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-4);
-            align-items: center;
-            margin-bottom: var(--space-8);
-        }
-        .controls__search {
-            flex: 1 1 280px;
-            position: relative;
-            min-width: 240px;
-        }
-        .controls__search svg {
-            position: absolute;
-            left: 14px; top: 50%;
-            transform: translateY(-50%);
-            width: 16px; height: 16px;
-            color: var(--steel);
-            pointer-events: none;
-        }
-        .controls__search input {
-            width: 100%;
-            font-family: var(--font-mono);
-            font-size: 14px;
-            color: var(--bone);
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: var(--r-pill);
-            padding: 12px 16px 12px 40px;
-            transition: border-color var(--dur-hover) var(--ease),
-                        box-shadow var(--dur-hover) var(--ease);
-        }
-        .controls__search input::placeholder { color: var(--steel); }
-        .controls__search input:focus {
-            outline: none;
-            border-color: var(--lime);
-            box-shadow: 0 0 0 3px rgba(199, 255, 62, 0.12);
-        }
-        .controls__selects { display: flex; gap: var(--space-3); flex-wrap: wrap; }
-        .controls__select { position: relative; }
-        .controls__select select {
-            appearance: none;
-            -webkit-appearance: none;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--bone-2);
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: var(--r-pill);
-            padding: 11px 36px 11px 16px;
-            cursor: pointer;
-            transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
-        }
-        .controls__select select:hover { border-color: var(--steel); color: var(--bone); }
-        .controls__select select:focus { outline: none; border-color: var(--lime); color: var(--bone); }
-        .controls__select::after {
-            content: '▾';
-            position: absolute;
-            right: 14px; top: 50%;
-            transform: translateY(-50%);
-            color: var(--steel);
-            font-size: 11px;
-            pointer-events: none;
-        }
-        .controls__reset {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--steel);
-            background: transparent;
-            border: 1px solid transparent;
-            border-radius: var(--r-pill);
-            padding: 11px 14px;
-            cursor: pointer;
-            transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
-        }
-        .controls__reset:hover { color: var(--breach); border-color: rgba(244, 63, 94, 0.4); }
-
-        .result-count {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--steel);
-            margin-bottom: var(--space-6);
-        }
-        .result-count strong { color: var(--lime); font-weight: 600; }
-
-        /* ---- Grid ---- */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: var(--space-6);
-        }
-
-        /* ---- Loading / empty / error states ---- */
-        .state-panel {
-            grid-column: 1 / -1;
-            border: 1px solid var(--slate);
-            border-radius: var(--r-lg);
-            background: var(--charcoal);
-            padding: var(--space-16) var(--space-8);
-            text-align: center;
-        }
-        .spinner {
-            width: 36px; height: 36px;
-            border: 3px solid rgba(199, 255, 62, 0.25);
-            border-top-color: var(--lime);
-            border-radius: 50%;
-            margin: 0 auto var(--space-4);
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @media (prefers-reduced-motion: reduce) {
-            .spinner { animation-duration: 0.001ms; }
-        }
-        .state-mono {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--steel);
-            letter-spacing: 0.04em;
-        }
-        .state-empty {
-            font-family: var(--font-mono);
-            font-size: 14px;
-            color: var(--steel);
-        }
-        .error-panel {
-            grid-column: 1 / -1;
-            border: 1px solid rgba(244, 63, 94, 0.30);
-            background: rgba(244, 63, 94, 0.08);
-            border-radius: var(--r-lg);
-            padding: var(--space-10);
-            text-align: center;
-        }
-        .error-panel p { color: var(--breach); margin-bottom: var(--space-5); font-family: var(--font-mono); font-size: 14px; }
-        .btn-retry {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--breach);
-            border: 1px solid rgba(244, 63, 94, 0.5);
-            border-radius: var(--r-sm);
-            padding: 10px 18px;
-            transition: background var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
-        }
-        .btn-retry:hover { background: var(--breach); color: var(--bone); }
-
-        /* ---- Host CTA ---- */
-        .cta {
-            margin-top: var(--space-24);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--slate);
-            border-radius: var(--r-2xl);
-            background:
-                radial-gradient(ellipse 60% 80% at 85% 50%, rgba(199, 255, 62, 0.10), transparent 60%),
-                var(--charcoal);
-            padding: var(--space-16) var(--space-8);
-            text-align: center;
-        }
-        .cta-eyebrow {
-            display: inline-flex; align-items: center; gap: 10px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--lime);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: var(--space-4);
-        }
-        .cta h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(32px, 5vw, 56px);
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            color: var(--bone);
-            margin: 0 auto var(--space-4);
-            max-width: 16ch;
-        }
-        .cta p {
-            font-size: 17px;
-            color: var(--bone-2);
-            max-width: 540px;
-            margin: 0 auto var(--space-8);
-            line-height: 1.55;
-        }
-        .cta-row { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
-
-        @media (max-width: 600px) {
-            .wrap { padding: 0 var(--space-5); }
-            .cta { padding: var(--space-12) var(--space-5); }
-        }
-    </style>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/brand/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap&amp;text=%DA%A9%D9%84%D8%A7%D8%A4%DA%88%20%D9%86%DB%8C%D9%B9%D9%88%20%D8%B3%DB%8C%DA%A9%DB%8C%D9%88%D8%B1%D9%B9%DB%8C%20%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/chrome.css">
+<link rel="stylesheet" href="/css/site.css">
+<script type="module" src="/js/site.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://cloudnativesecurity.pk/events/hacktoberfest-hack-day-lahore-2026/","name":"Hacktoberfest Hack Day Lahore 2026"},{"@type":"ListItem","position":2,"url":"https://cloudnativesecurity.pk/events/hacktoberfest-lahore-2026-uol/","name":"Hacktoberfest Lahore 2026 at the University of Lahore"},{"@type":"ListItem","position":3,"url":"https://cloudnativesecurity.pk/events/open-source-connect-pakistan-2026/","name":"Open Source Connect Pakistan"},{"@type":"ListItem","position":4,"url":"https://cloudnativesecurity.pk/events/github-copilot-dev-days-lahore-2026/","name":"GitHub Copilot Dev Days Lahore"},{"@type":"ListItem","position":5,"url":"https://cloudnativesecurity.pk/events/balochistan-tech-connect-2026/","name":"Balochistan Tech Connect: Unlocking Cloud-Native Security"},{"@type":"ListItem","position":6,"url":"https://cloudnativesecurity.pk/events/cloud-native-security-connect-faisalabad-2026/","name":"Cloud Native Security Connect: Bridging Cloud and Security"},{"@type":"ListItem","position":7,"url":"https://cloudnativesecurity.pk/events/itcn-asia-2026-words-that-build-intelligence/","name":"Words that Build Intelligence at ITCN Asia 2026"},{"@type":"ListItem","position":8,"url":"https://cloudnativesecurity.pk/events/the-final-patch-2025/","name":"The Final Patch: 2025 Wrap-Up Gathering"},{"@type":"ListItem","position":9,"url":"https://cloudnativesecurity.pk/events/opensource-connect-lahore-2025/","name":"Opensource Connect Lahore"},{"@type":"ListItem","position":10,"url":"https://cloudnativesecurity.pk/events/hacktoberfest-lahore-2025/","name":"Hacktoberfest Lahore 2025: Secure Cloud Edition"},{"@type":"ListItem","position":11,"url":"https://cloudnativesecurity.pk/events/ctencf-birthday-bash-lahore-2025/","name":"#cTENcf Birthday Bash Lahore"},{"@type":"ListItem","position":12,"url":"https://cloudnativesecurity.pk/events/kubesecure-2025/","name":"KubeSecure"},{"@type":"ListItem","position":13,"url":"https://cloudnativesecurity.pk/events/devsecops-for-all-cyberfest-2025/","name":"DevSecOps for All: How Open Source Can Kickstart Your Security Journey"},{"@type":"ListItem","position":14,"url":"https://cloudnativesecurity.pk/events/networking-friday-2025/","name":"Networking Friday"},{"@type":"ListItem","position":15,"url":"https://cloudnativesecurity.pk/events/art-of-recon-2024/","name":"The Art of Recon"},{"@type":"ListItem","position":16,"url":"https://cloudnativesecurity.pk/events/decoding-cloud-native-security-2024/","name":"Decoding Cloud Native Security"},{"@type":"ListItem","position":17,"url":"https://cloudnativesecurity.pk/events/security-fusion-2024/","name":"Security Fusion"},{"@type":"ListItem","position":18,"url":"https://cloudnativesecurity.pk/events/cloud-native-security-meetup-islamabad-2024/","name":"Cloud Native Security Meetup Islamabad"}]}</script>
 </head>
+<body>
+<a class="cx-skip" href="#main">Skip to content</a>
+<header class="cx-header" data-cx-header>
+  <div class="cx-container cx-header__bar">
+    <a class="cx-brand" href="/" aria-label="CNSPK, Cloud Native Security Pakistan, home">
+      <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+      <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+    </a>
+    <nav class="cx-nav" aria-label="Primary"><ul class="cx-nav__list"><li><a class="cx-nav__link" href="/events/" aria-current="page">Events</a></li><li><a class="cx-nav__link" href="/community/">Community</a></li><li><a class="cx-nav__link" href="/open-source/">Open Source</a></li><li><a class="cx-nav__link" href="/cfp/">Speak</a></li><li><a class="cx-nav__link" href="/impact/">Impact</a></li><li><a class="cx-nav__link" href="/partners/">Partners</a></li><li><a class="cx-nav__link" href="/about/">About</a></li></ul></nav>
+    <a class="cx-cta" href="/join/">Join CNSPK</a>
+    <button class="cx-menu-btn" type="button" aria-expanded="false" aria-controls="cx-menu" data-cx-menu-btn><svg class="cx-menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+  </div>
+  <div class="cx-menu" id="cx-menu" hidden data-cx-menu>
+    <nav class="cx-container" aria-label="Primary mobile"><ul class="cx-menu__list"><li><a class="cx-menu__link" href="/events/" aria-current="page">Events<span>Meetups, hackathons, archive</span></a></li><li><a class="cx-menu__link" href="/community/">Community<span>Channels, volunteering, conduct</span></a></li><li><a class="cx-menu__link" href="/open-source/">Open Source<span>Projects and contributors</span></a></li><li><a class="cx-menu__link" href="/cfp/">Speak<span>Propose a talk</span></a></li><li><a class="cx-menu__link" href="/impact/">Impact<span>Milestones and outcomes</span></a></li><li><a class="cx-menu__link" href="/partners/">Partners<span>Collaborate with CNSPK</span></a></li><li><a class="cx-menu__link" href="/about/">About<span>Mission, team, history</span></a></li></ul>
+      <a class="cx-cta" href="/join/">Join CNSPK</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
 
-<body class="min-h-screen flex flex-col antialiased">
-    <div id="navbar"></div>
-
-    <main class="flex-grow">
-        <!-- Header -->
-        <header class="page-head">
-            <div class="wrap page-head-inner">
-                <div class="section-eyebrow">// events / meetups</div>
-                <h1>Show up.<br><span class="accent">Ship together.</span></h1>
-                <p class="lede">
-                    Meetups, hands-on labs, and panels across Pakistan. <strong>Free entry</strong>, real demos,
-                    real chai. Run by practitioners, vetted by the chapter. The kind of <em>mehfil</em> where you
-                    leave with a runnable repo, not a tote bag.
-                </p>
-            </div>
-        </header>
-
-        <div class="wrap" style="padding-top: var(--space-12); padding-bottom: var(--space-16);">
-            <!-- Upcoming / Past tabs -->
-            <div class="tabs" role="tablist" aria-label="Filter events by time">
-                <button class="tab-btn" role="tab" id="tab-upcoming" aria-selected="true"
-                    aria-controls="events-container" data-filter="upcoming">
-                    Upcoming<span class="count" id="count-upcoming" aria-hidden="true"></span>
-                </button>
-                <button class="tab-btn" role="tab" id="tab-past" aria-selected="false"
-                    aria-controls="events-container" data-filter="past">
-                    Past<span class="count" id="count-past" aria-hidden="true"></span>
-                </button>
-            </div>
-
-            <!-- Search + facet filters (dynamic; populated from events.json) -->
-            <div class="controls" role="search">
-                <div class="controls__search">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <label for="event-search" class="sr-only">Search events</label>
-                    <input id="event-search" type="search" autocomplete="off"
-                        placeholder="Search events, topics, cities…" />
-                </div>
-
-                <div class="controls__selects">
-                    <span class="controls__select">
-                        <label for="filter-type" class="sr-only">Filter by type</label>
-                        <select id="filter-type" data-facet="type">
-                            <option value="all">All types</option>
-                        </select>
-                    </span>
-                    <span class="controls__select">
-                        <label for="filter-topic" class="sr-only">Filter by topic</label>
-                        <select id="filter-topic" data-facet="topic">
-                            <option value="all">All topics</option>
-                        </select>
-                    </span>
-                    <span class="controls__select">
-                        <label for="filter-city" class="sr-only">Filter by city</label>
-                        <select id="filter-city" data-facet="city">
-                            <option value="all">All cities</option>
-                        </select>
-                    </span>
-                    <span class="controls__select">
-                        <label for="filter-year" class="sr-only">Filter by year</label>
-                        <select id="filter-year" data-facet="year">
-                            <option value="all">All years</option>
-                        </select>
-                    </span>
-                    <button type="button" id="filter-reset" class="controls__reset hidden">Clear</button>
-                </div>
-            </div>
-
-            <!-- Live result count (talks-style) -->
-            <p class="result-count" id="result-count" aria-live="polite"></p>
-
-            <!-- Events Grid (EventCard rendering owned by the components stream — do not restyle card internals here) -->
-            <div id="events-container" class="events-grid" role="tabpanel" aria-labelledby="tab-upcoming">
-                <!-- Loading State -->
-                <div id="loading" class="state-panel">
-                    <div class="spinner" aria-hidden="true"></div>
-                    <span class="state-mono">$ fetching events.json …</span>
-                </div>
-            </div>
-
-            <div id="error" class="hidden">
-                <div class="error-panel">
-                    <p>// error · unable to load events</p>
-                    <button onclick="window.location.reload()" class="btn-retry">Retry</button>
-                </div>
-            </div>
-
-            <!-- Host an event CTA -->
-            <section class="cta">
-                <div class="cta-eyebrow">// host / propose</div>
-                <h2>Bring the next mehfil to your city.</h2>
-                <p>
-                    Got a venue, a talk, or a lab idea? CNSPK runs on community-submitted sessions.
-                    Open an issue or drop us a line — we handle the rest.
-                </p>
-                <div class="cta-row">
-                    <a href="https://community.cncf.io/cloud-native-security-pakistan/"
-                        class="btn-primary" target="_blank" rel="noopener noreferrer">
-                        Propose an event
-                        <span style="font-family:var(--font-mono);">↗</span>
-                    </a>
-                    <a href="mailto:hi@cloudnativesecurity.pk" class="btn-secondary">
-                        <span class="mono">// email</span>
-                        hi@cloudnativesecurity.pk
-                    </a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <div id="footer"></div>
-
-    <script type="module">
-        import { EventCard } from '../js/EventCard.js';
-        import { Navbar } from '../js/Navbar.js';
-        import { Footer } from '../js/Footer.js';
-        import { fetchData, domReady, debounce } from '../js/utils.js';
-
-        new Navbar().init();
-        new Footer().init();
-
-        // --- State ---
-        let allEvents = [];
-        let activeFilter = 'upcoming';         // upcoming | past (tab)
-        const facet = { type: 'all', topic: 'all', city: 'all', year: 'all' };
-        let query = '';
-
-        // date >= today => upcoming, otherwise past
-        function isUpcoming(event) {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            return new Date(event.date) >= today;
-        }
-
-        function cityOf(event) {
-            return event.location ? String(event.location).split(',')[0].trim() : '';
-        }
-
-        function yearOf(event) {
-            const d = new Date(event.date);
-            return isNaN(d.getTime()) ? '' : String(d.getFullYear());
-        }
-
-        async function loadEvents() {
-            const container = document.getElementById('events-container');
-            const loading = document.getElementById('loading');
-            const error = document.getElementById('error');
-
-            try {
-                const events = await fetchData('../data/events.json');
-                loading.classList.add('hidden');
-
-                if (!events || events.length === 0) {
-                    container.innerHTML = `
-                        <div class="state-panel">
-                            <p class="state-empty">No events scheduled at the moment.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                // Preserved sort logic: newest first by date.
-                allEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                populateFacets();
-                updateCounts();
-                setupTabs();
-                setupControls();
-                renderEvents();
-
-            } catch (err) {
-                console.error('Events Error:', err);
-                loading.classList.add('hidden');
-                error.classList.remove('hidden');
-            }
-        }
-
-        // Build the type/topic/city/year dropdowns from the real data only.
-        function populateFacets() {
-            const types = new Set();
-            const topics = new Set();
-            const cities = new Set();
-            const years = new Set();
-
-            allEvents.forEach((e) => {
-                if (e.type) types.add(String(e.type).trim());
-                (Array.isArray(e.topicTags) ? e.topicTags : []).forEach((t) => {
-                    if (typeof t === 'string' && t.trim()) topics.add(t.trim());
-                });
-                const c = cityOf(e);
-                if (c) cities.add(c);
-                const y = yearOf(e);
-                if (y) years.add(y);
-            });
-
-            fillSelect('filter-type', [...types].sort((a, b) => a.localeCompare(b)));
-            fillSelect('filter-topic', [...topics].sort((a, b) => a.localeCompare(b)));
-            fillSelect('filter-city', [...cities].sort((a, b) => a.localeCompare(b)));
-            fillSelect('filter-year', [...years].sort((a, b) => b.localeCompare(a))); // newest year first
-        }
-
-        // Options are appended via textContent, so values are inherently escaped.
-        function fillSelect(id, values) {
-            const select = document.getElementById(id);
-            if (!select) return;
-            values.forEach((v) => {
-                const opt = document.createElement('option');
-                opt.value = v;
-                opt.textContent = v;
-                select.appendChild(opt);
-            });
-        }
-
-        function updateCounts() {
-            const upcoming = allEvents.filter(isUpcoming).length;
-            const past = allEvents.length - upcoming;
-            document.getElementById('count-upcoming').textContent = `(${upcoming})`;
-            document.getElementById('count-past').textContent = `(${past})`;
-        }
-
-        // Apply tab + facets + search together.
-        function getFiltered() {
-            const q = query.trim().toLowerCase();
-
-            let list = allEvents.filter((e) => {
-                // tab
-                if (activeFilter === 'upcoming' ? !isUpcoming(e) : isUpcoming(e)) return false;
-                // facets
-                if (facet.type !== 'all' && String(e.type).trim() !== facet.type) return false;
-                if (facet.city !== 'all' && cityOf(e) !== facet.city) return false;
-                if (facet.year !== 'all' && yearOf(e) !== facet.year) return false;
-                if (facet.topic !== 'all') {
-                    // Compare trimmed tags: facet option values are built from
-                    // trimmed strings in populateFacets(), so a tag like " Kubernetes "
-                    // must be trimmed here to match its generated option.
-                    const tags = (Array.isArray(e.topicTags) ? e.topicTags : [])
-                        .filter((t) => typeof t === 'string')
-                        .map((t) => t.trim());
-                    if (!tags.includes(facet.topic)) return false;
-                }
-                // search
-                if (q) {
-                    const haystack = [
-                        e.title,
-                        e.description,
-                        e.location,
-                        e.type,
-                        ...(Array.isArray(e.topicTags) ? e.topicTags : []),
-                    ].filter(Boolean).join(' ').toLowerCase();
-                    if (!haystack.includes(q)) return false;
-                }
-                return true;
-            });
-
-            // Upcoming reads best soonest-first; past stays newest-first (preserved order).
-            if (activeFilter === 'upcoming') list = list.slice().reverse();
-            return list;
-        }
-
-        function renderEvents() {
-            const container = document.getElementById('events-container');
-            const filtered = getFiltered();
-
-            updateResultCount(filtered.length);
-            toggleReset();
-
-            if (filtered.length === 0) {
-                const anyFacet = query || facet.type !== 'all' || facet.topic !== 'all'
-                    || facet.city !== 'all' || facet.year !== 'all';
-                const msg = anyFacet
-                    ? 'No events match these filters. Try clearing the search or choosing different options.'
-                    : (activeFilter === 'upcoming'
-                        ? 'No upcoming events right now — check the Past tab or propose one below.'
-                        : 'No past events on record yet.');
-                container.innerHTML = `
-                    <div class="state-panel">
-                        <p class="state-empty">${msg}</p>
-                    </div>
-                `;
-                return;
-            }
-
-            // EventCard render preserved exactly — card owns its own markup + images.
-            container.innerHTML = filtered.map((event) => new EventCard(event).render()).join('');
-        }
-
-        function updateResultCount(n) {
-            const el = document.getElementById('result-count');
-            if (el) el.innerHTML = `<strong>${n}</strong> ${n === 1 ? 'event' : 'events'}`;
-        }
-
-        function toggleReset() {
-            const anyFacet = query || facet.type !== 'all' || facet.topic !== 'all'
-                || facet.city !== 'all' || facet.year !== 'all';
-            document.getElementById('filter-reset').classList.toggle('hidden', !anyFacet);
-        }
-
-        function setupTabs() {
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    buttons.forEach((b) => b.setAttribute('aria-selected', 'false'));
-                    btn.setAttribute('aria-selected', 'true');
-                    document.getElementById('events-container')
-                        .setAttribute('aria-labelledby', btn.id);
-                    activeFilter = btn.dataset.filter;
-                    renderEvents();
-                });
-            });
-        }
-
-        function setupControls() {
-            const search = document.getElementById('event-search');
-
-            // Seed state from whatever is already in the controls. The search box
-            // is live during the fetch, so a user can type (or the browser can
-            // restore a value) before this runs; capture it so the first render
-            // reflects it instead of silently ignoring it.
-            query = search.value || '';
-            document.querySelectorAll('[data-facet]').forEach((s) => {
-                if (s.value && s.value !== 'all') facet[s.dataset.facet] = s.value;
-            });
-
-            search.addEventListener('input', debounce((e) => {
-                query = e.target.value;
-                renderEvents();
-            }, 150));
-
-            document.querySelectorAll('[data-facet]').forEach((select) => {
-                select.addEventListener('change', (e) => {
-                    facet[e.target.dataset.facet] = e.target.value;
-                    renderEvents();
-                });
-            });
-
-            document.getElementById('filter-reset').addEventListener('click', () => {
-                query = '';
-                facet.type = facet.topic = facet.city = facet.year = 'all';
-                search.value = '';
-                document.querySelectorAll('[data-facet]').forEach((s) => { s.value = 'all'; });
-                renderEvents();
-            });
-        }
-
-        domReady(loadEvents);
-    </script>
+<header class="page-head">
+  <div class="container page-head__inner">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li aria-current="page">Events</li></ol></nav>
+    <p class="kicker">18 events · 4 cities · since May 2024</p>
+    <h1 class="display">Events</h1>
+    <p class="lede">Meetups, workshops, conference sessions, and hackathons run by CNSPK. Every entry links to its public listing. Gaps in the record are marked on each event page.</p>
+    
+    
+  </div>
+</header>
+<section class="section" aria-labelledby="upcoming-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker">Next</p>
+    <h2 class="title" id="upcoming-title">Upcoming</h2>
+    
+  </div>
+  
+</div>
+    <div class="empty"><p class="subtitle">No events scheduled</p><p>Registration links are posted first on the <a class="link" href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a>, where you can RSVP, and in the <a class="link" href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp community<span class="sr-only"> (opens in a new tab)</span></a>.</p><p>Want to host the next one? See <a class="link" href="/partners/">partnership options</a> or <a class="link" href="/cfp/">propose a talk</a>.</p></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="archive-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker">Archive</p>
+    <h2 class="title" id="archive-title">All events</h2>
+    
+  </div>
+  
+</div>
+    <form class="filters" data-archive-filters hidden role="search" aria-label="Filter events">
+      <div class="field field--search"><label for="f-q">Search</label><input id="f-q" name="q" type="search" placeholder="Title, topic, venue" autocomplete="off"></div>
+      <div class="field"><label for="f-when">When</label><select id="f-when" name="when"><option value="all">All dates</option><option value="upcoming">upcoming</option><option value="past">past</option></select></div>
+      <div class="field"><label for="f-year">Year</label><select id="f-year" name="year"><option value="all">All years</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option></select></div>
+      <div class="field"><label for="f-city">City</label><select id="f-city" name="city"><option value="all">All cities</option><option value="Faisalabad">Faisalabad</option><option value="Islamabad">Islamabad</option><option value="Lahore">Lahore</option><option value="Quetta">Quetta</option></select></div>
+      <div class="field"><label for="f-type">Format</label><select id="f-type" name="type"><option value="all">All formats</option><option value="Conference">Conference</option><option value="Hackathon">Hackathon</option><option value="Meetup">Meetup</option><option value="Session">Session</option><option value="Workshop">Workshop</option></select></div>
+      <button class="btn btn--ghost" type="reset">Reset</button>
+    </form>
+    <div class="archive-bar"><p class="meta" data-archive-count aria-live="polite">18 events</p></div>
+    <div class="ledger" data-archive-list><section data-archive-group aria-labelledby="y-2026"><h3 class="ledger__group-title" id="y-2026">2026 · 7 events</h3><ul><li data-archive-item data-event-date="2026-10-24" data-status="past" data-year="2026" data-city="Lahore" data-type="Hackathon" data-search="hacktoberfest hack day lahore 2026 a one-day build event run by cnspk as part of hacktoberfest 2026, listed on major league hacking under the theme “ai for everyone”. students and developers worked in teams on open-source and open-weight ai projects, and submissions were judged in two mlh prize categories: best open-source ai project (digitalocean) and best use of gemma 4 (google deepmind). lahore  hackathon open source ai hacktoberfest cloud native devsecops">
+  <a class="ledger__row" href="/events/hacktoberfest-hack-day-lahore-2026/">
+    <span class="ledger__date"><time datetime="2026-10-24">24 Oct</time><small>2026</small></span>
+    <span><span class="ledger__title">Hacktoberfest Hack Day Lahore 2026</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Hackathon</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-10-17" data-status="past" data-year="2026" data-city="Lahore" data-type="Meetup" data-search="hacktoberfest lahore 2026 at the university of lahore a hacktoberfest 2026 gathering at the university of lahore for students taking their first steps into open source. farhan ashraf presented “open source: ai for everyone!”, a practical introduction to building with ai tools in open-source projects. lahore university of lahore meetup hacktoberfest open source ai">
+  <a class="ledger__row" href="/events/hacktoberfest-lahore-2026-uol/">
+    <span class="ledger__date"><time datetime="2026-10-17">17 Oct</time><small>2026</small></span>
+    <span><span class="ledger__title">Hacktoberfest Lahore 2026 at the University of Lahore</span><span class="ledger__venue">University of Lahore</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-08-29" data-status="past" data-year="2026" data-city="Lahore" data-type="Conference" data-search="open source connect pakistan cnspk&#39;s largest gathering of 2026: an afternoon of talks and discussion on open-source contribution, maintainership, cloud-native projects, and developer tooling. the call for speakers ran on sessionize from 25 to 27 august 2026 and explicitly excluded sales pitches. github sponsored the event at gold level. lahore systems limited, e-1 sehjpal, near dha phase viii conference open source cloud native kubernetes devsecops platform engineering ai infrastructure">
+  <a class="ledger__row" href="/events/open-source-connect-pakistan-2026/">
+    <span class="ledger__date"><time datetime="2026-08-29">29 Aug</time><small>2026</small></span>
+    <span><span class="ledger__title">Open Source Connect Pakistan</span><span class="ledger__venue">Systems Limited, E-1 Sehjpal, near DHA Phase VIII</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Conference</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-05-09" data-status="past" data-year="2026" data-city="Lahore" data-type="Workshop" data-search="github copilot dev days lahore the lahore edition of github copilot dev days, a global series of community-led events. hosted by farhan ashraf, haroon sohail, and taskeen fatima. the call for speakers required every session to include a live demo and real github workflows, and rejected slide-only talks and product pitches. lahore  workshop github copilot ai developer tools devsecops">
+  <a class="ledger__row" href="/events/github-copilot-dev-days-lahore-2026/">
+    <span class="ledger__date"><time datetime="2026-05-09">09 May</time><small>2026</small></span>
+    <span><span class="ledger__title">GitHub Copilot Dev Days Lahore</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Workshop</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-04-11" data-status="past" data-year="2026" data-city="Quetta" data-type="Meetup" data-search="balochistan tech connect: unlocking cloud-native security cnspk&#39;s first listed event in balochistan. the session looked at how cloud-native security practice applies to organisations in quetta and the wider province, with time for questions and networking. quetta baleli road, quetta meetup cloud security cloud native">
+  <a class="ledger__row" href="/events/balochistan-tech-connect-2026/">
+    <span class="ledger__date"><time datetime="2026-04-11">11 Apr</time><small>2026</small></span>
+    <span><span class="ledger__title">Balochistan Tech Connect: Unlocking Cloud-Native Security</span><span class="ledger__venue">Baleli Road, Quetta</span></span>
+    <span class="ledger__where"><span class="tag">Quetta</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-02-08" data-status="past" data-year="2026" data-city="Faisalabad" data-type="Meetup" data-search="cloud native security connect: bridging cloud and security cnspk&#39;s first meetup in faisalabad, run with aws user group faisalabad. practitioners and students discussed how to build security into cloud-native architectures, followed by open networking. faisalabad the paradise workspace, faisal rasheed road meetup cloud security cloud native aws">
+  <a class="ledger__row" href="/events/cloud-native-security-connect-faisalabad-2026/">
+    <span class="ledger__date"><time datetime="2026-02-08">08 Feb</time><small>2026</small></span>
+    <span><span class="ledger__title">Cloud Native Security Connect: Bridging Cloud and Security</span><span class="ledger__venue">The Paradise Workspace, Faisal Rasheed Road</span></span>
+    <span class="ledger__where"><span class="tag">Faisalabad</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2026-01-18" data-status="past" data-year="2026" data-city="Lahore" data-type="Session" data-search="words that build intelligence at itcn asia 2026 a session on prompt engineering, presented by cnspk with aws community pakistan during itcn asia 2026 at expo centre lahore. haroon sohail, a software engineer at manafa, led the session. lahore expo centre lahore, 1-a abdul haque road session ai prompt engineering">
+  <a class="ledger__row" href="/events/itcn-asia-2026-words-that-build-intelligence/">
+    <span class="ledger__date"><time datetime="2026-01-18">18 Jan</time><small>2026</small></span>
+    <span><span class="ledger__title">Words that Build Intelligence at ITCN Asia 2026</span><span class="ledger__venue">Expo Centre Lahore, 1-A Abdul Haque Road</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Session</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li></ul></section><section data-archive-group aria-labelledby="y-2025"><h3 class="ledger__group-title" id="y-2025">2025 · 7 events</h3><ul><li data-archive-item data-event-date="2025-12-28" data-status="past" data-year="2025" data-city="Lahore" data-type="Meetup" data-search="the final patch: 2025 wrap-up gathering the community&#39;s year-end meetup. members reviewed the cloud-native security developments of 2025, the patches and practices that mattered for teams in pakistan, and plans for 2026. lahore the box, pine avenue meetup cloud security community">
+  <a class="ledger__row" href="/events/the-final-patch-2025/">
+    <span class="ledger__date"><time datetime="2025-12-28">28 Dec</time><small>2025</small></span>
+    <span><span class="ledger__title">The Final Patch: 2025 Wrap-Up Gathering</span><span class="ledger__venue">The Box, Pine Avenue</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-10-18" data-status="past" data-year="2025" data-city="Lahore" data-type="Meetup" data-search="opensource connect lahore the first open source connect, held the same day as hacktoberfest lahore 2025. talks and lightning sessions covered how to start contributing, how to stay active in projects, and how open source is shaping cloud and ai. lahore majeed lounge, lahore garrison university, dha phase 6 meetup open source cloud native ai">
+  <a class="ledger__row" href="/events/opensource-connect-lahore-2025/">
+    <span class="ledger__date"><time datetime="2025-10-18">18 Oct</time><small>2025</small></span>
+    <span><span class="ledger__title">Opensource Connect Lahore</span><span class="ledger__venue">Majeed Lounge, Lahore Garrison University, DHA Phase 6</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-10-18" data-status="past" data-year="2025" data-city="Lahore" data-type="Workshop" data-search="hacktoberfest lahore 2025: secure cloud edition a hacktoberfest morning for students and developers to make open-source contributions while learning to build and secure cloud-native applications. sessions covered container security, devsecops, cloud-native tooling, and secure coding. lahore lahore garrison university workshop hacktoberfest open source container security devsecops">
+  <a class="ledger__row" href="/events/hacktoberfest-lahore-2025/">
+    <span class="ledger__date"><time datetime="2025-10-18">18 Oct</time><small>2025</small></span>
+    <span><span class="ledger__title">Hacktoberfest Lahore 2025: Secure Cloud Edition</span><span class="ledger__venue">Lahore Garrison University</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Workshop</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-08-23" data-status="past" data-year="2025" data-city="Lahore" data-type="Meetup" data-search="#ctencf birthday bash lahore lahore&#39;s part of the global #ctencf celebrations marking ten years of kubernetes and cncf. lightning talks, interactive sessions, and cncf&#39;s party in a box swag, hosted at systems limited. lahore systems limited meetup kubernetes cncf community">
+  <a class="ledger__row" href="/events/ctencf-birthday-bash-lahore-2025/">
+    <span class="ledger__date"><time datetime="2025-08-23">23 Aug</time><small>2025</small></span>
+    <span><span class="ledger__title">#cTENcf Birthday Bash Lahore</span><span class="ledger__venue">Systems Limited</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-06-30" data-status="past" data-year="2025" data-city="Lahore" data-type="Meetup" data-search="kubesecure the first of a planned monthly meetup series in lahore. a guest speaker covered the basics of cloud-native security and the challenges and opportunities specific to pakistan, followed by open discussion. lahore bahria university lahore campus meetup cloud security kubernetes">
+  <a class="ledger__row" href="/events/kubesecure-2025/">
+    <span class="ledger__date"><time datetime="2025-06-30">30 Jun</time><small>2025</small></span>
+    <span><span class="ledger__title">KubeSecure</span><span class="ledger__venue">Bahria University Lahore Campus</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-05-03" data-status="past" data-year="2025" data-city="Lahore" data-type="Session" data-search="devsecops for all: how open source can kickstart your security journey a one-hour session at cyberfest lahore for students. it covered how modern teams build secure-by-design systems and how beginners can start contributing to open-source security tooling. lahore lahore garrison university, main campus, dha phase 6 session devsecops open source">
+  <a class="ledger__row" href="/events/devsecops-for-all-cyberfest-2025/">
+    <span class="ledger__date"><time datetime="2025-05-03">03 May</time><small>2025</small></span>
+    <span><span class="ledger__title">DevSecOps for All: How Open Source Can Kickstart Your Security Journey</span><span class="ledger__venue">Lahore Garrison University, Main Campus, DHA Phase 6</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Session</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2025-02-28" data-status="past" data-year="2025" data-city="Lahore" data-type="Meetup" data-search="networking friday an evening meetup organised in response to member feedback, mixing short discussions on cloud security and devsecops with time to meet other practitioners. lahore techub, 585 h3, johar town meetup community cloud security devsecops">
+  <a class="ledger__row" href="/events/networking-friday-2025/">
+    <span class="ledger__date"><time datetime="2025-02-28">28 Feb</time><small>2025</small></span>
+    <span><span class="ledger__title">Networking Friday</span><span class="ledger__venue">Techub, 585 H3, Johar Town</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li></ul></section><section data-archive-group aria-labelledby="y-2024"><h3 class="ledger__group-title" id="y-2024">2024 · 4 events</h3><ul><li data-archive-item data-event-date="2024-12-13" data-status="past" data-year="2024" data-city="Lahore" data-type="Workshop" data-search="the art of recon a session on the role of reconnaissance in defending cloud-native systems. it walked through how security practitioners use osint, google dorking, shodan, and nmap to find weaknesses in containerised, serverless, and microservice architectures before attackers do. lahore comsats university, raiwind road workshop security reconnaissance cloud native">
+  <a class="ledger__row" href="/events/art-of-recon-2024/">
+    <span class="ledger__date"><time datetime="2024-12-13">13 Dec</time><small>2024</small></span>
+    <span><span class="ledger__title">The Art of Recon</span><span class="ledger__venue">COMSATS University, Raiwind Road</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Workshop</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2024-11-16" data-status="past" data-year="2024" data-city="Lahore" data-type="Session" data-search="decoding cloud native security an interactive introduction to securing cloud-native environments, with practical guidance on fitting security into devsecops workflows. lahore beaconhouse national university, raiwind road session cloud security devsecops">
+  <a class="ledger__row" href="/events/decoding-cloud-native-security-2024/">
+    <span class="ledger__date"><time datetime="2024-11-16">16 Nov</time><small>2024</small></span>
+    <span><span class="ledger__title">Decoding Cloud Native Security</span><span class="ledger__venue">Beaconhouse National University, Raiwind Road</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Session</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2024-06-10" data-status="past" data-year="2024" data-city="Lahore" data-type="Session" data-search="security fusion a campus session introducing kubernetes: how it automates deploying, updating, scaling, and monitoring containerised applications, and why that matters for securing them. lahore bahria university lahore campus session kubernetes cloud native">
+  <a class="ledger__row" href="/events/security-fusion-2024/">
+    <span class="ledger__date"><time datetime="2024-06-10">10 Jun</time><small>2024</small></span>
+    <span><span class="ledger__title">Security Fusion</span><span class="ledger__venue">Bahria University Lahore Campus</span></span>
+    <span class="ledger__where"><span class="tag">Lahore</span><span class="tag">Session</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li><li data-archive-item data-event-date="2024-05-03" data-status="past" data-year="2024" data-city="Islamabad" data-type="Meetup" data-search="cloud native security meetup islamabad cnspk&#39;s first meetup in islamabad and its earliest event on record. it was run with aws community pakistan and hosted by softoo, as a networking evening for cloud and security practitioners. islamabad softoo, plot 205 korang road meetup cloud security aws community">
+  <a class="ledger__row" href="/events/cloud-native-security-meetup-islamabad-2024/">
+    <span class="ledger__date"><time datetime="2024-05-03">03 May</time><small>2024</small></span>
+    <span><span class="ledger__title">Cloud Native Security Meetup Islamabad</span><span class="ledger__venue">SOFTOO, Plot 205 Korang Road</span></span>
+    <span class="ledger__where"><span class="tag">Islamabad</span><span class="tag">Meetup</span></span>
+    <span class="ledger__arrow" aria-hidden="true">→</span>
+  </a>
+</li></ul></section></div>
+    <div class="empty" data-archive-empty hidden><p>No events match these filters.</p></div>
+  </div>
+</section>
+<section class="section" aria-label="Help complete the record">
+  <div class="container">
+    <div class="band"><div><h2 class="subtitle">Help us complete the record.</h2><p class="muted">Many past events are missing speakers, photos, and attendance. If you organised, spoke, or attended, send what you have.</p></div><div class="actions"><a class="btn btn--primary" href="mailto:hi@cloudnativesecurity.pk?subject=Event%20record">Email the organisers <span class="btn__arrow" aria-hidden="true">→</span></a><a class="btn btn--ghost" href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/blob/main/data/events.json" rel="noopener" target="_blank">Edit on GitHub <span class="btn__arrow" aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+  </div>
+</section>
+</main>
+<footer class="cx-footer">
+  <div class="cx-footer__heritage" aria-hidden="true"></div>
+  <div class="cx-container">
+    <div class="cx-footer__top">
+      <div class="cx-footer__about">
+        <a class="cx-brand" href="/" aria-label="CNSPK home">
+          <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+          <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+        </a>
+        <p>A volunteer-run, not-for-profit community for cloud-native security, open source, and DevSecOps in Pakistan.</p>
+        <p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
+      </div>
+      <div><h2 class="cx-footer__heading">Participate</h2><ul class="cx-footer__list"><li><a href="/events/">Upcoming and past events</a></li><li><a href="/join/">Join the community</a></li><li><a href="/community/#volunteer">Volunteer</a></li><li><a href="/cfp/">Propose a talk</a></li><li><a href="/open-source/">Contribute on GitHub</a></li></ul></div><div><h2 class="cx-footer__heading">Learn more</h2><ul class="cx-footer__list"><li><a href="/about/">About CNSPK</a></li><li><a href="/team/">Organisers</a></li><li><a href="/impact/">Impact</a></li><li><a href="/resources/">Resources</a></li><li><a href="/partners/">Partner with us</a></li><li><a href="/brand/">Brand assets</a></li><li><a href="/code-of-conduct/">Code of conduct</a></li></ul></div>
+      <div><h2 class="cx-footer__heading">Channels</h2><ul class="cx-footer__list"><li><a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://discord.gg/v7RQu6gvpJ" rel="noopener" target="_blank">Discord<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/company/cloud-native-security-pakistan" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.instagram.com/cloudnativesecuritypk" rel="noopener" target="_blank">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+    </div>
+    <div class="cx-footer__bottom">
+      <span>© 2026 Cloud Native Security Pakistan. Content is maintained in the open on <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website">GitHub</a>.</span>
+      <span>Spotted an error? <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/issues/new">Report a correction</a> or email <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>.</span>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>
