@@ -1,0 +1,11 @@
+# Normalise line endings so `npm run build:check` compares the same bytes on
+# every platform (generated pages are written with LF).
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.gif binary
+*.webp binary
+*.pdf binary

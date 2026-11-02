@@ -25,11 +25,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      # Refuse to deploy if committed pages are out of date with data/.
+      - name: Verify generated pages
+        run: node tools/site/build.ts --check
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
       - name: Prune internal files
-        run: rm -rf tools *.md server.ps1 package.json .gitignore .github/dependabot.yml || true
+        run: rm -rf tools tests *.md server.ps1 package.json package-lock.json tsconfig.json .gitignore .github/dependabot.yml || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
@@ -39,4 +48,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-

@@ -1,744 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-cnspk="site">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src &#39;self&#39; data:; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39; mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>CNSPK · Cloud Native Security Pakistan</title>
+<meta name="description" content="A volunteer-run community for cloud-native security, open source, and DevSecOps in Pakistan. 18 events since 2024 in Lahore, Quetta, Faisalabad, Islamabad.">
+<link rel="canonical" href="https://cloudnativesecurity.pk/">
 
-    <!--
-      CSP: tokens.css is loaded from 'self' and @imports the four brand fonts
-      (Bricolage Grotesque, Inter, JetBrains Mono, Noto Nastaliq Urdu) from
-      fonts.googleapis.com — covered by style-src; the font files come from
-      fonts.gstatic.com — covered by font-src. jsdelivr/tailwind allowances are
-      retained from the legacy CSP so no other v2 page routing breaks.
-    -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://community.cncf.io https://avatars.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto: https://docs.google.com;">
+<meta name="theme-color" content="#0F1115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Native Security Pakistan">
+<meta property="og:title" content="CNSPK · Cloud Native Security Pakistan">
+<meta property="og:description" content="A volunteer-run community for cloud-native security, open source, and DevSecOps in Pakistan. 18 events since 2024 in Lahore, Quetta, Faisalabad, Islamabad.">
+<meta property="og:url" content="https://cloudnativesecurity.pk/">
+<meta property="og:image" content="https://cloudnativesecurity.pk/brand/assets/og-default.png">
 
-    <!-- SEO Meta Tags — CNSPK is its own thing; CNCF affiliation is a credential, not the headline -->
-    <title>CNSPK · Cloud Native Security Pakistan</title>
-    <meta name="description"
-        content="Cloud Native Security Pakistan — 1,000+ engineers shipping cloud-native infrastructure, breaking it on purpose, and writing it back better. Independent. Run by practitioners. No gatekeeping. Built. Tested. Pakistani.">
-    <meta name="keywords"
-        content="cloud native security pakistan, CNSPK, Kubernetes security, cloud security, DevSecOps, container security, cloud native community Pakistan, Lahore, Islamabad, Karachi">
-    <meta name="author" content="Cloud Native Security Pakistan">
-    <meta name="theme-color" content="#0F1115">
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="CNSPK · Cloud Native Security Pakistan">
-    <meta property="og:description"
-        content="1,000+ engineers shipping cloud-native infrastructure across Pakistan. Independent. Run by practitioners. No gatekeeping. Built. Tested. Pakistani.">
-    <meta property="og:url" content="https://cloudnativesecurity.pk/">
-    <meta property="og:site_name" content="Cloud Native Security Pakistan">
-    <meta property="og:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="CNSPK · Cloud Native Security Pakistan">
-    <meta name="twitter:description"
-        content="1,000+ engineers. Independent. Run by practitioners. No gatekeeping. Read the CVE. Drink the chai.">
-    <meta name="twitter:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/">
-
-    <!-- JSON-LD Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Cloud Native Security Pakistan",
-      "url": "https://cloudnativesecurity.pk/",
-      "logo": "https://cloudnativesecurity.pk/logo.png",
-      "sameAs": [
-        "https://www.linkedin.com/company/cloud-native-security-pakistan",
-        "https://x.com/CloudSecPK",
-        "https://github.com/Cloud-Native-Security-Pakistan",
-        "https://www.instagram.com/cloudnativesecuritypk"
-      ]
-    }
-    </script>
-
-    <!-- Performance: preconnect to Google Fonts origins (tokens.css @imports fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Design tokens first: colour, type, motion, shared primitives + font @import -->
-    <link rel="stylesheet" href="/css/tokens.css">
-
-    <style>
-        /* ==========================================================
-           Homepage · Electric register · page-specific styles
-           Shared primitives (.brand-shield, .btn-primary,
-           .btn-secondary, .status-pill, .status-dot, .section-eyebrow,
-           .glass-panel) come from /css/tokens.css.
-        ========================================================== */
-
-        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-
-        main { display: block; }
-
-        /* ---- Scroll reveal ----------------------------------- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity var(--dur-reveal) var(--ease-out),
-                        transform var(--dur-reveal) var(--ease-out);
-            will-change: opacity, transform;
-        }
-        .reveal.is-visible { opacity: 1; transform: none; }
-
-        /* ==========================================================
-           Hero — operator hero
-        ========================================================== */
-        .hero {
-            position: relative;
-            padding: 120px 0 100px;
-            overflow: hidden;
-            background:
-                radial-gradient(ellipse 80% 60% at 20% 20%, rgba(199, 255, 62, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 80% at 90% 80%, rgba(1, 65, 28, 0.40) 0%, transparent 60%),
-                var(--carbon);
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(199, 255, 62, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(199, 255, 62, 0.04) 1px, transparent 1px);
-            background-size: 64px 64px;
-            pointer-events: none;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-        }
-
-        .hero-landmark {
-            position: absolute;
-            right: -40px;
-            top: 60px;
-            width: 320px;
-            opacity: 0.18;
-            pointer-events: none;
-        }
-
-        .hero-content { position: relative; z-index: 2; max-width: 920px; }
-
-        .hero-meta {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--steel);
-            letter-spacing: 0.08em;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .hero-meta .cmd { color: var(--lime); }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: clamp(48px, 9vw, 128px);
-            line-height: 0.92;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-            color: var(--bone);
-        }
-        .hero h1 .lime-line { color: var(--lime); display: inline-block; }
-        .hero h1 .underline { display: inline-block; position: relative; }
-        .hero h1 .underline::after {
-            content: '';
-            position: absolute;
-            bottom: 6px;
-            left: -2%;
-            width: 104%;
-            height: 14px;
-            background: var(--lime);
-            opacity: 0.35;
-            z-index: -1;
-            transform: skew(-4deg) rotate(-1deg);
-        }
-
-        .hero .lede {
-            font-size: 22px;
-            color: var(--bone-2);
-            max-width: 720px;
-            line-height: 1.55;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-        .hero .lede strong { color: var(--lime); font-weight: 600; }
-
-        .hero-cta-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        .hero-cta-row .btn-secondary { gap: 10px; }
-        .hero-cta-row .btn-secondary .mono { color: var(--lime); }
-
-        .hero-tagline-urdu {
-            font-family: var(--font-urdu);
-            font-size: 28px;
-            color: var(--gold);
-            direction: rtl;
-            text-align: left;
-            line-height: 2.2;
-            opacity: 0.7;
-            margin-top: 8px;
-            max-width: 600px;
-        }
-
-        /* Chapter ID stamp */
-        .chapter-stamp {
-            position: absolute;
-            top: 96px;
-            right: 64px;
-            transform: rotate(-6deg);
-            padding: 12px 18px 10px;
-            border: 2px solid var(--lime);
-            border-radius: 6px;
-            pointer-events: none;
-            user-select: none;
-            opacity: 0.55;
-            z-index: 2;
-        }
-        .chapter-stamp .l1 {
-            display: block;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--lime);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-        .chapter-stamp .l2 {
-            display: block;
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: 22px;
-            color: var(--lime);
-            letter-spacing: -0.01em;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-        @media (max-width: 900px) { .chapter-stamp { display: none; } }
-
-        /* ==========================================================
-           Stat strip
-        ========================================================== */
-        .stats {
-            border-top: 1px solid var(--slate);
-            border-bottom: 1px solid var(--slate);
-            background: var(--charcoal);
-            padding: 40px 0;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-        .stat { display: flex; flex-direction: column; gap: 6px; }
-        .stat-num {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: 56px;
-            line-height: 1;
-            color: var(--lime);
-            letter-spacing: -0.03em;
-        }
-        .stat-label {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--steel);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
-
-        /* ==========================================================
-           Section primitives
-        ========================================================== */
-        .section { padding: 100px 0; }
-
-        /* ==========================================================
-           Threat advisory ribbon — editorial register (bone block)
-        ========================================================== */
-        .advisory {
-            background: var(--bone);
-            color: var(--carbon);
-            padding: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .advisory::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 6px;
-            background: var(--breach);
-        }
-        .advisory-flex { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
-        .advisory-tag {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            color: var(--breach);
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border: 2px solid var(--breach);
-            border-radius: 4px;
-            align-self: flex-start;
-            flex-shrink: 0;
-            font-weight: 700;
-        }
-        .advisory-body { flex: 1; min-width: 280px; }
-        .advisory-body h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(26px, 4vw, 34px);
-            letter-spacing: -0.02em;
-            color: var(--carbon);
-            margin-bottom: 12px;
-            line-height: 1.05;
-        }
-        .advisory-body p {
-            font-size: 17px;
-            color: #2A2E37;
-            line-height: 1.55;
-            margin-bottom: 16px;
-            max-width: 760px;
-        }
-        .advisory-cta {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--carbon);
-            border-bottom: 2px solid var(--carbon);
-            padding-bottom: 2px;
-        }
-        .advisory-cta:hover { color: var(--carbon); border-bottom-color: var(--lime-600); }
-
-        /* ==========================================================
-           Manifesto block
-        ========================================================== */
-        .manifesto {
-            background: var(--carbon);
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .manifesto::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle at 1px 1px, rgba(199, 255, 62, 0.06) 1px, transparent 0);
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, black, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-            pointer-events: none;
-        }
-        .manifesto-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-            position: relative;
-        }
-        @media (max-width: 880px) { .manifesto-grid { grid-template-columns: 1fr; gap: 40px; } }
-        .manifesto-left h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(36px, 6vw, 72px);
-            line-height: 0.92;
-            letter-spacing: -0.04em;
-            color: var(--bone);
-            margin-bottom: 28px;
-        }
-        .manifesto-left h2 em { color: var(--lime); font-style: italic; }
-        .manifesto-lede {
-            font-size: 18px;
-            color: var(--bone-2);
-            line-height: 1.6;
-            max-width: 520px;
-            margin-bottom: 20px;
-        }
-        .manifesto-subline {
-            font-size: 14px;
-            color: var(--steel);
-            line-height: 1.6;
-            max-width: 520px;
-            font-family: var(--font-mono);
-            letter-spacing: 0.02em;
-        }
-        .pillar { padding: 24px 0; border-bottom: 1px solid var(--slate); }
-        .pillar:first-child { padding-top: 0; }
-        .pillar:last-child { border-bottom: 0; }
-        .pillar-num {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--lime);
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-        }
-        .pillar h3 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 24px;
-            letter-spacing: -0.02em;
-            color: var(--bone);
-            margin-bottom: 8px;
-        }
-        .pillar p { font-size: 15px; color: var(--bone-2); line-height: 1.55; }
-
-        /* ==========================================================
-           Tagline mark — the kubectl stamp (bone block)
-        ========================================================== */
-        .tag-block {
-            background: var(--bone);
-            padding: 100px 0;
-            color: var(--carbon);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .tag-block::before, .tag-block::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-image: radial-gradient(circle at 1px 1px, var(--carbon) 1px, transparent 0);
-            background-size: 8px 8px;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-        .tag-block::before { top: 40px; left: 40px; }
-        .tag-block::after { bottom: 40px; right: 40px; }
-        .tag-mark {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: clamp(20px, 4vw, 48px);
-            color: var(--carbon);
-            display: inline-block;
-            padding: 16px 32px;
-            background: var(--lime);
-            box-shadow: 8px 8px 0 var(--carbon);
-            border: 3px solid var(--carbon);
-            margin-bottom: 32px;
-            transform: rotate(-1deg);
-        }
-        .tag-block h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: clamp(32px, 5vw, 56px);
-            text-transform: uppercase;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            color: var(--carbon);
-            margin: 0 auto 16px;
-            max-width: 18ch;
-        }
-        .tag-block p {
-            font-size: 18px;
-            color: #2A2E37;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ==========================================================
-           Hire experts CTA — charcoal panel, lime offset accent
-        ========================================================== */
-        .hire { padding: 100px 0; background: var(--carbon); }
-        .hire-panel {
-            position: relative;
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: var(--r-lg);
-            padding: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-            overflow: hidden;
-        }
-        .hire-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--grad-stamp-glow);
-        }
-        .hire-copy { max-width: 560px; }
-        .hire-copy .section-eyebrow { margin-bottom: 16px; }
-        .hire-copy h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(28px, 4.5vw, 44px);
-            line-height: 0.98;
-            letter-spacing: -0.03em;
-            color: var(--bone);
-            margin-bottom: 16px;
-        }
-        .hire-copy p { font-size: 17px; color: var(--bone-2); line-height: 1.6; }
-        .hire-panel .btn-primary { flex-shrink: 0; }
-
-        @media (max-width: 768px) {
-            .hero { padding: 88px 0 72px; }
-            .section, .manifesto, .hire, .tag-block { padding: 72px 0; }
-            .hire-panel { padding: 36px 28px; }
-            .wrap { padding: 0 20px; }
-        }
-    </style>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/brand/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap&amp;text=%DA%A9%D9%84%D8%A7%D8%A4%DA%88%20%D9%86%DB%8C%D9%B9%D9%88%20%D8%B3%DB%8C%DA%A9%DB%8C%D9%88%D8%B1%D9%B9%DB%8C%20%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/chrome.css">
+<link rel="stylesheet" href="/css/site.css">
+<script type="module" src="/js/site.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Cloud Native Security Pakistan","alternateName":"CNSPK","url":"https://cloudnativesecurity.pk","logo":"https://cloudnativesecurity.pk/brand/assets/cnspk-logo.png","email":"hi@cloudnativesecurity.pk","foundingDate":"2023-08","description":"A volunteer-run, not-for-profit technical community in Pakistan for cloud-native security, open source, Kubernetes, DevSecOps, and AI security.","sameAs":["https://community.cncf.io/cloud-native-security-pakistan/","https://discord.gg/v7RQu6gvpJ","https://github.com/Cloud-Native-Security-Pakistan","https://www.linkedin.com/company/cloud-native-security-pakistan","https://www.instagram.com/cloudnativesecuritypk"]}</script>
 </head>
-
 <body>
+<a class="cx-skip" href="#main">Skip to content</a>
+<header class="cx-header" data-cx-header>
+  <div class="cx-container cx-header__bar">
+    <a class="cx-brand" href="/" aria-label="CNSPK, Cloud Native Security Pakistan, home">
+      <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+      <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+    </a>
+    <nav class="cx-nav" aria-label="Primary"><ul class="cx-nav__list"><li><a class="cx-nav__link" href="/events/">Events</a></li><li><a class="cx-nav__link" href="/community/">Community</a></li><li><a class="cx-nav__link" href="/open-source/">Open Source</a></li><li><a class="cx-nav__link" href="/cfp/">Speak</a></li><li><a class="cx-nav__link" href="/impact/">Impact</a></li><li><a class="cx-nav__link" href="/partners/">Partners</a></li><li><a class="cx-nav__link" href="/about/">About</a></li></ul></nav>
+    <a class="cx-cta" href="/join/">Join CNSPK</a>
+    <button class="cx-menu-btn" type="button" aria-expanded="false" aria-controls="cx-menu" data-cx-menu-btn><svg class="cx-menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+  </div>
+  <div class="cx-menu" id="cx-menu" hidden data-cx-menu>
+    <nav class="cx-container" aria-label="Primary mobile"><ul class="cx-menu__list"><li><a class="cx-menu__link" href="/events/">Events<span>Meetups, hackathons, archive</span></a></li><li><a class="cx-menu__link" href="/community/">Community<span>Channels, volunteering, conduct</span></a></li><li><a class="cx-menu__link" href="/open-source/">Open Source<span>Projects and contributors</span></a></li><li><a class="cx-menu__link" href="/cfp/">Speak<span>Propose a talk</span></a></li><li><a class="cx-menu__link" href="/impact/">Impact<span>Milestones and outcomes</span></a></li><li><a class="cx-menu__link" href="/partners/">Partners<span>Collaborate with CNSPK</span></a></li><li><a class="cx-menu__link" href="/about/">About<span>Mission, team, history</span></a></li></ul>
+      <a class="cx-cta" href="/join/">Join CNSPK</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
 
-    <!-- ===== Navbar (mounted via /js/Navbar.js) ===== -->
-    <div id="navbar"></div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <p class="kicker">Cloud Native Security Pakistan · CNSPK</p>
+      <h1 class="display" id="hero-title">Pakistan’s engineers, building and securing cloud-native systems <em>in the open.</em></h1>
+      <p class="lede">CNSPK is a volunteer-run, not-for-profit technical community. Since 2024 it has run 18 meetups, workshops, conferences, and hackathons in Lahore, Quetta, Faisalabad, and Islamabad, on Kubernetes, DevSecOps, open source, and AI security.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="/events/">See events <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="/join/">Join the community <span class="btn__arrow" aria-hidden="true">→</span></a>
+      </div>
+      <p class="hero__note">Listed on <a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF Open Community Groups<span class="sr-only"> (opens in a new tab)</span></a> since August 2023.</p>
+    </div>
+    <div class="log" aria-labelledby="log-title">
+      <div class="log__bar"><span id="log-title">field-log · recent events</span><span>18 on record</span></div>
+      <ol class="log__list"><li class="log__item"><a href="/events/hacktoberfest-hack-day-lahore-2026/"><span class="log__date"><time datetime="2026-10-24">2026-10-24</time></span><span class="log__title">Hacktoberfest Hack Day Lahore 2026</span><span class="log__where">Lahore · hackathon</span></a></li><li class="log__item"><a href="/events/hacktoberfest-lahore-2026-uol/"><span class="log__date"><time datetime="2026-10-17">2026-10-17</time></span><span class="log__title">Hacktoberfest Lahore 2026 at the University of Lahore</span><span class="log__where">Lahore · meetup</span></a></li><li class="log__item"><a href="/events/open-source-connect-pakistan-2026/"><span class="log__date"><time datetime="2026-08-29">2026-08-29</time></span><span class="log__title">Open Source Connect Pakistan</span><span class="log__where">Lahore · conference</span></a></li><li class="log__item"><a href="/events/github-copilot-dev-days-lahore-2026/"><span class="log__date"><time datetime="2026-05-09">2026-05-09</time></span><span class="log__title">GitHub Copilot Dev Days Lahore</span><span class="log__where">Lahore · workshop</span></a></li><li class="log__item"><a href="/events/balochistan-tech-connect-2026/"><span class="log__date"><time datetime="2026-04-11">2026-04-11</time></span><span class="log__title">Balochistan Tech Connect: Unlocking Cloud-Native Security</span><span class="log__where">Quetta · meetup</span></a></li><li class="log__item"><a href="/events/cloud-native-security-connect-faisalabad-2026/"><span class="log__date"><time datetime="2026-02-08">2026-02-08</time></span><span class="log__title">Cloud Native Security Connect: Bridging Cloud and Security</span><span class="log__where">Faisalabad · meetup</span></a></li></ol>
+      <div class="log__foot"><a href="/events/">$ ls /events --all <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</section>
 
-    <main>
+<section class="section--tight" aria-label="Verified figures">
+  <div class="container">
+    <dl class="figures"><div class="figure">
+  <dt class="figure__label">events on record since May 2024</dt>
+  <dd class="figure__value">18</dd>
+  <dd class="figure__source">Source: <a href="/events/">event archive</a></dd>
+</div><div class="figure">
+  <dt class="figure__label">cities: Lahore, Quetta, Faisalabad, Islamabad</dt>
+  <dd class="figure__value">4</dd>
+  <dd class="figure__source">Source: <a href="/events/">event archive</a></dd>
+</div><div class="figure">
+  <dt class="figure__label">members on the CNCF group (2 Nov 2026)</dt>
+  <dd class="figure__value">289</dd>
+  <dd class="figure__source">Source: <a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF listing<span class="sr-only"> (opens in a new tab)</span></a></dd>
+</div><div class="figure">
+  <dt class="figure__label">projects submitted at Hack Day Lahore 2026</dt>
+  <dd class="figure__value">26</dd>
+  <dd class="figure__source">Source: <a href="https://www.mlh.com/events/hacktoberfest-hack-day-lahore-x-cloud-native-security-pakistan" rel="noopener" target="_blank">MLH<span class="sr-only"> (opens in a new tab)</span></a></dd>
+</div></dl>
+    <p class="note">Attendance has not been recorded consistently, so this site does not publish attendance totals. <a href="/impact/">How we count</a>.</p>
+  </div>
+</section>
 
-        <!-- ===== Hero ===== -->
-        <section id="top" class="hero">
-            <!-- Faint Pakistani landmark silhouette (Minar-e-Pakistan, abstracted) -->
-            <svg class="hero-landmark" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <g fill="none" stroke="#C7FF3E" stroke-width="1.5">
-                    <rect x="40" y="280" width="120" height="20" />
-                    <rect x="55" y="260" width="90" height="20" />
-                    <rect x="80" y="180" width="40" height="80" />
-                    <rect x="86" y="120" width="28" height="60" />
-                    <rect x="92" y="60" width="16" height="60" />
-                    <circle cx="100" cy="40" r="14" />
-                    <circle cx="105" cy="38" r="10" fill="#0F1115" />
-                    <line x1="100" y1="56" x2="100" y2="60" />
-                </g>
-            </svg>
+<section class="section" aria-labelledby="latest-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">01</span>Latest</p>
+    <h2 class="title" id="latest-title">From the field</h2>
+    <p class="lede">No events are scheduled right now. Here is what happened most recently.</p>
+  </div>
+  
+</div>
+    <div class="empty"><p class="subtitle">Nothing scheduled yet</p><p>New events are announced first on the <a class="link" href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a> and the <a class="link" href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp community<span class="sr-only"> (opens in a new tab)</span></a>. Join either to get the RSVP link when registration opens.</p></div>
+    <article class="feature feature--poster" aria-labelledby="feat-hacktoberfest-hack-day-lahore-2026">
+      <div class="feature__media"><p class="poster__date">24 Oct 2026 · Lahore</p><p class="poster__big" aria-hidden="true">26<span>projects</span></p><p class="meta">Submitted to MLH prize categories</p></div>
+      <div class="feature__body">
+        <p class="kicker">Hackathon</p>
+        <h3 class="title" id="feat-hacktoberfest-hack-day-lahore-2026">Hacktoberfest Hack Day Lahore 2026</h3>
+        <p class="muted">A one-day build event run by CNSPK as part of Hacktoberfest 2026, listed on Major League Hacking under the theme “AI for Everyone”. Students and developers worked in teams on open-source and open-weight AI projects, and submissions were judged in two MLH prize categories: Best Open-Source AI Project (DigitalOcean) and Best Use of Gemma 4 (Google DeepMind).</p>
+        <ul class="tags" aria-label="Topics"><li class="tag ">Open Source</li><li class="tag ">AI</li><li class="tag ">Hacktoberfest</li><li class="tag ">Cloud Native</li></ul>
+        <div class="actions"><a class="btn btn--ghost" href="/events/hacktoberfest-hack-day-lahore-2026/">Event record <span class="btn__arrow" aria-hidden="true">→</span></a><a class="btn btn--ghost" href="/open-source/#hack-day-2026">See the projects <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </article>
+    <article class="feature" aria-labelledby="feat-hacktoberfest-lahore-2026-uol">
+      <div class="feature__media"><img src="/images/events/hacktoberfest-lahore-2026-uol/talk-title.jpg" srcset="/images/events/hacktoberfest-lahore-2026-uol/talk-title-800.jpg 800w, /images/events/hacktoberfest-lahore-2026-uol/talk-title.jpg 1600w" sizes="(max-width: 860px) 100vw, 640px" width="1600" height="1067" alt="Farhan Ashraf speaking in front of a slide reading “Open Source: AI for Everyone”, credited to Cloud Native Security Pakistan." loading="lazy" decoding="async"></div>
+      <div class="feature__body">
+        <p class="kicker">17 Oct 2026 · University of Lahore</p>
+        <h3 class="title" id="feat-hacktoberfest-lahore-2026-uol">Hacktoberfest Lahore 2026 at the University of Lahore</h3>
+        <p class="muted">A Hacktoberfest 2026 gathering at the University of Lahore for students taking their first steps into open source. Farhan Ashraf presented “Open Source: AI for Everyone!”, a practical introduction to building with AI tools in open-source projects.</p>
+        <div class="actions"><a class="btn btn--ghost" href="/events/hacktoberfest-lahore-2026-uol/">Photos and details <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </article>
+  </div>
+</section>
 
-            <!-- Chapter ID stamp — CNCF affiliation as a credential, not the headline -->
-            <div class="chapter-stamp" aria-hidden="true">
-                <span class="l1">CNCF Chapter · est. 2023</span>
-                <span class="l2">Pakistan</span>
-            </div>
+<section class="section section--band" aria-labelledby="areas-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">02</span>Focus</p>
+    <h2 class="title" id="areas-title">What we work on</h2>
+    <p class="lede">Four areas run through the programme. Counts come from the event archive.</p>
+  </div>
+  
+</div>
+    <div class="areas"><div class="area"><p class="area__count">10 events</p><h3 class="subtitle">Kubernetes and container security</h3><p>Cluster hardening, workload isolation, and the security model of the tools most teams run in production.</p><a class="arrow-link" href="/events/?q=kubernetes">Related events <span class="btn__arrow" aria-hidden="true">→</span></a></div><div class="area"><p class="area__count">13 events</p><h3 class="subtitle">DevSecOps and cloud security</h3><p>Security built into pipelines and cloud architecture, from reconnaissance to secure-by-design delivery.</p><a class="arrow-link" href="/events/?q=devsecops">Related events <span class="btn__arrow" aria-hidden="true">→</span></a></div><div class="area"><p class="area__count">6 events</p><h3 class="subtitle">Open-source contribution</h3><p>First pull requests, maintainership, and Hacktoberfest events that turn users into contributors.</p><a class="arrow-link" href="/events/?q=open%20source">Related events <span class="btn__arrow" aria-hidden="true">→</span></a></div><div class="area"><p class="area__count">6 events</p><h3 class="subtitle">AI security and AI-assisted engineering</h3><p>Building with open models, prompt engineering, and using tools like GitHub Copilot responsibly.</p><a class="arrow-link" href="/events/?q=ai">Related events <span class="btn__arrow" aria-hidden="true">→</span></a></div></div>
+  </div>
+</section>
 
-            <div class="wrap hero-content">
-                <div class="hero-meta">
-                    <span class="status-pill">
-                        <span class="status-dot"></span>
-                        <span>chapter / live / lhe-khi-isb</span>
-                    </span>
-                    <span style="opacity:0.6">·</span>
-                    <span class="cmd">$ ./join.sh --no-gatekeeping</span>
-                </div>
+<section class="section" aria-labelledby="routes-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">03</span>Get involved</p>
+    <h2 class="title" id="routes-title">Six ways in</h2>
+    <p class="lede">Each route leads to a working page or channel. Pick the one that fits you.</p>
+  </div>
+  
+</div>
+    <ol class="routes"><li class="route"><span class="route__num">01</span><h3 class="route__title">Attend an event</h3><p class="route__desc">Free meetups, workshops, and hackathons. Most are on university campuses and open to students.</p><a class="arrow-link" href="/events/">Browse events <span class="btn__arrow" aria-hidden="true">→</span></a></li><li class="route"><span class="route__num">02</span><h3 class="route__title">Join the community</h3><p class="route__desc">Pick a channel: the CNCF group for RSVPs, WhatsApp for announcements, Discord for technical discussion.</p><a class="arrow-link" href="/join/">Choose a channel <span class="btn__arrow" aria-hidden="true">→</span></a></li><li class="route"><span class="route__num">03</span><h3 class="route__title">Contribute to open source</h3><p class="route__desc">Start with this website or a Hack Day project. Every content file here can be corrected with a pull request.</p><a class="arrow-link" href="/open-source/">Find a repository <span class="btn__arrow" aria-hidden="true">→</span></a></li><li class="route"><span class="route__num">04</span><h3 class="route__title">Submit a talk</h3><p class="route__desc">We look for live demos and real work. First-time speakers are welcome.</p><a class="arrow-link" href="/cfp/">Read the guidance <span class="btn__arrow" aria-hidden="true">→</span></a></li><li class="route"><span class="route__num">05</span><h3 class="route__title">Volunteer</h3><p class="route__desc">Help with venues, registration, speaker liaison, photography, or this website.</p><a class="arrow-link" href="/community/#volunteer">See how to help <span class="btn__arrow" aria-hidden="true">→</span></a></li><li class="route"><span class="route__num">06</span><h3 class="route__title">Partner with CNSPK</h3><p class="route__desc">Sponsor an event, host one at your campus or office, or co-run a session with your community.</p><a class="arrow-link" href="/partners/">Partnership options <span class="btn__arrow" aria-hidden="true">→</span></a></li></ol>
+  </div>
+</section>
 
-                <h1>
-                    Built.<br />
-                    <span class="underline">Tested.</span><br />
-                    <span class="lime-line">Pakistani.</span>
-                </h1>
+<section class="section section--band" aria-labelledby="oss-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">04</span>Open source</p>
+    <h2 class="title" id="oss-title">Built at Hack Day Lahore 2026</h2>
+    <p class="lede">Participants own these repositories. CNSPK keeps a fork of each in its GitHub organisation as a record of the day.</p>
+  </div>
+  <a class="arrow-link" href="/open-source/">All projects <span class="btn__arrow" aria-hidden="true">→</span></a>
+</div>
+    <ul class="grid grid--3"><li><a class="repo" href="https://github.com/alikhann2360/RepoSherlock" rel="noopener" target="_blank"><span class="repo__name">alikhann2360/RepoSherlock</span><span class="repo__desc">Ai agent to explain all artitecture etc of code files</span><span class="repo__foot"><span>@alikhann2360</span><span>Python</span></span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="repo" href="https://github.com/codename-warhammer09/ozhuk-poetry" rel="noopener" target="_blank"><span class="repo__name">codename-warhammer09/ozhuk-poetry</span><span class="repo__desc">HACKTOBERFEST 26&#39; submission: An open-source multimodal agent skill and learning engine for classical poetical scansion, web-retrieved examples, and literary analysis, powered by Gemma 4.</span><span class="repo__foot"><span>@codename-warhammer09</span><span>Python</span></span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="repo" href="https://github.com/Developer-game/ai-operations-manager" rel="noopener" target="_blank"><span class="repo__name">Developer-game/ai-operations-manager</span><span class="repo__desc">AI Operations Manager - intelligent agentic platform for autonomous operations, incident management, and workflow automation</span><span class="repo__foot"><span>@Developer-game</span><span>TypeScript</span></span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="repo" href="https://github.com/fa24-bscs-431-pixel/DocDecode" rel="noopener" target="_blank"><span class="repo__name">fa24-bscs-431-pixel/DocDecode</span><span class="repo__desc">AI assistant that decodes official documents into plain words, deadlines and next steps. Built with Gemma 4, Gemini API and Streamlit.  Understand any official letter or report in seconds: summary, deadlines, legal scenarios and reminders, in your language.</span><span class="repo__foot"><span>@fa24-bscs-431-pixel</span><span>Python</span></span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="repo" href="https://github.com/hellohammadi/foundry" rel="noopener" target="_blank"><span class="repo__name">hellohammadi/foundry</span><span class="repo__desc">Open-source AI agent team that helps founders discover their business potential — start a business or fix one. Built on DNotifier.</span><span class="repo__foot"><span>@hellohammadi</span><span>TypeScript</span></span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="repo" href="https://github.com/mabdullahch90-spec/repoguard-ai" rel="noopener" target="_blank"><span class="repo__name">mabdullahch90-spec/repoguard-ai</span><span class="repo__desc">Autonomous Vulnerability &amp; Patch Agent — AI-powered security scanner</span><span class="repo__foot"><span>@mabdullahch90-spec</span><span>Python</span></span><span class="sr-only"> (opens in a new tab)</span></a></li></ul>
+  </div>
+</section>
 
-                <p class="lede">
-                    <strong>1,000+ engineers</strong> shipping cloud-native infrastructure across Pakistan, breaking it
-                    on purpose, and writing it back better. Independent. Run by practitioners. Free to join.
-                    <strong>No gatekeeping.</strong>
-                </p>
+<section class="section" aria-labelledby="partners-title">
+  <div class="container split">
+    <div>
+      <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">05</span>Collaborations</p>
+    <h2 class="title" id="partners-title">Who we have worked with</h2>
+    <p class="lede">Every name here links to a public event page that shows the relationship.</p>
+  </div>
+  
+</div>
+      <a class="btn btn--ghost" href="/partners/">Partner with CNSPK <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+    <div class="directory directory--compact"><div class="directory__item"><a class="directory__name link" href="/partners/#github">GitHub</a><span class="tag">sponsor</span><span class="directory__desc">Listed as a sponsor of the CNSPK group on CNCF Open Community Groups. Gold sponsor of Open Source Connect Pakistan 2026. Listed sponsor of Networking Friday and DevSecOps for All (2025). CNSPK organisers hosted the Lahore edition of GitHub Copilot Dev Days in May 2026.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#mlh">Major League Hacking</a><span class="tag">collaborator</span><span class="directory__desc">Listed Hacktoberfest Hack Day Lahore 2026, organised by CNSPK, and ran its submissions and prize categories.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#hacktoberfest">Hacktoberfest</a><span class="tag">programme</span><span class="directory__desc">CNSPK has run Hacktoberfest events in Lahore in 2025 and 2026.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#aws-community-pakistan">AWS Community Pakistan</a><span class="tag">collaborator</span><span class="directory__desc">Co-ran the Islamabad meetup in May 2024 and the ITCN Asia 2026 session in Lahore.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#aws-ug-faisalabad">AWS User Group Faisalabad</a><span class="tag">collaborator</span><span class="directory__desc">Co-ran Cloud Native Security Connect in Faisalabad, February 2026.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#itcn-asia">ITCN Asia</a><span class="tag">programme</span><span class="directory__desc">CNSPK presented a session at ITCN Asia 2026, Expo Centre Lahore.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#cyberfest-lahore">CyberFest Lahore</a><span class="tag">programme</span><span class="directory__desc">CNSPK ran the session “DevSecOps for All” at CyberFest Lahore 2025.</span></div><div class="directory__item"><a class="directory__name link" href="/partners/#systems-limited">Systems Limited</a><span class="tag">venue</span><span class="directory__desc">Venue host for #cTENcf Birthday Bash Lahore (2025) and Open Source Connect Pakistan (2026).</span></div></div>
+  </div>
+</section>
 
-                <div class="hero-cta-row">
-                    <a href="/join/" class="btn-primary">
-                        Join the Chapter
-                        <span style="font-family:var(--font-mono);">↗</span>
-                    </a>
-                    <a href="/events/" class="btn-secondary">
-                        <span class="mono">// browse-events</span>
-                        Upcoming sessions
-                    </a>
-                </div>
+<section class="section section--band" aria-labelledby="team-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">06</span>Organisers</p>
+    <h2 class="title" id="team-title">Run by volunteers</h2>
+    <p class="lede">CNSPK has no paid staff. These organisers plan the events, find venues, and look after speakers.</p>
+  </div>
+  <a class="arrow-link" href="/team/">Meet the organisers <span class="btn__arrow" aria-hidden="true">→</span></a>
+</div>
+    <ul class="tags"><li class="tag">Muhammad Farhan Ashraf</li><li class="tag">Syed Naqvi</li><li class="tag">Taskeen Fatima</li><li class="tag">Sharjeel Yunus</li><li class="tag">Hasnaat Iftikhar</li><li class="tag">Alishba Arshad</li><li class="tag">Muhammad Abdullah</li><li class="tag">Haroon Sohail</li></ul>
+  </div>
+</section>
 
-                <p class="hero-tagline-urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
-            </div>
-        </section>
-
-        <!-- ===== Stat strip ===== -->
-        <section class="stats" aria-label="Chapter by the numbers">
-            <div class="wrap stats-grid">
-                <div class="stat">
-                    <div class="stat-num">1,000+</div>
-                    <div class="stat-label">Engineers</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num">11</div>
-                    <div class="stat-label">Events shipped</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num">3</div>
-                    <div class="stat-label">Cities</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num">∞</div>
-                    <div class="stat-label">Bharosa</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Threat advisory ribbon (editorial register) ===== -->
-        <!--
-          TODO: This advisory is illustrative of the editorial register, not a
-          live CVE. Wire to a real /threat-of-week writeup (or remove) before
-          launch so the byline never reads as fabricated security reporting.
-        -->
-        <section class="advisory reveal" id="advisory" aria-label="Threat advisory">
-            <div class="wrap">
-                <div class="advisory-flex">
-                    <div class="advisory-tag">Advisory&nbsp;·&nbsp;Register</div>
-                    <div class="advisory-body">
-                        <h2>The IAM role nobody owns just shipped to prod.</h2>
-                        <p>
-                            Over-permissioned default service accounts are the quiet default across cloud-native
-                            stacks. This is the register we write in: read the misconfig, ship the five-line fix,
-                            keep it dead with policy-as-code. Practitioners, not press releases.
-                        </p>
-                        <a href="/sessions/" class="advisory-cta">Browse the sessions →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Manifesto ===== -->
-        <section class="manifesto" id="chapter">
-            <div class="wrap manifesto-grid">
-
-                <div class="manifesto-left reveal">
-                    <div class="section-eyebrow">// chapter / what-we-stand-for</div>
-                    <h2>
-                        A community of <em>cloud security practitioners</em> in Pakistan.
-                        Independent. Run by engineers.
-                    </h2>
-                    <p class="manifesto-lede">
-                        CNSPK is its own thing. We are engineers, students, and security leads in Lahore, Karachi,
-                        and Islamabad — meeting online and in person, and building a body of practice that didn't
-                        exist here before.
-                    </p>
-                    <p class="manifesto-subline">
-                        Affiliated with CNCF as a recognised security chapter. Not a CNCF franchise.
-                    </p>
-                </div>
-
-                <div class="manifesto-right reveal">
-                    <div class="pillar">
-                        <div class="pillar-num">PILLAR 01</div>
-                        <h3>Rigor</h3>
-                        <p>What is true matters more than what sounds good. We test, we cite, we date-stamp our
-                            corrections.</p>
-                    </div>
-                    <div class="pillar">
-                        <div class="pillar-num">PILLAR 02</div>
-                        <h3>Belonging</h3>
-                        <p>The first question is the most valuable one in the room. No gatekeeping on credentials,
-                            English fluency, or city.</p>
-                    </div>
-                    <div class="pillar">
-                        <div class="pillar-num">PILLAR 03</div>
-                        <h3>Bridge</h3>
-                        <p>We connect Pakistani engineers to KubeCon, OSS contribution, and the global CNCF in both
-                            directions.</p>
-                    </div>
-                    <div class="pillar">
-                        <div class="pillar-num">PILLAR 04</div>
-                        <h3>Practice</h3>
-                        <p>Talk is cheap. Show the kubectl. Every concept gets a demo, a code block, or a runnable
-                            lab.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ===== Tagline mark ===== -->
-        <section class="tag-block reveal" aria-label="Chapter tagline">
-            <div class="wrap">
-                <code class="tag-mark">kubectl apply -f pakistan.yaml</code>
-                <h2>Read the CVE.<br />Drink the chai.</h2>
-                <p>
-                    Defense in depth. Hospitality on top. The chapter for engineers who actually ship.
-                </p>
-            </div>
-        </section>
-
-        <!-- ===== Hire experts CTA (preserved from existing site, rethemed) ===== -->
-        <section class="hire" id="hire">
-            <div class="wrap">
-                <div class="hire-panel reveal">
-                    <div class="hire-copy">
-                        <div class="section-eyebrow">// need-an-expert</div>
-                        <h2>Need cloud security expertise?</h2>
-                        <p>
-                            The chapter runs deep on Kubernetes, DevSecOps, and cloud architecture. Browse the
-                            consultants directory and connect with practitioners who do this for a living.
-                        </p>
-                    </div>
-                    <a href="/consultants/" class="btn-primary">
-                        Hire Experts
-                        <span style="font-family:var(--font-mono);">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== Footer (mounted via /js/Footer.js) ===== -->
-    <div id="footer"></div>
-
-    <script type="module">
-        import { Navbar } from '/js/Navbar.js';
-        import { Footer } from '/js/Footer.js';
-
-        new Navbar().init();
-        new Footer().init();
-
-        /* ---- Scroll-reveal — respects prefers-reduced-motion ---- */
-        (function () {
-            const els = document.querySelectorAll('.reveal');
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            if (prefersReduced || !('IntersectionObserver' in window)) {
-                els.forEach(el => el.classList.add('is-visible'));
-                return;
-            }
-
-            const io = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-            els.forEach(el => io.observe(el));
-        })();
-    </script>
+<section class="section" aria-label="Join">
+  <div class="container">
+    <div class="band"><div><h2 class="subtitle">Start with one event.</h2><p class="muted">Most people find CNSPK at a campus meetup or a Hacktoberfest day. Join a channel to hear about the next one.</p></div><div class="actions"><a class="btn btn--primary" href="/join/">Join the community <span class="btn__arrow" aria-hidden="true">→</span></a><a class="btn btn--ghost" href="/events/">Past events <span class="btn__arrow" aria-hidden="true">→</span></a></div></div>
+  </div>
+</section>
+</main>
+<footer class="cx-footer">
+  <div class="cx-footer__heritage" aria-hidden="true"></div>
+  <div class="cx-container">
+    <div class="cx-footer__top">
+      <div class="cx-footer__about">
+        <a class="cx-brand" href="/" aria-label="CNSPK home">
+          <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+          <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+        </a>
+        <p>A volunteer-run, not-for-profit community for cloud-native security, open source, and DevSecOps in Pakistan.</p>
+        <p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
+      </div>
+      <div><h2 class="cx-footer__heading">Participate</h2><ul class="cx-footer__list"><li><a href="/events/">Upcoming and past events</a></li><li><a href="/join/">Join the community</a></li><li><a href="/community/#volunteer">Volunteer</a></li><li><a href="/cfp/">Propose a talk</a></li><li><a href="/open-source/">Contribute on GitHub</a></li></ul></div><div><h2 class="cx-footer__heading">Learn more</h2><ul class="cx-footer__list"><li><a href="/about/">About CNSPK</a></li><li><a href="/team/">Organisers</a></li><li><a href="/impact/">Impact</a></li><li><a href="/resources/">Resources</a></li><li><a href="/partners/">Partner with us</a></li><li><a href="/brand/">Brand assets</a></li><li><a href="/code-of-conduct/">Code of conduct</a></li></ul></div>
+      <div><h2 class="cx-footer__heading">Channels</h2><ul class="cx-footer__list"><li><a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://discord.gg/v7RQu6gvpJ" rel="noopener" target="_blank">Discord<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/company/cloud-native-security-pakistan" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.instagram.com/cloudnativesecuritypk" rel="noopener" target="_blank">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+    </div>
+    <div class="cx-footer__bottom">
+      <span>© 2026 Cloud Native Security Pakistan. Content is maintained in the open on <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website">GitHub</a>.</span>
+      <span>Spotted an error? <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/issues/new">Report a correction</a> or email <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>.</span>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>

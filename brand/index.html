@@ -1,599 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-cnspk="site">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src &#39;self&#39; data:; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39; mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Brand · CNSPK</title>
+<meta name="description" content="Download approved CNSPK logo files, and read the colour, typography, and usage guidelines.">
+<link rel="canonical" href="https://cloudnativesecurity.pk/brand/">
 
-    <!--
-      CSP matches the v2 pattern: tokens.css is loaded from 'self' and @imports
-      the four brand fonts (Bricolage Grotesque, Inter, JetBrains Mono, Noto
-      Nastaliq Urdu) from fonts.googleapis.com — covered by style-src; the font
-      files come from fonts.gstatic.com — covered by font-src. jsdelivr/tailwind
-      allowances retained so no v2 routing breaks.
-    -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://community.cncf.io https://avatars.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto: https://docs.google.com;">
+<meta name="theme-color" content="#0F1115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Native Security Pakistan">
+<meta property="og:title" content="Brand · CNSPK">
+<meta property="og:description" content="Download approved CNSPK logo files, and read the colour, typography, and usage guidelines.">
+<meta property="og:url" content="https://cloudnativesecurity.pk/brand/">
+<meta property="og:image" content="https://cloudnativesecurity.pk/brand/assets/og-default.png">
 
-    <title>Brand · CNSPK · Cloud Native Security Pakistan</title>
-    <meta name="description"
-        content="The CNSPK brand book — Electric register. The Shield, the lime-on-dark colour system, italic display typography, the voice, and the tagline: kubectl apply -f pakistan.yaml. Download the logo assets.">
-    <meta name="keywords"
-        content="CNSPK brand, brand guidelines, Cloud Native Security Pakistan, logo, brand book, Electric lime, design tokens, brand assets">
-    <meta name="author" content="Cloud Native Security Pakistan">
-    <meta name="theme-color" content="#0F1115">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/brand/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap&amp;text=%DA%A9%D9%84%D8%A7%D8%A4%DA%88%20%D9%86%DB%8C%D9%B9%D9%88%20%D8%B3%DB%8C%DA%A9%DB%8C%D9%88%D8%B1%D9%B9%DB%8C%20%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/chrome.css">
+<link rel="stylesheet" href="/css/site.css">
+<script type="module" src="/js/site.js"></script>
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Brand · CNSPK · Cloud Native Security Pakistan">
-    <meta property="og:description"
-        content="The CNSPK brand book — Electric register. The Shield, the lime-on-dark colour system, italic display type, the voice, and the assets.">
-    <meta property="og:url" content="https://cloudnativesecurity.pk/brand/">
-    <meta property="og:site_name" content="Cloud Native Security Pakistan">
-    <meta property="og:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://cloudnativesecurity.pk/logo.png">
-    <meta name="twitter:title" content="Brand · CNSPK">
-    <meta name="twitter:description"
-        content="The CNSPK brand book — Electric register. Built. Tested. Pakistani.">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/brand/">
-
-    <!-- Design tokens first: colour, type, motion, shared primitives + font @import -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/css/tokens.css">
-    <!-- Brand-book page-specific styles (Electric; no blue, no anti-scrape) -->
-    <link rel="stylesheet" href="/brand/styles.css">
 </head>
-
 <body>
+<a class="cx-skip" href="#main">Skip to content</a>
+<header class="cx-header" data-cx-header>
+  <div class="cx-container cx-header__bar">
+    <a class="cx-brand" href="/" aria-label="CNSPK, Cloud Native Security Pakistan, home">
+      <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+      <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+    </a>
+    <nav class="cx-nav" aria-label="Primary"><ul class="cx-nav__list"><li><a class="cx-nav__link" href="/events/">Events</a></li><li><a class="cx-nav__link" href="/community/">Community</a></li><li><a class="cx-nav__link" href="/open-source/">Open Source</a></li><li><a class="cx-nav__link" href="/cfp/">Speak</a></li><li><a class="cx-nav__link" href="/impact/">Impact</a></li><li><a class="cx-nav__link" href="/partners/">Partners</a></li><li><a class="cx-nav__link" href="/about/">About</a></li></ul></nav>
+    <a class="cx-cta" href="/join/">Join CNSPK</a>
+    <button class="cx-menu-btn" type="button" aria-expanded="false" aria-controls="cx-menu" data-cx-menu-btn><svg class="cx-menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+  </div>
+  <div class="cx-menu" id="cx-menu" hidden data-cx-menu>
+    <nav class="cx-container" aria-label="Primary mobile"><ul class="cx-menu__list"><li><a class="cx-menu__link" href="/events/">Events<span>Meetups, hackathons, archive</span></a></li><li><a class="cx-menu__link" href="/community/">Community<span>Channels, volunteering, conduct</span></a></li><li><a class="cx-menu__link" href="/open-source/">Open Source<span>Projects and contributors</span></a></li><li><a class="cx-menu__link" href="/cfp/">Speak<span>Propose a talk</span></a></li><li><a class="cx-menu__link" href="/impact/">Impact<span>Milestones and outcomes</span></a></li><li><a class="cx-menu__link" href="/partners/">Partners<span>Collaborate with CNSPK</span></a></li><li><a class="cx-menu__link" href="/about/">About<span>Mission, team, history</span></a></li></ul>
+      <a class="cx-cta" href="/join/">Join CNSPK</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
 
-    <!-- ===== Navbar (mounted via /js/Navbar.js) ===== -->
-    <div id="navbar"></div>
+<header class="page-head">
+  <div class="container page-head__inner">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li aria-current="page">Brand</li></ol></nav>
+    <p class="kicker">Brand</p>
+    <h1 class="display">Brand assets and guidelines</h1>
+    <p class="lede">Logos, colours, and type for event posters, slides, and partner materials. Use the files as supplied.</p>
+    
+    
+  </div>
+</header>
+<section class="section" aria-labelledby="logo-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">01</span>Logo</p>
+    <h2 class="title" id="logo-title">Approved logo files</h2>
+    
+  </div>
+  
+</div>
+    <ul class="grid grid--4"><li class="asset"><div class="asset__preview"><img src="/brand/assets/cnspk-logo.png" alt="Stacked logo, dark background" width="1020" height="1020" loading="lazy"></div><p><strong>Stacked logo, dark background</strong></p><p class="muted">Posters, slides, and square social images.</p><a class="arrow-link" href="/brand/assets/cnspk-logo.png" download>Download PNG</a></li><li class="asset"><div class="asset__preview"><img src="/brand/assets/Group%2054.svg" alt="Horizontal lockup, white" width="772" height="79" loading="lazy"></div><p><strong>Horizontal lockup, white</strong></p><p class="muted">Headers and banners on dark backgrounds.</p><a class="arrow-link" href="/brand/assets/Group%2054.svg" download>Download SVG</a></li><li class="asset"><div class="asset__preview"><img src="/brand/assets/cnspk-mark-512.png" alt="Shield mark, transparent" width="512" height="512" loading="lazy"></div><p><strong>Shield mark, transparent</strong></p><p class="muted">Watermarks, slide corners, and small placements on dark backgrounds.</p><a class="arrow-link" href="/brand/assets/cnspk-mark-512.png" download>Download PNG</a></li><li class="asset"><div class="asset__preview"><img src="/brand/assets/cnspk-mark-black.png" alt="Avatar, shield on black" width="284" height="284" loading="lazy"></div><p><strong>Avatar, shield on black</strong></p><p class="muted">Profile pictures on every platform.</p><a class="arrow-link" href="/brand/assets/cnspk-mark-black.png" download>Download PNG</a></li></ul>
+    <p class="note">A dark-on-light version for printed and white backgrounds is not available yet. Ask <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a> before recolouring the logo.</p>
+  </div>
+</section>
 
-    <main>
+<section class="section section--band" aria-labelledby="usage-title">
+  <div class="container do-dont">
+    <div class="panel"><h2 class="subtitle" id="usage-title">Do</h2><ul class="prose"><li>Keep clear space of half the shield’s height on every side.</li><li>Use the white logo on dark or photographic backgrounds.</li><li>Write the name as “Cloud Native Security Pakistan” or “CNSPK”.</li><li>Place the CNCF logo beside ours, separated by a thin rule, when co-branding.</li></ul></div>
+    <div class="panel"><h2 class="subtitle">Don’t</h2><ul class="prose"><li>Stretch, rotate, or recolour the shield.</li><li>Add shadows, glows, or outlines.</li><li>Use “CNSP” or “CNCF Pakistan”.</li><li>Merge the CNSPK and CNCF marks into one, or imply CNCF endorsement.</li></ul></div>
+  </div>
+</section>
 
-        <!-- ===== Hero ===== -->
-        <section id="top" class="brand-hero">
-            <div class="wrap brand-hero__content">
-                <div class="brand-hero__meta">
-                    <span class="status-pill">
-                        <span class="status-dot"></span>
-                        <span>brand / electric / v2</span>
-                    </span>
-                    <span style="opacity:0.6">·</span>
-                    <span class="cmd">$ cat brand-book.md</span>
-                </div>
+<section class="section" aria-labelledby="colour-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">02</span>Colour</p>
+    <h2 class="title" id="colour-title">Colour</h2>
+    <p class="lede">Dark surfaces carry the brand. Electric lime is an accent on dark backgrounds only; on light backgrounds use Lime 600 for contrast.</p>
+  </div>
+  
+</div>
+    <ul class="swatches"><li class="swatch"><div class="swatch__chip chip--carbon"></div><div class="swatch__body"><span class="swatch__name">Carbon</span><span class="swatch__hex">#0F1115</span><span class="swatch__use">Page background</span></div></li><li class="swatch"><div class="swatch__chip chip--charcoal"></div><div class="swatch__body"><span class="swatch__name">Charcoal</span><span class="swatch__hex">#1A1D24</span><span class="swatch__use">Raised surfaces</span></div></li><li class="swatch"><div class="swatch__chip chip--slate"></div><div class="swatch__body"><span class="swatch__name">Slate</span><span class="swatch__hex">#2A2E37</span><span class="swatch__use">Rules and borders</span></div></li><li class="swatch"><div class="swatch__chip chip--bone"></div><div class="swatch__body"><span class="swatch__name">Bone</span><span class="swatch__hex">#F4F1EA</span><span class="swatch__use">Primary text on dark</span></div></li><li class="swatch"><div class="swatch__chip chip--muted"></div><div class="swatch__body"><span class="swatch__name">Muted</span><span class="swatch__hex">#A3A8B3</span><span class="swatch__use">Secondary text on dark</span></div></li><li class="swatch"><div class="swatch__chip chip--lime"></div><div class="swatch__body"><span class="swatch__name">Electric lime</span><span class="swatch__hex">#C7FF3E</span><span class="swatch__use">Accent on dark only</span></div></li><li class="swatch"><div class="swatch__chip chip--lime-600"></div><div class="swatch__body"><span class="swatch__name">Lime 600</span><span class="swatch__hex">#9BD11A</span><span class="swatch__use">Accent on light surfaces</span></div></li><li class="swatch"><div class="swatch__chip chip--green"></div><div class="swatch__body"><span class="swatch__name">Pakistan green</span><span class="swatch__hex">#01411C</span><span class="swatch__use">Heritage, used sparingly</span></div></li><li class="swatch"><div class="swatch__chip chip--gold"></div><div class="swatch__body"><span class="swatch__name">Gold</span><span class="swatch__hex">#C9A227</span><span class="swatch__use">Hairlines and the Urdu name</span></div></li></ul>
+  </div>
+</section>
 
-                <h1>
-                    The CNSPK<br />
-                    <span class="lime-line">brand.</span>
-                </h1>
+<section class="section section--band" aria-labelledby="type-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">03</span>Type</p>
+    <h2 class="title" id="type-title">Typography</h2>
+    
+  </div>
+  
+</div>
+    <div class="type-specimen"><p class="meta">Bricolage Grotesque · headings</p><p class="type-specimen__sample--display">Building and securing cloud-native systems</p></div>
+    <div class="type-specimen"><p class="meta">Inter · body</p><p class="type-specimen__sample--body">Free meetups, workshops, and hackathons for engineers and students across Pakistan.</p></div>
+    <div class="type-specimen"><p class="meta">JetBrains Mono · labels and code</p><p class="type-specimen__sample--mono">kubectl apply -f pakistan.yaml</p></div>
+    <div class="type-specimen"><p class="meta">Noto Nastaliq Urdu · name only</p><p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p></div>
+  </div>
+</section>
 
-                <p class="lede">
-                    One register: <strong>Electric</strong>. Lime on charcoal, bone for warmth, italic
-                    display caps that declare instead of apologise. This is how the chapter looks, reads, and
-                    sounds — built for practitioners, not press releases.
-                </p>
-                <p class="brand-hero__version">// living document · Electric register · placeholder Shield until the Phase 2 vector ships</p>
-            </div>
-        </section>
-
-        <!-- ===== Logo / The Shield ===== -->
-        <section id="shield" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// the-mark</div>
-                    <h2>The <em>Shield</em>.</h2>
-                    <p>
-                        Our mark is a shield split down the middle: a cloud over a circuit on one side, a cloud over
-                        a security lock on the other. Cloud-native on the left, security on the right — the whole
-                        chapter in one symbol. White on dark, clean at every size.
-                    </p>
-                </div>
-
-                <div class="shield-grid">
-                    <div class="shield-stage">
-                        <span class="brand-shield" role="img" aria-label="CNSPK shield — cloud, circuit, and security lock">CN</span>
-                        <span class="shield-caption">the official CNSPK shield</span>
-                    </div>
-
-                    <div class="shield-copy">
-                        <h3>What it means</h3>
-                        <p>
-                            Two halves of one shield. The left carries a cloud feeding into a circuit — cloud-native
-                            infrastructure. The right carries a cloud over a lock-and-gear — security, hardened. The
-                            seam down the centre is where the two meet: defense in depth.
-                        </p>
-                        <h3>How to use it</h3>
-                        <p>
-                            White shield on a dark surface is the default. It ships as
-                            <code>brand/assets/cnspk-shield.png</code> (mark only) and
-                            <code>cnspk-logo-transparent.png</code> (full lockup with the wordmark). The shared
-                            <code>.brand-shield</code> class renders it everywhere — nav, footer, here.
-                        </p>
-                        <h3>Clear space &amp; surface</h3>
-                        <p>
-                            Keep clear space around the shield equal to a quarter of its height on every side. Don't
-                            recolour it, don't stretch it, and keep it on a dark or photographic background where the
-                            white reads cleanly.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Existing legacy logo assets, rethemed in dark/light frames -->
-                <div class="asset-row">
-                    <div class="asset-card asset-card--dark">
-                        <div class="asset-card__frame">
-                            <img loading="lazy" decoding="async" src="/brand/assets/Color Logo with Text (Short Form).png"
-                                alt="CNSPK colour logo lockup with wordmark, short form">
-                        </div>
-                        <span class="asset-card__label">Colour lockup · on dark</span>
-                    </div>
-                    <div class="asset-card asset-card--light">
-                        <div class="asset-card__frame">
-                            <img loading="lazy" decoding="async" src="/brand/assets/CNSP Logo Black.png" alt="CNSPK shield logo in black on a light surface">
-                        </div>
-                        <span class="asset-card__label">Black mark · on light</span>
-                    </div>
-                    <div class="asset-card asset-card--dark">
-                        <div class="asset-card__frame">
-                            <img loading="lazy" decoding="async" class="invert-logo" src="/brand/assets/CNSP Logo Black.png"
-                                alt="CNSPK shield logo reversed to white on a dark surface">
-                        </div>
-                        <span class="asset-card__label">Reversed mark · on dark</span>
-                    </div>
-                    <div class="asset-card asset-card--light">
-                        <div class="asset-card__frame">
-                            <img loading="lazy" decoding="async" src="/brand/assets/Group 54.svg" alt="CNSPK full wordmark lockup, vector">
-                        </div>
-                        <span class="asset-card__label">Full wordmark · SVG</span>
-                    </div>
-                </div>
-                <!-- TODO: legacy lockups still carry the old wordmark colours. Replace with
-                     Electric-register vectors when the Phase 2 logo set ships. -->
-            </div>
-        </section>
-
-        <!-- ===== Colour system ===== -->
-        <section id="colors" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// colour-system</div>
-                    <h2>Lime on dark. <em>Always.</em></h2>
-                    <p>
-                        The palette is dark-mode native: lime accents, charcoal surfaces, bone for warmth. Heritage
-                        green and gold are ceremonial only. Every colour below is a token in
-                        <code style="font-family:var(--font-mono);color:var(--lime)">/css/tokens.css</code>.
-                    </p>
-                </div>
-
-                <div class="swatch-group-label">primary · lime</div>
-                <div class="swatch-grid">
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#C7FF3E"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Electric Lime</span>
-                            <span class="swatch__hex">#C7FF3E</span>
-                            <span class="swatch__role">Main accent, CTAs, display highlights. Dark surfaces only — 13.4:1 on Carbon (AAA).</span>
-                            <span class="swatch__token">--lime</span>
-                        </div>
-                    </div>
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#9BD11A"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Lime 600</span>
-                            <span class="swatch__hex">#9BD11A</span>
-                            <span class="swatch__role">Darker companion. The only lime allowed on bone/light — passes AA at 18px+.</span>
-                            <span class="swatch__token">--lime-600</span>
-                        </div>
-                    </div>
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#E8FF8A"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Lime Glow</span>
-                            <span class="swatch__hex">#E8FF8A</span>
-                            <span class="swatch__role">Subtle highlights and hover lift on lime CTAs.</span>
-                            <span class="swatch__token">--lime-glow</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swatch-group-label">surfaces · neutrals</div>
-                <div class="swatch-grid">
-                    <div class="swatch">
-                        <div class="swatch__chip swatch__chip--bordered" style="background:#0F1115"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Carbon</span>
-                            <span class="swatch__hex">#0F1115</span>
-                            <span class="swatch__role">Page background. Warmer than pure black.</span>
-                            <span class="swatch__token">--carbon</span>
-                        </div>
-                    </div>
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#1A1D24"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Charcoal</span>
-                            <span class="swatch__hex">#1A1D24</span>
-                            <span class="swatch__role">Card and panel surfaces.</span>
-                            <span class="swatch__token">--charcoal</span>
-                        </div>
-                    </div>
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#F4F1EA"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Bone</span>
-                            <span class="swatch__hex">#F4F1EA</span>
-                            <span class="swatch__role">Primary text on dark; primary surface in light/editorial blocks. 16.4:1 on Carbon (AAA).</span>
-                            <span class="swatch__token">--bone</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swatch-group-label">heritage · ceremonial only</div>
-                <div class="swatch-grid">
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#01411C"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Pakistan Green</span>
-                            <span class="swatch__hex">#01411C</span>
-                            <span class="swatch__role">Ceremonial accent — anniversary, state co-brand, gold-paired moments. Used sparingly.</span>
-                            <span class="swatch__token">--pak-green</span>
-                        </div>
-                    </div>
-                    <div class="swatch">
-                        <div class="swatch__chip" style="background:#C9A227"></div>
-                        <div class="swatch__body">
-                            <span class="swatch__name">Gold</span>
-                            <span class="swatch__hex">#C9A227</span>
-                            <span class="swatch__role">Urdu tagline accent at low opacity. Ceremonial only.</span>
-                            <span class="swatch__token">--gold</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The lime-on-dark-only rule -->
-                <div class="rule-callout">
-                    <h3>The one rule that breaks everything if you ignore it</h3>
-                    <p>
-                        Electric Lime <code>#C7FF3E</code> scores <strong>1.55:1 on white — a WCAG fail</strong>. It
-                        only ever appears on dark surfaces. On bone or any light surface, switch to
-                        <code>#9BD11A</code> (Lime 600) for text and CTAs.
-                    </p>
-                    <div class="rule-demo">
-                        <div class="rule-demo__tile rule-demo__tile--ok">
-                            Lime on Carbon
-                            <span class="mark">✓ #C7FF3E on dark · 13.4:1 · AAA</span>
-                        </div>
-                        <div class="rule-demo__tile rule-demo__tile--bad">
-                            Lime 600 on Bone
-                            <span class="mark">✓ #9BD11A on light · AA · never raw #C7FF3E here</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Typography ===== -->
-        <section id="type" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// typography</div>
-                    <h2>Four faces. <em>One voice.</em></h2>
-                    <p>
-                        Display declares, body explains, mono operates, Urdu honours. Loaded once from the token
-                        sheet so every page sings in the same key.
-                    </p>
-                </div>
-
-                <!-- Display -->
-                <div class="type-specimen">
-                    <div class="type-specimen__meta">
-                        <span class="type-specimen__name">Bricolage Grotesque</span>
-                        <span class="type-specimen__role">// display · 800 · italic · uppercase</span>
-                    </div>
-                    <div class="specimen-display">Built. <span class="lime">Tested.</span> Pakistani.</div>
-                    <p class="type-note">letter-spacing −0.03em · line-height 0.92 · the brand's signature voice</p>
-                </div>
-
-                <!-- Body -->
-                <div class="type-specimen">
-                    <div class="type-specimen__meta">
-                        <span class="type-specimen__name">Inter</span>
-                        <span class="type-specimen__role">// body · 400–800</span>
-                    </div>
-                    <div class="specimen-body">
-                        <p>
-                            We are engineers, students, and security leads in Lahore, Karachi, and Islamabad —
-                            shipping cloud-native infrastructure, breaking it on purpose, and writing it back better.
-                            Body copy stays readable, calm, and high-contrast on dark.
-                        </p>
-                        <div class="weights">
-                            <span class="w400">Regular</span>
-                            <span class="w500">Medium</span>
-                            <span class="w600">Semibold</span>
-                            <span class="w700">Bold</span>
-                            <span class="w800">Extrabold</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mono -->
-                <div class="type-specimen">
-                    <div class="type-specimen__meta">
-                        <span class="type-specimen__name">JetBrains Mono</span>
-                        <span class="type-specimen__role">// mono · terminal moments · lime labels</span>
-                    </div>
-                    <div class="specimen-mono">
-                        <span class="dim">$</span> kubectl apply <span class="lime">-f pakistan.yaml</span><br />
-                        <span class="dim"># eyebrows, version stamps, code, and UI labels</span><br />
-                        <span class="lime">// chapter / live / lhe-khi-isb</span>
-                    </div>
-                </div>
-
-                <!-- Urdu -->
-                <div class="type-specimen">
-                    <div class="type-specimen__meta">
-                        <span class="type-specimen__name">Noto Nastaliq Urdu</span>
-                        <span class="type-specimen__role">// urdu · ceremonial · gold · RTL</span>
-                    </div>
-                    <div class="specimen-urdu" lang="ur" dir="rtl">
-                        کلاؤڈ نیٹو سیکیورٹی پاکستان
-                        <span class="small">بھروسہ</span>
-                    </div>
-                    <p class="type-note">direction: rtl · line-height 2.2 · low opacity · used sparingly, never a full paragraph</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Voice ===== -->
-        <section id="voice" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// voice</div>
-                    <h2>How we <em>sound</em>.</h2>
-                </div>
-
-                <p class="voice-statement">
-                    Confident enough to declare, technical enough to be trusted, warm enough to feel like
-                    <em>home</em>, fast enough to respect your time.
-                </p>
-                <p class="voice-sub">
-                    Lead with the verb, not the apology. Headlines in italic display caps. One Roman Urdu word of
-                    attitude per page, where it earns its place — <em style="color:var(--lime);font-style:normal">bharosa</em>,
-                    <em style="color:var(--lime);font-style:normal">mehfil</em>,
-                    <em style="color:var(--lime);font-style:normal">takleef</em>. CNSPK is its own thing: independent,
-                    run by practitioners. CNCF affiliation is a credential, not the headline.
-                </p>
-
-                <div class="dodont-grid">
-                    <div class="dodont dodont--do">
-                        <div class="dodont__head">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                <polyline points="22 4 12 14.01 9 11.01" />
-                            </svg>
-                            <span>Do</span>
-                        </div>
-                        <ul>
-                            <li>
-                                Lead with the verb.
-                                <span class="ex">"Run this command."</span>
-                            </li>
-                            <li>
-                                Declare in italic display caps.
-                                <span class="ex">"BUILT. TESTED. PAKISTANI."</span>
-                            </li>
-                            <li>
-                                Show the kubectl. Every claim gets a demo, a code block, or a runnable lab.
-                                <span class="ex">"Here's the five-line fix."</span>
-                            </li>
-                            <li>
-                                One word of attitude, where it lands.
-                                <span class="ex">"∞ bharosa."</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="dodont dodont--dont">
-                        <div class="dodont__head">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="15" y1="9" x2="9" y2="15" />
-                                <line x1="9" y1="9" x2="15" y2="15" />
-                            </svg>
-                            <span>Don't</span>
-                        </div>
-                        <ul>
-                            <li>
-                                Open with corporate cringe.
-                                <span class="ex">"Excited to announce… 🚀🔥 buckle up."</span>
-                            </li>
-                            <li>
-                                Apologise before the point.
-                                <span class="ex">"We'd like to suggest you might consider…"</span>
-                            </li>
-                            <li>
-                                Machine-translate technical terms or publish a full Urdu paragraph.
-                                <span class="ex">Never translate "Kubernetes" into Urdu.</span>
-                            </li>
-                            <li>
-                                Lead with the CNCF badge.
-                                <span class="ex">"Pakistan's first CNCF Security Chapter."</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== The tagline (kubectl mono stamp on bone) ===== -->
-        <section id="tagline" class="tag-block invert reveal" aria-label="The tagline">
-            <div class="wrap">
-                <code class="tag-mark">kubectl apply -f pakistan.yaml</code>
-                <h2>Read the CVE.<br />Drink the chai.</h2>
-                <p>
-                    Defense in depth. Hospitality on top. The tagline lockup is the mono stamp — lime fill, carbon
-                    border, hard offset shadow, a one-degree tilt. Mix-and-match with "Built. Tested. Pakistani."
-                </p>
-                <p class="tag-note">// approved lines: kubectl apply -f pakistan.yaml · read the cve, drink the chai · built. tested. pakistani.</p>
-            </div>
-        </section>
-
-        <!-- ===== Download / assets ===== -->
-        <section id="download" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// assets</div>
-                    <h2>Take the <em>files</em>.</h2>
-                    <p>
-                        The current logo set lives in <code style="font-family:var(--font-mono);color:var(--lime)">/brand/assets/</code>.
-                        Use approved files only, keep clear space, and never recolour the mark.
-                    </p>
-                </div>
-
-                <div class="download-panel reveal">
-                    <div class="download-panel__head">
-                        <div>
-                            <h3>Logo assets</h3>
-                            <p>PNG and SVG. The Electric-register vector set ships in Phase 2 — until then, these are the canonical files.</p>
-                        </div>
-                        <a href="/brand/assets/" class="btn-primary btn-primary--sm">
-                            Open assets folder
-                            <span style="font-family:var(--font-mono);">↗</span>
-                        </a>
-                    </div>
-
-                    <div class="file-list">
-                        <a class="file-row" href="/brand/assets/Color Logo with Text (Short Form).png" download>
-                            <span class="file-row__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                            </span>
-                            <span class="file-row__name">Color Logo with Text (Short Form)</span>
-                            <span class="file-row__type">PNG</span>
-                        </a>
-                        <a class="file-row" href="/brand/assets/CNSP Logo Black.png" download>
-                            <span class="file-row__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                            </span>
-                            <span class="file-row__name">CNSP Logo Black</span>
-                            <span class="file-row__type">PNG</span>
-                        </a>
-                        <a class="file-row" href="/brand/assets/Group 54.svg" download>
-                            <span class="file-row__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                            </span>
-                            <span class="file-row__name">Group 54 (full wordmark)</span>
-                            <span class="file-row__type">SVG</span>
-                        </a>
-                    </div>
-                    <p class="download-note">
-                        // these files carry the legacy lockup. The shield, type, and colour rules on this page are the
-                        current source of truth — apply them when placing any mark.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Usage do's and don'ts ===== -->
-        <section id="usage" class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div class="section-eyebrow">// usage</div>
-                    <h2>Do's &amp; <em>don'ts</em>.</h2>
-                    <p>The mark sits high in the visual hierarchy — large, high-contrast, no effects. Keep it sharp.</p>
-                </div>
-
-                <div class="usage-grid">
-                    <div class="dodont dodont--do">
-                        <div class="dodont__head">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                <polyline points="22 4 12 14.01 9 11.01" />
-                            </svg>
-                            <span>Do</span>
-                        </div>
-                        <ul>
-                            <li>Put the lime Shield on dark surfaces only.</li>
-                            <li>Use #9BD11A (Lime 600) for any lime on light/bone.</li>
-                            <li>Keep clear space equal to the CN height on all sides.</li>
-                            <li>Scale proportionally and keep high contrast.</li>
-                            <li>Set headlines in Bricolage Grotesque — italic, uppercase.</li>
-                        </ul>
-                    </div>
-
-                    <div class="dodont dodont--dont">
-                        <div class="dodont__head">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="15" y1="9" x2="9" y2="15" />
-                                <line x1="9" y1="9" x2="15" y2="15" />
-                            </svg>
-                            <span>Don't</span>
-                        </div>
-                        <ul>
-                            <li>Never place raw #C7FF3E lime on white or bone — it fails WCAG.</li>
-                            <li>Don't recolour, stretch, rotate, or add shadows to the mark.</li>
-                            <li>Don't use the retired blue palette (#00A2FF / #003366). It's dead.</li>
-                            <li>Don't crowd the Shield or set it on busy backgrounds.</li>
-                            <li>Don't lead with the CNCF badge as the brand identifier.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== Footer (mounted via /js/Footer.js) ===== -->
-    <div id="footer"></div>
-
-    <script type="module">
-        import { Navbar } from '/js/Navbar.js';
-        import { Footer } from '/js/Footer.js';
-
-        new Navbar().init();
-        new Footer().init();
-
-        /* ---- Scroll-reveal — respects prefers-reduced-motion ---- */
-        (function () {
-            const els = document.querySelectorAll('.reveal');
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            if (prefersReduced || !('IntersectionObserver' in window)) {
-                els.forEach(el => el.classList.add('is-visible'));
-                return;
-            }
-
-            const io = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-            els.forEach(el => io.observe(el));
-        })();
-    </script>
+<section class="section" aria-labelledby="voice-title">
+  <div class="container split">
+    <div><div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">04</span>Voice</p>
+    <h2 class="title" id="voice-title">How we write</h2>
+    
+  </div>
+  
+</div></div>
+    <div class="prose">
+      <ul>
+        <li>Lead with what happened or what to do: “Run this command”, not “We’d like to suggest”.</li>
+        <li>Give the number, the date, and the source. Never round up or estimate in public.</li>
+        <li>Write for a global reader. Use one Roman Urdu word only where it adds warmth, never for technical terms.</li>
+        <li>CNCF is a credential, not our headline. CNSPK is its own community.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="cx-footer">
+  <div class="cx-footer__heritage" aria-hidden="true"></div>
+  <div class="cx-container">
+    <div class="cx-footer__top">
+      <div class="cx-footer__about">
+        <a class="cx-brand" href="/" aria-label="CNSPK home">
+          <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+          <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+        </a>
+        <p>A volunteer-run, not-for-profit community for cloud-native security, open source, and DevSecOps in Pakistan.</p>
+        <p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
+      </div>
+      <div><h2 class="cx-footer__heading">Participate</h2><ul class="cx-footer__list"><li><a href="/events/">Upcoming and past events</a></li><li><a href="/join/">Join the community</a></li><li><a href="/community/#volunteer">Volunteer</a></li><li><a href="/cfp/">Propose a talk</a></li><li><a href="/open-source/">Contribute on GitHub</a></li></ul></div><div><h2 class="cx-footer__heading">Learn more</h2><ul class="cx-footer__list"><li><a href="/about/">About CNSPK</a></li><li><a href="/team/">Organisers</a></li><li><a href="/impact/">Impact</a></li><li><a href="/resources/">Resources</a></li><li><a href="/partners/">Partner with us</a></li><li><a href="/brand/">Brand assets</a></li><li><a href="/code-of-conduct/">Code of conduct</a></li></ul></div>
+      <div><h2 class="cx-footer__heading">Channels</h2><ul class="cx-footer__list"><li><a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://discord.gg/v7RQu6gvpJ" rel="noopener" target="_blank">Discord<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/company/cloud-native-security-pakistan" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.instagram.com/cloudnativesecuritypk" rel="noopener" target="_blank">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+    </div>
+    <div class="cx-footer__bottom">
+      <span>© 2026 Cloud Native Security Pakistan. Content is maintained in the open on <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website">GitHub</a>.</span>
+      <span>Spotted an error? <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/issues/new">Report a correction</a> or email <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>.</span>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>

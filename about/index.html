@@ -1,532 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-cnspk="site">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src &#39;self&#39; data:; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39; mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>About · CNSPK</title>
+<meta name="description" content="CNSPK’s mission, history, values, structure, and organisers. A volunteer-run, not-for-profit cloud-native security community in Pakistan.">
+<link rel="canonical" href="https://cloudnativesecurity.pk/about/">
 
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://images.unsplash.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://community.cncf.io https://avatars.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto: https://docs.google.com;">
+<meta name="theme-color" content="#0F1115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Native Security Pakistan">
+<meta property="og:title" content="About · CNSPK">
+<meta property="og:description" content="CNSPK’s mission, history, values, structure, and organisers. A volunteer-run, not-for-profit cloud-native security community in Pakistan.">
+<meta property="og:url" content="https://cloudnativesecurity.pk/about/">
+<meta property="og:image" content="https://cloudnativesecurity.pk/brand/assets/og-default.png">
 
-    <title>About · CNSPK · Cloud Native Security Pakistan</title>
-    <meta name="description"
-        content="Independent. Run by engineers. CNCF-affiliated. CNSPK is a community of cloud security practitioners in Pakistan — 1,000+ members. Est. 2023.">
-    <meta name="keywords"
-        content="about CNSPK, cloud native security pakistan, community, CNCF chapter, Kubernetes security Pakistan, DevSecOps community">
-    <meta name="author" content="Cloud Native Security Pakistan">
-    <meta name="theme-color" content="#0F1115">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/brand/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/brand/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap&amp;text=%DA%A9%D9%84%D8%A7%D8%A4%DA%88%20%D9%86%DB%8C%D9%B9%D9%88%20%D8%B3%DB%8C%DA%A9%DB%8C%D9%88%D8%B1%D9%B9%DB%8C%20%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/chrome.css">
+<link rel="stylesheet" href="/css/site.css">
+<script type="module" src="/js/site.js"></script>
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="About · CNSPK · Cloud Native Security Pakistan">
-    <meta property="og:description"
-        content="Independent. Run by engineers. CNCF-affiliated. A community of cloud security practitioners in Pakistan.">
-    <meta property="og:url" content="https://cloudnativesecurity.pk/about/">
-    <meta property="og:site_name" content="Cloud Native Security Pakistan">
-    <meta property="og:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About · CNSPK">
-    <meta name="twitter:description"
-        content="Independent. Run by engineers. CNCF-affiliated. 1,000+ members. Est. 2023.">
-    <meta name="twitter:image" content="https://cloudnativesecurity.pk/logo.png">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="canonical" href="https://cloudnativesecurity.pk/about/">
-
-    <!-- Performance: preconnect to Google Fonts origins (tokens.css @imports fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Design tokens first -->
-    <link rel="stylesheet" href="/css/tokens.css">
-
-    <style>
-        /* ==========================================================
-           About page · Electric register · page-specific styles
-           Shared primitives come from /css/tokens.css.
-        ========================================================== */
-
-        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-
-        main { display: block; }
-
-        /* ---- Scroll reveal ----------------------------------- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity var(--dur-reveal) var(--ease-out),
-                        transform var(--dur-reveal) var(--ease-out);
-            will-change: opacity, transform;
-        }
-        .reveal.is-visible { opacity: 1; transform: none; }
-
-        /* ==========================================================
-           Hero
-        ========================================================== */
-        .hero {
-            position: relative;
-            padding: 140px 0 100px;
-            overflow: hidden;
-            background:
-                radial-gradient(ellipse 70% 50% at 30% 30%, rgba(199, 255, 62, 0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 70% at 85% 75%, rgba(1, 65, 28, 0.35) 0%, transparent 60%),
-                var(--carbon);
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(199, 255, 62, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(199, 255, 62, 0.04) 1px, transparent 1px);
-            background-size: 64px 64px;
-            pointer-events: none;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
-        }
-
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: clamp(40px, 7vw, 96px);
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-            color: var(--bone);
-        }
-        .hero h1 .lime { color: var(--lime); }
-
-        .hero .lede {
-            font-size: 20px;
-            color: var(--bone-2);
-            max-width: 680px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-        .hero .lede strong { color: var(--lime); font-weight: 600; }
-
-        /* ==========================================================
-           Mission & Vision cards
-        ========================================================== */
-        .mv-section { padding: 100px 0; background: var(--carbon); }
-
-        .mv-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-
-        .mv-card {
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: var(--r-lg);
-            padding: 48px 40px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color var(--dur-hover) var(--ease);
-        }
-        .mv-card:hover { border-color: var(--lime); }
-        .mv-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--grad-stamp-glow);
-        }
-
-        .mv-card h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(24px, 3.5vw, 36px);
-            letter-spacing: -0.02em;
-            color: var(--bone);
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-        .mv-card p {
-            font-size: 16px;
-            color: var(--bone-2);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) { .mv-grid { grid-template-columns: 1fr; } }
-
-        /* ==========================================================
-           Pillars grid
-        ========================================================== */
-        .pillars-section {
-            padding: 100px 0;
-            background: var(--charcoal);
-            border-top: 1px solid var(--slate);
-            border-bottom: 1px solid var(--slate);
-        }
-
-        .pillars-header {
-            margin-bottom: 56px;
-            max-width: 640px;
-        }
-        .pillars-header h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(32px, 5vw, 56px);
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            color: var(--bone);
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .pillar-card {
-            background: var(--carbon);
-            border: 1px solid var(--slate);
-            border-radius: var(--r-md);
-            padding: 36px 28px;
-            transition: border-color var(--dur-hover) var(--ease),
-                        transform var(--dur-elevate) var(--ease);
-        }
-        .pillar-card:hover {
-            border-color: var(--lime);
-            transform: translateY(-4px);
-        }
-
-        .pillar-num {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--lime);
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-        .pillar-card h3 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 22px;
-            letter-spacing: -0.02em;
-            color: var(--bone);
-            margin-bottom: 10px;
-        }
-        .pillar-card p {
-            font-size: 14px;
-            color: var(--bone-2);
-            line-height: 1.55;
-        }
-
-        @media (max-width: 1024px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 560px) { .pillars-grid { grid-template-columns: 1fr; } }
-
-        /* ==========================================================
-           Founding story
-        ========================================================== */
-        .story-section {
-            padding: 100px 0;
-            background: var(--carbon);
-            position: relative;
-            overflow: hidden;
-        }
-        .story-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle at 1px 1px, rgba(199, 255, 62, 0.05) 1px, transparent 0);
-            background-size: 48px 48px;
-            mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-            pointer-events: none;
-        }
-
-        .story-content {
-            position: relative;
-            max-width: 720px;
-        }
-        .story-content h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(28px, 4.5vw, 44px);
-            line-height: 0.98;
-            letter-spacing: -0.03em;
-            color: var(--bone);
-            margin-bottom: 24px;
-        }
-        .story-content p {
-            font-size: 17px;
-            color: var(--bone-2);
-            line-height: 1.65;
-            margin-bottom: 20px;
-        }
-        .story-content p:last-of-type { margin-bottom: 0; }
-        .story-content .mono-detail {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--steel);
-            letter-spacing: 0.02em;
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid var(--slate);
-        }
-
-        /* ==========================================================
-           Team callout — bone block (inverted)
-        ========================================================== */
-        .team-callout {
-            background: var(--bone);
-            color: var(--carbon);
-            padding: 80px 0;
-            position: relative;
-        }
-        .team-callout::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: var(--grad-stamp-glow);
-        }
-
-        .team-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .team-copy { max-width: 560px; }
-        .team-copy h2 {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(28px, 4.5vw, 44px);
-            line-height: 0.98;
-            letter-spacing: -0.03em;
-            color: var(--carbon);
-            margin-bottom: 12px;
-        }
-        .team-copy p {
-            font-size: 17px;
-            color: #2A2E37;
-            line-height: 1.6;
-        }
-
-        .team-callout .btn-team {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 32px;
-            background: var(--carbon);
-            color: var(--bone);
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 800;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            text-decoration: none;
-            border: 0;
-            border-radius: var(--r-sm);
-            box-shadow: 6px 6px 0 0 var(--bone-2), 6px 6px 0 1px var(--carbon);
-            transition: transform var(--dur-hover) var(--ease),
-                        box-shadow var(--dur-hover) var(--ease);
-        }
-        .team-callout .btn-team:hover,
-        .team-callout .btn-team:focus-visible {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 0 var(--bone-2), 8px 8px 0 1px var(--carbon);
-            color: var(--bone);
-            outline: none;
-        }
-
-        /* ==========================================================
-           Responsive
-        ========================================================== */
-        @media (max-width: 768px) {
-            .hero { padding: 100px 0 72px; }
-            .mv-section, .pillars-section, .story-section, .team-callout { padding: 72px 0; }
-            .mv-card { padding: 36px 28px; }
-            .wrap { padding: 0 20px; }
-            .team-inner { flex-direction: column; align-items: flex-start; }
-        }
-    </style>
 </head>
-
 <body>
+<a class="cx-skip" href="#main">Skip to content</a>
+<header class="cx-header" data-cx-header>
+  <div class="cx-container cx-header__bar">
+    <a class="cx-brand" href="/" aria-label="CNSPK, Cloud Native Security Pakistan, home">
+      <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+      <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+    </a>
+    <nav class="cx-nav" aria-label="Primary"><ul class="cx-nav__list"><li><a class="cx-nav__link" href="/events/">Events</a></li><li><a class="cx-nav__link" href="/community/">Community</a></li><li><a class="cx-nav__link" href="/open-source/">Open Source</a></li><li><a class="cx-nav__link" href="/cfp/">Speak</a></li><li><a class="cx-nav__link" href="/impact/">Impact</a></li><li><a class="cx-nav__link" href="/partners/">Partners</a></li><li><a class="cx-nav__link" href="/about/" aria-current="page">About</a></li></ul></nav>
+    <a class="cx-cta" href="/join/">Join CNSPK</a>
+    <button class="cx-menu-btn" type="button" aria-expanded="false" aria-controls="cx-menu" data-cx-menu-btn><svg class="cx-menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+  </div>
+  <div class="cx-menu" id="cx-menu" hidden data-cx-menu>
+    <nav class="cx-container" aria-label="Primary mobile"><ul class="cx-menu__list"><li><a class="cx-menu__link" href="/events/">Events<span>Meetups, hackathons, archive</span></a></li><li><a class="cx-menu__link" href="/community/">Community<span>Channels, volunteering, conduct</span></a></li><li><a class="cx-menu__link" href="/open-source/">Open Source<span>Projects and contributors</span></a></li><li><a class="cx-menu__link" href="/cfp/">Speak<span>Propose a talk</span></a></li><li><a class="cx-menu__link" href="/impact/">Impact<span>Milestones and outcomes</span></a></li><li><a class="cx-menu__link" href="/partners/">Partners<span>Collaborate with CNSPK</span></a></li><li><a class="cx-menu__link" href="/about/" aria-current="page">About<span>Mission, team, history</span></a></li></ul>
+      <a class="cx-cta" href="/join/">Join CNSPK</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
 
-    <!-- ===== Navbar (mounted via /js/Navbar.js) ===== -->
-    <div id="navbar"></div>
+<header class="page-head">
+  <div class="container page-head__inner">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li aria-current="page">About</li></ol></nav>
+    <p class="kicker">About · since August 2023</p>
+    <h1 class="display">A community of practitioners, run by volunteers</h1>
+    <p class="lede">Cloud Native Security Pakistan (CNSPK) is a not-for-profit technical community for engineers and students working on cloud-native security, open source, Kubernetes, DevSecOps, and AI security.</p>
+    
+    
+  </div>
+</header>
+<section class="section" aria-labelledby="mission-title">
+  <div class="container split">
+    <div><div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">01</span>Mission</p>
+    <h2 class="title" id="mission-title">Why CNSPK exists</h2>
+    
+  </div>
+  
+</div></div>
+    <div class="prose">
+      <p class="lede">We make cloud-native security accessible to every Pakistani engineer, and Pakistani engineers visible to the global cloud-native ecosystem.</p>
+      <p>In practice that means free events on university campuses and in community spaces, hackathons that end in public repositories, and a stage for engineers who have real work to show. Since 2024, CNSPK has run 18 events in Lahore, Quetta, Faisalabad, Islamabad.</p>
+      <h3>Relationship with CNCF</h3>
+      <p>Listed as a community group on CNCF Open Community Groups, the platform the Cloud Native Computing Foundation runs for local communities. A listing on CNCF Open Community Groups is not an endorsement by CNCF of CNSPK&#39;s content or activities. <a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">See the listing<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+    </div>
+  </div>
+</section>
 
-    <main>
+<section class="section section--band" aria-labelledby="history-title">
+  <div class="container split">
+    <div class="stack"><div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">02</span>History</p>
+    <h2 class="title" id="history-title">Milestones</h2>
+    <p class="lede">Firsts and turning points, taken from the event archive.</p>
+  </div>
+  
+</div><a class="arrow-link" href="/impact/">Full impact record <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+    <ol class="timeline"><li class="timeline__item timeline__item--milestone"><p class="timeline__when">Aug 2023</p><p class="timeline__what">CNSPK listed on CNCF Open Community Groups</p><p class="timeline__note">Source: CNCF listing</p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">3 May 2024</p><p class="timeline__what"><a href="/events/cloud-native-security-meetup-islamabad-2024/">First event in Islamabad: Cloud Native Security Meetup Islamabad</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">10 Jun 2024</p><p class="timeline__what"><a href="/events/security-fusion-2024/">First event in Lahore: Security Fusion</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">18 Oct 2025</p><p class="timeline__what"><a href="/events/hacktoberfest-lahore-2025/">First Hacktoberfest event</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">8 Feb 2026</p><p class="timeline__what"><a href="/events/cloud-native-security-connect-faisalabad-2026/">First event in Faisalabad: Cloud Native Security Connect: Bridging Cloud and Security</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">11 Apr 2026</p><p class="timeline__what"><a href="/events/balochistan-tech-connect-2026/">First event in Quetta: Balochistan Tech Connect: Unlocking Cloud-Native Security</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">9 May 2026</p><p class="timeline__what"><a href="/events/github-copilot-dev-days-lahore-2026/">Hosted the Lahore edition of GitHub Copilot Dev Days</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">29 Aug 2026</p><p class="timeline__what"><a href="/events/open-source-connect-pakistan-2026/">Open Source Connect Pakistan, with GitHub as Gold sponsor</a></p></li><li class="timeline__item timeline__item--milestone"><p class="timeline__when">24 Oct 2026</p><p class="timeline__what"><a href="/events/hacktoberfest-hack-day-lahore-2026/">Hack Day Lahore on MLH: 26 projects submitted</a></p></li></ol>
+  </div>
+</section>
 
-        <!-- ===== Hero ===== -->
-        <section class="hero" aria-labelledby="about-headline">
-            <div class="wrap hero-content">
-                <div class="section-eyebrow">// about</div>
+<section class="section" aria-labelledby="values-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">03</span>Values</p>
+    <h2 class="title" id="values-title">How we work</h2>
+    
+  </div>
+  
+</div>
+    <ol class="routes"><li class="route"><span class="route__num">01</span><h3 class="route__title">Rigor</h3><p class="route__desc">What is true matters more than what sounds good. We cite sources and say “we don’t know” when we don’t.</p><span></span></li><li class="route"><span class="route__num">02</span><h3 class="route__title">Belonging</h3><p class="route__desc">No gatekeeping on credentials, English fluency, or city. The first ten minutes of a meetup are for the newest person in the room.</p><span></span></li><li class="route"><span class="route__num">03</span><h3 class="route__title">Bridge</h3><p class="route__desc">We connect Pakistani engineers to global open source and CNCF projects, in both directions.</p><span></span></li><li class="route"><span class="route__num">04</span><h3 class="route__title">Practice</h3><p class="route__desc">Every concept gets a demo, a code block, or a runnable example.</p><span></span></li><li class="route"><span class="route__num">05</span><h3 class="route__title">Stewardship</h3><p class="route__desc">The community outlasts any one organiser. We document, rotate roles, and refuse vendor capture.</p><span></span></li></ol>
+  </div>
+</section>
 
-                <h1 id="about-headline">
-                    A community of <span class="lime">cloud security practitioners</span> in Pakistan.
-                </h1>
+<section class="section section--band" aria-labelledby="structure-title">
+  <div class="container split">
+    <div><div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">04</span>Structure</p>
+    <h2 class="title" id="structure-title">Structure and governance</h2>
+    
+  </div>
+  
+</div></div>
+    <div class="prose">
+      <p>CNSPK is volunteer-run and not-for-profit. Events are free to attend. Organisers plan events, find venues and sponsors, and review talk proposals.</p>
+      <p>Sponsors and collaborators are credited with their exact role on each event page, and talk selection excludes sales pitches.</p>
+      <p>No written governance charter or annual report has been published yet. Questions about how decisions are made can go to <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>. Conduct concerns go to <a href="mailto:conduct@cloudnativesecurity.pk">conduct@cloudnativesecurity.pk</a>.</p>
+    </div>
+  </div>
+</section>
 
-                <p class="lede">
-                    <strong>Independent. Run by engineers. CNCF-affiliated.</strong> We are 1,000+ members across
-                    Lahore, Karachi, and Islamabad — building a body of cloud-native security practice that
-                    didn't exist here before. No gatekeeping. No corporate cringe. Just the work.
-                </p>
-            </div>
-        </section>
-
-        <!-- ===== Mission & Vision ===== -->
-        <section class="mv-section" aria-label="Mission and Vision">
-            <div class="wrap">
-                <div class="mv-grid reveal">
-                    <article class="mv-card">
-                        <div class="section-eyebrow">// mission</div>
-                        <h2>Make cloud security knowledge accessible to every engineer in Pakistan.</h2>
-                        <p>
-                            We run sessions, publish walkthroughs, and build labs so practitioners at every level
-                            can ship secure infrastructure — regardless of city, company size, or credentials.
-                        </p>
-                    </article>
-                    <article class="mv-card">
-                        <div class="section-eyebrow">// vision</div>
-                        <h2>A Pakistan where cloud-native security is a practiced discipline, not a buzzword.</h2>
-                        <p>
-                            We want Pakistani engineers contributing upstream to CNCF security projects, speaking
-                            at KubeCon, and setting the standard for how cloud infrastructure gets hardened in
-                            this region.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Four Pillars ===== -->
-        <section class="pillars-section" aria-label="Our four pillars">
-            <div class="wrap">
-                <div class="pillars-header reveal">
-                    <div class="section-eyebrow">// what-we-stand-for</div>
-                    <h2>Four pillars.</h2>
-                </div>
-
-                <div class="pillars-grid reveal">
-                    <article class="pillar-card">
-                        <div class="pillar-num">01</div>
-                        <h3>Rigor</h3>
-                        <p>What is true matters more than what sounds good. We test, we cite, we date-stamp our corrections.</p>
-                    </article>
-                    <article class="pillar-card">
-                        <div class="pillar-num">02</div>
-                        <h3>Belonging</h3>
-                        <p>The first question is the most valuable one in the room. No gatekeeping on credentials, English fluency, or city.</p>
-                    </article>
-                    <article class="pillar-card">
-                        <div class="pillar-num">03</div>
-                        <h3>Bridge</h3>
-                        <p>We connect Pakistani engineers to KubeCon, OSS contribution, and the global CNCF in both directions.</p>
-                    </article>
-                    <article class="pillar-card">
-                        <div class="pillar-num">04</div>
-                        <h3>Practice</h3>
-                        <p>Talk is cheap. Show the kubectl. Every concept gets a demo, a code block, or a runnable lab.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Founding Story ===== -->
-        <section class="story-section" aria-label="Our story">
-            <div class="wrap">
-                <div class="story-content reveal">
-                    <div class="section-eyebrow">// origin</div>
-                    <h2>Defense in depth. Hospitality on top.</h2>
-                    <p>
-                        CNSPK — Cloud Native Security Pakistan — was founded in August 2023 by a group of engineers who
-                        noticed the gap: Pakistan had cloud practitioners, but no dedicated space for the security
-                        side of cloud-native. No meetups dissecting Kubernetes RBAC misconfigs. No community
-                        reviewing supply-chain attestation. No mehfil for the people who actually read the CVE.
-                    </p>
-                    <p>
-                        So we built one. Affiliated with the Cloud Native Computing Foundation as a recognised
-                        chapter, but independent in governance, voice, and direction. We run our own events, set
-                        our own agenda, and answer to the community — not a parent org's marketing calendar.
-                    </p>
-                    <p class="mono-detail">
-                        est. 2023 · CNCF-affiliated · 1,000+ members · independent governance
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Team Callout (bone block) ===== -->
-        <section class="team-callout reveal" aria-label="Meet the team">
-            <div class="wrap">
-                <div class="team-inner">
-                    <div class="team-copy">
-                        <div class="section-eyebrow" style="color: var(--lime-600);">// the-humans</div>
-                        <h2>Meet the team behind CNSPK.</h2>
-                        <p>
-                            Organizers, speakers, and contributors — the people who keep the chapter running,
-                            the sessions shipping, and the community growing.
-                        </p>
-                    </div>
-                    <a href="/team/" class="btn-team">
-                        View the Team
-                        <span style="font-family:var(--font-mono);">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== Footer (mounted via /js/Footer.js) ===== -->
-    <div id="footer"></div>
-
-    <script type="module">
-        import { Navbar } from '/js/Navbar.js';
-        import { Footer } from '/js/Footer.js';
-
-        new Navbar().init();
-        new Footer().init();
-
-        /* ---- Scroll-reveal — respects prefers-reduced-motion ---- */
-        (function () {
-            const els = document.querySelectorAll('.reveal');
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            if (prefersReduced || !('IntersectionObserver' in window)) {
-                els.forEach(el => el.classList.add('is-visible'));
-                return;
-            }
-
-            const io = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-            els.forEach(el => io.observe(el));
-        })();
-    </script>
+<section class="section" aria-labelledby="team-title">
+  <div class="container">
+    <div class="section-head">
+  <div class="section-head__text">
+    <p class="kicker"><span class="kicker__index">05</span>People</p>
+    <h2 class="title" id="team-title">Organisers</h2>
+    
+  </div>
+  <a class="arrow-link" href="/team/">All organisers <span class="btn__arrow" aria-hidden="true">→</span></a>
+</div>
+    <ul class="grid grid--4"><li class="person"><span class="avatar" aria-hidden="true">FA</span><div><p class="person__name">Muhammad Farhan Ashraf</p><p class="person__role">AISecOps Engineer</p></div></li><li class="person"><span class="avatar" aria-hidden="true">N</span><div><p class="person__name">Syed Naqvi</p><p class="person__role">Security Project Manager</p></div></li><li class="person"><span class="avatar" aria-hidden="true">TF</span><div><p class="person__name">Taskeen Fatima</p><p class="person__role">Operations Lead</p></div></li><li class="person"><span class="avatar" aria-hidden="true">SY</span><div><p class="person__name">Sharjeel Yunus</p><p class="person__role">Web and Graphics Lead</p></div></li><li class="person"><span class="avatar" aria-hidden="true">HI</span><div><p class="person__name">Hasnaat Iftikhar</p><p class="person__role">FullStack Developer &amp; Designer</p></div></li><li class="person"><span class="avatar" aria-hidden="true">AA</span><div><p class="person__name">Alishba Arshad</p><p class="person__role">Community Contributor</p></div></li><li class="person"><span class="avatar" aria-hidden="true">A</span><div><p class="person__name">Muhammad Abdullah</p><p class="person__role">Software Engineer &amp; Community Leader</p></div></li><li class="person"><span class="avatar" aria-hidden="true">HS</span><div><p class="person__name">Haroon Sohail</p><p class="person__role">Software Engineer &amp; Mentor</p></div></li></ul>
+  </div>
+</section>
+</main>
+<footer class="cx-footer">
+  <div class="cx-footer__heritage" aria-hidden="true"></div>
+  <div class="cx-container">
+    <div class="cx-footer__top">
+      <div class="cx-footer__about">
+        <a class="cx-brand" href="/" aria-label="CNSPK home">
+          <img class="cx-brand__mark" src="/brand/assets/cnspk-mark-96.png" width="34" height="34" alt="">
+          <span class="cx-brand__text"><span class="cx-brand__name">CNSPK</span><span class="cx-brand__full">Cloud Native Security Pakistan</span></span>
+        </a>
+        <p>A volunteer-run, not-for-profit community for cloud-native security, open source, and DevSecOps in Pakistan.</p>
+        <p class="cx-footer__urdu" lang="ur" dir="rtl">کلاؤڈ نیٹو سیکیورٹی پاکستان</p>
+      </div>
+      <div><h2 class="cx-footer__heading">Participate</h2><ul class="cx-footer__list"><li><a href="/events/">Upcoming and past events</a></li><li><a href="/join/">Join the community</a></li><li><a href="/community/#volunteer">Volunteer</a></li><li><a href="/cfp/">Propose a talk</a></li><li><a href="/open-source/">Contribute on GitHub</a></li></ul></div><div><h2 class="cx-footer__heading">Learn more</h2><ul class="cx-footer__list"><li><a href="/about/">About CNSPK</a></li><li><a href="/team/">Organisers</a></li><li><a href="/impact/">Impact</a></li><li><a href="/resources/">Resources</a></li><li><a href="/partners/">Partner with us</a></li><li><a href="/brand/">Brand assets</a></li><li><a href="/code-of-conduct/">Code of conduct</a></li></ul></div>
+      <div><h2 class="cx-footer__heading">Channels</h2><ul class="cx-footer__list"><li><a href="https://community.cncf.io/cloud-native-security-pakistan/" rel="noopener" target="_blank">CNCF group<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo" rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://discord.gg/v7RQu6gvpJ" rel="noopener" target="_blank">Discord<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://github.com/Cloud-Native-Security-Pakistan" rel="noopener" target="_blank">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/company/cloud-native-security-pakistan" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://www.instagram.com/cloudnativesecuritypk" rel="noopener" target="_blank">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+    </div>
+    <div class="cx-footer__bottom">
+      <span>© 2026 Cloud Native Security Pakistan. Content is maintained in the open on <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website">GitHub</a>.</span>
+      <span>Spotted an error? <a href="https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/issues/new">Report a correction</a> or email <a href="mailto:hi@cloudnativesecurity.pk">hi@cloudnativesecurity.pk</a>.</span>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>
