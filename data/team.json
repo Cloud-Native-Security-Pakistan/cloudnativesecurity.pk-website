@@ -2,11 +2,11 @@
     {
         "id": 1,
         "name": "Muhammad Farhan Ashraf",
-        "role": "DevSecOps Engineer",
-        "company": "SystemsLTD",
+        "role": "AISecOps Engineer",
+        "company": "Systems Limited",
         "location": "Lahore, Pakistan",
-        "bio": "DevSecOps Engineer passionate about cloud-native security and open source contributions.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/farhan-profile.jpg",
+        "bio": "AISecOps engineer working on AI and cloud-native security, and an open-source contributor.",
+        "image": null,
         "social": {
             "website": "https://farhanashraf.dev/",
             "twitter": "https://twitter.com/mriceflame",
@@ -21,7 +21,7 @@
         "company": "Securiti.ai",
         "location": "Islamabad, Pakistan",
         "bio": "Security Project Manager specializing in cloud security and compliance frameworks.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/syed-profile.jpg",
+        "image": null,
         "social": {
             "twitter": "https://twitter.com/Syedalizain033",
             "linkedin": "https://LinkedIn.com/in/syedalizain033",
@@ -35,7 +35,7 @@
         "company": "CNSPK",
         "location": "Lahore, Pakistan",
         "bio": "Operations Lead ensuring smooth community events and member engagement.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/taskeen-profile.jpg",
+        "image": null,
         "social": {
             "twitter": "https://twitter.com/Taskeen7_9",
             "facebook": "https://www.facebook.com/syedataskeenfatima.22/",
@@ -50,7 +50,7 @@
         "company": "Ensemble Technologies",
         "location": "Bahawalpur, Pakistan",
         "bio": "Senior Software Engineer and creative designer building beautiful web experiences.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/sharjeel-profile.jpg",
+        "image": null,
         "social": {
             "website": "https://www.sharjeelyunus.dev/",
             "twitter": "https://twitter.com/sharjeelyunus",
@@ -65,7 +65,7 @@
         "company": "Webling",
         "location": "Lahore, Pakistan",
         "bio": "Senior Front-End Developer crafting intuitive and performant user interfaces.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/hasnaat-profile.jpg",
+        "image": null,
         "social": {
             "website": "https://hasnaat.work",
             "twitter": "https://twitter.com/HasnaatIftikha1",
@@ -81,7 +81,7 @@
         "company": "CNSPK",
         "location": "Pakistan",
         "bio": "Passionate about cloud-native technologies and community building.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/alishba-profile.jpg",
+        "image": null,
         "social": {
             "linkedin": "https://www.linkedin.com/in/alishbaarshadd/"
         }
@@ -93,7 +93,7 @@
         "company": "Manafa | Founder & Chapter Lead, GDSC LGU",
         "location": "Pakistan",
         "bio": "Software Engineer at Manafa building scalable fintech platforms with Nuxt 3, Vue 3, and React. Former GDSC LGU Chapter Lead who organized 15+ technical events and partnered with GitHub, Unity, and Google Play. Passionate about clean code, product thinking, and bridging academia with industry.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/abdullah-profile.jpg",
+        "image": null,
         "social": {
             "linkedin": "https://www.linkedin.com/in/muhammad-abdullah-software-engineer-pk/"
         }
@@ -105,7 +105,7 @@
         "company": "Manafa | Mentor @ GDGoC LGU",
         "location": "Pakistan",
         "bio": "Empowering SMEs at Manafa with scalable solutions. Former Arbisoft engineer and active mentor at Google Developer Groups on Campus Lahore Garrison University.",
-        "image": "https://community.cncf.io/wp-content/uploads/2024/01/haroon-profile.jpg",
+        "image": null,
         "social": {
             "linkedin": "https://www.linkedin.com/in/h4roons/"
         }

@@ -1,0 +1,241 @@
+{
+  "$comment": "Open-source work connected to CNSPK. Snapshot from the GitHub API; re-run the sync and update verifiedOn when refreshing.",
+  "verifiedOn": "2026-11-02",
+  "community": [
+    {
+      "name": "cloudnativesecurity.pk-website",
+      "repository": "Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website",
+      "url": "https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website",
+      "description": "Source for this website: static HTML, a small TypeScript build script, and JSON content files anyone can correct with a pull request.",
+      "language": "HTML",
+      "contribute": "https://github.com/Cloud-Native-Security-Pakistan/cloudnativesecurity.pk-website/blob/main/CONTRIBUTING.md",
+      "maintainers": [
+        "farhanashrafdev"
+      ]
+    },
+    {
+      "name": "hacktoberfest-lahore-2026-countdown",
+      "repository": "Cloud-Native-Security-Pakistan/hacktoberfest-lahore-2026-countdown",
+      "url": "https://github.com/Cloud-Native-Security-Pakistan/hacktoberfest-lahore-2026-countdown",
+      "description": "Projector-first countdown built for Hacktoberfest Hack Day Lahore 2026.",
+      "language": "TypeScript",
+      "contribute": null,
+      "maintainers": []
+    },
+    {
+      "name": "becoming-a-member",
+      "repository": "Cloud-Native-Security-Pakistan/becoming-a-member",
+      "url": "https://github.com/Cloud-Native-Security-Pakistan/becoming-a-member",
+      "description": "Membership on GitHub: open the invitation issue, receive an invite to the CNSPK organisation, then add yourself to the member map.",
+      "language": null,
+      "contribute": "https://github.com/Cloud-Native-Security-Pakistan/becoming-a-member/issues/new?template=invite.yml",
+      "maintainers": []
+    }
+  ],
+  "hackDay2026": {
+    "event": "hacktoberfest-hack-day-lahore-2026",
+    "note": "Projects built by participants at Hacktoberfest Hack Day Lahore 2026. Each team owns its repository; CNSPK keeps a fork in its organisation as a record.",
+    "projects": [
+      {
+        "name": "DevsZee",
+        "repository": "ABDULHANAN-123/DevsZee_",
+        "url": "https://github.com/ABDULHANAN-123/DevsZee_",
+        "author": "ABDULHANAN-123",
+        "language": "TypeScript",
+        "description": null
+      },
+      {
+        "name": "Printflow-by-Gravitech",
+        "repository": "Abdulscode06/Printflow-by-Gravitech",
+        "url": "https://github.com/Abdulscode06/Printflow-by-Gravitech",
+        "author": "Abdulscode06",
+        "language": "JavaScript",
+        "description": null
+      },
+      {
+        "name": "RepoSherlock",
+        "repository": "alikhann2360/RepoSherlock",
+        "url": "https://github.com/alikhann2360/RepoSherlock",
+        "author": "alikhann2360",
+        "language": "Python",
+        "description": "Ai agent to explain all artitecture etc of code files"
+      },
+      {
+        "name": "ozhuk-poetry",
+        "repository": "codename-warhammer09/ozhuk-poetry",
+        "url": "https://github.com/codename-warhammer09/ozhuk-poetry",
+        "author": "codename-warhammer09",
+        "language": "Python",
+        "description": "HACKTOBERFEST 26' submission: An open-source multimodal agent skill and learning engine for classical poetical scansion, web-retrieved examples, and literary analysis, powered by Gemma 4."
+      },
+      {
+        "name": "ai-operations-manager",
+        "repository": "Developer-game/ai-operations-manager",
+        "url": "https://github.com/Developer-game/ai-operations-manager",
+        "author": "Developer-game",
+        "language": "TypeScript",
+        "description": "AI Operations Manager - intelligent agentic platform for autonomous operations, incident management, and workflow automation"
+      },
+      {
+        "name": "DocDecode",
+        "repository": "fa24-bscs-431-pixel/DocDecode",
+        "url": "https://github.com/fa24-bscs-431-pixel/DocDecode",
+        "author": "fa24-bscs-431-pixel",
+        "language": "Python",
+        "description": "AI assistant that decodes official documents into plain words, deadlines and next steps. Built with Gemma 4, Gemini API and Streamlit.  Understand any official letter or report in seconds: summary, deadlines, legal scenarios and reminders, in your language."
+      },
+      {
+        "name": "devszee_hacktoberfest_dnotifier",
+        "repository": "Faseeh56/devszee_hacktoberfest_dnotifier",
+        "url": "https://github.com/Faseeh56/devszee_hacktoberfest_dnotifier",
+        "author": "Faseeh56",
+        "language": "TypeScript",
+        "description": null
+      },
+      {
+        "name": "Hiryali",
+        "repository": "frontendfuel11/Hiryali",
+        "url": "https://github.com/frontendfuel11/Hiryali",
+        "author": "frontendfuel11",
+        "language": "JavaScript",
+        "description": null
+      },
+      {
+        "name": "foundry",
+        "repository": "hellohammadi/foundry",
+        "url": "https://github.com/hellohammadi/foundry",
+        "author": "hellohammadi",
+        "language": "TypeScript",
+        "description": "Open-source AI agent team that helps founders discover their business potential — start a business or fix one. Built on DNotifier."
+      },
+      {
+        "name": "wmp-clinicflow",
+        "repository": "iamusamaashfaq/wmp-clinicflow",
+        "url": "https://github.com/iamusamaashfaq/wmp-clinicflow",
+        "author": "iamusamaashfaq",
+        "language": "TypeScript",
+        "description": null
+      },
+      {
+        "name": "caretrack_ai",
+        "repository": "JaVi080/caretrack_ai",
+        "url": "https://github.com/JaVi080/caretrack_ai",
+        "author": "JaVi080",
+        "language": null,
+        "description": null
+      },
+      {
+        "name": "repoguard-ai",
+        "repository": "mabdullahch90-spec/repoguard-ai",
+        "url": "https://github.com/mabdullahch90-spec/repoguard-ai",
+        "author": "mabdullahch90-spec",
+        "language": "Python",
+        "description": "Autonomous Vulnerability & Patch Agent — AI-powered security scanner"
+      },
+      {
+        "name": "accessibility-agents",
+        "repository": "MaryamShahid121/accessibility-agents",
+        "url": "https://github.com/MaryamShahid121/accessibility-agents",
+        "author": "MaryamShahid121",
+        "language": "Python",
+        "description": null
+      },
+      {
+        "name": "BayanAI",
+        "repository": "Monam1083/BayanAI-",
+        "url": "https://github.com/Monam1083/BayanAI-",
+        "author": "Monam1083",
+        "language": "Dart",
+        "description": "Open-source AI project built at Hacktoberfest Hack Day Lahore 2026, using open models to solve real problems."
+      },
+      {
+        "name": "Apna-khata",
+        "repository": "mshahid1214/Apna-khata",
+        "url": "https://github.com/mshahid1214/Apna-khata",
+        "author": "mshahid1214",
+        "language": "TypeScript",
+        "description": "Mobile-first PWA that digitises mandi sale slips and bahi-khata ledgers for South Punjab’s fruit and cotton supply chain. Shared real-time records for farmers, arhtis, cold storage and transporters, with Urdu voice entry and AI document scanning."
+      },
+      {
+        "name": "sentinental-twin",
+        "repository": "Muaviatanveer/sentinental-twin",
+        "url": "https://github.com/Muaviatanveer/sentinental-twin",
+        "author": "Muaviatanveer",
+        "language": "Python",
+        "description": "Autonomous AI Digital Twin for Container Infrastructure. What-If Simulation Powered by Gemma 4 Thinking Mode & Deterministic Sandbox Verification."
+      },
+      {
+        "name": "FoundersLens-Code",
+        "repository": "muhammadahmad00731/FoundersLens-Code",
+        "url": "https://github.com/muhammadahmad00731/FoundersLens-Code",
+        "author": "muhammadahmad00731",
+        "language": null,
+        "description": "users give their ideas via intake form,which i ahve provided above. system or the 1st agent integrated with teh system will evaluate the main idea of teh user that eitehr it is scalable in the pakistani and gloobal market??? then the 2nd agent or the system itself will make the complete research work for that idea. and provide the final report"
+      },
+      {
+        "name": "neural-debate",
+        "repository": "muhammadali382/neural-debate",
+        "url": "https://github.com/muhammadali382/neural-debate",
+        "author": "muhammadali382",
+        "language": "Python",
+        "description": "This repo is built for a project at Hacktoberfest."
+      },
+      {
+        "name": "nexusmark-team-bits",
+        "repository": "Naqi-9/nexusmark-team-bits",
+        "url": "https://github.com/Naqi-9/nexusmark-team-bits",
+        "author": "Naqi-9",
+        "language": "TypeScript",
+        "description": null
+      },
+      {
+        "name": "VeriFyra_AI",
+        "repository": "raheelhassangit/VeriFyra_AI",
+        "url": "https://github.com/raheelhassangit/VeriFyra_AI",
+        "author": "raheelhassangit",
+        "language": "Python",
+        "description": null
+      },
+      {
+        "name": "support_hackatone",
+        "repository": "SAAD-HUB-DOTCOM/support_hackatone",
+        "url": "https://github.com/SAAD-HUB-DOTCOM/support_hackatone",
+        "author": "SAAD-HUB-DOTCOM",
+        "language": "TypeScript",
+        "description": null
+      },
+      {
+        "name": "budget-tracker-ai",
+        "repository": "Sadeeed/budget-tracker-ai",
+        "url": "https://github.com/Sadeeed/budget-tracker-ai",
+        "author": "Sadeeed",
+        "language": "Python",
+        "description": null
+      },
+      {
+        "name": "CaseAnalysis",
+        "repository": "TAYYABA-NISA/CaseAnalysis",
+        "url": "https://github.com/TAYYABA-NISA/CaseAnalysis",
+        "author": "TAYYABA-NISA",
+        "language": "Python",
+        "description": null
+      },
+      {
+        "name": "kisanlens-ai",
+        "repository": "thehmfpk/kisanlens-ai",
+        "url": "https://github.com/thehmfpk/kisanlens-ai",
+        "author": "thehmfpk",
+        "language": "TypeScript",
+        "description": "An open-source AI farming companion for Pakistan, featuring crop disease detection, smart irrigation, soil insights, weather risk analysis, Urdu voice assistance, and crop market intelligence."
+      },
+      {
+        "name": "hukam",
+        "repository": "zaeeeeeem/hukam",
+        "url": "https://github.com/zaeeeeeem/hukam",
+        "author": "zaeeeeeem",
+        "language": "TypeScript",
+        "description": "Command your coding agents from WhatsApp. Gemma 4 routes text and voice notes, Superset runs Claude Code / Codex / OpenCode, DNotifier streams a live dashboard."
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$comment": "Organisation facts. Every claim carries a source. Update verifiedOn when re-checked. Read by tools/site/build.ts.",
+  "name": "Cloud Native Security Pakistan",
+  "shortName": "CNSPK",
+  "url": "https://cloudnativesecurity.pk",
+  "email": "hi@cloudnativesecurity.pk",
+  "conductEmail": "conduct@cloudnativesecurity.pk",
+  "description": "A volunteer-run, not-for-profit technical community in Pakistan for cloud-native security, open source, Kubernetes, DevSecOps, and AI security.",
+  "founded": {
+    "value": "2023-08",
+    "label": "August 2023",
+    "source": "https://community.cncf.io/cloud-native-security-pakistan/",
+    "sourceLabel": "CNCF Open Community Groups listing",
+    "verifiedOn": "2026-11-02"
+  },
+  "cncf": {
+    "statement": "Listed as a community group on CNCF Open Community Groups, the platform the Cloud Native Computing Foundation runs for local communities.",
+    "url": "https://community.cncf.io/cloud-native-security-pakistan/",
+    "caveat": "A listing on CNCF Open Community Groups is not an endorsement by CNCF of CNSPK's content or activities.",
+    "verifiedOn": "2026-11-02"
+  },
+  "members": {
+    "value": 289,
+    "label": "members on the CNCF community group",
+    "source": "https://community.cncf.io/cloud-native-security-pakistan/",
+    "verifiedOn": "2026-11-02",
+    "note": "Counts registered members of the CNCF group only. WhatsApp, Discord, and LinkedIn audiences are not included because no verified totals are available."
+  },
+  "channels": [
+    {
+      "id": "cncf",
+      "label": "CNCF community group",
+      "handle": "community.cncf.io",
+      "url": "https://community.cncf.io/cloud-native-security-pakistan/",
+      "purpose": "Event announcements and RSVPs",
+      "verifiedOn": "2026-11-02"
+    },
+    {
+      "id": "whatsapp",
+      "label": "WhatsApp community",
+      "handle": "Join link",
+      "url": "https://chat.whatsapp.com/F5Hf1ZwI22TK6EcV6zz4wo",
+      "purpose": "Day-to-day announcements and questions",
+      "verifiedOn": "2026-11-02"
+    },
+    {
+      "id": "discord",
+      "label": "Discord",
+      "handle": "discord.gg/v7RQu6gvpJ",
+      "url": "https://discord.gg/v7RQu6gvpJ",
+      "purpose": "Technical discussion and project coordination",
+      "verifiedOn": "2026-11-02"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "handle": "Cloud-Native-Security-Pakistan",
+      "url": "https://github.com/Cloud-Native-Security-Pakistan",
+      "purpose": "Website source, hackathon projects, and community tooling",
+      "verifiedOn": "2026-11-02"
+    },
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "handle": "cloud-native-security-pakistan",
+      "url": "https://www.linkedin.com/company/cloud-native-security-pakistan",
+      "purpose": "Event recaps and announcements",
+      "verifiedOn": "2026-11-02"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "handle": "@cloudnativesecuritypk",
+      "url": "https://www.instagram.com/cloudnativesecuritypk",
+      "purpose": "Event photos and announcements",
+      "verifiedOn": "2026-11-02"
+    }
+  ],
+  "gaps": [
+    "The X/Twitter handle @CloudSecPK returned HTTP 404 on 2026-11-02, so it is not linked. Confirm the current handle before adding it back.",
+    "No verified total for community reach across WhatsApp, Discord, and LinkedIn.",
+    "No registered legal entity or fiscal host is documented. CNSPK is described as volunteer-run and not-for-profit in its own materials."
+  ]
+}
