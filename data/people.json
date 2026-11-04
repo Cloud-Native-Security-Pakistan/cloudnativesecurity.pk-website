@@ -110,21 +110,21 @@
     "bio": "Senior Front-End Developer crafting intuitive and performant user interfaces."
   },
   {
-    "id": "muhammad-abdullah",
-    "name": "Muhammad Abdullah",
-    "city": null,
+    "id": "muhammad-abdullah-attari",
+    "name": "Muhammad Abdullah Attari",
+    "city": "Lahore",
     "profiles": {
       "linkedin": "https://www.linkedin.com/in/muhammad-abdullah-software-engineer-pk/"
     },
-    "professionalTitle": "Software Engineer, Manafa",
+    "professionalTitle": "Software Engineer",
     "team": {
       "group": "organizing",
-      "role": null,
-      "roleStatus": "needs-review",
+      "role": "Social Media x Community Management Lead",
+      "roleStatus": "organizer-reported",
       "roleSource": "Listed on the previous site's team page",
-      "status": "unknown"
+      "status": "active"
     },
-    "bio": "Software Engineer at Manafa building scalable fintech platforms with Nuxt 3, Vue 3, and React. Former GDSC LGU Chapter Lead who organized 15+ technical events and partnered with GitHub, Unity, and Google Play. Passionate about clean code, product thinking, and bridging academia with industry."
+    "bio": "AI Full Stack Engineer. Former GDGOC LGU Chapter Co-Lead who organized technical events and partnered with GitHub and Google."
   },
   {
     "id": "alishba-arshad",
