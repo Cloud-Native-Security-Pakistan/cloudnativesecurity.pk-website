@@ -27,7 +27,7 @@ export const CHANNELS = [
   { label: 'Discord', href: 'https://discord.gg/v7RQu6gvpJ' },
   { label: 'GitHub', href: 'https://github.com/Cloud-Native-Security-Pakistan' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cloud-native-security-pakistan' },
-  { label: 'Instagram', href: 'https://www.instagram.com/cloudnativesecuritypk' },
+  { label: 'Instagram', href: 'https://www.instagram.com/cnspakistan' },
 ];
 
 const FOOTER_COLUMNS = [
